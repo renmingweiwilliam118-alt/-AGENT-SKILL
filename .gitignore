@@ -1,0 +1,20 @@
+# 排除大媒体文件
+*.mp4
+*.mov
+*.avi
+*.webm
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.bmp
+*.tiff
+
+# 保留 restore.sh
+!restore.sh
+
+# git 自身
+.git
