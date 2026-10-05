@@ -807,6 +807,54 @@ humanizer：去除 AI 腔，让文本读起来像人写的。
 
 ---
 
+## 给其他智能体安装（分平台说明）
+
+本仓库的技能遵循 **Agent Skills** 通用格式（每个技能是一个文件夹，核心是带 YAML frontmatter 的 `SKILL.md`，含 name/description）。不同平台安装方式如下：
+
+### Hermes Agent（即"源主"环境）
+
+```bash
+git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
+cd -AGENT-SKILL && ./restore.sh   # 拷贝到 ~/.hermes/skills/
+```
+
+Hermes 会自动按 SKILL.md 的 description 触发对应技能，无需额外配置。重启会话后生效。
+
+### Claude Code
+
+```bash
+git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
+mkdir -p ~/.claude/skills
+# 把需要的类别目录拷进去（SKILL.md 格式兼容）
+cp -r -AGENT-SKILL/design ~/.claude/skills/
+cp -r -AGENT-SKILL/software-development ~/.claude/skills/
+```
+
+Claude Code 会自动发现 `~/.claude/skills/` 下的技能。也可以用 `/plugin` 机制安装（若对方配了本仓库为 plugin source）。
+
+### Cursor / Codex / OpenCode / 通用 Agent Skills 平台
+
+这些平台遵循 Agent Skills 标准，技能目录位置各有不同（如 Codex 的 `~/.codex/skills/`、OpenCode 的 skills 路径、Cursor 的 `.cursor/skills/`）。步骤统一：
+
+```bash
+git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
+cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
+```
+
+### 不支持 Skills 的纯聊天模型
+
+没有可安装位置。做法：把所需技能的 `SKILL.md` 全文（frontmatter + 正文）作为系统提示词的一部分粘贴进对话，或让模型通过 RAG 检索该文件。效果取决于模型上下文长度和遵守程度。
+
+### 依赖说明（哪些技能"装了能跑"取决于环境）
+
+| 技能群 | 依赖 | 缺失时的表现 |
+|---|---|---|
+| browser-act（103 个） | Browser Use CLI 环境 | 技能文件可装，但执行抓取需要浏览器自动化后端 |
+| open-design 媒体类（fal/venice/sora 等） | 对应厂商 API 密钥（FAL_KEY、VENICE_KEY 等） | 调用返回 401，需先配 key |
+| gstack 部分（ios-qa/ios-fix 等） | iOS 真机 / Xcode 环境 | 仅 macOS + Xcode 下可用 |
+| openmontage 视频类 | 各模型 API 或本地 ffmpeg | 按具体技能的依赖走 |
+| 纯方法论（taste-skill、superpowers、ponytail、systematic-debugging 等） | 无 | 任何平台即用 |
+
 ## 恢复方法
 
 ```bash
