@@ -8,10 +8,11 @@ license: MIT (scrcpy)
 
 Display & control an **Android device** from a computer (USB or TCP/IP). No root, no app on the phone. Light, low-latency (35–70ms), 30–120fps.
 
-## 本机情况
-- 这是**设备/二进制工具**，不是 Python/Node 库：需要 ① 一台 Android 手机连 USB ② Android 开 USB 调试 ③ ADB。
-- Windows 上下载预构建包（`scrcpy-win64-v4.x.7z`）从官方 release 解压，`scrcpy.exe` 直接跑。
+## 本机情况（已装 v5.0）
+- 预构建包已下载解压到 `C:\Users\mwr_w\tools\scrcpy\scrcpy-win64-v5.0\`，含 `scrcpy.exe` 和自带 `adb.exe`，`--version` 验证通过。
+- 但它是**设备/二进制工具**，实际镜像需要 ① 一台 Android 手机连 USB ② Android 开 USB 调试。没有实体手机就跑不起来。
 - 常见命令：`scrcpy`（镜像+控制）、`scrcpy --record screen.mp4`、`scrcpy --no-control`（只看）。
+- 调本地 adb：`C:\Users\mwr_w\tools\scrcpy\scrcpy-win64-v5.0\adb.exe devices`。
 
 ## 什么时候用哪个
 | 需求 | 选 |

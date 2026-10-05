@@ -9,9 +9,10 @@ license: MIT (browser-use)
 Python/TS framework that gives an LLM an agent loop over a real browser (CDP/Playwright). Installed on this machine.
 
 ## 本机已装
-- `browser-use 0.13.x`（含 browser-harness、cdp-use、fetch-use），Python 3.14。
+- `browser-use 0.13.x`（含 browser-harness、cdp-use、fetch-use），Python 3.14，import 验证通过。
 - 解释器：`/c/Users/mwr_w/AppData/Local/hermes/tools/python-3.14.7+20260901-win32-x64/python.exe`
 - 浏览器内核：本机已有 Playwright Chromium（`C:\Users\mwr_w\AppData\Local\ms-playwright`）。
+- **要真正跑 agent 循环需要一个 LLM**：OpenAI/Anthropic key（本机当前未配），或本地 Ollama，或 `ChatBrowserUse` 云模型。库本体已就位，差的是推理后端。
 
 ## 基本用法
 ```python

@@ -992,6 +992,24 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 
 ---
 
+## 抓网页 / 爬虫工具选择表（本机实测可用）
+
+> 本机已装好一套互补的爬虫工具链（Python 3.14 + Node），覆盖从"取单页"到"整站批量"到"绕过 anti-bot"。按场景挑，别乱起浏览器。
+
+| 场景 | 首选工具 | 本机状态 |
+|------|---------|---------|
+| 单页快速取内容（喂 LLM/RAG，最轻） | 内置 `web_extract` / `agent-reach` | ✅ 零依赖，不起浏览器 |
+| 整站批量、上千 URL、要并发/节流/重试 | **Scrapy** | ✅ 已装 v2.19 |
+| anti-bot / Cloudflare / TLS 指纹拦截 | **Scrapling**（`impersonate`/`StealthyFetcher`） | ✅ 已装 0.4.15 + curl_cffi + browserforge，实测抓 200 |
+| 重复 DOM 结构、少写选择器 | **AutoScraper** | ✅ 已装 1.1 |
+| Node/TS 技术栈爬虫 | **Crawlee** | ✅ 已装（`tools/node-packages`） |
+| 文档/Office/PDF → markdown | **MarkItDown** | ✅ 已装 0.1.8 [all] |
+| 让 AI 自动开浏览器做多步操作 | **browser-use** | ⚠️ 库已装 0.13，但需 LLM key（OpenAI/Anthropic/本地 Ollama）才跑得动 |
+| 手机投屏/键鼠控制 Android | **scrcpy** | ✅ 已装 v5.0（`tools/scrcpy`），需实体手机+USB 调试 |
+| TLS/HTTP2 指纹对抗（知识） | **curl-impersonate** | ⚠️ 无 Windows 二进制，本机用 Scrapling 的 `impersonate` 替代 |
+
+**分工原则**：能用 `web_extract` 解决就别起爬虫；静态整站爬用 Scrapy；被指纹/anti-bot 拦就上 Scrapling；要 AI 自主操作浏览器才动用 browser-use（并先配好 LLM 后端）。
+
 ## 恢复方法
 
 ```bash

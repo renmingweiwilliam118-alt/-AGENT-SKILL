@@ -11,7 +11,7 @@ A patched curl that does **TLS + HTTP/2 handshakes identical to a real browser**
 ## 概念（对本机的意义）
 - 核心原理：普通 HTTP 客户端的 Client Hello / HTTP2 SETTINGS 和浏览器差异极大，服务器据此做 **TLS/HTTP2 指纹识别** 来拦 bot。
 - curl-impersonate 把 curl 换成 BoringSSL/NSS 编译 + 改 TLS 扩展 + 改 HTTP2 设置，握手"长得像浏览器"。
-- 预编译二进制主要是 **Linux/macOS**；Windows 预构建有限，所以本机**当知识用**，实际规避指纹优先用 **Scrapling**（`Fetcher.get(url, impersonate='chrome')`，自带 curl_cffi 风格指纹模拟，Windows 友好）。
+- **已核实：它所有 release 都没有 Windows 预构建二进制**（只 Linux/macOS），本机无法直接跑 curl-impersonate.exe。所以本机**当知识用**，实际规避 TLS/HTTP2 指纹用 **Scrapling**（`Fetcher.get(url, impersonate='chrome')`，依赖已装好的 `curl_cffi`，Windows 友好，已验证能抓 200）。
 
 ## 等价的本机可用替代
 ```python
