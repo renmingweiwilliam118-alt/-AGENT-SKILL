@@ -855,6 +855,143 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 | openmontage 视频类 | 各模型 API 或本地 ffmpeg | 按具体技能的依赖走 |
 | 纯方法论（taste-skill、superpowers、ponytail、systematic-debugging 等） | 无 | 任何平台即用 |
 
+## 需要 API Key 的技能（127 个）
+
+> 这些技能文件可安装，但**实际运行需要对应厂商的 API 密钥**。密钥不要提交到仓库；
+> 安装后在环境变量或各平台的设置里配置即可。
+
+| 类别 | 技能 | 需要的密钥 | 在哪里申请 |
+|------|------|-----------|-----------|
+| autonomous-ai-agents | `claude-code` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com → API keys |
+|  | `codex` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
+|  | `opencode` | OPENROUTER_API_KEY | OpenRouter — openrouter.ai → Keys（聚合多家模型） |
+| browser-act | `solutions\ecommerce\amazon-asin-lookup-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-best-selling-products-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-buy-box-monitor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-competitor-analyzer` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-listing-competitor-analysis-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-product-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-product-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\ecommerce\amazon-reviews-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\business-contact-social-links-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\github-project-contributor-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\google-maps-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\google-maps-reviews-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\google-maps-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\industry-key-contact-radar-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\lead-generation\social-media-finder-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\search-research\google-image-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\search-research\google-news-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\search-research\web-research-assistant` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\search-research\web-search-scraper-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\social-listening\reddit-competitor-analysis-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\social-listening\wechat-article-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\social-listening\zhihu-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-batch-transcript-extractor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-channel-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-comments-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-influencer-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-transcript-analysis-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-transcript-extractor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+|  | `solutions\video-platforms\youtube-video-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
+| claude-mem | `agent-cost-report` | OPENROUTER_API_KEY | OpenRouter — openrouter.ai → Keys（聚合多家模型） |
+| design | `design` | GEMINI_API_KEY<br>MUAPI_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>厂商官方 API 平台注册后生成 key |
+|  | `hatch-pet` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
+|  | `taste-skill` | SHOPIFY_API_KEY | 厂商官方 API 平台注册后生成 key |
+| gstack | `autoplan` | CODEX_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `benchmark` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `benchmark-models` | ANTHROPIC_API_KEY<br>GOOGLE_API_KEY<br>SHORT_KEY | Anthropic — console.anthropic.com → API keys<br>Google API — console.cloud.google.com → API 与凭据<br>厂商官方 API 平台注册后生成 key |
+|  | `browse` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `canary` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `codex` | CODEX_API_KEY<br>OPENAI_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>OpenAI — platform.openai.com → API keys<br>厂商官方 API 平台注册后生成 key |
+|  | `context-restore` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `context-save` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `design-consultation` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `design-html` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `design-shotgun` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `diagram` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `document-generate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `document-release` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `health` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `investigate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `ios-clean` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `ios-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `ios-fix` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `ios-qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `ios-sync` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `land-and-deploy` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `landing-report` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `learn` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `make-pdf` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `office-hours` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `open-gstack-browser` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `pair-agent` | SHORT_KEY<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `plan-ceo-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `plan-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `plan-devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `plan-eng-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `plan-tune` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `qa-only` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `retro` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `scrape` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `setup-browser-cookies` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `setup-deploy` | RENDER_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `setup-gbrain` | SHORT_KEY<br>SUPABASE_ACCESS_TOKEN<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `ship` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `skillify` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `spec` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `sync-gbrain` | SHORT_KEY<br>VOYAGE_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `test-audit` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| media | `gif-search` | TENOR_API_KEY | 厂商官方 API 平台注册后生成 key |
+| openmontage | `acestep` | RUNPOD_API_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `agents` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `ai-video-gen` | FAL_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>HEYGEN_API_KEY<br>KLING_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key |
+|  | `atlas-cloud` | ATLASCLOUD_API_KEY<br>ATLAS_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `avatar-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `bfl-api` | BFL_API_KEY<br>YOUR_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `create-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `dashscope` | DASHSCOPE_API_KEY | 阿里云百炼/DashScope — bailian.console.aliyun.com → API-KEY 管理 |
+|  | `elevenlabs` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `faceswap` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `gemini-omni` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
+|  | `grok-media` | XAI_API_KEY | xAI — console.x.ai → API Keys |
+|  | `heygen` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `hyperframes-media` | ELEVENLABS_API_KEY<br>HEYGEN_API_KEY<br>HYPERFRAMES_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key |
+|  | `kling-official` | FAL_KEY<br>KLING_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
+|  | `lyria` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
+|  | `media-use` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `motion-graphics` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
+|  | `music` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `seedance-2-0` | FAL_KEY<br>HEYGEN_API_KEY<br>HIGGSFIELD_API_KEY<br>RUNWAY_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
+|  | `setup-api-key` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `sound-effects` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `speech-to-text` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+|  | `text-to-speech` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+|  | `video-translate` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| productivity | `airtable` | AIRTABLE_API_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `notion` | NOTION_API_KEY | 厂商官方 API 平台注册后生成 key |
+|  | `teams-meeting-pipeline` | MSGRAPH_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
+| research | `last30days` | AUTH_TOKEN<br>BRAVE_API_KEY<br>EXA_API_KEY<br>LAST30DAYS_API_KEY<br>OPENAI_API_KEY<br>OPENROUTER_API_KEY<br>PARALLEL_API_KEY<br>PERPLEXITY_API_KEY<br>SCRAPECREATORS_API_KEY<br>SERPER_API_KEY<br>TRUTHSOCIAL_TOKEN<br>XAI_API_KEY<br>XQUIK_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>Exa — exa.ai → API Keys<br>厂商官方 API 平台注册后生成 key<br>OpenAI — platform.openai.com → API keys<br>OpenRouter — openrouter.ai → Keys（聚合多家模型）<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>Serper.dev — serper.dev → API Keys（Google 搜索代理）<br>厂商官方 API 平台注册后生成 key<br>xAI — console.x.ai → API Keys<br>厂商官方 API 平台注册后生成 key |
+| social-media | `xurl` | YOUR_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
+| software-development | `graphify` | ANTHROPIC_API_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>OPENAI_API_KEY | Anthropic — console.anthropic.com → API keys<br>Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据<br>OpenAI — platform.openai.com → API keys |
+| web | `agent-reach` | TWITTER_AUTH_TOKEN | 厂商官方 API 平台注册后生成 key |
+|  | `blocked-page-recovery` | JINA_API_KEY | Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名） |
+|  | `firecrawl` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-build` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-build-interact` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-build-onboarding` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-build-scrape` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-build-search` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+|  | `firecrawl-developer-index` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+
+---
+
 ## 恢复方法
 
 ```bash
