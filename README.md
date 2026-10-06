@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1074 个技能**，20 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1127 个技能**，22 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -15,16 +15,18 @@
 | [browser-act](#browser-act) | 102 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
 | [security](#security) | 85 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
-| [software-development](#software-development) | 66 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
+| [software-development](#software-development) | 68 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
 | [marketing](#marketing) | 58 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [gstack](#gstack) | 55 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
-| [media](#media) | 35 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
+| [media](#media) | 36 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
+| [mattpocock](#mattpocock) | 35 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [web](#web) | 33 | 网页抓取 / 爬虫工具链（Scrapy/Scrapling/Crawlee/browser-use/Firecrawl…） |
 | [productivity](#productivity) | 30 | 办公文档 / 表格 / PPT / 邮件 / 协作 |
 | [claude-mem](#claude-mem) | 22 | Claude 跨会话记忆 / 知识图谱 |
+| [hermes-jev](#hermes-jev) | 11 |  |
 | [creative](#creative) | 10 | ASCII 艺术 / 手绘图 / 视觉设计 |
-| [autonomous-ai-agents](#autonomous-ai-agents) | 6 | 自主 agent 编排 / 委派 / 多 agent 团队 |
-| [research](#research) | 6 | 学术 / 文献 / 市场数据 / 内容监测 |
+| [autonomous-ai-agents](#autonomous-ai-agents) | 9 | 自主 agent 编排 / 委派 / 多 agent 团队 |
+| [research](#research) | 7 | 学术 / 文献 / 市场数据 / 内容监测 |
 | [apple](#apple) | 4 | Apple 平台 / SwiftUI / HIG |
 | [email](#email) | 2 | IMAP/SMTP 邮件 |
 | [devops](#devops) | 1 | SDLC / 部署 / CI |
@@ -812,48 +814,54 @@
 
 ---
 
-## software-development（66）
+## software-development（68）
 
 | 技能 | 用途 |
 |------|------|
 | `academy-guide` | > |
-| `api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `addyosmani/api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `addyosmani/browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
+| `addyosmani/ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
+| `addyosmani/code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
+| `addyosmani/code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
+| `addyosmani/constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
+| `addyosmani/context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
+| `addyosmani/debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
+| `addyosmani/deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
+| `addyosmani/documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
+| `addyosmani/doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
+| `addyosmani/frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
+| `addyosmani/git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
+| `addyosmani/idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
+| `addyosmani/incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
+| `addyosmani/interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
+| `addyosmani/observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
+| `addyosmani/performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
+| `addyosmani/planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
+| `addyosmani/security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
+| `addyosmani/shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
+| `addyosmani/source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
+| `addyosmani/spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
+| `addyosmani/test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
+| `addyosmani/using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
 | `brainstorming` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior.… |
-| `browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
-| `ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
 | `claude-api` | - |
-| `code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
-| `code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
 | `codebase-inspection` | "Inspect codebases w/ pygount: LOC, languages, ratios." |
-| `constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
-| `context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
-| `debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
-| `deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
 | `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor … |
 | `discernment-nudge` | > |
 | `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
-| `documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
 | `dogfood` | "Exploratory QA of web apps: find bugs, evidence, reports." |
-| `doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
 | `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline exe… |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skil… |
 | `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
-| `frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
-| `git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
 | `github` | "GitHub via gh CLI: PRs, issues, reviews, repos, auth." |
 | `graphify` | "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ e… |
 | `hermes-agent-skill-authoring` | "Author in-repo SKILL.md files: frontmatter and structure." |
 | `hermes-self-evolution` | > |
-| `idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
-| `incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
 | `inspecting-hermes-desktop-dom` | "Read the live Hermes desktop DOM/CSS over CDP." |
 | `installing-external-skills` | "Install GitHub repos as Hermes skills." |
-| `interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
 | `mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
 | `node-inspect-debugger` | "Debug Node.js via --inspect + Chrome DevTools Protocol CLI." |
-| `observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
-| `performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
-| `planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
 | `ponytail` | > |
 | `ponytail-audit` | > |
 | `ponytail-debt` | > |
@@ -861,21 +869,17 @@
 | `ponytail-help` | > |
 | `ponytail-review` | > |
 | `python-debugpy` | "Debug Python: pdb REPL + debugpy remote (DAP)." |
+| `qiaomu-goal-meta-skill` | (无描述) |
 | `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically ques… |
 | `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
-| `security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
-| `shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
 | `simplify-code` | "Parallel 4-agent cleanup of recent code changes." |
 | `skill-builder` | Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documenta… |
 | `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
 | `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a sk… |
-| `source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
-| `spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
 | `spike` | "Throwaway experiments to validate an idea before build." |
 | `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
 | `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
-| `test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
-| `using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
+| `typesafe-ai` | > |
 | `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an i… |
 | `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response includ… |
 | `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification com… |
@@ -1012,7 +1016,7 @@
 
 ---
 
-## media（35）
+## media（36）
 
 | 技能 | 用途 |
 |------|------|
@@ -1036,6 +1040,7 @@
 | `imagegen` | (无描述) |
 | `imagen` | (无描述) |
 | `mockup-device-3d` | "Static iPhone and MacBook 3D-style showcase with real HTML embedded on screens, glass-lens refraction, and 360-degree turntable c… |
+| `moneyprinterturbo` | "本机完整版的一键 AI 短视频生成器（harry0703/MoneyPrinterTurbo，128k★）：给主题/关键词自动生成脚本、匹配素材、字幕、背景音乐并合成高清短视频，带 WebUI 和 API。Use when the user wants to… |
 | `pixelbin-media` | (无描述) |
 | `replicate` | (无描述) |
 | `screenshot` | (无描述) |
@@ -1051,6 +1056,48 @@
 | `video-hyperframes` | "Hyperframes / Remotion-compatible continuous frame animation with autoplay support." |
 | `youtube-clipper` | (无描述) |
 | `youtube-content` | "YouTube transcripts to summaries, threads, blogs." |
+
+---
+
+## mattpocock（35）
+
+| 技能 | 用途 |
+|------|------|
+| `ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
+| `chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
+| `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
+| `code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
+| `codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
+| `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
+| `domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
+| `git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
+| `grill-me` | A relentless interview to sharpen a plan or design. |
+| `grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
+| `grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
+| `implement` | "Implement a piece of work based on a spec or set of tickets." |
+| `implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
+| `improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
+| `loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
+| `migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
+| `pr` | "Use when writing a PR body." |
+| `research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
+| `scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
+| `setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
+| `setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
+| `setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
+| `tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
+| `teach` | Teach the user a new skill or concept, within this workspace. |
+| `to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
+| `to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
+| `to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
+| `triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
+| `wait-what` | "Stop. That last message did not land: re-pitch it." |
+| `wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
+| `wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
+| `writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
+| `writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
+| `writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
+| `writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
 
 ---
 
@@ -1160,6 +1207,24 @@
 
 ---
 
+## hermes-jev（11）
+
+| 技能 | 用途 |
+|------|------|
+| `jev-browser-use` | Use when driving a web page in a browser — clicking, typing, navigating, logged-in or JS-rendered pages. Jev picks each step from … |
+| `jev-compaction` | Use when a transcript has to be cut to a fixed size and you must choose which turns go. Jev marks each turn keep, summarize or dro… |
+| `jev-computer-use` | Use when driving a desktop GUI through a computer-use driver — windows, menus, native apps, OS dialogs. You build a table of safe … |
+| `jev-frontier-work` | Use when a task is already judged hard — pick which paid frontier seat takes it, then keep Jev watching the delegated run so it in… |
+| `jev-mailbox` | Use on a mailbox export to sort mail into needs reply, updates, promotional, sales and spam — which messages are addressed to the … |
+| `jev-memory` | Use on passages a search just returned (memory, vault, session history, wiki, web) before reading them in. Jev ranks them, drops t… |
+| `jev-model-routing` | Use to pick the cheapest good-enough model or effort for a turn or a delegated task (lanes small to escalate), to decide continue/… |
+| `jev-search` | Use after any web or API search, before opening results or spending another round. Jev picks which results to read, whether the ev… |
+| `jev-setup` | Use when Jev is not working yet, a Jev tool reports no_key or auth_failed, or the person asks to connect or fix Jev. Gets their Ty… |
+| `jev-skill-select` | Use when unsure which of many installed skills applies to a request, if any, or when asked to make skill loading cheaper or more a… |
+| `jev-social-research` | Use when researching social posts, creators, reactions, or trends. Jev ranks discovery cards and decides when opened, source-linke… |
+
+---
+
 ## creative（10）
 
 | 技能 | 用途 |
@@ -1177,20 +1242,23 @@
 
 ---
 
-## autonomous-ai-agents（6）
+## autonomous-ai-agents（9）
 
 | 技能 | 用途 |
 |------|------|
 | `claude-code` | "Delegate coding to Claude Code CLI (features, PRs)." |
 | `computer-use` | "Drive the desktop background-first; escalate on signal." |
 | `hermes-agent` | "Use, configure, theme, extend, and orchestrate Hermes Agent." |
+| `librechat` | "本机完整版的 LibreChat（LibreChat-AI，45k★）：增强版 ChatGPT 开源平台，多模型/多 provider、Agents、MCP、Skills、代码执行 workspace、OIDC 部署。Use when the user wa… |
 | `multi-agent-teams` | "Compose Hermes bot groups and multi-agent dev pipelines." |
+| `openbot` | "本机完整版的 OpenBot（CopilotKit，6k★，alpha）：开源 AI 同事平台，每个 agent 有独立浏览器/文件/工具，AG-UI 协议接入任意 agent 框架，Docker Compose 自托管。Use when the user … |
 | `opencode` | "Delegate coding to OpenCode CLI (features, PR review)." |
+| `openhands` | "本机完整版的 OpenHands / Agent Canvas（All-Hands-AI/OpenHands，90k★）：自托管的编码 agent 控制中心，跑 OpenHands/Claude Code/Codex/Gemini 及任何 ACP agent… |
 | `workspace-dispatch` | (无描述) |
 
 ---
 
-## research（6）
+## research（7）
 
 | 技能 | 用途 |
 |------|------|
@@ -1200,6 +1268,7 @@
 | `grounded-citations` | "Ground answers and documents in cited, verifiable sources." |
 | `last30days` | "Research what people actually say about any topic in the last 30 days. Pulls posts and engagement from Reddit, X, YouTube, TikTok… |
 | `llm-wiki` | "Karpathy's LLM Wiki: build/query interlinked markdown KB." |
+| `tradingagents` | "本机完整版的多智能体金融交易框架（TauricResearch/TradingAgents，110k★，arXiv:2412.20138）：分析师/研究员/交易员/风控多 agent 协作出交易决策，支持回测、SEC EDGAR、点-in-time 数据完整… |
 
 ---
 
@@ -1277,7 +1346,7 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 
 ---
 
-## 需要 API Key 的技能（135 个）
+## 需要 API Key 的技能（142 个）
 
 > 这些技能文件可装，但**实际运行需对应厂商 API 密钥**。密钥不要提交仓库；装好后放环境变量或平台设置里。
 
@@ -1285,7 +1354,10 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 |-----------|-----------|-----------|
 | `autonomous-ai-agents/claude-code` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com → API keys |
 | `autonomous-ai-agents/codex` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
+| `autonomous-ai-agents/librechat` | MULTI_PROVIDER_KEYS<br>POSTGRES | 按接入的模型填各 provider key<br>需要 PostgreSQL |
+| `autonomous-ai-agents/openbot` | DOCKER<br>LLM_API_KEY<br>POSTGRES | Docker Compose 运行时<br>Intelligence 用 CopilotKit 或本地 Docker<br>需要 PostgreSQL |
 | `autonomous-ai-agents/opencode` | OPENROUTER_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `autonomous-ai-agents/openhands` | DOCKER<br>LLM_API_KEY | 后端 agent 的模型 key（OpenAI/Anthropic 等）<br>需要 Docker 运行时 |
 | `browser-act/solutions\ecommerce\amazon-asin-lookup-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
 | `browser-act/solutions\ecommerce\amazon-best-selling-products-finder-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
 | `browser-act/solutions\ecommerce\amazon-buy-box-monitor-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
@@ -1376,7 +1448,9 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 | `gstack/spec` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
 | `gstack/sync-gbrain` | SHORT_KEY<br>VOYAGE_API_KEY | 厂商官方 API 平台注册后生成 key |
 | `gstack/test-audit` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `hermes-jev/jev-setup` | JEV_API_KEY | TypeSafe Jev API（jev 工具链初始化时配） |
 | `media/gif-search` | TENOR_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `media/moneyprinterturbo` | LLM_API_KEY<br>PEXELS_API_KEY | Pexels 素材（可选）<br>至少一个 LLM provider（OpenAI/Google/Kimi） |
 | `openmontage/acestep` | RUNPOD_API_KEY | 厂商官方 API 平台注册后生成 key |
 | `openmontage/agents` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
 | `openmontage/ai-video-gen` | FAL_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>HEYGEN_API_KEY<br>KLING_API_KEY | Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key<br>HeyGen — platform.heygen.com → API 设置<br>fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
@@ -1406,9 +1480,11 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 | `productivity/notion` | NOTION_API_KEY | 厂商官方 API 平台注册后生成 key |
 | `productivity/teams-meeting-pipeline` | MSGRAPH_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
 | `research/last30days` | AUTH_TOKEN<br>BRAVE_API_KEY<br>EXA_API_KEY<br>LAST30DAYS_API_KEY<br>OPENAI_API_KEY<br>OPENROUTER_API_KEY<br>PARALLEL_API_KEY<br>PERPLEXITY_API_KEY<br>SCRAPECREATORS_API_KEY<br>SERPER_API_KEY<br>TRUTHSOCIAL_TOKEN<br>XAI_API_KEY<br>XQUIK_API_KEY | Exa — exa.ai → API Keys<br>OpenAI — platform.openai.com → API keys<br>Serper.dev — serper.dev → API Keys（Google 搜索代理）<br>xAI — console.x.ai → API Keys<br>厂商官方 API 平台注册后生成 key |
+| `research/tradingagents` | LLM_API_KEY<br>YAHOO_FINANCE | OpenAI/Anthropic/Google 至少一个<br>yfinance 行情（无需 key） |
 | `security/devcontainer-setup` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com |
 | `social-media/xurl` | YOUR_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
 | `software-development/graphify` | ANTHROPIC_API_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>OPENAI_API_KEY | Anthropic — console.anthropic.com → API keys<br>Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key<br>OpenAI — platform.openai.com → API keys |
+| `software-development/typesafe-ai` | TYPESAFE_API_KEY | TypeSafe System One (jev 模型) API，typesafe-ai |
 | `web/agent-reach` | TWITTER_AUTH_TOKEN | 厂商官方 API 平台注册后生成 key |
 | `web/blocked-page-recovery` | JINA_API_KEY | Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名） |
 | `web/firecrawl` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
