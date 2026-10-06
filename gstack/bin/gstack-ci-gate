@@ -1,0 +1,4 @@
+#!/usr/bin/env bun
+import { ciGateMain } from '../lib/ci-gate';
+
+process.exit(await ciGateMain(process.argv.slice(2)));

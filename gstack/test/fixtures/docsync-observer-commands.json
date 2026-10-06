@@ -1,0 +1,35 @@
+{
+  "_comment": "Bash commands from docsync E2E runs and their mutations. {repo} is the fixture repo, {other} a directory outside it. known_good: read-only forms the observer must accept. known_bad: forms it must keep rejecting.",
+  "known_good": [
+    "git status",
+    "git -C {repo} status",
+    "git -C '{repo}' diff --cached",
+    "git -c core.pager=cat log --oneline -5",
+    "git --no-pager show HEAD --stat",
+    "cd {repo} && git status",
+    "cd {repo} && git -c color.ui=never diff",
+    "git status --porcelain 2>/dev/null",
+    "cat docs/guide.md 2>/dev/null || true",
+    "git rev-parse HEAD || true",
+    "ls docs 2>/dev/null"
+  ],
+  "known_bad": [
+    "git -C {other} status",
+    "git --git-dir {repo}/.git status",
+    "git --work-tree {repo} status",
+    "git -c core.pager='rm -rf docs' log",
+    "git -c alias.st=!sh status",
+    "git -c core.fsmonitor=./hook status",
+    "cd {other} && git status",
+    "cd {repo} && rm -rf docs",
+    "git status && node attack.js",
+    "git status || rm docs/guide.md",
+    "git status 2>/tmp/leak",
+    "git status > docs/guide.md",
+    "git -C {repo} hash-object -w docs/guide.md",
+    "cat actor-state.json 2>/dev/null",
+    "bun arbitrary.ts 2>/dev/null",
+    "git status $EXTRA",
+    "git status\ntrue"
+  ]
+}

@@ -1,0 +1,104 @@
+Hermes Jev Skills
+Copyright (c) 2026 Steve Darlow
+
+This project is licensed under the MIT License (see LICENSE). It includes work from the
+projects below, each used under its own MIT licence.
+
+Contributions from other people keep their author in the git history and are named in
+CHANGELOG.md; they are licensed to this project under the MIT License above.
+
+Third-party licences
+====================
+
+Each licence below requires its permission notice to travel with any substantial portion
+of that project, not only its copyright line, so each notice is reproduced here in full.
+
+
+fazlerocks/jevmail — https://github.com/fazlerocks/jevmail
+----------------------------------------------------------
+
+Portions of `jevkit/mailbox.py`: the five lane descriptions, the five urgency rubric
+levels, the three question instructions and the 0.15 low-confidence threshold, copied
+from their `src/lib/classify.ts`.
+
+MIT License
+
+Copyright (c) 2026 Fazle Rahman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+savka777/jev-use — https://github.com/savka777/jev-use
+-------------------------------------------------------
+
+The plan-once design in `jevkit/plan.py`: one small-model call breaks a spoken command
+into steps, and Jev then drives only the steps that need a screen. No code copied;
+credited in the source.
+
+MIT License
+
+Copyright (c) 2026 Savva Bojko
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+rohanarun/computer-use-cache — https://github.com/rohanarun/computer-use-cache
+-------------------------------------------------------------------------------
+
+Two ideas only, in `jevkit/memo.py` and `jevkit/plan.py`: scope in the cache key, and
+treating any failure as a miss. No code copied; credited in the source, and
+docs/response-caches.md says what was deliberately not taken.
+
+MIT License
+
+Copyright (c) 2026 SuperPowers AI
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -1,0 +1,31 @@
+name: hermes-jev
+version: 0.22.1
+description: TypeSafe Jev takes the cheap decisions - model routing, skill selection, memory filtering, compaction selection, GUI and browser action choice, and (opt-in) policy decisions and a shadow command-risk gate.
+author: Steve Darlow
+license: MIT
+homepage: https://github.com/kerpopule/hermes-jev-skills
+manifest_version: 2
+requires_env:
+  - TYPESAFE_API_KEY
+provides_tools:
+  - jev_supervise
+  - jev_escalate
+  - jev_memory_filter
+  - jev_search
+  - jev_compact_select
+  - jev_choose_action
+  - jev_decide
+  - jev_score
+  - jev_route_to
+provides_hooks:
+  - pre_llm_call
+  - transform_llm_output
+  - pre_approval_request
+  - post_approval_response
+provides_middleware:
+  - llm_request
+tags: [jev, typesafe, routing, memory, compaction, computer-use]
+config_schema:
+  routing: {type: str, description: "off | shadow | on"}
+  skills: {type: str, description: "off | on"}
+  notice: {type: str, description: "off | on"}

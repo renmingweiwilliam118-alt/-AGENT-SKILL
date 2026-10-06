@@ -1,0 +1,13 @@
+name: hermes-handoff
+version: 0.4.1
+description: Close a session deliberately and start the next one already knowing what matters. Say "handoff" or run /wrapup.
+author: Steve Darlow
+license: MIT
+homepage: https://github.com/kerpopule/hermes-jev-skills
+manifest_version: 2
+provides_hooks:
+  - pre_gateway_dispatch
+  - pre_llm_call
+tags: [handoff, continuity, compaction, jev]
+config_schema:
+  inject: {type: bool, description: "inject the capsule into the next session (default true)"}

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A security or privacy problem
+    url: https://github.com/kerpopule/hermes-jev-skills/blob/main/SECURITY.md
+    about: Please do not open a public issue for these. SECURITY.md says how to report one.
+  - name: Jev itself, the model
+    url: https://docs.typesafe.ai
+    about: Jev and TypeSafe are TypeSafe AI's; this project is an independent user of them.

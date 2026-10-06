@@ -1,0 +1,29 @@
+name: A decision Jev could be making
+description: Somewhere an agent spends a frontier-model call on a decision
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The useful shape for this repo is a **bounded decision**: the application already
+        knows the options, and something only has to choose, rank or gate among them.
+        Jev cannot write text, and anything that needs writing is out of scope for it.
+  - type: textarea
+    id: decision
+    attributes:
+      label: What is being decided, and what the options are
+      placeholder: |
+        Which of N retrieved chunks to read. The options are the chunks; the application
+        already has them.
+    validations: {required: true}
+  - type: textarea
+    id: cost
+    attributes:
+      label: What it costs today
+      description: How often does it happen, and what answers it now — a frontier model, a regex, a person?
+    validations: {required: true}
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What happens when the answer is wrong
+      description: This decides whether a confidence floor is enough, or a person has to see it.

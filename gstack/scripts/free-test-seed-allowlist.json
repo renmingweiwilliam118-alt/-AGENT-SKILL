@@ -1,0 +1,6 @@
+{
+  "entries": [
+    {"file": "test/host-conformance.test.ts", "reason": "real ./setup per host and layout; the time is setup's own skill-linking loop, not fixture copies (shared fixture landed in W6c)"},
+    {"file": "test/shared-libs-stage-actor.test.ts", "reason": "re-runs the paid shared-libs runner body against git fixture repos per test; owned by the paid-harness value-bar review"}
+  ]
+}

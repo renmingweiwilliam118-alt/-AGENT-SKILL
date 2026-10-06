@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1127 个技能**，22 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1175 个技能**，22 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -10,16 +10,16 @@
 
 | 类别 | 技能数 | 说明 |
 |------|--------|------|
-| [claude-skills](#claude-skills) | 355 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
-| [design](#design) | 112 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
-| [browser-act](#browser-act) | 102 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
+| [claude-skills](#claude-skills) | 390 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [design](#design) | 113 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
+| [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
 | [security](#security) | 85 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
 | [software-development](#software-development) | 68 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
+| [gstack](#gstack) | 63 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
 | [marketing](#marketing) | 58 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
-| [gstack](#gstack) | 55 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
+| [mattpocock](#mattpocock) | 38 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [media](#media) | 36 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
-| [mattpocock](#mattpocock) | 35 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [web](#web) | 33 | 网页抓取 / 爬虫工具链（Scrapy/Scrapling/Crawlee/browser-use/Firecrawl…） |
 | [productivity](#productivity) | 30 | 办公文档 / 表格 / PPT / 邮件 / 协作 |
 | [claude-mem](#claude-mem) | 22 | Claude 跨会话记忆 / 知识图谱 |
@@ -35,369 +35,404 @@
 
 ---
 
-## claude-skills（355）
+## claude-skills（390）
 
 | 技能 | 用途 |
 |------|------|
-| `agent-launcher__agent-launcher-orchestrator` | Use when a user wants to build, launch, grade, or schedule a Claude Managed Agent (CMA) in their own Anthropic account — "build me… |
-| `agent-launcher__grade-iterate` | Phase 3 of building a Claude Managed Agent — the bounded grade→iterate loop. Define a CMA outcome (a required markdown rubric grad… |
-| `agent-launcher__interview` | Phase 1 of building a Claude Managed Agent — interview the founder about the one job the agent should do, then produce a build she… |
-| `agent-launcher__run-without-you` | Phase 4 of building a Claude Managed Agent — make it run without you. Turn a graded agent into a recurring scheduled deployment (P… |
-| `agent-launcher__stage-launch` | Phase 2 of building a Claude Managed Agent — turn a validated build sheet into exact API payloads and a resumable BYOK curl launch… |
-| `agent-launcher__wrap-up` | Close out a launched Claude Managed Agent — recap every primitive the founder now owns, regenerate the single-file overview page, … |
-| `business-growth__business-growth-skills` | "Router/index for the 4 business & growth skills bundled in this plugin: customer-success-manager (health scoring, churn risk, exp… |
-| `business-growth__contract-and-proposal-writer` | "Generate professional, jurisdiction-aware business documents: freelance contracts, project proposals, SOWs, NDAs, and MSAs. Struc… |
-| `business-growth__customer-success-manager` | Monitors customer health, predicts churn risk, and identifies expansion opportunities using weighted scoring models for SaaS custo… |
-| `business-growth__revenue-operations` | Analyzes sales pipeline health, revenue forecasting accuracy, and go-to-market efficiency metrics for SaaS revenue optimization. U… |
-| `business-growth__sales-engineer` | Analyzes RFP/RFI responses for coverage gaps, builds competitive feature comparison matrices, and plans proof-of-concept (POC) eng… |
-| `business-operations__business-operations-skills` | Use when running, diagnosing, or designing internal business operations — process documentation, vendor SLAs, capacity planning, i… |
-| `business-operations__capacity-planner` | "Use when an ops leader (Director of CX, Head of Support, VP Ops, Head of BizOps, Head of IT ops, Head of Finance ops) is sizing o… |
-| `business-operations__internal-comms` | Use when a Head of People Ops, BizOps lead, or Internal Communications owner needs to draft and sequence an internal-only change-m… |
-| `business-operations__knowledge-ops` | Use when a Head of Ops, Knowledge Manager, or TPM-Internal needs to author, validate, or clean up company SOPs and internal runboo… |
-| `business-operations__process-mapper` | Use when a BizOps lead, COO, or process-improvement owner needs to document an end-to-end business process (procurement, employee … |
-| `business-operations__procurement-optimizer` | Use when running an annual SaaS audit, doing category-level spend review, or rationalizing the supplier base — when the user needs… |
-| `business-operations__vendor-management` | Use when reviewing, scoring, or auditing third-party SaaS / vendor relationships — running a vendor scorecard with industry tuning… |
-| `c-level-advisor__agent-protocol` | "Inter-agent communication protocol for C-suite agent teams. Defines invocation syntax, loop prevention, isolation rules, and resp… |
-| `c-level-advisor__arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
-| `c-level-advisor__board-deck-builder` | "Assembles comprehensive board and investor update decks by pulling perspectives from all C-suite roles. Use when preparing board … |
-| `c-level-advisor__board-meeting` | "Multi-agent board meeting protocol for strategic decisions. Runs a structured 6-phase deliberation: context loading, independent … |
-| `c-level-advisor__board-prep` | "Board meeting preparation for the adversarial scenario, not the friendly one. Forces numbers-cold mastery, anticipates hard quest… |
-| `c-level-advisor__c-level-skills` | "Index and router for the C-level advisory bundle: 33 skills covering 14 C-suite roles, orchestration, cross-cutting capabilities,… |
-| `c-level-advisor__ceo-advisor` | "Executive leadership guidance for strategic decision-making, organizational development, and stakeholder management. Use when pla… |
-| `c-level-advisor__cfo-advisor` | "Financial leadership for startups and scaling companies. Financial modeling, unit economics, fundraising strategy, cash managemen… |
-| `c-level-advisor__challenge` | "Pre-mortem plan analysis. Imagine the plan failed 12 months from now and work backwards to find the weaknesses. Surfaces assumpti… |
-| `c-level-advisor__change-management` | "Framework for rolling out organizational changes without chaos. Covers the ADKAR model adapted for startups, communication templa… |
-| `c-level-advisor__chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
-| `c-level-advisor__chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
-| `c-level-advisor__chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
-| `c-level-advisor__chief-of-staff` | "C-suite orchestration layer. Routes founder questions to the right advisor role(s), triggers multi-role board meetings for comple… |
-| `c-level-advisor__chro-advisor` | "People leadership for scaling companies. Hiring strategy, compensation design, org structure, culture, and retention. Use when bu… |
-| `c-level-advisor__ciso-advisor` | "Security leadership for growth-stage companies. Risk quantification in dollars, compliance roadmap (SOC 2/ISO 27001/HIPAA/GDPR), … |
-| `c-level-advisor__cmo-advisor` | "Marketing leadership for scaling companies. Brand positioning, growth model design, marketing budget allocation, and marketing or… |
-| `c-level-advisor__company-os` | "The meta-framework for how a company runs — the connective tissue between all C-suite roles. Covers operating system selection (E… |
-| `c-level-advisor__competitive-intel` | "Systematic competitor tracking that feeds CMO positioning, CRO battlecards, and CPO roadmap decisions. Use when analyzing competi… |
-| `c-level-advisor__context-engine` | "Loads and manages company context for all C-suite advisor skills. Reads ~/.claude/company-context.md, detects stale context (>90 … |
-| `c-level-advisor__coo-advisor` | "Operations leadership for scaling companies. Process design, OKR execution, operational cadence, and scaling playbooks. Use when … |
-| `c-level-advisor__cpo-advisor` | "Product leadership for scaling companies. Product vision, portfolio strategy, product-market fit, and product org design. Use whe… |
-| `c-level-advisor__cro-advisor` | "Revenue leadership for B2B SaaS companies. Revenue forecasting, sales model design, pricing strategy, net revenue retention, and … |
-| `c-level-advisor__cs-onboard` | "Founder onboarding interview that captures company context across 7 dimensions. Invoke with /cs:setup for initial interview or /c… |
-| `c-level-advisor__cto-advisor` | "Technical leadership guidance for engineering teams, architecture decisions, and technology strategy. Use when assessing technica… |
-| `c-level-advisor__culture-architect` | "Build, measure, and evolve company culture as operational behavior — not wall posters. Covers mission/vision/values workshops, va… |
-| `c-level-advisor__decision-logger` | "Two-layer memory architecture for board meeting decisions. Manages raw transcripts (Layer 1) and approved decisions (Layer 2). Us… |
-| `c-level-advisor__executive-mentor` | "Adversarial thinking partner for founders and executives. Stress-tests plans, prepares for brutal board meetings, dissects decisi… |
-| `c-level-advisor__founder-coach` | "Personal leadership development for founders and first-time CEOs. Covers founder archetype identification, delegation frameworks,… |
-| `c-level-advisor__general-counsel-advisor` | "General Counsel advisory for startups: contract review (MSA, SaaS, NDA, DPA, employment), IP strategy, term sheet decoding, and r… |
-| `c-level-advisor__hard-call` | "/em:hard-call — Framework for decisions with no good options. Use when every option is painful and a structured 10/10/10 + regret… |
-| `c-level-advisor__internal-narrative` | "Build and maintain one coherent company story across all audiences — employees, investors, customers, candidates, and partners. D… |
-| `c-level-advisor__intl-expansion` | "International market expansion strategy. Market selection, entry modes, localization, regulatory compliance, and go-to-market by … |
-| `c-level-advisor__ma-playbook` | "M&A strategy for acquiring companies or being acquired. Due diligence, valuation, integration, and deal structure. Use when evalu… |
-| `c-level-advisor__org-health-diagnostic` | "Cross-functional organizational health check combining signals from all C-suite roles. Scores 8 dimensions on a traffic-light sca… |
-| `c-level-advisor__postmortem` | "/em:postmortem — Honest analysis of what went wrong. Use after a failed launch, missed quarter, or bad hire to run a blameless 5-… |
-| `c-level-advisor__scenario-war-room` | "Cross-functional what-if modeling for cascading multi-variable scenarios. Unlike single-assumption stress testing, this models co… |
-| `c-level-advisor__strategic-alignment` | "Cascades strategy from boardroom to individual contributor. Detects and fixes misalignment between company goals and team executi… |
-| `c-level-advisor__stress-test` | "/em:stress-test — Business assumption stress testing. Use before betting on a plan whose core assumptions are unvalidated — e.g. … |
-| `c-level-advisor__vpe-advisor` | "VP of Engineering advisory for startups: delivery throughput (DORA 4 metrics + bottleneck identification), engineering hiring fun… |
-| `c-level-agents__boardroom` | "/cs:boardroom <brief> — 6-phase multi-role deliberation across the C-suite with Phase 2 isolation, critic pre-screen, and synthes… |
-| `c-level-agents__brief` | "/cs:brief <topic> — Generate a one-page strategy brief from an office-hours intake. First step in the strategic sprint pipeline. … |
-| `c-level-agents__c-level-agents` | "Founder-mode executive team. 13 cs-* C-suite agents (CFO, CMO, CRO, CPO, COO, CHRO, CISO, GC, CDO, CAIO, CCO, VPE, Chief of Staff… |
-| `c-level-agents__caio-review` | "/cs:caio-review <plan> — Eval-demanding Chief AI Officer interrogation of any plan that involves AI: model selection, risk classi… |
-| `c-level-agents__cco-review` | "/cs:cco-review <plan> — Retention-obsessed Chief Customer Officer interrogation of any plan that touches customer retention, segm… |
-| `c-level-agents__cdo-review` | "/cs:cdo-review <plan> — Decision-driven Chief Data Officer interrogation of any plan that touches training data, data architectur… |
-| `c-level-agents__cfo-review` | "/cs:cfo-review <plan> — Numerate-skeptic interrogation of any plan that touches money. Unit economics, runway, dilution, capital … |
-| `c-level-agents__ciso-review` | "/cs:ciso-review <plan> — Risk-paranoid interrogation of any plan that touches data, compliance, or production access. Use when la… |
-| `c-level-agents__cmo-review` | "/cs:cmo-review <plan> — Narrative-first interrogation of positioning, ICP, message house, and channel mix. Use when launching a c… |
-| `c-level-agents__cpo-review` | "/cs:cpo-review <plan> — JTBD-driven interrogation of product roadmap, PMF signal, and portfolio focus. Use when committing a quar… |
-| `c-level-agents__cro-review` | "/cs:cro-review <plan> — Pipeline-paranoid interrogation of revenue, win rate, NRR, and ramp time. Use when the forecast misses pi… |
-| `c-level-agents__cross-eval` | "/cs:cross-eval <memo> — Multi-model consensus on a board memo or strategy brief. Claude + Codex + Gemini cross-review with gracef… |
-| `c-level-agents__cto-review` | "/cs:cto-review <plan> — Architecture and scaling interrogation. Tech debt, scaling cliffs, team scaling, build-vs-buy. Use when c… |
-| `c-level-agents__decide` | "/cs:decide <memo> — Log a decision to two-layer memory via decision-logger. Approved memo becomes durable; raw transcripts kept f… |
-| `c-level-agents__execute` | "/cs:execute <decision> — Generate a 90-day execution plan with weekly milestones, DRIs, and check-in cadence from an approved dec… |
-| `c-level-agents__founder-mode` | "/cs:founder-mode <question> — Auto-routes any founder question to the right C-role advisor or to /cs:boardroom for multi-role top… |
-| `c-level-agents__gc-review` | "/cs:gc-review <plan> — General Counsel interrogation of contracts, IP, regulatory, term sheets, and employment-law surface. Use w… |
-| `c-level-agents__onboard` | "/cs:onboard — Founder interview that populates ~/.claude/company-context.md using the canonical 7-dimension cs-onboard schema. Th… |
-| `c-level-agents__post-mortem` | "/cs:post-mortem <decision> — Honest retrospective on an executed decision, scored against original assumptions and dissent. Close… |
-| `c-level-agents__vpe-review` | "/cs:vpe-review <plan> — Throughput-first VP of Engineering interrogation of any plan that touches delivery, eng hiring, team stru… |
-| `commercial__channel-economics` | "Use when reviewing or rebalancing direct vs. partner-led channel economics — computing fully-loaded cost-to-serve per channel, ch… |
-| `commercial__commercial-forecaster` | "Use when building a quarterly bookings forecast, ARR projection, pipeline forecast, NRR projection, or commit/best-case/pipe-only… |
-| `commercial__commercial-policy` | "Use when designing or revising a company's commercial policy — the rules of engagement governing discounts off list price, approv… |
-| `commercial__commercial-skills` | Use when reviewing, approving, or designing commercial motion — pricing models, deal review, discount approval, partnership econom… |
-| `commercial__deal-desk` | Use when reviewing a specific inbound deal before close — when sales has asked for a discount that exceeds AE authority, when the … |
-| `commercial__partnerships-architect` | "Use when a startup is approached by a prospective partner and someone has to decide should we sign this partner, at what partner … |
-| `commercial__pricing-strategist` | "Use when designing or revisiting product pricing — selecting a pricing model (subscription seat-based, usage-based, value-based, … |
-| `commercial__rfp-responder` | "Use when an RFP, RFI, RFQ, security questionnaire, vendor questionnaire, or proposal request arrives and the team needs a structu… |
-| `compliance-os__ai-act-readiness` | "/cs:ai-act-readiness <system> — EU AI Act 6-question forcing interrogation. Use during AI-system intake, before EU deployment, or… |
-| `compliance-os__aims-audit` | "/cs:aims-audit <scope> — ISO/IEC 42001 AIMS internal-audit 6-question forcing interrogation. Use before certification stage 1, be… |
-| `compliance-os__compliance-os` | "Compliance OS — meta-orchestrator that lets compliance teams CONFIGURE which frameworks apply, COMPUTE cross-framework control ov… |
-| `compliance-os__compliance-readiness` | "/cs:compliance-readiness <program> — Multi-framework compliance officer 6-question forcing interrogation of any compliance progra… |
-| `compliance-os__fda-qsr-audit-prep` | "/cs:fda-qsr-audit-prep <scope> — FDA 21 CFR 820 (QSR / QMSR) audit 6-question forcing interrogation. Post-Feb 2026 substantially … |
-| `compliance-os__gdpr-audit-prep` | "/cs:gdpr-audit-prep <scope> — GDPR audit 6-question Article-cited forcing interrogation. Use before annual internal GDPR review, … |
-| `compliance-os__iso13485-audit-prep` | "/cs:iso13485-audit-prep <scope> — ISO 13485 QMS audit 6-question forcing interrogation. Design controls + CAPA + post-market focu… |
-| `compliance-os__iso27001-audit-prep` | "/cs:iso27001-audit-prep <scope> — ISO 27001 ISMS audit readiness 6-question forcing interrogation. Use before annual Clause 9.2 i… |
-| `compliance-os__soc2-audit-prep` | "/cs:soc2-audit-prep <scope> — SOC 2 Type II readiness 6-question forcing interrogation. Observation-period focused. Use before Ty… |
-| `engineering-team__a11y-audit` | "Accessibility audit skill for scanning, fixing, and verifying WCAG 2.2 Level A and AA compliance across React, Next.js, Vue, Angu… |
-| `engineering-team__adversarial-reviewer` | "Adversarial code review that breaks the self-review monoculture. Use when you want a genuinely critical review of recent changes,… |
-| `engineering-team__ai-security` | "Use when assessing AI/ML systems for prompt injection, jailbreak vulnerabilities, model inversion risk, data poisoning exposure, … |
-| `engineering-team__aws-solution-architect` | Design AWS architectures for startups using serverless patterns and IaC templates. Use when asked to design serverless architectur… |
-| `engineering-team__azure-cloud-architect` | "Design Azure architectures for startups and enterprises. Use when asked to design Azure infrastructure, create Bicep/ARM template… |
-| `engineering-team__browserstack` | >- |
-| `engineering-team__cloud-security` | "Use when assessing cloud infrastructure for security misconfigurations, IAM privilege escalation paths, S3 public exposure, open … |
-| `engineering-team__code-reviewer` | Code review automation for TypeScript, JavaScript, Python, Go, Swift, Kotlin, C#, .NET, Java, C, C++, Rust, Ruby, PHP, and Dart/Fl… |
-| `engineering-team__coverage` | >- |
-| `engineering-team__email-template-builder` | "Build complete transactional email systems: React Email templates, provider integration (Resend, Postmark, SendGrid, AWS SES), pr… |
-| `engineering-team__embedded-iot-mentor` | Mentor for embedded and IoT hardware projects. Helps select MCUs, dev boards, and toolchains, decides where sensor readings end up… |
-| `engineering-team__engineering-skills` | "Index of the engineering-team skills bundle for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw, and 6 more tools. Architecture,… |
-| `engineering-team__epic-design` | > |
-| `engineering-team__extract` | "Turn a proven pattern or debugging solution into a standalone reusable skill with SKILL.md, reference docs, and examples. Use whe… |
-| `engineering-team__fix` | >- |
-| `engineering-team__gcp-cloud-architect` | "Design GCP architectures for startups and enterprises. Use when asked to design Google Cloud infrastructure, deploy to GKE or Clo… |
-| `engineering-team__generate` | >- |
-| `engineering-team__google-workspace-cli` | "Google Workspace administration via the gws CLI (github.com/googleworkspace/cli). Install, authenticate, and automate Gmail, Driv… |
-| `engineering-team__incident-commander` | "Comprehensive incident response framework from detection through resolution and post-incident review. Battle-tested SRE/DevOps pr… |
-| `engineering-team__incident-response` | "Use when a security incident has been detected or declared and needs classification, triage, escalation path determination, and f… |
-| `engineering-team__memory-review` | "Analyze auto-memory for promotion candidates, stale entries, consolidation opportunities, and health metrics. Use when the user r… |
-| `engineering-team__memory-status` | "Memory health dashboard showing line counts, topic files, capacity, stale entries, and recommendations. Use when the user runs /s… |
-| `engineering-team__migrate` | >- |
-| `engineering-team__ms365-tenant-manager` | Microsoft 365 tenant administration for Global Administrators. Automate M365 tenant setup, Office 365 admin tasks, Azure AD user m… |
-| `engineering-team__named-persona-adversarial-review` | "Code review through the lens of real engineers' documented philosophies (Torvalds, Thompson, Carmack, Kent Beck, Jobs, Cagan). Co… |
-| `engineering-team__promote` | "Graduate a proven pattern from auto-memory (MEMORY.md) to CLAUDE.md or .claude/rules/ for permanent enforcement. Use when the use… |
-| `engineering-team__pw` | "Production-grade Playwright testing toolkit. Use when the user mentions Playwright tests, end-to-end testing, browser automation,… |
-| `engineering-team__pw-init` | >- |
-| `engineering-team__pw-review` | >- |
-| `engineering-team__red-team` | "Use when planning or executing authorized red team engagements, attack path analysis, or offensive security simulations. Covers M… |
-| `engineering-team__remember` | "Explicitly save important knowledge to auto-memory with timestamp and context. Use when a discovery is too important to rely on a… |
-| `engineering-team__report` | >- |
-| `engineering-team__security-pen-testing` | "Use when the user asks to perform security audits, penetration testing, vulnerability scanning, OWASP Top 10 checks, or offensive… |
-| `engineering-team__self-improving-agent` | "Curate Claude Code's auto-memory into durable project knowledge. Analyze MEMORY.md for patterns, promote proven learnings to CLAU… |
-| `engineering-team__senior-architect` | This skill should be used when the user asks to "design system architecture", "evaluate microservices vs monolith", "create archit… |
-| `engineering-team__senior-backend` | Designs and implements backend systems including REST APIs, microservices, database architectures, authentication flows, and secur… |
-| `engineering-team__senior-computer-vision` | Computer vision engineering skill for object detection, image segmentation, and visual AI systems. Covers CNN and Vision Transform… |
-| `engineering-team__senior-data-engineer` | Data engineering skill for building scalable data pipelines, ETL/ELT systems, and data infrastructure. Expertise in Python, SQL, S… |
-| `engineering-team__senior-data-scientist` | World-class senior data scientist skill specialising in statistical modeling, experiment design, causal inference, and predictive … |
-| `engineering-team__senior-devops` | Comprehensive DevOps skill for CI/CD, infrastructure automation, containerization, and cloud platforms (AWS, GCP, Azure). Includes… |
-| `engineering-team__senior-frontend` | Frontend development skill for React, Next.js, TypeScript, and Tailwind CSS applications. Use when building React components, opti… |
-| `engineering-team__senior-fullstack` | Fullstack development toolkit with project scaffolding for Next.js, FastAPI, MERN, and Django stacks, code quality analysis with s… |
-| `engineering-team__senior-ml-engineer` | ML engineering skill for productionizing models, building MLOps pipelines, and integrating LLMs. Covers model deployment, feature … |
-| `engineering-team__senior-prompt-engineer` | Use when the user asks to optimize prompts, design prompt templates, evaluate LLM outputs with an eval set, measure RAG retrieval … |
-| `engineering-team__senior-qa` | Generates unit tests, integration tests, and E2E tests for React/Next.js applications. Scans components to create Jest + React Tes… |
-| `engineering-team__senior-secops` | Senior SecOps engineer skill for application security, vulnerability management, compliance verification, and secure development p… |
-| `engineering-team__senior-security` | Use when the user asks for STRIDE threat modeling, DREAD risk scoring, data-flow-diagram threat analysis, or a quick secret scan —… |
-| `engineering-team__snowflake-development` | "Use when writing Snowflake SQL, building data pipelines with Dynamic Tables or Streams/Tasks, using Cortex AI functions, creating… |
-| `engineering-team__stripe-integration-expert` | "Production-grade Stripe integrations: subscriptions with trials and proration, one-time payments, usage-based billing, checkout s… |
-| `engineering-team__tdd-guide` | "Test-driven development skill for writing unit tests, generating test fixtures and mocks, analyzing coverage gaps, and guiding re… |
-| `engineering-team__tech-stack-evaluator` | Technology stack evaluation and comparison with TCO analysis, security assessment, and ecosystem health scoring. Use when comparin… |
-| `engineering-team__testrail` | >- |
-| `engineering-team__threat-detection` | "Use when hunting for threats in an environment, analyzing IOCs, or detecting behavioral anomalies in telemetry. Covers hypothesis… |
-| `engineering__agent-designer` | "Use when the user asks to design a multi-agent system, pick an orchestration pattern (supervisor/swarm/pipeline), generate tool s… |
-| `engineering__agent-harness` | "Turn any domain folder of skills into a bounded agentic loop: compile a goal into a verifiable task plan, execute tasks with the … |
-| `engineering__agent-memory` | Use when a project's CLAUDE.md has grown past what anyone reads and you want the agent to learn durable facts from its own session… |
-| `engineering__agent-workflow-designer` | "Design production-grade multi-agent workflows with clear pattern choice (sequential, parallel, hierarchical), handoff contracts, … |
-| `engineering__agenthub` | "Multi-agent collaboration plugin that spawns N parallel subagents competing on the same task via git worktree isolation. Agents w… |
-| `engineering__api-design-reviewer` | "Comprehensive REST API design review with automated linting, breaking-change detection, and design scorecards. Catches inconsiste… |
-| `engineering__api-test-suite-builder` | "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests." |
-| `engineering__ar-resume` | "Resume a paused experiment. Checkout the experiment branch, read results history, continue iterating. Use when the user runs /ar:… |
-| `engineering__ar-status` | "Show experiment dashboard with results, active loops, and progress. Use when the user runs /ar:ar-status or asks how an autoresea… |
-| `engineering__autoresearch-agent` | "Autonomous experiment loop that optimizes any file by a measurable metric. Inspired by Karpathy's autoresearch. The agent edits a… |
-| `engineering__behuman` | "Use when the user wants more human-like AI responses — less robotic, less listy, more authentic. Triggers: 'behuman', 'be real', … |
-| `engineering__board` | "Read, write, and browse the AgentHub message board for agent coordination. Use when the user runs /hub:board or asks to post, rea… |
-| `engineering__book-to-skill` | "Converts books, documentation folders, and source collections (PDF, EPUB, DOCX, HTML, Markdown, RST, AsciiDoc, RTF, MOBI/AZW) int… |
-| `engineering__boost-asio-pro` | "Use when writing or reviewing asynchronous C++ networking code with Boost.Asio or standalone Asio — TCP/UDP servers and clients, … |
-| `engineering__browser-automation` | "Use when the user asks to automate browser tasks, scrape websites, fill forms, capture screenshots, extract structured data from … |
-| `engineering__caveman` | > |
-| `engineering__changelog-generator` | "Produce consistent, auditable release notes from Conventional Commits. Separates commit parsing, semantic-bump logic, and changel… |
-| `engineering__chaos-engineering` | Use when planning, running, or learning from chaos engineering experiments. Triggers on "chaos experiment", "fault injection", "ga… |
-| `engineering__ci-cd-pipeline-builder` | "Generate pragmatic CI/CD pipelines from detected project stack signals — fast baseline generation, repeatable checks, environment… |
-| `engineering__claude-coach` | Personal coach that teaches users to become Claude power users. Use this skill the FIRST time a user asks to "learn Claude", "be a… |
-| `engineering__code-tour` | "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and … |
-| `engineering__codebase-onboarding` | "Analyze a codebase and generate onboarding documentation for engineers, tech leads, and contractors. Fast fact-gathering and repe… |
-| `engineering__collab-proof` | "Use when you want to understand what Claude contributed vs what you drove in a session. Triggers on: /collab-proof, session retro… |
-| `engineering__data-quality-auditor` | Audit datasets for completeness, consistency, accuracy, and validity. Profile data distributions, detect anomalies and outliers, s… |
-| `engineering__database-designer` | "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model… |
-| `engineering__database-schema-designer` | "Use when the user asks to create ERD diagrams, normalize database schemas, design table relationships, or plan schema migrations.… |
-| `engineering__deep-learning-book` | "Study companion and working knowledge base for the Deep Learning textbook by Goodfellow, Bengio & Courville (MIT Press, 2016), re… |
-| `engineering__demo-video` | "Use when the user asks to create a demo video, product walkthrough, feature showcase, animated presentation, marketing video, or … |
-| `engineering__dependency-auditor` | "Audit and manage dependencies across multi-language projects. Identifies vulnerabilities, license conflicts, transitive dependenc… |
-| `engineering__docker-development` | "Docker and container development agent skill and plugin for Dockerfile optimization, docker-compose orchestration, multi-stage bu… |
-| `engineering__engineering-advanced-skills` | "Index of 37 advanced engineering agent skills for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Use when browsing or choosing… |
-| `engineering__env-secrets-manager` | "Manage environment-variable hygiene and secrets safety across local development and production. Practical auditing, drift awarene… |
-| `engineering__eval` | "Evaluate and rank agent results by metric or LLM judge for an AgentHub session. Use when the user runs /hub:eval or asks to score… |
-| `engineering__feature-flags-architect` | Use when adding, retiring, or auditing feature flags. Triggers on "add a flag", "ship behind a flag", "rollout plan", "kill switch… |
-| `engineering__focused-fix` | "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y… |
-| `engineering__git-worktree-manager` | "Run parallel feature work safely with Git worktrees. Standardizes branch isolation, port allocation, environment sync, and cleanu… |
-| `engineering__grill-me` | Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision … |
-| `engineering__grill-with-docs` | Docs-anchored grilling session — challenges a plan against the project's existing language (CONTEXT.md) and recorded decisions (do… |
-| `engineering__helm-chart-builder` | "Helm chart development agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw — chart scaffolding, values de… |
-| `engineering__hivemind` | Orchestrate free opencode workers from Claude Code to cut token costs. Use when delegating grunt work to a single worker or a para… |
-| `engineering__hub-init` | "Create a new AgentHub collaboration session with task, agent count, and evaluation criteria. Use when the user runs /hub:hub-init… |
-| `engineering__hub-status` | "Show DAG state, agent progress, and branch status for an AgentHub session. Use when the user runs /hub:hub-status or asks how the… |
-| `engineering__human-gate` | "Runs the human-verification lane of an agent loop, and proves review happened before work is called done. Builds a single-file HT… |
-| `engineering__interview-system-designer` | This skill should be used when the user asks to "design interview processes", "create hiring pipelines", "calibrate interview loop… |
-| `engineering__karpathy-coder` | Use when writing, reviewing, or committing code to enforce Karpathy's 4 coding principles — surface assumptions before coding, kee… |
-| `engineering__kubernetes-operator` | Use when building a Kubernetes Operator — custom controllers that reconcile CRD state. Triggers on "build an operator", "CRD desig… |
-| `engineering__llm-cost-optimizer` | "Use proactively whenever LLM API costs come up -- or should. Triggers include: 'my AI costs are too high', 'optimize token usage'… |
-| `engineering__loop` | "Start an autonomous experiment loop with user-selected interval (10min, 1h, daily, weekly, monthly). Uses CronCreate for scheduli… |
-| `engineering__mcp-server-builder` | "Design and ship production-ready MCP (Model Context Protocol) servers from OpenAPI contracts instead of hand-written tool wrapper… |
-| `engineering__memory-engineering` | Use when designing, reviewing, or paying for an agent memory system — adding memory to an agent, choosing between long-context / R… |
-| `engineering__merge` | "Merge the winning agent's branch into base, archive losers, and clean up worktrees. Use when the user runs /hub:merge or asks to … |
-| `engineering__migration-architect` | "Zero-downtime migration planning, compatibility validation, and rollback strategy generation. Tools for system, database, and inf… |
-| `engineering__minimalist` | "Use when the user asks to write code efficiently, avoid over-engineering, reduce dependencies, or prevent unnecessary abstraction… |
-| `engineering__monorepo-navigator` | "Navigate, manage, and optimize monorepos. Covers Turborepo, Nx, pnpm workspaces, and Lerna. Cross-package impact analysis, select… |
-| `engineering__observability-designer` | "Design production-ready observability strategies combining metrics, logs, and traces. Includes SLI/SLO design, golden-signals mon… |
-| `engineering__performance-profiler` | "Systematic performance profiling for Node.js, Python, and Go applications. Identifies CPU, memory, and I/O bottlenecks, generates… |
-| `engineering__pr-review-expert` | "Use when the user asks to review pull requests, analyze code changes, check for security issues in PRs, or assess code quality of… |
-| `engineering__prompt-governance` | "Use when managing prompts in production at scale: versioning prompts, running A/B tests on prompts, building prompt registries, p… |
-| `engineering__rag-architect` | "Use when the user asks to design a RAG pipeline, choose a chunking strategy or embedding model, pick a vector database, or evalua… |
-| `engineering__run` | "One-shot lifecycle command that chains init → baseline → spawn → eval → merge in a single invocation. Use when the user runs /hub… |
-| `engineering__runbook-generator` | "Generate operational runbooks from a service name — deployment, incident response, maintenance, and rollback workflows. Templated… |
-| `engineering__sample-skill` | "Reference BASIC-tier skill used as a fixture by skill-tester. Counts words and characters and applies basic text transformations.… |
-| `engineering__secrets-vault-manager` | "Use when the user asks to set up secret management infrastructure, integrate HashiCorp Vault, configure cloud secret stores (AWS … |
-| `engineering__security-guidance` | PreToolUse security-anti-pattern hook for Claude Code. Catches 12 common security risks (command injection, XSS, SQL injection, un… |
-| `engineering__self-eval` | "Honestly evaluate AI work quality using a two-axis scoring system. Use after completing a task, code review, or work session to g… |
-| `engineering__setup` | "Set up a new autoresearch experiment interactively. Collects domain, target file, eval command, metric, direction, and evaluator.… |
-| `engineering__ship-gate` | > |
-| `engineering__skill-doctor` | Use when the user wants their agent setup graded from real conversation history, asks which installed skills are actually working,… |
-| `engineering__skill-security-auditor` | > |
-| `engineering__skill-tester` | "Validate, test, and score the quality of skills within the claude-skills ecosystem. Comprehensive meta-skill: structure validatio… |
-| `engineering__skillopt-sleep` | "Use when the user wants their Claude agent to self-improve from past usage, asks about a nightly/offline 'sleep' or 'dream' cycle… |
-| `engineering__slo-architect` | Use when defining, reviewing, or operating SLOs/SLIs/error budgets. Triggers on "define an SLO", "what should our SLO be", "error … |
-| `engineering__spawn` | "Launch N parallel subagents in isolated git worktrees to compete on the session task. Use when the user runs /hub:spawn or asks t… |
-| `engineering__spec-driven-workflow` | "Use when the user asks to write specs before code, define acceptance criteria, plan features before implementation, generate test… |
-| `engineering__spinning-up-deep-rl` | "Knowledge base from \"Spinning Up in Deep RL\" by Joshua Achiam (OpenAI, MIT-licensed). Use when applying Achiam's frameworks for… |
-| `engineering__sql-database-assistant` | "Use when the user asks to write SQL queries, optimize database performance, generate migrations, explore database schemas, or wor… |
-| `engineering__statistical-analyst` | Run hypothesis tests, analyze A/B experiment results, calculate sample sizes, and interpret statistical significance with effect s… |
-| `engineering__strict-api` | "Use when the user says 'no hallucinations', 'verify APIs', 'reality check', or 'don't invent functions'. Prevents the agent from … |
-| `engineering__tc-tracker` | "Use when the user asks to track technical changes, create change records, manage TC lifecycles, or hand off work between AI sessi… |
-| `engineering__tech-debt-tracker` | Scan codebases for technical debt, score severity, track trends, and generate prioritized remediation plans. Use when users mentio… |
-| `engineering__terraform-patterns` | "Terraform infrastructure-as-code agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Covers module desig… |
-| `engineering__universal-scraping-architect` | "Use for web scraping, crawling, document extraction, API parsing, or building validation-heavy data pipelines using Firecrawl or … |
-| `engineering__workflow-builder` | Design and write deterministic multi-agent workflow scripts (.js files in .claude/workflows/) for Claude Code's Workflow tool. Use… |
-| `engineering__write-a-skill` | Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write… |
-| `engineering__zero-hallucination-coder` | "Runs a disciplined Discuss -> Map -> Decompose -> Execute -> Verify loop that grounds code in verified structure — no invented AP… |
-| `finance__business-investment-advisor` | "Business investment analysis and capital allocation advisor. Use when evaluating whether to invest in equipment, real estate, a n… |
-| `finance__finance-skills` | "Router/index for the 2 finance skills bundled in this plugin: financial-analyst (ratio analysis, DCF valuation, budget variance, … |
-| `finance__financial-analyst` | Performs financial ratio analysis, DCF valuation, budget variance analysis, and rolling forecast construction for strategic decisi… |
-| `finance__saas-metrics-coach` | SaaS financial health advisor. Use when a user shares revenue or customer numbers, or mentions ARR, MRR, churn, LTV, CAC, NRR, or … |
-| `finance__stock-analysis` | Produce a rigorous, sector-relative, multi-factor fundamental analysis of a publicly listed company — Indian (NSE/BSE) or US/globa… |
-| `loop-library__loop-library` | Discover, find, compare, audit, repair, adapt, and design repeatable AI-agent loops with explicit triggers, actions, verification,… |
-| `markdown-html__markdown-html-orchestrator` | Use when a user wants to convert any markdown file in their Claude project into a single-file, lightly-interactive HTML — long-for… |
-| `markdown-html__md-document` | Converts long-form markdown (specs, RFCs, reports, plans, explainers) into a single-file, lightly-interactive HTML document with s… |
-| `markdown-html__md-review` | Converts a markdown PR writeup or code review (one with ```diff fenced blocks and severity-tagged > [!BLOCKER]/[!MAJOR]/[!MINOR]/[… |
-| `markdown-html__md-slides` | "Converts a markdown deck (slides separated by `---` HR boundaries or by `# ` H1 headings, with optional `<!-- notes: ... -->` pre… |
-| `marketing-skill__ab-test-setup` | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split te… |
-| `marketing-skill__aeo` | "Answer Engine Optimization (AEO) skill — optimize content to be cited by AI language models (ChatGPT, Perplexity, Claude, Gemini,… |
-| `marketing-skill__analytics-tracking` | "Set up, audit, and debug analytics tracking implementation — GA4, Google Tag Manager, event taxonomy, conversion tracking, and da… |
-| `marketing-skill__app-store-optimization` | App Store Optimization (ASO) toolkit for researching keywords, analyzing competitor rankings, generating metadata suggestions, and… |
-| `marketing-skill__business-name-fit` | Suggest, pick, or vet a business, startup, or product name that stays true to the founder's cultural origin while working professi… |
-| `marketing-skill__campaign-analytics` | Analyzes campaign performance with multi-touch attribution, funnel conversion analysis, and ROI calculation for marketing optimiza… |
-| `marketing-skill__competitor-alternatives` | "When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user men… |
-| `marketing-skill__content-creator` | "Deprecated redirect skill that routes legacy 'content creator' requests to the correct specialist. Use when a user invokes 'conte… |
-| `marketing-skill__content-humanizer` | "Makes AI-generated content sound genuinely human — not just cleaned up, but alive. Use when content feels robotic, uses too many … |
-| `marketing-skill__content-production` | "Full content production pipeline — takes a topic from blank page to published-ready piece. Use when you need to execute content: … |
-| `marketing-skill__email-sequence` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
-| `marketing-skill__form-cro` | When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo reque… |
-| `marketing-skill__free-tool-strategy` | "When the user wants to build a free tool for marketing — lead generation, SEO value, or brand awareness. Use when they mention 'e… |
-| `marketing-skill__launch-strategy` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
-| `marketing-skill__local-seo-manager` | "Manage local SEO for service-area businesses — appliance repair, HVAC, plumbing, cleaning, and any business that serves customers… |
-| `marketing-skill__marketing-context` | "Create and maintain the marketing context document that all marketing skills read before starting. Use when the user mentions 'ma… |
-| `marketing-skill__marketing-demand-acquisition` | Creates demand generation campaigns, optimizes paid ad spend across LinkedIn, Google, and Meta, develops SEO strategies, and struc… |
-| `marketing-skill__marketing-ops` | "Central router for the marketing skill ecosystem. Use when unsure which marketing skill to use, when orchestrating a multi-skill … |
-| `marketing-skill__marketing-skills` | "Directory and router for the marketing skills library. Use when you need to find the right marketing skill for a task, see what m… |
-| `marketing-skill__marketing-strategy-pmm` | Product marketing skill for positioning, GTM strategy, competitive intelligence, and product launches. Use when the user asks abou… |
-| `marketing-skill__onboarding-cro` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
-| `marketing-skill__page-cro` | When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, prici… |
-| `marketing-skill__paid-ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
-| `marketing-skill__popup-cro` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
-| `marketing-skill__pricing-strategy` | "Design, optimize, and communicate SaaS pricing — tier structure, value metrics, pricing pages, and price increase strategy. Use w… |
-| `marketing-skill__prompt-engineer-toolkit` | "Turns marketing prompts into tested, versioned production assets: A/B prompt evaluation against structured test cases, immutable … |
-| `marketing-skill__referral-program` | "When the user wants to design, launch, or optimize a referral or affiliate program. Use when they mention 'referral program,' 'af… |
-| `marketing-skill__schema-markup` | "When the user wants to implement, audit, or validate structured data (schema markup) on their website. Use when the user mentions… |
-| `marketing-skill__signup-flow-cro` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
-| `marketing-skill__social-content` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Fac… |
-| `marketing-skill__social-media-analyzer` | Social media campaign analysis and performance tracking. Calculates engagement rates, ROI, and benchmarks across platforms. Use wh… |
-| `marketing-skill__social-media-manager` | "When the user wants to develop social media strategy, plan content calendars, manage community engagement, or grow their social p… |
-| `marketing-skill__video-content-strategist` | "Use when planning video content strategy, writing video scripts, optimizing YouTube channels, building short-form video pipelines… |
-| `marketing-skill__webinar-marketing` | "When the user wants to plan, promote, run, or improve a webinar or virtual event to generate and convert demand. Use when the use… |
-| `marketing-skill__x-twitter-growth` | "X/Twitter growth engine for building audience, crafting viral content, and analyzing engagement. Use when the user wants to grow … |
-| `marketing-skill__youtube-full` | "Use when the user needs YouTube transcripts, video search, channel browsing, playlist extraction, or content monitoring. Trigger … |
-| `marketing__landing` | "Generates a premium single-page HTML landing page with 3D CSS animations, GSAP scroll effects, and mouse-parallax depth. Forcing … |
-| `marketing__linkedin-analytics` | Use when someone wants to understand their own LinkedIn numbers — which posts worked, why reach dropped, whether a pattern is real… |
-| `marketing__linkedin-content` | Use when someone wants to write, edit, or lint a LinkedIn post — a story, how-to, opinion piece, carousel script, video script, or… |
-| `marketing__linkedin-engagement` | Use when someone wants to grow reach through comments, replies, groups, or outreach on LinkedIn — a commenting roster, a connectio… |
-| `marketing__linkedin-profile` | Use when someone wants their LinkedIn profile audited or rewritten — headline, About section, experience bullets, Featured, banner… |
-| `marketing__linkedin-skills` | Use when someone wants to grow an organic LinkedIn presence — a content strategy for a career change or consulting or thought lead… |
-| `marketing__linkedin-strategy` | Use when someone needs a LinkedIn plan rather than a post — content pillars, positioning for a career change or consulting or thou… |
-| `product-team__agile-product-owner` | Agile product ownership for backlog management and sprint execution. Covers user story writing, acceptance criteria, sprint planni… |
-| `product-team__apple-hig-expert` | "Audits and designs iOS/macOS/watchOS/visionOS interfaces against the Apple Human Interface Guidelines, including the Liquid Glass… |
-| `product-team__code-to-prd` | "Reverse-engineer any codebase into a complete Product Requirements Document (PRD). Analyzes routes, components, state management,… |
-| `product-team__competitive-teardown` | "Analyzes competitor products and companies by synthesizing data from pricing pages, app store reviews, job postings, SEO signals,… |
-| `product-team__experiment-designer` | Use when planning product experiments, writing testable hypotheses, estimating sample size, prioritizing tests, or interpreting A/… |
-| `product-team__landing-page-generator` | "Generates high-converting landing pages as complete Next.js/React (TSX) components with Tailwind CSS. Creates hero sections, feat… |
-| `product-team__product-analytics` | Use when defining product KPIs, building metric dashboards, running cohort or retention analysis, or interpreting feature adoption… |
-| `product-team__product-discovery` | Use when validating product opportunities, mapping assumptions, planning discovery sprints, or testing problem-solution fit before… |
-| `product-team__product-manager-toolkit` | Comprehensive toolkit for product managers including RICE prioritization, customer interview analysis, PRD templates, discovery fr… |
-| `product-team__product-skills` | "Use when coordinating product work across the 12 bundled product sub-skills (RICE, OKRs, UX research, design tokens, competitive … |
-| `product-team__product-strategist` | Strategic product leadership toolkit for Head of Product covering OKR cascade generation, quarterly planning, competitive landscap… |
-| `product-team__research-summarizer` | "Structured research summarization agent skill for non-dev users. Handles academic papers, web articles, reports, and documentatio… |
-| `product-team__roadmap-communicator` | Use when preparing roadmap narratives, release notes, changelogs, or stakeholder updates tailored for executives, engineering team… |
-| `product-team__saas-scaffolder` | "Generates complete, production-ready SaaS project boilerplate including authentication, database schemas, billing integration, AP… |
-| `product-team__spec-to-repo` | "Use when the user says 'build me an app', 'create a project from this spec', 'scaffold a new repo', 'generate a starter', 'turn t… |
-| `product-team__ui-design-system` | UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive design calc… |
-| `product-team__ux-researcher-designer` | UX research and design toolkit for Senior UX Designer/Researcher including data-driven persona generation, journey mapping, usabil… |
-| `productivity__andreessen` | "Marc Andreessen-mode decision and productivity skill. A blunt, market-first operator that pressure-tests ideas, ventures, feature… |
-| `productivity__capture` | "Captures and organizes chaotic brain dumps into a structured, actionable system with zero information loss. Use this skill whenev… |
-| `productivity__deep-work` | Use when someone wants to plan a deep work day, time-block their calendar or task list, budget or cut shallow work, protect focus … |
-| `productivity__fable-goal` | Convert a rambling description of a desired outcome into one polished, autonomous /goal prompt ready to paste into a fresh session… |
-| `productivity__inbox-setup` | "One-time setup skill that builds a personalized inbox triage knowledge base via interactive interview. Interviews the user about … |
-| `productivity__inbox-triage` | "Runs a full inbox triage using the knowledge base created by the 'inbox-setup' skill. Light-intake by design (most invocations sk… |
-| `productivity__meetings` | Use when someone wants to decide whether a meeting is worth calling, price a meeting in dollars, build a timeboxed agenda with des… |
-| `productivity__reflect` | "Mid-conversation reflection skill that pauses execution and zooms out from detail-mode to honestly reassess direction, assumption… |
-| `productivity__roast` | Use when someone asks to roast an idea, pressure-test or stress-test an idea, validate a business idea, "convene the panel", get a… |
-| `productivity__swedish-mentor` | Mentor Swedish language learners by selecting YouTube video clips and podcast episodes by CEFR level and skill (listening, reading… |
-| `productivity__weekly-review` | Use when someone wants to run a weekly review, close open loops, audit stalled projects and commitments, get their system back to … |
-| `project-management__atlassian-admin` | Atlassian Administrator for managing and organizing Atlassian products (Jira, Confluence, Bitbucket, Trello), users, permissions, … |
-| `project-management__atlassian-templates` | Atlassian Template and Files Creator/Modifier expert for creating, modifying, and managing Jira and Confluence templates, blueprin… |
-| `project-management__confluence-expert` | Atlassian Confluence expert for creating and managing spaces, knowledge bases, and documentation. Configures space permissions and… |
-| `project-management__jira-expert` | Atlassian Jira expert for creating and managing projects, planning, product discovery, JQL queries, workflows, custom fields, auto… |
-| `project-management__meeting-analyzer` | Analyzes meeting transcripts and recordings to surface behavioral patterns, communication anti-patterns, and actionable coaching f… |
-| `project-management__pm-skills` | "Use when coordinating project-delivery work across the 8 project-management sub-skills — sprint/velocity analytics, portfolio hea… |
-| `project-management__scrum-master` | "Advanced Scrum Master skill for data-driven agile team analysis and coaching. Use when the user asks about sprint planning, veloc… |
-| `project-management__senior-pm` | Senior Project Manager for enterprise software, SaaS, and digital transformation projects. Specializes in portfolio management, qu… |
-| `project-management__team-communications` | Write internal company communications — 3P updates (Progress/Plans/Problems), company-wide newsletters, FAQ roundups, incident rep… |
-| `ra-qm-team__agent-decision-receipts` | "Mint a tamper-evident, post-quantum-signed receipt for a consequential agent action (deploy, delete, pay, grant-access, model dec… |
-| `ra-qm-team__capa-officer` | CAPA system management for medical device QMS. Covers root cause analysis, corrective action planning, effectiveness verification,… |
-| `ra-qm-team__eu-ai-act-specialist` | "EU AI Act (Regulation (EU) 2024/1689) operational compliance for compliance teams. Three Article-level decisions: (1) What's the … |
-| `ra-qm-team__fda-consultant-specialist` | FDA regulatory consultant for medical device companies. Provides 510(k)/PMA/De Novo pathway guidance, QMSR (21 CFR 820, which inco… |
-| `ra-qm-team__gdpr-dsgvo-expert` | GDPR and German DSGVO compliance automation. Scans codebases for privacy risks, generates DPIA documentation, tracks data subject … |
-| `ra-qm-team__information-security-manager-iso27001` | ISO 27001 ISMS implementation and cybersecurity governance for HealthTech and MedTech companies. Use when designing an ISMS, runni… |
-| `ra-qm-team__isms-audit-expert` | Information Security Management System (ISMS) audit expert for ISO 27001 compliance verification, security control assessment, and… |
-| `ra-qm-team__iso42001-specialist` | "ISO/IEC 42001:2023 AI Management System (AIMS) specialist for compliance teams running internal audits. Three decisions: (1) Wher… |
-| `ra-qm-team__mdr-745-specialist` | EU MDR 2017/745 compliance specialist for medical device classification, technical documentation, clinical evidence, and post-mark… |
-| `ra-qm-team__qms-audit-expert` | ISO 13485 internal audit expertise for medical device QMS. Covers audit planning, execution, nonconformity classification, and CAP… |
-| `ra-qm-team__quality-documentation-manager` | Document control system management for medical device QMS. Covers document numbering, version control, change management, and 21 C… |
-| `ra-qm-team__quality-manager-qmr` | Senior Quality Manager Responsible Person (QMR) for HealthTech and MedTech companies. Provides quality system governance, manageme… |
-| `ra-qm-team__quality-manager-qms-iso13485` | ISO 13485 Quality Management System implementation and maintenance for medical device organizations. Provides QMS design, document… |
-| `ra-qm-team__ra-qm-skills` | "Router/index for the 15 regulatory & quality-management skills bundled in this plugin (ISO 13485 QMS, EU MDR 2017/745, FDA submis… |
-| `ra-qm-team__regulatory-affairs-head` | Senior Regulatory Affairs Manager for HealthTech and MedTech companies. Prepares FDA 510(k), De Novo, and PMA submission packages;… |
-| `ra-qm-team__risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evalua… |
-| `ra-qm-team__soc2-compliance` | "Use when the user asks to prepare for SOC 2 audits, map Trust Service Criteria, build control matrices, collect audit evidence, p… |
-| `research-ops__clinical-research` | Use when designing a prospective clinical study before submission — selecting and classifying endpoints (primary / key-secondary /… |
-| `research-ops__market-research` | Use when doing upstream market-research methodology — sizing a market as TAM/SAM/SOM computed BOTH top-down and bottoms-up (never … |
-| `research-ops__product-research` | Use when planning and synthesizing product/user research as a method-and-repository discipline — selecting the right method for th… |
-| `research-ops__research-finance` | Use when managing the money for an internal R&D program or portfolio — building a multi-period program budget with the F&A (indire… |
-| `research-ops__research-ops-skills` | Use when planning, funding, scoping, or synthesizing enterprise research across workstreams — clinical study design, R&D program f… |
-| `research__deep-research` | "Run a disciplined, multi-source research investigation for a high-stakes question or decision — fan-out web search across many ch… |
-| `research__deepread` | "Use when the user asks to deeply read a book, article, PDF, or document set; extract claims and evidence; build a knowledge map; … |
-| `research__dossier` | "Decision-grade entity research skill — produces a hypothesis-tested dossier on a specific company, person, nonprofit, or governme… |
-| `research__grants` | "NIH grant research skill for clinical researchers. Grill-me intake (research idea + career stage + preliminary data + environment… |
-| `research__litreview` | "Academic literature orientation skill that searches papers via free keyless APIs (PubMed E-utilities + OpenAlex) by default — wit… |
-| `research__notebooklm` | "Browser automation skill for controlling Google's NotebookLM. Use when the user wants anything done in NotebookLM (e.g., 'open No… |
-| `research__patent` | "Patent prior-art and landscape intelligence skill — not generic patent help. Commits to one of five sub-use-cases via forcing int… |
-| `research__pulse` | "Multi-source recency research skill that takes the pulse of any topic across Reddit, Hacker News, the open web, and optionally X/… |
-| `research__research` | Default entry point for any research request — a hybrid router that classifies the question deterministically and either delegates… |
-| `research__syllabus` | "Generates a curated supplementary reading list from any course syllabus using Consensus academic search. Grill-me intake (syllabu… |
+| `agent-launcher/skills/agent-launcher-orchestrator` | Use when a user wants to build, launch, grade, or schedule a Claude Managed Agent (CMA) in their own Anthropic account — "build me… |
+| `agent-launcher/skills/grade-iterate` | Phase 3 of building a Claude Managed Agent — the bounded grade→iterate loop. Define a CMA outcome (a required markdown rubric grad… |
+| `agent-launcher/skills/interview` | Phase 1 of building a Claude Managed Agent — interview the founder about the one job the agent should do, then produce a build she… |
+| `agent-launcher/skills/run-without-you` | Phase 4 of building a Claude Managed Agent — make it run without you. Turn a graded agent into a recurring scheduled deployment (P… |
+| `agent-launcher/skills/stage-launch` | Phase 2 of building a Claude Managed Agent — turn a validated build sheet into exact API payloads and a resumable BYOK curl launch… |
+| `agent-launcher/skills/wrap-up` | Close out a launched Claude Managed Agent — recap every primitive the founder now owns, regenerate the single-file overview page, … |
+| `business-growth/skills/business-growth-skills` | "Router/index for the 4 business & growth skills bundled in this plugin: customer-success-manager (health scoring, churn risk, exp… |
+| `business-growth/skills/contract-and-proposal-writer` | "Generate professional, jurisdiction-aware business documents: freelance contracts, project proposals, SOWs, NDAs, and MSAs. Struc… |
+| `business-growth/skills/customer-success-manager` | Monitors customer health, predicts churn risk, and identifies expansion opportunities using weighted scoring models for SaaS custo… |
+| `business-growth/skills/revenue-operations` | Analyzes sales pipeline health, revenue forecasting accuracy, and go-to-market efficiency metrics for SaaS revenue optimization. U… |
+| `business-growth/skills/sales-engineer` | Analyzes RFP/RFI responses for coverage gaps, builds competitive feature comparison matrices, and plans proof-of-concept (POC) eng… |
+| `business-operations/skills/business-operations-skills` | Use when running, diagnosing, or designing internal business operations — process documentation, vendor SLAs, capacity planning, i… |
+| `business-operations/skills/capacity-planner` | "Use when an ops leader (Director of CX, Head of Support, VP Ops, Head of BizOps, Head of IT ops, Head of Finance ops) is sizing o… |
+| `business-operations/skills/internal-comms` | Use when a Head of People Ops, BizOps lead, or Internal Communications owner needs to draft and sequence an internal-only change-m… |
+| `business-operations/skills/knowledge-ops` | Use when a Head of Ops, Knowledge Manager, or TPM-Internal needs to author, validate, or clean up company SOPs and internal runboo… |
+| `business-operations/skills/process-mapper` | Use when a BizOps lead, COO, or process-improvement owner needs to document an end-to-end business process (procurement, employee … |
+| `business-operations/skills/procurement-optimizer` | Use when running an annual SaaS audit, doing category-level spend review, or rationalizing the supplier base — when the user needs… |
+| `business-operations/skills/vendor-management` | Use when reviewing, scoring, or auditing third-party SaaS / vendor relationships — running a vendor scorecard with industry tuning… |
+| `c-level-advisor/arquiteto-de-empresa/skills/arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
+| `c-level-advisor/ceo-advisor/ceo-advisor` | Comprehensive CEO leadership skill providing strategic planning frameworks, financial scenario modeling, board governance guidance… |
+| `c-level-advisor/chief-ai-officer-advisor/skills/chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
+| `c-level-advisor/chief-customer-officer-advisor/skills/chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
+| `c-level-advisor/chief-data-officer-advisor/skills/chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
+| `c-level-advisor/cto-advisor/cto-advisor` | Strategic technology leadership skill providing frameworks for architecture decisions, team scaling, technical debt management, te… |
+| `c-level-advisor/executive-mentor/skills/board-prep` | "Board meeting preparation for the adversarial scenario, not the friendly one. Forces numbers-cold mastery, anticipates hard quest… |
+| `c-level-advisor/executive-mentor/skills/challenge` | "Pre-mortem plan analysis. Imagine the plan failed 12 months from now and work backwards to find the weaknesses. Surfaces assumpti… |
+| `c-level-advisor/executive-mentor/skills/executive-mentor` | "Adversarial thinking partner for founders and executives. Stress-tests plans, prepares for brutal board meetings, dissects decisi… |
+| `c-level-advisor/executive-mentor/skills/hard-call` | "/em:hard-call — Framework for decisions with no good options. Use when every option is painful and a structured 10/10/10 + regret… |
+| `c-level-advisor/executive-mentor/skills/postmortem` | "/em:postmortem — Honest analysis of what went wrong. Use after a failed launch, missed quarter, or bad hire to run a blameless 5-… |
+| `c-level-advisor/executive-mentor/skills/stress-test` | "/em:stress-test — Business assumption stress testing. Use before betting on a plan whose core assumptions are unvalidated — e.g. … |
+| `c-level-advisor/general-counsel-advisor/skills/general-counsel-advisor` | "General Counsel advisory for startups: contract review (MSA, SaaS, NDA, DPA, employment), IP strategy, term sheet decoding, and r… |
+| `c-level-advisor/skills/agent-protocol` | "Inter-agent communication protocol for C-suite agent teams. Defines invocation syntax, loop prevention, isolation rules, and resp… |
+| `c-level-advisor/skills/arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
+| `c-level-advisor/skills/board-deck-builder` | "Assembles comprehensive board and investor update decks by pulling perspectives from all C-suite roles. Use when preparing board … |
+| `c-level-advisor/skills/board-meeting` | "Multi-agent board meeting protocol for strategic decisions. Runs a structured 6-phase deliberation: context loading, independent … |
+| `c-level-advisor/skills/c-level-skills` | "Index and router for the C-level advisory bundle: 33 skills covering 14 C-suite roles, orchestration, cross-cutting capabilities,… |
+| `c-level-advisor/skills/ceo-advisor` | "Executive leadership guidance for strategic decision-making, organizational development, and stakeholder management. Use when pla… |
+| `c-level-advisor/skills/cfo-advisor` | "Financial leadership for startups and scaling companies. Financial modeling, unit economics, fundraising strategy, cash managemen… |
+| `c-level-advisor/skills/change-management` | "Framework for rolling out organizational changes without chaos. Covers the ADKAR model adapted for startups, communication templa… |
+| `c-level-advisor/skills/chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
+| `c-level-advisor/skills/chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
+| `c-level-advisor/skills/chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
+| `c-level-advisor/skills/chief-of-staff` | "C-suite orchestration layer. Routes founder questions to the right advisor role(s), triggers multi-role board meetings for comple… |
+| `c-level-advisor/skills/chro-advisor` | "People leadership for scaling companies. Hiring strategy, compensation design, org structure, culture, and retention. Use when bu… |
+| `c-level-advisor/skills/ciso-advisor` | "Security leadership for growth-stage companies. Risk quantification in dollars, compliance roadmap (SOC 2/ISO 27001/HIPAA/GDPR), … |
+| `c-level-advisor/skills/cmo-advisor` | "Marketing leadership for scaling companies. Brand positioning, growth model design, marketing budget allocation, and marketing or… |
+| `c-level-advisor/skills/company-os` | "The meta-framework for how a company runs — the connective tissue between all C-suite roles. Covers operating system selection (E… |
+| `c-level-advisor/skills/competitive-intel` | "Systematic competitor tracking that feeds CMO positioning, CRO battlecards, and CPO roadmap decisions. Use when analyzing competi… |
+| `c-level-advisor/skills/context-engine` | "Loads and manages company context for all C-suite advisor skills. Reads ~/.claude/company-context.md, detects stale context (>90 … |
+| `c-level-advisor/skills/coo-advisor` | "Operations leadership for scaling companies. Process design, OKR execution, operational cadence, and scaling playbooks. Use when … |
+| `c-level-advisor/skills/cpo-advisor` | "Product leadership for scaling companies. Product vision, portfolio strategy, product-market fit, and product org design. Use whe… |
+| `c-level-advisor/skills/cro-advisor` | "Revenue leadership for B2B SaaS companies. Revenue forecasting, sales model design, pricing strategy, net revenue retention, and … |
+| `c-level-advisor/skills/cs-onboard` | "Founder onboarding interview that captures company context across 7 dimensions. Invoke with /cs:setup for initial interview or /c… |
+| `c-level-advisor/skills/cto-advisor` | "Technical leadership guidance for engineering teams, architecture decisions, and technology strategy. Use when assessing technica… |
+| `c-level-advisor/skills/culture-architect` | "Build, measure, and evolve company culture as operational behavior — not wall posters. Covers mission/vision/values workshops, va… |
+| `c-level-advisor/skills/decision-logger` | "Two-layer memory architecture for board meeting decisions. Manages raw transcripts (Layer 1) and approved decisions (Layer 2). Us… |
+| `c-level-advisor/skills/founder-coach` | "Personal leadership development for founders and first-time CEOs. Covers founder archetype identification, delegation frameworks,… |
+| `c-level-advisor/skills/general-counsel-advisor` | "General Counsel advisory for startups: contract review (MSA, SaaS, NDA, DPA, employment), IP strategy, term sheet decoding, and r… |
+| `c-level-advisor/skills/internal-narrative` | "Build and maintain one coherent company story across all audiences — employees, investors, customers, candidates, and partners. D… |
+| `c-level-advisor/skills/intl-expansion` | "International market expansion strategy. Market selection, entry modes, localization, regulatory compliance, and go-to-market by … |
+| `c-level-advisor/skills/ma-playbook` | "M&A strategy for acquiring companies or being acquired. Due diligence, valuation, integration, and deal structure. Use when evalu… |
+| `c-level-advisor/skills/org-health-diagnostic` | "Cross-functional organizational health check combining signals from all C-suite roles. Scores 8 dimensions on a traffic-light sca… |
+| `c-level-advisor/skills/scenario-war-room` | "Cross-functional what-if modeling for cascading multi-variable scenarios. Unlike single-assumption stress testing, this models co… |
+| `c-level-advisor/skills/strategic-alignment` | "Cascades strategy from boardroom to individual contributor. Detects and fixes misalignment between company goals and team executi… |
+| `c-level-advisor/skills/vpe-advisor` | "VP of Engineering advisory for startups: delivery throughput (DORA 4 metrics + bottleneck identification), engineering hiring fun… |
+| `c-level-advisor/vpe-advisor/skills/vpe-advisor` | "VP of Engineering advisory for startups: delivery throughput (DORA 4 metrics + bottleneck identification), engineering hiring fun… |
+| `c-level-agents/skills/boardroom` | "/cs:boardroom <brief> — 6-phase multi-role deliberation across the C-suite with Phase 2 isolation, critic pre-screen, and synthes… |
+| `c-level-agents/skills/brief` | "/cs:brief <topic> — Generate a one-page strategy brief from an office-hours intake. First step in the strategic sprint pipeline. … |
+| `c-level-agents/skills/c-level-agents` | "Founder-mode executive team. 13 cs-* C-suite agents (CFO, CMO, CRO, CPO, COO, CHRO, CISO, GC, CDO, CAIO, CCO, VPE, Chief of Staff… |
+| `c-level-agents/skills/caio-review` | "/cs:caio-review <plan> — Eval-demanding Chief AI Officer interrogation of any plan that involves AI: model selection, risk classi… |
+| `c-level-agents/skills/cco-review` | "/cs:cco-review <plan> — Retention-obsessed Chief Customer Officer interrogation of any plan that touches customer retention, segm… |
+| `c-level-agents/skills/cdo-review` | "/cs:cdo-review <plan> — Decision-driven Chief Data Officer interrogation of any plan that touches training data, data architectur… |
+| `c-level-agents/skills/cfo-review` | "/cs:cfo-review <plan> — Numerate-skeptic interrogation of any plan that touches money. Unit economics, runway, dilution, capital … |
+| `c-level-agents/skills/ciso-review` | "/cs:ciso-review <plan> — Risk-paranoid interrogation of any plan that touches data, compliance, or production access. Use when la… |
+| `c-level-agents/skills/cmo-review` | "/cs:cmo-review <plan> — Narrative-first interrogation of positioning, ICP, message house, and channel mix. Use when launching a c… |
+| `c-level-agents/skills/cpo-review` | "/cs:cpo-review <plan> — JTBD-driven interrogation of product roadmap, PMF signal, and portfolio focus. Use when committing a quar… |
+| `c-level-agents/skills/cro-review` | "/cs:cro-review <plan> — Pipeline-paranoid interrogation of revenue, win rate, NRR, and ramp time. Use when the forecast misses pi… |
+| `c-level-agents/skills/cross-eval` | "/cs:cross-eval <memo> — Multi-model consensus on a board memo or strategy brief. Claude + Codex + Gemini cross-review with gracef… |
+| `c-level-agents/skills/cto-review` | "/cs:cto-review <plan> — Architecture and scaling interrogation. Tech debt, scaling cliffs, team scaling, build-vs-buy. Use when c… |
+| `c-level-agents/skills/decide` | "/cs:decide <memo> — Log a decision to two-layer memory via decision-logger. Approved memo becomes durable; raw transcripts kept f… |
+| `c-level-agents/skills/execute` | "/cs:execute <decision> — Generate a 90-day execution plan with weekly milestones, DRIs, and check-in cadence from an approved dec… |
+| `c-level-agents/skills/founder-mode` | "/cs:founder-mode <question> — Auto-routes any founder question to the right C-role advisor or to /cs:boardroom for multi-role top… |
+| `c-level-agents/skills/freeze` | "/cs:freeze <decision> <days> — Lock a strategic decision for a cooldown period to prevent impulse reversal. Mirrors gstack's safe… |
+| `c-level-agents/skills/gc-review` | "/cs:gc-review <plan> — General Counsel interrogation of contracts, IP, regulatory, term sheets, and employment-law surface. Use w… |
+| `c-level-agents/skills/office-hours` | "/cs:office-hours <topic> — YC-style 6-question founder interrogation before any advice. Forces clarity on problem, customer, dist… |
+| `c-level-agents/skills/onboard` | "/cs:onboard — Founder interview that populates ~/.claude/company-context.md using the canonical 7-dimension cs-onboard schema. Th… |
+| `c-level-agents/skills/post-mortem` | "/cs:post-mortem <decision> — Honest retrospective on an executed decision, scored against original assumptions and dissent. Close… |
+| `c-level-agents/skills/vpe-review` | "/cs:vpe-review <plan> — Throughput-first VP of Engineering interrogation of any plan that touches delivery, eng hiring, team stru… |
+| `commercial/skills/channel-economics` | "Use when reviewing or rebalancing direct vs. partner-led channel economics — computing fully-loaded cost-to-serve per channel, ch… |
+| `commercial/skills/commercial-forecaster` | "Use when building a quarterly bookings forecast, ARR projection, pipeline forecast, NRR projection, or commit/best-case/pipe-only… |
+| `commercial/skills/commercial-policy` | "Use when designing or revising a company's commercial policy — the rules of engagement governing discounts off list price, approv… |
+| `commercial/skills/commercial-skills` | Use when reviewing, approving, or designing commercial motion — pricing models, deal review, discount approval, partnership econom… |
+| `commercial/skills/deal-desk` | Use when reviewing a specific inbound deal before close — when sales has asked for a discount that exceeds AE authority, when the … |
+| `commercial/skills/partnerships-architect` | "Use when a startup is approached by a prospective partner and someone has to decide should we sign this partner, at what partner … |
+| `commercial/skills/pricing-strategist` | "Use when designing or revisiting product pricing — selecting a pricing model (subscription seat-based, usage-based, value-based, … |
+| `commercial/skills/rfp-responder` | "Use when an RFP, RFI, RFQ, security questionnaire, vendor questionnaire, or proposal request arrives and the team needs a structu… |
+| `compliance-os/skills/ai-act-readiness` | "/cs:ai-act-readiness <system> — EU AI Act 6-question forcing interrogation. Use during AI-system intake, before EU deployment, or… |
+| `compliance-os/skills/aims-audit` | "/cs:aims-audit <scope> — ISO/IEC 42001 AIMS internal-audit 6-question forcing interrogation. Use before certification stage 1, be… |
+| `compliance-os/skills/compliance-os` | "Compliance OS — meta-orchestrator that lets compliance teams CONFIGURE which frameworks apply, COMPUTE cross-framework control ov… |
+| `compliance-os/skills/compliance-readiness` | "/cs:compliance-readiness <program> — Multi-framework compliance officer 6-question forcing interrogation of any compliance progra… |
+| `compliance-os/skills/fda-qsr-audit-prep` | "/cs:fda-qsr-audit-prep <scope> — FDA 21 CFR 820 (QSR / QMSR) audit 6-question forcing interrogation. Post-Feb 2026 substantially … |
+| `compliance-os/skills/gdpr-audit-prep` | "/cs:gdpr-audit-prep <scope> — GDPR audit 6-question Article-cited forcing interrogation. Use before annual internal GDPR review, … |
+| `compliance-os/skills/iso13485-audit-prep` | "/cs:iso13485-audit-prep <scope> — ISO 13485 QMS audit 6-question forcing interrogation. Design controls + CAPA + post-market focu… |
+| `compliance-os/skills/iso27001-audit-prep` | "/cs:iso27001-audit-prep <scope> — ISO 27001 ISMS audit readiness 6-question forcing interrogation. Use before annual Clause 9.2 i… |
+| `compliance-os/skills/soc2-audit-prep` | "/cs:soc2-audit-prep <scope> — SOC 2 Type II readiness 6-question forcing interrogation. Observation-period focused. Use before Ty… |
+| `engineering-team/a11y-audit/skills/a11y-audit` | "Accessibility audit skill for scanning, fixing, and verifying WCAG 2.2 Level A and AA compliance across React, Next.js, Vue, Angu… |
+| `engineering-team/google-workspace-cli/skills/google-workspace-cli` | "Google Workspace administration via the gws CLI (github.com/googleworkspace/cli). Install, authenticate, and automate Gmail, Driv… |
+| `engineering-team/playwright-pro/skills/browserstack` | >- |
+| `engineering-team/playwright-pro/skills/coverage` | >- |
+| `engineering-team/playwright-pro/skills/fix` | >- |
+| `engineering-team/playwright-pro/skills/generate` | >- |
+| `engineering-team/playwright-pro/skills/migrate` | >- |
+| `engineering-team/playwright-pro/skills/pw` | "Production-grade Playwright testing toolkit. Use when the user mentions Playwright tests, end-to-end testing, browser automation,… |
+| `engineering-team/playwright-pro/skills/pw-init` | >- |
+| `engineering-team/playwright-pro/skills/pw-review` | >- |
+| `engineering-team/playwright-pro/skills/report` | >- |
+| `engineering-team/playwright-pro/skills/testrail` | >- |
+| `engineering-team/self-improving-agent/skills/extract` | "Turn a proven pattern or debugging solution into a standalone reusable skill with SKILL.md, reference docs, and examples. Use whe… |
+| `engineering-team/self-improving-agent/skills/memory-review` | "Analyze auto-memory for promotion candidates, stale entries, consolidation opportunities, and health metrics. Use when the user r… |
+| `engineering-team/self-improving-agent/skills/memory-status` | "Memory health dashboard showing line counts, topic files, capacity, stale entries, and recommendations. Use when the user runs /s… |
+| `engineering-team/self-improving-agent/skills/promote` | "Graduate a proven pattern from auto-memory (MEMORY.md) to CLAUDE.md or .claude/rules/ for permanent enforcement. Use when the use… |
+| `engineering-team/self-improving-agent/skills/remember` | "Explicitly save important knowledge to auto-memory with timestamp and context. Use when a discovery is too important to rely on a… |
+| `engineering-team/self-improving-agent/skills/self-improving-agent` | "Curate Claude Code's auto-memory into durable project knowledge. Analyze MEMORY.md for patterns, promote proven learnings to CLAU… |
+| `engineering-team/skills/adversarial-reviewer` | "Adversarial code review that breaks the self-review monoculture. Use when you want a genuinely critical review of recent changes,… |
+| `engineering-team/skills/ai-security` | "Use when assessing AI/ML systems for prompt injection, jailbreak vulnerabilities, model inversion risk, data poisoning exposure, … |
+| `engineering-team/skills/aws-solution-architect` | Design AWS architectures for startups using serverless patterns and IaC templates. Use when asked to design serverless architectur… |
+| `engineering-team/skills/azure-cloud-architect` | "Design Azure architectures for startups and enterprises. Use when asked to design Azure infrastructure, create Bicep/ARM template… |
+| `engineering-team/skills/cloud-security` | "Use when assessing cloud infrastructure for security misconfigurations, IAM privilege escalation paths, S3 public exposure, open … |
+| `engineering-team/skills/code-reviewer` | Code review automation for TypeScript, JavaScript, Python, Go, Swift, Kotlin, C#, .NET, Java, C, C++, Rust, Ruby, PHP, and Dart/Fl… |
+| `engineering-team/skills/email-template-builder` | "Build complete transactional email systems: React Email templates, provider integration (Resend, Postmark, SendGrid, AWS SES), pr… |
+| `engineering-team/skills/embedded-iot-mentor` | Mentor for embedded and IoT hardware projects. Helps select MCUs, dev boards, and toolchains, decides where sensor readings end up… |
+| `engineering-team/skills/engineering-skills` | "Index of the engineering-team skills bundle for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw, and 6 more tools. Architecture,… |
+| `engineering-team/skills/epic-design` | > |
+| `engineering-team/skills/gcp-cloud-architect` | "Design GCP architectures for startups and enterprises. Use when asked to design Google Cloud infrastructure, deploy to GKE or Clo… |
+| `engineering-team/skills/incident-commander` | "Comprehensive incident response framework from detection through resolution and post-incident review. Battle-tested SRE/DevOps pr… |
+| `engineering-team/skills/incident-response` | "Use when a security incident has been detected or declared and needs classification, triage, escalation path determination, and f… |
+| `engineering-team/skills/ms365-tenant-manager` | Microsoft 365 tenant administration for Global Administrators. Automate M365 tenant setup, Office 365 admin tasks, Azure AD user m… |
+| `engineering-team/skills/named-persona-adversarial-review` | "Code review through the lens of real engineers' documented philosophies (Torvalds, Thompson, Carmack, Kent Beck, Jobs, Cagan). Co… |
+| `engineering-team/skills/red-team` | "Use when planning or executing authorized red team engagements, attack path analysis, or offensive security simulations. Covers M… |
+| `engineering-team/skills/security-pen-testing` | "Use when the user asks to perform security audits, penetration testing, vulnerability scanning, OWASP Top 10 checks, or offensive… |
+| `engineering-team/skills/senior-architect` | This skill should be used when the user asks to "design system architecture", "evaluate microservices vs monolith", "create archit… |
+| `engineering-team/skills/senior-backend` | Designs and implements backend systems including REST APIs, microservices, database architectures, authentication flows, and secur… |
+| `engineering-team/skills/senior-computer-vision` | Computer vision engineering skill for object detection, image segmentation, and visual AI systems. Covers CNN and Vision Transform… |
+| `engineering-team/skills/senior-data-engineer` | Data engineering skill for building scalable data pipelines, ETL/ELT systems, and data infrastructure. Expertise in Python, SQL, S… |
+| `engineering-team/skills/senior-data-scientist` | World-class senior data scientist skill specialising in statistical modeling, experiment design, causal inference, and predictive … |
+| `engineering-team/skills/senior-devops` | Comprehensive DevOps skill for CI/CD, infrastructure automation, containerization, and cloud platforms (AWS, GCP, Azure). Includes… |
+| `engineering-team/skills/senior-frontend` | Frontend development skill for React, Next.js, TypeScript, and Tailwind CSS applications. Use when building React components, opti… |
+| `engineering-team/skills/senior-fullstack` | Fullstack development toolkit with project scaffolding for Next.js, FastAPI, MERN, and Django stacks, code quality analysis with s… |
+| `engineering-team/skills/senior-ml-engineer` | ML engineering skill for productionizing models, building MLOps pipelines, and integrating LLMs. Covers model deployment, feature … |
+| `engineering-team/skills/senior-prompt-engineer` | Use when the user asks to optimize prompts, design prompt templates, evaluate LLM outputs with an eval set, measure RAG retrieval … |
+| `engineering-team/skills/senior-qa` | Generates unit tests, integration tests, and E2E tests for React/Next.js applications. Scans components to create Jest + React Tes… |
+| `engineering-team/skills/senior-secops` | Senior SecOps engineer skill for application security, vulnerability management, compliance verification, and secure development p… |
+| `engineering-team/skills/senior-security` | Use when the user asks for STRIDE threat modeling, DREAD risk scoring, data-flow-diagram threat analysis, or a quick secret scan —… |
+| `engineering-team/skills/stripe-integration-expert` | "Production-grade Stripe integrations: subscriptions with trials and proration, one-time payments, usage-based billing, checkout s… |
+| `engineering-team/skills/tdd-guide` | "Test-driven development skill for writing unit tests, generating test fixtures and mocks, analyzing coverage gaps, and guiding re… |
+| `engineering-team/skills/tech-stack-evaluator` | Technology stack evaluation and comparison with TCO analysis, security assessment, and ecosystem health scoring. Use when comparin… |
+| `engineering-team/skills/threat-detection` | "Use when hunting for threats in an environment, analyzing IOCs, or detecting behavioral anomalies in telemetry. Covers hypothesis… |
+| `engineering-team/snowflake-development/skills/snowflake-development` | "Use when writing Snowflake SQL, building data pipelines with Dynamic Tables or Streams/Tasks, using Cortex AI functions, creating… |
+| `engineering/agent-harness/skills/agent-harness` | "Turn any domain folder of skills into a bounded agentic loop: compile a goal into a verifiable task plan, execute tasks with the … |
+| `engineering/agent-memory/skills/agent-memory` | Use when a project's CLAUDE.md has grown past what anyone reads and you want the agent to learn durable facts from its own session… |
+| `engineering/agenthub/skills/agenthub` | "Multi-agent collaboration plugin that spawns N parallel subagents competing on the same task via git worktree isolation. Agents w… |
+| `engineering/agenthub/skills/board` | "Read, write, and browse the AgentHub message board for agent coordination. Use when the user runs /hub:board or asks to post, rea… |
+| `engineering/agenthub/skills/eval` | "Evaluate and rank agent results by metric or LLM judge for an AgentHub session. Use when the user runs /hub:eval or asks to score… |
+| `engineering/agenthub/skills/hub-init` | "Create a new AgentHub collaboration session with task, agent count, and evaluation criteria. Use when the user runs /hub:hub-init… |
+| `engineering/agenthub/skills/hub-status` | "Show DAG state, agent progress, and branch status for an AgentHub session. Use when the user runs /hub:hub-status or asks how the… |
+| `engineering/agenthub/skills/merge` | "Merge the winning agent's branch into base, archive losers, and clean up worktrees. Use when the user runs /hub:merge or asks to … |
+| `engineering/agenthub/skills/run` | "One-shot lifecycle command that chains init → baseline → spawn → eval → merge in a single invocation. Use when the user runs /hub… |
+| `engineering/agenthub/skills/spawn` | "Launch N parallel subagents in isolated git worktrees to compete on the session task. Use when the user runs /hub:spawn or asks t… |
+| `engineering/autoresearch-agent/skills/ar-resume` | "Resume a paused experiment. Checkout the experiment branch, read results history, continue iterating. Use when the user runs /ar:… |
+| `engineering/autoresearch-agent/skills/ar-status` | "Show experiment dashboard with results, active loops, and progress. Use when the user runs /ar:ar-status or asks how an autoresea… |
+| `engineering/autoresearch-agent/skills/autoresearch-agent` | "Autonomous experiment loop that optimizes any file by a measurable metric. Inspired by Karpathy's autoresearch. The agent edits a… |
+| `engineering/autoresearch-agent/skills/loop` | "Start an autonomous experiment loop with user-selected interval (10min, 1h, daily, weekly, monthly). Uses CronCreate for scheduli… |
+| `engineering/autoresearch-agent/skills/run` | "Run a single experiment iteration. Edit the target file, evaluate, keep or discard. Use when the user runs /ar:run or asks for on… |
+| `engineering/autoresearch-agent/skills/setup` | "Set up a new autoresearch experiment interactively. Collects domain, target file, eval command, metric, direction, and evaluator.… |
+| `engineering/behuman/skills/behuman` | "Use when the user wants more human-like AI responses — less robotic, less listy, more authentic. Triggers: 'behuman', 'be real', … |
+| `engineering/book-to-skill/skills/book-to-skill` | "Converts books, documentation folders, and source collections (PDF, EPUB, DOCX, HTML, Markdown, RST, AsciiDoc, RTF, MOBI/AZW) int… |
+| `engineering/boost-asio-pro` | "Use when writing or reviewing asynchronous C++ networking code with Boost.Asio or standalone Asio — TCP/UDP servers and clients, … |
+| `engineering/caveman/skills/caveman` | > |
+| `engineering/chaos-engineering/skills/chaos-engineering` | Use when planning, running, or learning from chaos engineering experiments. Triggers on "chaos experiment", "fault injection", "ga… |
+| `engineering/claude-coach/skills/claude-coach` | Personal coach that teaches users to become Claude power users. Use this skill the FIRST time a user asks to "learn Claude", "be a… |
+| `engineering/code-tour/skills/code-tour` | "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and … |
+| `engineering/collab-proof/skills/collab-proof` | "Use when you want to understand what Claude contributed vs what you drove in a session. Triggers on: /collab-proof, session retro… |
+| `engineering/data-quality-auditor/skills/data-quality-auditor` | Audit datasets for completeness, consistency, accuracy, and validity. Profile data distributions, detect anomalies and outliers, s… |
+| `engineering/deep-learning-book/skills/deep-learning-book` | "Study companion and working knowledge base for the Deep Learning textbook by Goodfellow, Bengio & Courville (MIT Press, 2016), re… |
+| `engineering/demo-video/skills/demo-video` | "Use when the user asks to create a demo video, product walkthrough, feature showcase, animated presentation, marketing video, or … |
+| `engineering/docker-development/skills/docker-development` | "Docker and container development agent skill and plugin for Dockerfile optimization, docker-compose orchestration, multi-stage bu… |
+| `engineering/feature-flags-architect/skills/feature-flags-architect` | Use when adding, retiring, or auditing feature flags. Triggers on "add a flag", "ship behind a flag", "rollout plan", "kill switch… |
+| `engineering/grill-me/skills/grill-me` | Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision … |
+| `engineering/grill-with-docs/skills/grill-with-docs` | Docs-anchored grilling session — challenges a plan against the project's existing language (CONTEXT.md) and recorded decisions (do… |
+| `engineering/handoff/skills/handoff` | Compact the current conversation into a handoff document for another agent to pick up. References existing artifacts (PRDs, plans,… |
+| `engineering/helm-chart-builder/skills/helm-chart-builder` | "Helm chart development agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw — chart scaffolding, values de… |
+| `engineering/hivemind` | Orchestrate free opencode workers from Claude Code to cut token costs. Use when delegating grunt work to a single worker or a para… |
+| `engineering/human-gate/skills/human-gate` | "Runs the human-verification lane of an agent loop, and proves review happened before work is called done. Builds a single-file HT… |
+| `engineering/karpathy-coder/skills/karpathy-coder` | Use when writing, reviewing, or committing code to enforce Karpathy's 4 coding principles — surface assumptions before coding, kee… |
+| `engineering/kubernetes-operator/skills/kubernetes-operator` | Use when building a Kubernetes Operator — custom controllers that reconcile CRD state. Triggers on "build an operator", "CRD desig… |
+| `engineering/llm-cost-optimizer/skills/llm-cost-optimizer` | "Use proactively whenever LLM API costs come up -- or should. Triggers include: 'my AI costs are too high', 'optimize token usage'… |
+| `engineering/llm-wiki/skills/llm-wiki` | Use when building or maintaining a persistent personal knowledge base (second brain) in Obsidian where an LLM incrementally ingest… |
+| `engineering/memory-engineering/skills/memory-engineering` | Use when designing, reviewing, or paying for an agent memory system — adding memory to an agent, choosing between long-context / R… |
+| `engineering/minimalist` | "Use when the user asks to write code efficiently, avoid over-engineering, reduce dependencies, or prevent unnecessary abstraction… |
+| `engineering/prompt-governance/skills/prompt-governance` | "Use when managing prompts in production at scale: versioning prompts, running A/B tests on prompts, building prompt registries, p… |
+| `engineering/security-guidance/skills/security-guidance` | PreToolUse security-anti-pattern hook for Claude Code. Catches 12 common security risks (command injection, XSS, SQL injection, un… |
+| `engineering/skill-doctor/skills/skill-doctor` | Use when the user wants their agent setup graded from real conversation history, asks which installed skills are actually working,… |
+| `engineering/skillopt-sleep/skills/skillopt-sleep` | "Use when the user wants their Claude agent to self-improve from past usage, asks about a nightly/offline 'sleep' or 'dream' cycle… |
+| `engineering/skills/agent-designer` | "Use when the user asks to design a multi-agent system, pick an orchestration pattern (supervisor/swarm/pipeline), generate tool s… |
+| `engineering/skills/agent-workflow-designer` | "Design production-grade multi-agent workflows with clear pattern choice (sequential, parallel, hierarchical), handoff contracts, … |
+| `engineering/skills/api-design-reviewer` | "Comprehensive REST API design review with automated linting, breaking-change detection, and design scorecards. Catches inconsiste… |
+| `engineering/skills/api-test-suite-builder` | "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests." |
+| `engineering/skills/browser-automation` | "Use when the user asks to automate browser tasks, scrape websites, fill forms, capture screenshots, extract structured data from … |
+| `engineering/skills/changelog-generator` | "Produce consistent, auditable release notes from Conventional Commits. Separates commit parsing, semantic-bump logic, and changel… |
+| `engineering/skills/chaos-engineering` | Use when planning, running, or learning from chaos engineering experiments. Triggers on "chaos experiment", "fault injection", "ga… |
+| `engineering/skills/ci-cd-pipeline-builder` | "Generate pragmatic CI/CD pipelines from detected project stack signals — fast baseline generation, repeatable checks, environment… |
+| `engineering/skills/codebase-onboarding` | "Analyze a codebase and generate onboarding documentation for engineers, tech leads, and contractors. Fast fact-gathering and repe… |
+| `engineering/skills/database-designer` | "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model… |
+| `engineering/skills/database-schema-designer` | "Use when the user asks to create ERD diagrams, normalize database schemas, design table relationships, or plan schema migrations.… |
+| `engineering/skills/dependency-auditor` | "Audit and manage dependencies across multi-language projects. Identifies vulnerabilities, license conflicts, transitive dependenc… |
+| `engineering/skills/engineering-advanced-skills` | "Index of 37 advanced engineering agent skills for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Use when browsing or choosing… |
+| `engineering/skills/env-secrets-manager` | "Manage environment-variable hygiene and secrets safety across local development and production. Practical auditing, drift awarene… |
+| `engineering/skills/feature-flags-architect` | Use when adding, retiring, or auditing feature flags. Triggers on "add a flag", "ship behind a flag", "rollout plan", "kill switch… |
+| `engineering/skills/focused-fix` | "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y… |
+| `engineering/skills/full-page-screenshot` | "Use when the user asks to capture a full-page screenshot, long screenshot, or complete page capture of a web page. Handles SPA sc… |
+| `engineering/skills/git-worktree-manager` | "Run parallel feature work safely with Git worktrees. Standardizes branch isolation, port allocation, environment sync, and cleanu… |
+| `engineering/skills/interview-system-designer` | This skill should be used when the user asks to "design interview processes", "create hiring pipelines", "calibrate interview loop… |
+| `engineering/skills/kubernetes-operator` | Use when building a Kubernetes Operator — custom controllers that reconcile CRD state. Triggers on "build an operator", "CRD desig… |
+| `engineering/skills/mcp-server-builder` | "Design and ship production-ready MCP (Model Context Protocol) servers from OpenAPI contracts instead of hand-written tool wrapper… |
+| `engineering/skills/migration-architect` | "Zero-downtime migration planning, compatibility validation, and rollback strategy generation. Tools for system, database, and inf… |
+| `engineering/skills/monorepo-navigator` | "Navigate, manage, and optimize monorepos. Covers Turborepo, Nx, pnpm workspaces, and Lerna. Cross-package impact analysis, select… |
+| `engineering/skills/observability-designer` | "Design production-ready observability strategies combining metrics, logs, and traces. Includes SLI/SLO design, golden-signals mon… |
+| `engineering/skills/performance-profiler` | "Systematic performance profiling for Node.js, Python, and Go applications. Identifies CPU, memory, and I/O bottlenecks, generates… |
+| `engineering/skills/pr-review-expert` | "Use when the user asks to review pull requests, analyze code changes, check for security issues in PRs, or assess code quality of… |
+| `engineering/skills/rag-architect` | "Use when the user asks to design a RAG pipeline, choose a chunking strategy or embedding model, pick a vector database, or evalua… |
+| `engineering/skills/runbook-generator` | "Generate operational runbooks from a service name — deployment, incident response, maintenance, and rollback workflows. Templated… |
+| `engineering/skills/secrets-vault-manager` | "Use when the user asks to set up secret management infrastructure, integrate HashiCorp Vault, configure cloud secret stores (AWS … |
+| `engineering/skills/self-eval` | "Honestly evaluate AI work quality using a two-axis scoring system. Use after completing a task, code review, or work session to g… |
+| `engineering/skills/ship-gate` | > |
+| `engineering/skills/skill-security-auditor` | > |
+| `engineering/skills/skill-tester` | "Validate, test, and score the quality of skills within the claude-skills ecosystem. Comprehensive meta-skill: structure validatio… |
+| `engineering/skills/skill-tester/assets/sample-skill` | "Reference BASIC-tier skill used as a fixture by skill-tester. Counts words and characters and applies basic text transformations.… |
+| `engineering/skills/slo-architect` | Use when defining, reviewing, or operating SLOs/SLIs/error budgets. Triggers on "define an SLO", "what should our SLO be", "error … |
+| `engineering/skills/spec-driven-workflow` | "Use when the user asks to write specs before code, define acceptance criteria, plan features before implementation, generate test… |
+| `engineering/skills/sql-database-assistant` | "Use when the user asks to write SQL queries, optimize database performance, generate migrations, explore database schemas, or wor… |
+| `engineering/skills/tc-tracker` | "Use when the user asks to track technical changes, create change records, manage TC lifecycles, or hand off work between AI sessi… |
+| `engineering/skills/tech-debt-tracker` | Scan codebases for technical debt, score severity, track trends, and generate prioritized remediation plans. Use when users mentio… |
+| `engineering/slo-architect/skills/slo-architect` | Use when defining, reviewing, or operating SLOs/SLIs/error budgets. Triggers on "define an SLO", "what should our SLO be", "error … |
+| `engineering/spinning-up-deep-rl/skills/spinning-up-deep-rl` | "Knowledge base from \"Spinning Up in Deep RL\" by Joshua Achiam (OpenAI, MIT-licensed). Use when applying Achiam's frameworks for… |
+| `engineering/statistical-analyst/skills/statistical-analyst` | Run hypothesis tests, analyze A/B experiment results, calculate sample sizes, and interpret statistical significance with effect s… |
+| `engineering/strict-api` | "Use when the user says 'no hallucinations', 'verify APIs', 'reality check', or 'don't invent functions'. Prevents the agent from … |
+| `engineering/terraform-patterns/skills/terraform-patterns` | "Terraform infrastructure-as-code agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Covers module desig… |
+| `engineering/universal-scraping-architect/skills/universal-scraping-architect` | "Use for web scraping, crawling, document extraction, API parsing, or building validation-heavy data pipelines using Firecrawl or … |
+| `engineering/workflow-builder/skills/workflow-builder` | Design and write deterministic multi-agent workflow scripts (.js files in .claude/workflows/) for Claude Code's Workflow tool. Use… |
+| `engineering/write-a-skill/skills/write-a-skill` | Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write… |
+| `engineering/zero-hallucination-coder/skills/zero-hallucination-coder` | "Runs a disciplined Discuss -> Map -> Decompose -> Execute -> Verify loop that grounds code in verified structure — no invented AP… |
+| `finance/business-investment-advisor/skills/business-investment-advisor` | "Business investment analysis and capital allocation advisor. Use when evaluating whether to invest in equipment, real estate, a n… |
+| `finance/skills/finance-skills` | "Router/index for the 2 finance skills bundled in this plugin: financial-analyst (ratio analysis, DCF valuation, budget variance, … |
+| `finance/skills/financial-analyst` | Performs financial ratio analysis, DCF valuation, budget variance analysis, and rolling forecast construction for strategic decisi… |
+| `finance/skills/saas-metrics-coach` | SaaS financial health advisor. Use when a user shares revenue or customer numbers, or mentions ARR, MRR, churn, LTV, CAC, NRR, or … |
+| `finance/skills/stock-analysis` | Produce a rigorous, sector-relative, multi-factor fundamental analysis of a publicly listed company — Indian (NSE/BSE) or US/globa… |
+| `loop-library` | Discover, find, compare, audit, repair, adapt, and design repeatable AI-agent loops with explicit triggers, actions, verification,… |
+| `markdown-html/skills/design-system` | Captures the user's brand identity once via a 10-question onboarding wizard (primary/accent HEX + heading + body Google Fonts + de… |
+| `markdown-html/skills/markdown-html-orchestrator` | Use when a user wants to convert any markdown file in their Claude project into a single-file, lightly-interactive HTML — long-for… |
+| `markdown-html/skills/md-document` | Converts long-form markdown (specs, RFCs, reports, plans, explainers) into a single-file, lightly-interactive HTML document with s… |
+| `markdown-html/skills/md-review` | Converts a markdown PR writeup or code review (one with ```diff fenced blocks and severity-tagged > [!BLOCKER]/[!MAJOR]/[!MINOR]/[… |
+| `markdown-html/skills/md-slides` | "Converts a markdown deck (slides separated by `---` HR boundaries or by `# ` H1 headings, with optional `<!-- notes: ... -->` pre… |
+| `marketing-skill/skills/ab-test-setup` | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split te… |
+| `marketing-skill/skills/ad-creative` | "When the user needs to generate, iterate, or scale ad creative for paid advertising. Use when they say 'write ad copy,' 'generate… |
+| `marketing-skill/skills/aeo` | "Answer Engine Optimization (AEO) skill — optimize content to be cited by AI language models (ChatGPT, Perplexity, Claude, Gemini,… |
+| `marketing-skill/skills/analytics-tracking` | "Set up, audit, and debug analytics tracking implementation — GA4, Google Tag Manager, event taxonomy, conversion tracking, and da… |
+| `marketing-skill/skills/app-store-optimization` | App Store Optimization (ASO) toolkit for researching keywords, analyzing competitor rankings, generating metadata suggestions, and… |
+| `marketing-skill/skills/brand-guidelines` | "When the user wants to apply, document, or enforce brand guidelines for any product or company. Also use when the user mentions '… |
+| `marketing-skill/skills/business-name-fit` | Suggest, pick, or vet a business, startup, or product name that stays true to the founder's cultural origin while working professi… |
+| `marketing-skill/skills/campaign-analytics` | Analyzes campaign performance with multi-touch attribution, funnel conversion analysis, and ROI calculation for marketing optimiza… |
+| `marketing-skill/skills/churn-prevention` | "Reduce voluntary and involuntary churn through cancel flow design, save offers, exit surveys, and dunning sequences. Use when des… |
+| `marketing-skill/skills/cold-email` | "When the user wants to write, improve, or build a sequence of B2B cold outreach emails to prospects who haven't asked to hear fro… |
+| `marketing-skill/skills/competitor-alternatives` | "When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user men… |
+| `marketing-skill/skills/content-creator` | "Deprecated redirect skill that routes legacy 'content creator' requests to the correct specialist. Use when a user invokes 'conte… |
+| `marketing-skill/skills/content-humanizer` | "Makes AI-generated content sound genuinely human — not just cleaned up, but alive. Use when content feels robotic, uses too many … |
+| `marketing-skill/skills/content-production` | "Full content production pipeline — takes a topic from blank page to published-ready piece. Use when you need to execute content: … |
+| `marketing-skill/skills/content-strategy` | "When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when … |
+| `marketing-skill/skills/copy-editing` | "When the user wants to edit, review, or improve existing marketing copy. Also use when the user mentions 'edit this copy,' 'revie… |
+| `marketing-skill/skills/copywriting` | "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages,… |
+| `marketing-skill/skills/email-sequence` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `marketing-skill/skills/form-cro` | When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo reque… |
+| `marketing-skill/skills/free-tool-strategy` | "When the user wants to build a free tool for marketing — lead generation, SEO value, or brand awareness. Use when they mention 'e… |
+| `marketing-skill/skills/launch-strategy` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `marketing-skill/skills/local-seo-manager` | "Manage local SEO for service-area businesses — appliance repair, HVAC, plumbing, cleaning, and any business that serves customers… |
+| `marketing-skill/skills/marketing-context` | "Create and maintain the marketing context document that all marketing skills read before starting. Use when the user mentions 'ma… |
+| `marketing-skill/skills/marketing-demand-acquisition` | Creates demand generation campaigns, optimizes paid ad spend across LinkedIn, Google, and Meta, develops SEO strategies, and struc… |
+| `marketing-skill/skills/marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `marketing-skill/skills/marketing-ops` | "Central router for the marketing skill ecosystem. Use when unsure which marketing skill to use, when orchestrating a multi-skill … |
+| `marketing-skill/skills/marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `marketing-skill/skills/marketing-skills` | "Directory and router for the marketing skills library. Use when you need to find the right marketing skill for a task, see what m… |
+| `marketing-skill/skills/marketing-strategy-pmm` | Product marketing skill for positioning, GTM strategy, competitive intelligence, and product launches. Use when the user asks abou… |
+| `marketing-skill/skills/onboarding-cro` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `marketing-skill/skills/page-cro` | When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, prici… |
+| `marketing-skill/skills/paid-ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `marketing-skill/skills/paywall-upgrade-cro` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `marketing-skill/skills/popup-cro` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `marketing-skill/skills/pricing-strategy` | "Design, optimize, and communicate SaaS pricing — tier structure, value metrics, pricing pages, and price increase strategy. Use w… |
+| `marketing-skill/skills/programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `marketing-skill/skills/prompt-engineer-toolkit` | "Turns marketing prompts into tested, versioned production assets: A/B prompt evaluation against structured test cases, immutable … |
+| `marketing-skill/skills/referral-program` | "When the user wants to design, launch, or optimize a referral or affiliate program. Use when they mention 'referral program,' 'af… |
+| `marketing-skill/skills/schema-markup` | "When the user wants to implement, audit, or validate structured data (schema markup) on their website. Use when the user mentions… |
+| `marketing-skill/skills/seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `marketing-skill/skills/signup-flow-cro` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `marketing-skill/skills/site-architecture` | "When the user wants to audit, redesign, or plan their website's structure, URL hierarchy, navigation design, or internal linking … |
+| `marketing-skill/skills/social-content` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Fac… |
+| `marketing-skill/skills/social-media-analyzer` | Social media campaign analysis and performance tracking. Calculates engagement rates, ROI, and benchmarks across platforms. Use wh… |
+| `marketing-skill/skills/social-media-manager` | "When the user wants to develop social media strategy, plan content calendars, manage community engagement, or grow their social p… |
+| `marketing-skill/skills/webinar-marketing` | "When the user wants to plan, promote, run, or improve a webinar or virtual event to generate and convert demand. Use when the use… |
+| `marketing-skill/skills/x-twitter-growth` | "X/Twitter growth engine for building audience, crafting viral content, and analyzing engagement. Use when the user wants to grow … |
+| `marketing-skill/skills/youtube-full` | "Use when the user needs YouTube transcripts, video search, channel browsing, playlist extraction, or content monitoring. Trigger … |
+| `marketing-skill/video-content-strategist/skills/video-content-strategist` | "Use when planning video content strategy, writing video scripts, optimizing YouTube channels, building short-form video pipelines… |
+| `marketing/landing/skills/landing` | "Generates a premium single-page HTML landing page with 3D CSS animations, GSAP scroll effects, and mouse-parallax depth. Forcing … |
+| `marketing/linkedin/skills/linkedin-analytics` | Use when someone wants to understand their own LinkedIn numbers — which posts worked, why reach dropped, whether a pattern is real… |
+| `marketing/linkedin/skills/linkedin-content` | Use when someone wants to write, edit, or lint a LinkedIn post — a story, how-to, opinion piece, carousel script, video script, or… |
+| `marketing/linkedin/skills/linkedin-engagement` | Use when someone wants to grow reach through comments, replies, groups, or outreach on LinkedIn — a commenting roster, a connectio… |
+| `marketing/linkedin/skills/linkedin-profile` | Use when someone wants their LinkedIn profile audited or rewritten — headline, About section, experience bullets, Featured, banner… |
+| `marketing/linkedin/skills/linkedin-skills` | Use when someone wants to grow an organic LinkedIn presence — a content strategy for a career change or consulting or thought lead… |
+| `marketing/linkedin/skills/linkedin-strategy` | Use when someone needs a LinkedIn plan rather than a post — content pillars, positioning for a career change or consulting or thou… |
+| `product-team/agile-product-owner/skills/agile-product-owner` | Agile product ownership for backlog management and sprint execution. Covers user story writing, acceptance criteria, sprint planni… |
+| `product-team/apple-hig-expert/skills/apple-hig-expert` | "Audits and designs iOS/macOS/watchOS/visionOS interfaces against the Apple Human Interface Guidelines, including the Liquid Glass… |
+| `product-team/code-to-prd/skills/code-to-prd` | "Reverse-engineer any codebase into a complete Product Requirements Document (PRD). Analyzes routes, components, state management,… |
+| `product-team/research-summarizer/skills/research-summarizer` | "Structured research summarization agent skill for non-dev users. Handles academic papers, web articles, reports, and documentatio… |
+| `product-team/skills/competitive-teardown` | "Analyzes competitor products and companies by synthesizing data from pricing pages, app store reviews, job postings, SEO signals,… |
+| `product-team/skills/experiment-designer` | Use when planning product experiments, writing testable hypotheses, estimating sample size, prioritizing tests, or interpreting A/… |
+| `product-team/skills/landing-page-generator` | "Generates high-converting landing pages as complete Next.js/React (TSX) components with Tailwind CSS. Creates hero sections, feat… |
+| `product-team/skills/product-analytics` | Use when defining product KPIs, building metric dashboards, running cohort or retention analysis, or interpreting feature adoption… |
+| `product-team/skills/product-discovery` | Use when validating product opportunities, mapping assumptions, planning discovery sprints, or testing problem-solution fit before… |
+| `product-team/skills/product-manager-toolkit` | Comprehensive toolkit for product managers including RICE prioritization, customer interview analysis, PRD templates, discovery fr… |
+| `product-team/skills/product-skills` | "Use when coordinating product work across the 12 bundled product sub-skills (RICE, OKRs, UX research, design tokens, competitive … |
+| `product-team/skills/product-strategist` | Strategic product leadership toolkit for Head of Product covering OKR cascade generation, quarterly planning, competitive landscap… |
+| `product-team/skills/roadmap-communicator` | Use when preparing roadmap narratives, release notes, changelogs, or stakeholder updates tailored for executives, engineering team… |
+| `product-team/skills/saas-scaffolder` | "Generates complete, production-ready SaaS project boilerplate including authentication, database schemas, billing integration, AP… |
+| `product-team/skills/spec-to-repo` | "Use when the user says 'build me an app', 'create a project from this spec', 'scaffold a new repo', 'generate a starter', 'turn t… |
+| `product-team/skills/ui-design-system` | UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive design calc… |
+| `product-team/skills/ux-researcher-designer` | UX research and design toolkit for Senior UX Designer/Researcher including data-driven persona generation, journey mapping, usabil… |
+| `productivity/andreessen/skills/andreessen` | "Marc Andreessen-mode decision and productivity skill. A blunt, market-first operator that pressure-tests ideas, ventures, feature… |
+| `productivity/capture/skills/capture` | "Captures and organizes chaotic brain dumps into a structured, actionable system with zero information loss. Use this skill whenev… |
+| `productivity/deep-work/skills/deep-work` | Use when someone wants to plan a deep work day, time-block their calendar or task list, budget or cut shallow work, protect focus … |
+| `productivity/email/skills/inbox-setup` | "One-time setup skill that builds a personalized inbox triage knowledge base via interactive interview. Interviews the user about … |
+| `productivity/email/skills/inbox-triage` | "Runs a full inbox triage using the knowledge base created by the 'inbox-setup' skill. Light-intake by design (most invocations sk… |
+| `productivity/fable-goal/skills/fable-goal` | Convert a rambling description of a desired outcome into one polished, autonomous /goal prompt ready to paste into a fresh session… |
+| `productivity/handoff/skills/handoff` | "Compact the current conversation into a handoff document for another agent to pick up. Save to a user-configured location (OS tem… |
+| `productivity/meetings/skills/meetings` | Use when someone wants to decide whether a meeting is worth calling, price a meeting in dollars, build a timeboxed agenda with des… |
+| `productivity/reflect/skills/reflect` | "Mid-conversation reflection skill that pauses execution and zooms out from detail-mode to honestly reassess direction, assumption… |
+| `productivity/roast/skills/roast` | Use when someone asks to roast an idea, pressure-test or stress-test an idea, validate a business idea, "convene the panel", get a… |
+| `productivity/swedish-mentor` | Mentor Swedish language learners by selecting YouTube video clips and podcast episodes by CEFR level and skill (listening, reading… |
+| `productivity/weekly-review/skills/weekly-review` | Use when someone wants to run a weekly review, close open loops, audit stalled projects and commitments, get their system back to … |
+| `project-management/skills/atlassian-admin` | Atlassian Administrator for managing and organizing Atlassian products (Jira, Confluence, Bitbucket, Trello), users, permissions, … |
+| `project-management/skills/atlassian-templates` | Atlassian Template and Files Creator/Modifier expert for creating, modifying, and managing Jira and Confluence templates, blueprin… |
+| `project-management/skills/confluence-expert` | Atlassian Confluence expert for creating and managing spaces, knowledge bases, and documentation. Configures space permissions and… |
+| `project-management/skills/jira-expert` | Atlassian Jira expert for creating and managing projects, planning, product discovery, JQL queries, workflows, custom fields, auto… |
+| `project-management/skills/meeting-analyzer` | Analyzes meeting transcripts and recordings to surface behavioral patterns, communication anti-patterns, and actionable coaching f… |
+| `project-management/skills/pm-skills` | "Use when coordinating project-delivery work across the 8 project-management sub-skills — sprint/velocity analytics, portfolio hea… |
+| `project-management/skills/scrum-master` | "Advanced Scrum Master skill for data-driven agile team analysis and coaching. Use when the user asks about sprint planning, veloc… |
+| `project-management/skills/senior-pm` | Senior Project Manager for enterprise software, SaaS, and digital transformation projects. Specializes in portfolio management, qu… |
+| `project-management/skills/team-communications` | Write internal company communications — 3P updates (Progress/Plans/Problems), company-wide newsletters, FAQ roundups, incident rep… |
+| `ra-qm-team/compliance-team-eu-ai-act/skills/eu-ai-act-specialist` | "EU AI Act (Regulation (EU) 2024/1689) operational compliance for compliance teams. Three Article-level decisions: (1) What's the … |
+| `ra-qm-team/compliance-team-iso42001/skills/iso42001-specialist` | "ISO/IEC 42001:2023 AI Management System (AIMS) specialist for compliance teams running internal audits. Three decisions: (1) Wher… |
+| `ra-qm-team/skills/agent-decision-receipts` | "Mint a tamper-evident, post-quantum-signed receipt for a consequential agent action (deploy, delete, pay, grant-access, model dec… |
+| `ra-qm-team/skills/capa-officer` | CAPA system management for medical device QMS. Covers root cause analysis, corrective action planning, effectiveness verification,… |
+| `ra-qm-team/skills/eu-ai-act-specialist` | "EU AI Act (Regulation (EU) 2024/1689) operational compliance for compliance teams. Three Article-level decisions: (1) What's the … |
+| `ra-qm-team/skills/fda-consultant-specialist` | FDA regulatory consultant for medical device companies. Provides 510(k)/PMA/De Novo pathway guidance, QMSR (21 CFR 820, which inco… |
+| `ra-qm-team/skills/gdpr-dsgvo-expert` | GDPR and German DSGVO compliance automation. Scans codebases for privacy risks, generates DPIA documentation, tracks data subject … |
+| `ra-qm-team/skills/information-security-manager-iso27001` | ISO 27001 ISMS implementation and cybersecurity governance for HealthTech and MedTech companies. Use when designing an ISMS, runni… |
+| `ra-qm-team/skills/isms-audit-expert` | Information Security Management System (ISMS) audit expert for ISO 27001 compliance verification, security control assessment, and… |
+| `ra-qm-team/skills/iso42001-specialist` | "ISO/IEC 42001:2023 AI Management System (AIMS) specialist for compliance teams running internal audits. Three decisions: (1) Wher… |
+| `ra-qm-team/skills/mdr-745-specialist` | EU MDR 2017/745 compliance specialist for medical device classification, technical documentation, clinical evidence, and post-mark… |
+| `ra-qm-team/skills/qms-audit-expert` | ISO 13485 internal audit expertise for medical device QMS. Covers audit planning, execution, nonconformity classification, and CAP… |
+| `ra-qm-team/skills/quality-documentation-manager` | Document control system management for medical device QMS. Covers document numbering, version control, change management, and 21 C… |
+| `ra-qm-team/skills/quality-manager-qmr` | Senior Quality Manager Responsible Person (QMR) for HealthTech and MedTech companies. Provides quality system governance, manageme… |
+| `ra-qm-team/skills/quality-manager-qms-iso13485` | ISO 13485 Quality Management System implementation and maintenance for medical device organizations. Provides QMS design, document… |
+| `ra-qm-team/skills/ra-qm-skills` | "Router/index for the 15 regulatory & quality-management skills bundled in this plugin (ISO 13485 QMS, EU MDR 2017/745, FDA submis… |
+| `ra-qm-team/skills/regulatory-affairs-head` | Senior Regulatory Affairs Manager for HealthTech and MedTech companies. Prepares FDA 510(k), De Novo, and PMA submission packages;… |
+| `ra-qm-team/skills/risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evalua… |
+| `ra-qm-team/skills/soc2-compliance` | "Use when the user asks to prepare for SOC 2 audits, map Trust Service Criteria, build control matrices, collect audit evidence, p… |
+| `research-ops/skills/clinical-research` | Use when designing a prospective clinical study before submission — selecting and classifying endpoints (primary / key-secondary /… |
+| `research-ops/skills/market-research` | Use when doing upstream market-research methodology — sizing a market as TAM/SAM/SOM computed BOTH top-down and bottoms-up (never … |
+| `research-ops/skills/product-research` | Use when planning and synthesizing product/user research as a method-and-repository discipline — selecting the right method for th… |
+| `research-ops/skills/research-finance` | Use when managing the money for an internal R&D program or portfolio — building a multi-period program budget with the F&A (indire… |
+| `research-ops/skills/research-ops-skills` | Use when planning, funding, scoping, or synthesizing enterprise research across workstreams — clinical study design, R&D program f… |
+| `research/deep-research/skills/deep-research` | "Run a disciplined, multi-source research investigation for a high-stakes question or decision — fan-out web search across many ch… |
+| `research/deepread` | "Use when the user asks to deeply read a book, article, PDF, or document set; extract claims and evidence; build a knowledge map; … |
+| `research/dossier/skills/dossier` | "Decision-grade entity research skill — produces a hypothesis-tested dossier on a specific company, person, nonprofit, or governme… |
+| `research/grants/skills/grants` | "NIH grant research skill for clinical researchers. Grill-me intake (research idea + career stage + preliminary data + environment… |
+| `research/litreview/skills/litreview` | "Academic literature orientation skill that searches papers via free keyless APIs (PubMed E-utilities + OpenAlex) by default — wit… |
+| `research/notebooklm/skills/notebooklm` | "Browser automation skill for controlling Google's NotebookLM. Use when the user wants anything done in NotebookLM (e.g., 'open No… |
+| `research/patent/skills/patent` | "Patent prior-art and landscape intelligence skill — not generic patent help. Commits to one of five sub-use-cases via forcing int… |
+| `research/pulse/skills/pulse` | "Multi-source recency research skill that takes the pulse of any topic across Reddit, Hacker News, the open web, and optionally X/… |
+| `research/research/skills/research` | Default entry point for any research request — a hybrid router that classifies the question deterministically and either delegates… |
+| `research/syllabus/skills/syllabus` | "Generates a curated supplementary reading list from any course syllabus using Consensus academic search. Grill-me intake (syllabu… |
 
 ---
 
-## design（112）
+## design（113）
 
 | 技能 | 用途 |
 |------|------|
@@ -432,6 +467,7 @@
 | `design-brief` | (无描述) |
 | `design-system` | Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variabl… |
 | `diagram-design` | Create branded architecture, architecture delta, IT current-state, flowchart, sequence, state machine, ER/data model, timeline, sw… |
+| `diagram-design/diagram-design-main/skills/diagram-design` | Create branded architecture, architecture delta, IT current-state, flowchart, sequence, state machine, ER/data model, timeline, sw… |
 | `digits-fintech-swiss-template` | (无描述) |
 | `doc-kami-parchment` | "Warm parchment canvas (#f5f4ed), monochrome ink-blue accent (#1B365D), one serif family, and editorial-grade typography." |
 | `ecommerce-image-workflow` | (无描述) |
@@ -516,7 +552,7 @@
 
 ---
 
-## browser-act（102）
+## browser-act（103）
 
 | 技能 | 用途 |
 |------|------|
@@ -588,10 +624,11 @@
 | `solutions/social-listening/instagram-profile-meta` | "Fetches Instagram user profile metadata including bio, follower count, following count, post count, verification status and other… |
 | `solutions/social-listening/instagram-profile-posts` | "Scrapes posts from an Instagram user's profile feed including captions, media URLs, like/comment counts, timestamps and location … |
 | `solutions/social-listening/reddit-competitor-analysis-api-skill` | "This skill helps users extract structured data from Reddit posts and comments via BrowserAct API. Agent should proactively apply … |
-| `solutions/social-listening/reddit-warmup` | (auto) skill without frontmatter |
+| `solutions/social-listening/reddit-warmup` | (无描述) |
 | `solutions/social-listening/threads-keyword-search` | "Searches Threads posts by keyword or hashtag and returns matching posts with engagement metrics, extracted from SSR-embedded JSON… |
 | `solutions/social-listening/threads-profile-search` | "Discovers Threads user accounts by keyword, extracting profile data including username, display name, verification status, biogra… |
 | `solutions/social-listening/threads-user-posts` | "Fetches public posts from a Threads user's profile page, extracting post text, engagement metrics, and media info from SSR-embedd… |
+| `solutions/social-listening/trustpilot-company-info` | "Trustpilot company profile lookup on trustpilot.com — input a company domain (e.g. apple.com, shopify.com, shopwagandtail.com) an… |
 | `solutions/social-listening/trustpilot-reviews` | "Trustpilot customer reviews scraper for any company listed on trustpilot.com — given a company domain (e.g. shopify.com, apple.co… |
 | `solutions/social-listening/wechat-article-search-api-skill` | "This skill helps users extract full article contents from WeChat using the BrowserAct API. The Agent should proactively apply thi… |
 | `solutions/social-listening/x-dm-auto-chat` | "X (Twitter) DM automated chat end-to-end Skill: scan DM inbox to identify pending-reply conversations, read message history, gene… |
@@ -726,91 +763,91 @@
 
 | 技能 | 用途 |
 |------|------|
-| `address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
-| `aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
-| `agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
-| `algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
-| `atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
-| `audit-augmentation` | > |
-| `audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
-| `audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
-| `burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
-| `c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
-| `cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
-| `cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
-| `chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
-| `code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
-| `code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
-| `codeql` | >- |
-| `constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
-| `constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
-| `cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
-| `coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
-| `crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
-| `devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
-| `diagramming-code` | > |
-| `differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
-| `dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
-| `dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
-| `entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
-| `firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
-| `fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
-| `fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
-| `fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
-| `genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
-| `gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
-| `github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
-| `goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
-| `graph-evolution` | > |
-| `guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
-| `harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
-| `interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
-| `let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
-| `libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
-| `libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
-| `mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
-| `modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
-| `modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
-| `mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
-| `open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
-| `ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
-| `panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
-| `post-patch-validation` | > |
-| `pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
-| `property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
-| `review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
-| `review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
-| `rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
-| `ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
-| `sarif-parsing` | >- |
-| `second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
-| `secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
-| `semgrep` | >- |
-| `semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
-| `semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
-| `sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
-| `skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
-| `slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
-| `solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
-| `spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
-| `substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
-| `supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
-| `testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
-| `token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
-| `ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
-| `trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
-| `trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
-| `trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
-| `trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
-| `trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
-| `trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
-| `variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
-| `vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
-| `vulnerability-triage-brocards` | >- |
-| `writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
-| `wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
-| `yara-rule-authoring` | > |
-| `zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
+| `agentic-actions-auditor/skills/agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
+| `audit-context-building/skills/audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
+| `building-secure-contracts/skills/algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
+| `building-secure-contracts/skills/audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
+| `building-secure-contracts/skills/cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
+| `building-secure-contracts/skills/code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
+| `building-secure-contracts/skills/cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
+| `building-secure-contracts/skills/guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
+| `building-secure-contracts/skills/secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
+| `building-secure-contracts/skills/solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
+| `building-secure-contracts/skills/substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
+| `building-secure-contracts/skills/token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
+| `building-secure-contracts/skills/ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
+| `burpsuite-project-parser/skills/burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
+| `c-review/skills/c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
+| `claude-in-chrome-troubleshooting/skills/chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
+| `code-improver/skills/code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
+| `code-improver/skills/pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
+| `code-improver/skills/skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
+| `code-improver/tests/fixtures/pr-review-toolkit/skills/review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
+| `code-improver/tests/fixtures/review-panel/skills/panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
+| `constant-time-analysis/skills/constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
+| `culture-index/skills/interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
+| `devcontainer-setup/skills/devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
+| `differential-review/skills/differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
+| `dimensional-analysis/skills/dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
+| `dwarf-expert/skills/dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
+| `entry-point-analyzer/skills/entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
+| `firebase-apk-scanner/skills/firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
+| `fp-check/skills/fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
+| `gh-cli/skills/gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
+| `github-triage/skills/github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
+| `goal-prompt/skills/goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
+| `let-fate-decide/skills/let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
+| `modern-cpp/skills/modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
+| `modern-python/skills/modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
+| `mutation-testing/skills/mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
+| `open-sourcing/skills/open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
+| `post-patch-validation/skills/post-patch-validation` | > |
+| `property-based-testing/skills/property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
+| `review-walkthrough/skills/review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
+| `rust-review/skills/rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
+| `second-opinion/skills/second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
+| `semgrep-rule-creator/skills/semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
+| `semgrep-rule-variant-creator/skills/semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
+| `sharp-edges/skills/sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
+| `spec-to-code-compliance/skills/spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
+| `static-analysis/skills/codeql` | >- |
+| `static-analysis/skills/sarif-parsing` | >- |
+| `static-analysis/skills/semgrep` | >- |
+| `supply-chain-risk-auditor/skills/supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
+| `testing-handbook-skills/skills/address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
+| `testing-handbook-skills/skills/aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
+| `testing-handbook-skills/skills/atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
+| `testing-handbook-skills/skills/cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
+| `testing-handbook-skills/skills/constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
+| `testing-handbook-skills/skills/coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
+| `testing-handbook-skills/skills/fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
+| `testing-handbook-skills/skills/fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
+| `testing-handbook-skills/skills/harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
+| `testing-handbook-skills/skills/libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
+| `testing-handbook-skills/skills/libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
+| `testing-handbook-skills/skills/ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
+| `testing-handbook-skills/skills/ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
+| `testing-handbook-skills/skills/testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
+| `testing-handbook-skills/skills/wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
+| `trailmark/skills/audit-augmentation` | > |
+| `trailmark/skills/crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
+| `trailmark/skills/diagramming-code` | > |
+| `trailmark/skills/genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
+| `trailmark/skills/graph-evolution` | > |
+| `trailmark/skills/mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
+| `trailmark/skills/slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
+| `trailmark/skills/trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
+| `trailmark/skills/trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
+| `trailmark/skills/trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
+| `trailmark/skills/trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
+| `trailmark/skills/trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
+| `trailmark/skills/trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
+| `trailmark/skills/vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
+| `variant-analysis/skills/variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
+| `vulnerability-triage-brocards/skills/vulnerability-triage-brocards` | >- |
+| `writing-lean-proofs/skills/writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
+| `yara-authoring/skills/yara-rule-authoring` | > |
+| `zeroize-audit/skills/zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
 
 ---
 
@@ -889,6 +926,76 @@
 
 ---
 
+## gstack（63）
+
+| 技能 | 用途 |
+|------|------|
+| `autoplan` | Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisi… |
+| `benchmark` | Performance regression detection. (gstack) |
+| `benchmark-models` | Cross-model benchmark for gstack skills. (gstack) |
+| `browse` | "Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. (gstack)" |
+| `browser-skills/hackernews-frontpage` | Scrape the Hacker News front page (titles, points, comment counts). |
+| `canary` | Post-deploy canary monitoring. (gstack) |
+| `careful` | Safety guardrails for destructive commands. (gstack) |
+| `codex` | OpenAI Codex CLI wrapper — three modes. (gstack) |
+| `context-restore` | Restore working context saved earlier by /context-save. (gstack) |
+| `context-save` | Save working context. (gstack) |
+| `cso` | "Security audit: supported static findings; qualified profiles add reproduction and repair candidates. (gstack)" |
+| `design-consultation` | "Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography… |
+| `design-html` | "Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack)" |
+| `design-review` | "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then… |
+| `design-shotgun` | "Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. (gstack)… |
+| `deslop-shared-libs` | Find worthwhile shared-code extractions in recent work. (gstack) |
+| `devex-review` | Live developer experience audit. (gstack) |
+| `diagram` | "Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on … |
+| `document-generate` | Generate missing documentation from scratch for a feature, module, or entire project. (gstack) |
+| `document-release` | Release documentation audit. (gstack) |
+| `freeze` | Restrict file edits to a specific directory for the session. (gstack) |
+| `gstack` | Router for the gstack skill suite. (gstack) |
+| `gstack-upgrade` | Upgrade gstack to the latest version. |
+| `guard` | "Full safety mode: destructive command warnings + directory-scoped edits. (gstack)" |
+| `health` | Code quality dashboard. (gstack) |
+| `investigate` | Systematic debugging with root cause investigation. (gstack) |
+| `ios-clean` | "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. (gstack)" |
+| `ios-design-review` | Visual design audit for iOS apps on real hardware. (gstack) |
+| `ios-fix` | Autonomous iOS bug fixer. (gstack) |
+| `ios-qa` | Live-device iOS QA for SwiftUI apps. (gstack) |
+| `ios-sync` | Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack) |
+| `land-and-deploy` | Land and deploy workflow. (gstack) |
+| `landing-report` | Read-only queue dashboard for workspace-aware ship. (gstack) |
+| `learn` | Manage project learnings. |
+| `make-pdf` | Turn any markdown file into a publication-quality PDF. (gstack) |
+| `office-hours` | YC Office Hours — two modes. (gstack) |
+| `open-gstack-browser` | Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. |
+| `openclaw/skills/gstack-openclaw-ceo-review` | Use when asked to review a plan, challenge a proposal, run a CEO review, poke holes in an approach, think bigger about scope, or d… |
+| `openclaw/skills/gstack-openclaw-investigate` | Use when asked to debug, fix a bug, investigate an error, or do root cause analysis, and when users report errors, stack traces, u… |
+| `openclaw/skills/gstack-openclaw-office-hours` | Use when asked to brainstorm, evaluate whether an idea is worth building, run office hours, or think through a new product idea or… |
+| `openclaw/skills/gstack-openclaw-retro` | "Weekly engineering retrospective. Analyzes commit history, work patterns, and code quality metrics with persistent history and tr… |
+| `pair-agent` | Pair a remote AI agent with your browser. (gstack) |
+| `plan-ceo-review` | CEO/founder-mode plan review. (gstack) |
+| `plan-design-review` | Designer's eye plan review — interactive, like CEO and Eng review. (gstack) |
+| `plan-devex-review` | Interactive developer experience plan review. (gstack) |
+| `plan-eng-review` | Eng manager-mode plan review. (gstack) |
+| `plan-tune` | "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). (gstack)" |
+| `qa` | Fix browser/API/CLI/job/worker/webhook bugs. (gstack) |
+| `qa-only` | Report browser/API/CLI/job/worker/webhook bugs. (gstack) |
+| `retro` | Weekly engineering retrospective. (gstack) |
+| `review` | Pre-landing PR review. (gstack) |
+| `scrape` | Pull data from a web page through the Aside browser — your real, already signed-in sessions. (gstack) |
+| `setup-browser-cookies` | Import cookies from your real Chromium browser into the headless browse session. (gstack) |
+| `setup-deploy` | Configure deployment settings for /land-and-deploy. |
+| `setup-gbrain` | "Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remo… |
+| `ship` | "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. (gsta… |
+| `skillify` | Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack) |
+| `spec` | Turn vague intent into a precise, executable spec in five phases. (gstack) |
+| `sync-gbrain` | Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. (gstack) |
+| `test-audit` | Find low-value or duplicate tests and the test-only code they keep alive. (gstack) |
+| `test/fixtures/context-bill/tree-a/alpha` | Fixture dispatcher with a mode table and forced-read references. |
+| `test/fixtures/context-bill/tree-a/beta` | Clean fixture tool skill with no forced reads and no mode table. |
+| `unfreeze` | Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack) |
+
+---
+
 ## marketing（58）
 
 | 技能 | 用途 |
@@ -954,65 +1061,48 @@
 
 ---
 
-## gstack（55）
+## mattpocock（38）
 
 | 技能 | 用途 |
 |------|------|
-| `autoplan` | Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisi… |
-| `benchmark` | Performance regression detection. (gstack) |
-| `benchmark-models` | Cross-model benchmark for gstack skills. (gstack) |
-| `browse` | "Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. (gstack)" |
-| `canary` | Post-deploy canary monitoring. (gstack) |
-| `careful` | Safety guardrails for destructive commands. (gstack) |
-| `codex` | OpenAI Codex CLI wrapper — three modes. (gstack) |
-| `context-restore` | Restore working context saved earlier by /context-save. (gstack) |
-| `context-save` | Save working context. (gstack) |
-| `cso` | "Security audit: supported static findings; qualified profiles add reproduction and repair candidates. (gstack)" |
-| `design-consultation` | "Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography… |
-| `design-html` | "Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack)" |
-| `design-review` | "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then… |
-| `design-shotgun` | "Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. (gstack)… |
-| `deslop-shared-libs` | Find worthwhile shared-code extractions in recent work. (gstack) |
-| `devex-review` | Live developer experience audit. (gstack) |
-| `diagram` | "Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on … |
-| `document-generate` | Generate missing documentation from scratch for a feature, module, or entire project. (gstack) |
-| `document-release` | Release documentation audit. (gstack) |
-| `freeze` | Restrict file edits to a specific directory for the session. (gstack) |
-| `gstack-upgrade` | Upgrade gstack to the latest version. |
-| `guard` | "Full safety mode: destructive command warnings + directory-scoped edits. (gstack)" |
-| `health` | Code quality dashboard. (gstack) |
-| `investigate` | Systematic debugging with root cause investigation. (gstack) |
-| `ios-clean` | "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. (gstack)" |
-| `ios-design-review` | Visual design audit for iOS apps on real hardware. (gstack) |
-| `ios-fix` | Autonomous iOS bug fixer. (gstack) |
-| `ios-qa` | Live-device iOS QA for SwiftUI apps. (gstack) |
-| `ios-sync` | Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack) |
-| `land-and-deploy` | Land and deploy workflow. (gstack) |
-| `landing-report` | Read-only queue dashboard for workspace-aware ship. (gstack) |
-| `learn` | Manage project learnings. |
-| `make-pdf` | Turn any markdown file into a publication-quality PDF. (gstack) |
-| `office-hours` | YC Office Hours — two modes. (gstack) |
-| `open-gstack-browser` | Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. |
-| `pair-agent` | Pair a remote AI agent with your browser. (gstack) |
-| `plan-ceo-review` | CEO/founder-mode plan review. (gstack) |
-| `plan-design-review` | Designer's eye plan review — interactive, like CEO and Eng review. (gstack) |
-| `plan-devex-review` | Interactive developer experience plan review. (gstack) |
-| `plan-eng-review` | Eng manager-mode plan review. (gstack) |
-| `plan-tune` | "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). (gstack)" |
-| `qa` | Fix browser/API/CLI/job/worker/webhook bugs. (gstack) |
-| `qa-only` | Report browser/API/CLI/job/worker/webhook bugs. (gstack) |
-| `retro` | Weekly engineering retrospective. (gstack) |
-| `review` | Pre-landing PR review. (gstack) |
-| `scrape` | Pull data from a web page through the Aside browser — your real, already signed-in sessions. (gstack) |
-| `setup-browser-cookies` | Import cookies from your real Chromium browser into the headless browse session. (gstack) |
-| `setup-deploy` | Configure deployment settings for /land-and-deploy. |
-| `setup-gbrain` | "Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remo… |
-| `ship` | "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. (gsta… |
-| `skillify` | Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack) |
-| `spec` | Turn vague intent into a precise, executable spec in five phases. (gstack) |
-| `sync-gbrain` | Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. (gstack) |
-| `test-audit` | Find low-value or duplicate tests and the test-only code they keep alive. (gstack) |
-| `unfreeze` | Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack) |
+| `skills/engineering/ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
+| `skills/engineering/code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
+| `skills/engineering/codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
+| `skills/engineering/diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
+| `skills/engineering/domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
+| `skills/engineering/grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
+| `skills/engineering/implement` | "Implement a piece of work based on a spec or set of tickets." |
+| `skills/engineering/implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
+| `skills/engineering/improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
+| `skills/engineering/pr` | "Use when writing a PR body." |
+| `skills/engineering/prototype` | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic fe… |
+| `skills/engineering/research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
+| `skills/engineering/retro` | "Conduct a retrospective on a coding session." |
+| `skills/engineering/setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
+| `skills/engineering/tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
+| `skills/engineering/to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
+| `skills/engineering/to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
+| `skills/engineering/triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
+| `skills/engineering/wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
+| `skills/engineering/wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
+| `skills/in-progress/chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
+| `skills/in-progress/claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
+| `skills/in-progress/loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
+| `skills/in-progress/setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
+| `skills/in-progress/writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
+| `skills/in-progress/writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
+| `skills/in-progress/writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
+| `skills/misc/git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
+| `skills/misc/migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
+| `skills/misc/scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
+| `skills/misc/setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
+| `skills/productivity/grill-me` | A relentless interview to sharpen a plan or design. |
+| `skills/productivity/grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
+| `skills/productivity/handoff` | Compact the current conversation into a handoff document for another agent to pick up. |
+| `skills/productivity/teach` | Teach the user a new skill or concept, within this workspace. |
+| `skills/productivity/to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
+| `skills/productivity/wait-what` | "Stop. That last message did not land: re-pitch it." |
+| `skills/productivity/writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
 
 ---
 
@@ -1056,48 +1146,6 @@
 | `video-hyperframes` | "Hyperframes / Remotion-compatible continuous frame animation with autoplay support." |
 | `youtube-clipper` | (无描述) |
 | `youtube-content` | "YouTube transcripts to summaries, threads, blogs." |
-
----
-
-## mattpocock（35）
-
-| 技能 | 用途 |
-|------|------|
-| `ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
-| `chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
-| `claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
-| `code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
-| `codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
-| `diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
-| `domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
-| `git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
-| `grill-me` | A relentless interview to sharpen a plan or design. |
-| `grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
-| `grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
-| `implement` | "Implement a piece of work based on a spec or set of tickets." |
-| `implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
-| `improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
-| `loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
-| `migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
-| `pr` | "Use when writing a PR body." |
-| `research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
-| `scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
-| `setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
-| `setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
-| `setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
-| `tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
-| `teach` | Teach the user a new skill or concept, within this workspace. |
-| `to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
-| `to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
-| `to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
-| `triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
-| `wait-what` | "Stop. That last message did not land: re-pitch it." |
-| `wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
-| `wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
-| `writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
-| `writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
-| `writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
-| `writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
 
 ---
 
@@ -1211,17 +1259,17 @@
 
 | 技能 | 用途 |
 |------|------|
-| `jev-browser-use` | Use when driving a web page in a browser — clicking, typing, navigating, logged-in or JS-rendered pages. Jev picks each step from … |
-| `jev-compaction` | Use when a transcript has to be cut to a fixed size and you must choose which turns go. Jev marks each turn keep, summarize or dro… |
-| `jev-computer-use` | Use when driving a desktop GUI through a computer-use driver — windows, menus, native apps, OS dialogs. You build a table of safe … |
-| `jev-frontier-work` | Use when a task is already judged hard — pick which paid frontier seat takes it, then keep Jev watching the delegated run so it in… |
-| `jev-mailbox` | Use on a mailbox export to sort mail into needs reply, updates, promotional, sales and spam — which messages are addressed to the … |
-| `jev-memory` | Use on passages a search just returned (memory, vault, session history, wiki, web) before reading them in. Jev ranks them, drops t… |
-| `jev-model-routing` | Use to pick the cheapest good-enough model or effort for a turn or a delegated task (lanes small to escalate), to decide continue/… |
-| `jev-search` | Use after any web or API search, before opening results or spending another round. Jev picks which results to read, whether the ev… |
-| `jev-setup` | Use when Jev is not working yet, a Jev tool reports no_key or auth_failed, or the person asks to connect or fix Jev. Gets their Ty… |
-| `jev-skill-select` | Use when unsure which of many installed skills applies to a request, if any, or when asked to make skill loading cheaper or more a… |
-| `jev-social-research` | Use when researching social posts, creators, reactions, or trends. Jev ranks discovery cards and decides when opened, source-linke… |
+| `skills/jev-browser-use` | Use when driving a web page in a browser — clicking, typing, navigating, logged-in or JS-rendered pages. Jev picks each step from … |
+| `skills/jev-compaction` | Use when a transcript has to be cut to a fixed size and you must choose which turns go. Jev marks each turn keep, summarize or dro… |
+| `skills/jev-computer-use` | Use when driving a desktop GUI through a computer-use driver — windows, menus, native apps, OS dialogs. You build a table of safe … |
+| `skills/jev-frontier-work` | Use when a task is already judged hard — pick which paid frontier seat takes it, then keep Jev watching the delegated run so it in… |
+| `skills/jev-mailbox` | Use on a mailbox export to sort mail into needs reply, updates, promotional, sales and spam — which messages are addressed to the … |
+| `skills/jev-memory` | Use on passages a search just returned (memory, vault, session history, wiki, web) before reading them in. Jev ranks them, drops t… |
+| `skills/jev-model-routing` | Use to pick the cheapest good-enough model or effort for a turn or a delegated task (lanes small to escalate), to decide continue/… |
+| `skills/jev-search` | Use after any web or API search, before opening results or spending another round. Jev picks which results to read, whether the ev… |
+| `skills/jev-setup` | Use when Jev is not working yet, a Jev tool reports no_key or auth_failed, or the person asks to connect or fix Jev. Gets their Ty… |
+| `skills/jev-skill-select` | Use when unsure which of many installed skills applies to a request, if any, or when asked to make skill loading cheaper or more a… |
+| `skills/jev-social-research` | Use when researching social posts, creators, reactions, or trends. Jev ranks discovery cards and decides when opened, source-linke… |
 
 ---
 
