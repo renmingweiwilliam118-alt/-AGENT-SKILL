@@ -1,424 +1,427 @@
 {
- "autonomous-ai-agents/claude-code": {
-  "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys"
- },
- "autonomous-ai-agents/codex": {
-  "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
- },
- "autonomous-ai-agents/opencode": {
-  "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-asin-lookup-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-best-selling-products-finder-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-buy-box-monitor-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-competitor-analyzer": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-listing-competitor-analysis-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-product-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-product-search-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\ecommerce\\amazon-reviews-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\business-contact-social-links-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\github-project-contributor-finder-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\google-maps-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\google-maps-reviews-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\google-maps-search-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\industry-key-contact-radar-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\lead-generation\\social-media-finder-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\search-research\\google-image-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\search-research\\google-news-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\search-research\\web-research-assistant": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\search-research\\web-search-scraper-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\social-listening\\reddit-competitor-analysis-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\social-listening\\wechat-article-search-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\social-listening\\zhihu-search-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-batch-transcript-extractor-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-channel-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-comments-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-influencer-finder-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-search-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-transcript-analysis-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-transcript-extractor-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "browser-act/solutions\\video-platforms\\youtube-video-api-skill": {
-  "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "claude-mem/agent-cost-report": {
-  "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "design/design": {
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "MUAPI_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "design/hatch-pet": {
-  "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
- },
- "design/taste-skill": {
-  "SHOPIFY_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/autoplan": {
-  "CODEX_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/benchmark": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/benchmark-models": {
-  "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/browse": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/canary": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/codex": {
-  "CODEX_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys",
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/context-restore": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/context-save": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/design-consultation": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/design-html": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/design-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/design-shotgun": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/devex-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/diagram": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/document-generate": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/document-release": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/health": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/investigate": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ios-clean": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ios-design-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ios-fix": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ios-qa": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ios-sync": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/land-and-deploy": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/landing-report": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/learn": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/make-pdf": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/office-hours": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/open-gstack-browser": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/pair-agent": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
-  "YOUR_TOKEN": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/plan-ceo-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/plan-design-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/plan-devex-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/plan-eng-review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/plan-tune": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/qa": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/qa-only": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/retro": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/review": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/scrape": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/setup-browser-cookies": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/setup-deploy": {
-  "RENDER_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/setup-gbrain": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
-  "SUPABASE_ACCESS_TOKEN": "厂商官方 API 平台注册后生成 key",
-  "YOUR_TOKEN": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/ship": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/skillify": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/spec": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/sync-gbrain": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
-  "VOYAGE_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "gstack/test-audit": {
-  "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "media/gif-search": {
-  "TENOR_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/acestep": {
-  "RUNPOD_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/agents": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/ai-video-gen": {
-  "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
-  "KLING_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/atlas-cloud": {
-  "ATLASCLOUD_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "ATLAS_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/avatar-video": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/bfl-api": {
-  "BFL_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "YOUR_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/create-video": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/dashscope": {
-  "DASHSCOPE_API_KEY": "阿里云百炼/DashScope — bailian.console.aliyun.com → API-KEY 管理"
- },
- "openmontage/elevenlabs": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/faceswap": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/gemini-omni": {
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
- },
- "openmontage/grok-media": {
-  "XAI_API_KEY": "xAI — console.x.ai → API Keys"
- },
- "openmontage/heygen": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/hyperframes-media": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys",
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
-  "HYPERFRAMES_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/kling-official": {
-  "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
-  "KLING_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/lyria": {
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
- },
- "openmontage/media-use": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/motion-graphics": {
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
- },
- "openmontage/music": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/seedance-2-0": {
-  "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
-  "HIGGSFIELD_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "RUNWAY_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "openmontage/setup-api-key": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/sound-effects": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/speech-to-text": {
-  "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
- },
- "openmontage/text-to-speech": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "openmontage/video-translate": {
-  "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
- },
- "productivity/airtable": {
-  "AIRTABLE_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "productivity/notion": {
-  "NOTION_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "productivity/teams-meeting-pipeline": {
-  "MSGRAPH_CLIENT_ID": "厂商官方 API 平台注册后生成 key"
- },
- "research/last30days": {
-  "AUTH_TOKEN": "厂商官方 API 平台注册后生成 key",
-  "BRAVE_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "EXA_API_KEY": "Exa — exa.ai → API Keys",
-  "LAST30DAYS_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys",
-  "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "PARALLEL_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "PERPLEXITY_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "SCRAPECREATORS_API_KEY": "厂商官方 API 平台注册后生成 key",
-  "SERPER_API_KEY": "Serper.dev — serper.dev → API Keys（Google 搜索代理）",
-  "TRUTHSOCIAL_TOKEN": "厂商官方 API 平台注册后生成 key",
-  "XAI_API_KEY": "xAI — console.x.ai → API Keys",
-  "XQUIK_API_KEY": "厂商官方 API 平台注册后生成 key"
- },
- "social-media/xurl": {
-  "YOUR_CLIENT_ID": "厂商官方 API 平台注册后生成 key"
- },
- "software-development/graphify": {
-  "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys",
-  "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
-  "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
-  "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
- },
- "web/agent-reach": {
-  "TWITTER_AUTH_TOKEN": "厂商官方 API 平台注册后生成 key"
- },
- "web/blocked-page-recovery": {
-  "JINA_API_KEY": "Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名）"
- },
- "web/firecrawl": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-build": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-build-interact": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-build-onboarding": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-build-scrape": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-build-search": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- },
- "web/firecrawl-developer-index": {
-  "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
- }
+  "autonomous-ai-agents/claude-code": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys"
+  },
+  "autonomous-ai-agents/codex": {
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
+  },
+  "autonomous-ai-agents/opencode": {
+    "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-asin-lookup-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-best-selling-products-finder-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-buy-box-monitor-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-competitor-analyzer": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-listing-competitor-analysis-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-product-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-product-search-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\ecommerce\\amazon-reviews-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\business-contact-social-links-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\github-project-contributor-finder-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\google-maps-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\google-maps-reviews-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\google-maps-search-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\industry-key-contact-radar-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\lead-generation\\social-media-finder-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\search-research\\google-image-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\search-research\\google-news-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\search-research\\web-research-assistant": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\search-research\\web-search-scraper-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\social-listening\\reddit-competitor-analysis-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\social-listening\\wechat-article-search-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\social-listening\\zhihu-search-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-batch-transcript-extractor-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-channel-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-comments-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-influencer-finder-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-search-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-transcript-analysis-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-transcript-extractor-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "browser-act/solutions\\video-platforms\\youtube-video-api-skill": {
+    "BROWSERACT_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "claude-mem/agent-cost-report": {
+    "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "design/design": {
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "MUAPI_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "design/hatch-pet": {
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
+  },
+  "design/taste-skill": {
+    "SHOPIFY_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/autoplan": {
+    "CODEX_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/benchmark": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/benchmark-models": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/browse": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/canary": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/codex": {
+    "CODEX_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys",
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/context-restore": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/context-save": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/design-consultation": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/design-html": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/design-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/design-shotgun": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/devex-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/diagram": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/document-generate": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/document-release": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/health": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/investigate": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ios-clean": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ios-design-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ios-fix": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ios-qa": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ios-sync": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/land-and-deploy": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/landing-report": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/learn": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/make-pdf": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/office-hours": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/open-gstack-browser": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/pair-agent": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
+    "YOUR_TOKEN": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/plan-ceo-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/plan-design-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/plan-devex-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/plan-eng-review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/plan-tune": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/qa": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/qa-only": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/retro": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/review": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/scrape": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/setup-browser-cookies": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/setup-deploy": {
+    "RENDER_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/setup-gbrain": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
+    "SUPABASE_ACCESS_TOKEN": "厂商官方 API 平台注册后生成 key",
+    "YOUR_TOKEN": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/ship": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/skillify": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/spec": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/sync-gbrain": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key",
+    "VOYAGE_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "gstack/test-audit": {
+    "SHORT_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "media/gif-search": {
+    "TENOR_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/acestep": {
+    "RUNPOD_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/agents": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/ai-video-gen": {
+    "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
+    "KLING_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/atlas-cloud": {
+    "ATLASCLOUD_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "ATLAS_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/avatar-video": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/bfl-api": {
+    "BFL_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "YOUR_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/create-video": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/dashscope": {
+    "DASHSCOPE_API_KEY": "阿里云百炼/DashScope — bailian.console.aliyun.com → API-KEY 管理"
+  },
+  "openmontage/elevenlabs": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/faceswap": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/gemini-omni": {
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
+  },
+  "openmontage/grok-media": {
+    "XAI_API_KEY": "xAI — console.x.ai → API Keys"
+  },
+  "openmontage/heygen": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/hyperframes-media": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys",
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
+    "HYPERFRAMES_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/kling-official": {
+    "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
+    "KLING_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/lyria": {
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
+  },
+  "openmontage/media-use": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/motion-graphics": {
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据"
+  },
+  "openmontage/music": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/seedance-2-0": {
+    "FAL_KEY": "fal.ai — fal.ai → Dashboards → Keys",
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置",
+    "HIGGSFIELD_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "RUNWAY_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "openmontage/setup-api-key": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/sound-effects": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/speech-to-text": {
+    "ELEVENLABS_API_KEY": "ElevenLabs — elevenlabs.io → Profile → API Keys"
+  },
+  "openmontage/text-to-speech": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "openmontage/video-translate": {
+    "HEYGEN_API_KEY": "HeyGen — platform.heygen.com → API 设置"
+  },
+  "productivity/airtable": {
+    "AIRTABLE_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "productivity/notion": {
+    "NOTION_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "productivity/teams-meeting-pipeline": {
+    "MSGRAPH_CLIENT_ID": "厂商官方 API 平台注册后生成 key"
+  },
+  "research/last30days": {
+    "AUTH_TOKEN": "厂商官方 API 平台注册后生成 key",
+    "BRAVE_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "EXA_API_KEY": "Exa — exa.ai → API Keys",
+    "LAST30DAYS_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys",
+    "OPENROUTER_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "PARALLEL_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "PERPLEXITY_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "SCRAPECREATORS_API_KEY": "厂商官方 API 平台注册后生成 key",
+    "SERPER_API_KEY": "Serper.dev — serper.dev → API Keys（Google 搜索代理）",
+    "TRUTHSOCIAL_TOKEN": "厂商官方 API 平台注册后生成 key",
+    "XAI_API_KEY": "xAI — console.x.ai → API Keys",
+    "XQUIK_API_KEY": "厂商官方 API 平台注册后生成 key"
+  },
+  "social-media/xurl": {
+    "YOUR_CLIENT_ID": "厂商官方 API 平台注册后生成 key"
+  },
+  "software-development/graphify": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com → API keys",
+    "GEMINI_API_KEY": "Google Gemini — aistudio.google.com → Get API key",
+    "GOOGLE_API_KEY": "Google API — console.cloud.google.com → API 与凭据",
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com → API keys"
+  },
+  "web/agent-reach": {
+    "TWITTER_AUTH_TOKEN": "厂商官方 API 平台注册后生成 key"
+  },
+  "web/blocked-page-recovery": {
+    "JINA_API_KEY": "Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名）"
+  },
+  "web/firecrawl": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-build": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-build-interact": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-build-onboarding": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-build-scrape": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-build-search": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "web/firecrawl-developer-index": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配）"
+  },
+  "design/21st-dev": {
+    "API_KEY_21ST": "21st.dev — https://21st.dev/mcp 免费即时申请（旧 Magic console key 已作废）"
+  }
 }

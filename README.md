@@ -855,7 +855,7 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 | openmontage 视频类 | 各模型 API 或本地 ffmpeg | 按具体技能的依赖走 |
 | 纯方法论（taste-skill、superpowers、ponytail、systematic-debugging 等） | 无 | 任何平台即用 |
 
-## 需要 API Key 的技能（127 个）
+## 需要 API Key 的技能（128 个）
 
 > 这些技能文件可安装，但**实际运行需要对应厂商的 API 密钥**。密钥不要提交到仓库；
 > 安装后在环境变量或各平台的设置里配置即可。
@@ -898,6 +898,7 @@ cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 |  | `solutions\video-platforms\youtube-video-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
 | claude-mem | `agent-cost-report` | OPENROUTER_API_KEY | OpenRouter — openrouter.ai → Keys（聚合多家模型） |
 | design | `design` | GEMINI_API_KEY<br>MUAPI_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>厂商官方 API 平台注册后生成 key |
+|  | `21st-dev` | API_KEY_21ST | 21st.dev — https://21st.dev/mcp 免费即时申请（旧 Magic console key 已作废）
 |  | `hatch-pet` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
 |  | `taste-skill` | SHOPIFY_API_KEY | 厂商官方 API 平台注册后生成 key |
 | gstack | `autoplan` | CODEX_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
