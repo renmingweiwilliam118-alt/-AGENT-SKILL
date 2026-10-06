@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hermes Model Routing</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#121722; --panel2:#171d2b; --line:#232c3d; --ink:#e6ebf5;
+    --dim:#8b97ad; --accent:#5eead4; --accent2:#818cf8; --warn:#fbbf24; --bad:#f87171;
+    --ok:#34d399;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0e14,#0d1220 60%,#0b0e14);color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;min-height:100vh}
+  header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);
+    background:rgba(11,14,20,.82);border-bottom:1px solid var(--line);padding:14px 22px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  h1{font-size:17px;margin:0;font-weight:650;letter-spacing:-.01em}
+  .pill{font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .spacer{flex:1}
+  button{font:inherit;border-radius:9px;border:1px solid var(--line);background:var(--panel2);
+    color:var(--ink);padding:8px 14px;cursor:pointer;transition:.15s}
+  button:hover{border-color:var(--accent2)}
+  button.primary{background:linear-gradient(135deg,var(--accent),#3ddbb8);color:#04201a;
+    border:none;font-weight:650}
+  button.primary:disabled{opacity:.4;cursor:not-allowed}
+  button.ghost{background:transparent}
+  main{max-width:1220px;margin:0 auto;padding:22px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin:0 0 12px}
+  .row{display:flex;gap:18px;flex-wrap:wrap}
+  .col{flex:1;min-width:280px}
+  .profiles{display:flex;gap:8px;flex-wrap:wrap}
+  .profiles button.on{background:var(--accent);color:#04201a;border-color:transparent;font-weight:650}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim);font-weight:600}
+  tr.group td{background:var(--panel2);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--dim);padding:6px 10px}
+  select,input[type=text]{width:100%;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+    border-radius:8px;padding:7px 9px;font:inherit;font-size:13.5px}
+  select:focus,input:focus{outline:none;border-color:var(--accent)}
+  select.changed,input.changed{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn) inset}
+  .badge{font-size:11px;border-radius:999px;padding:2px 8px;border:1px solid var(--line);color:var(--dim)}
+  .badge.changed{color:#1b1400;background:var(--warn);border-color:transparent;font-weight:650}
+  .splitbar{display:flex;height:26px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .splitbar div{display:flex;align-items:center;justify-content:center;font-size:11px;color:#06121a;
+    overflow:hidden;white-space:nowrap}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:12.5px;color:var(--dim)}
+  .dot{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:6px}
+  pre{background:#0a0d15;border:1px solid var(--line);border-radius:10px;padding:12px;
+    overflow:auto;font-size:12.5px;max-height:320px}
+  .receipt{border-left:3px solid var(--ok);background:rgba(52,211,153,.07);padding:12px 14px;border-radius:8px}
+  .receipt.bad{border-color:var(--bad);background:rgba(248,113,113,.08)}
+  .muted{color:var(--dim)}
+  .small{font-size:12.5px}
+  .inline{display:inline-flex;align-items:center;gap:8px}
+  code{background:#0a0d15;padding:1px 6px;border-radius:5px;font-size:12.5px}
+  .muted,.small{overflow-wrap:anywhere}
+  table{table-layout:fixed}
+  td select,td input{min-width:0}
+  .profiles button.all{border-color:var(--warn);color:var(--warn);font-weight:650}
+  .profiles button.all.on{background:var(--warn);color:#1b1400}
+  .allnote{display:none;margin-top:10px;padding:9px 12px;border-radius:9px;border:1px solid #7a5a12;
+    background:#2a230d;color:#ffe2a6;font-size:13px}
+  .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
+    background:rgba(4,6,10,.72);padding:16px}
+  .modal.open{display:flex}
+  .modal .box{width:100%;max-width:480px;background:var(--panel);border:1px solid var(--warn);
+    border-radius:14px;padding:22px}
+  .modal h3{margin:0 0 10px;font-size:17px}
+  .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+  button.danger{background:var(--warn);color:#1b1400;border:none;font-weight:650}
+  button.live.on{border-color:var(--ok);color:var(--ok)}
+  .livedot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:6px}
+  .live.on .livedot{background:var(--ok);animation:pulse 1.2s infinite}
+  @keyframes pulse{50%{opacity:.25}}
+  #liveCard table{table-layout:auto}
+  #liveCard td{font-size:13px;white-space:nowrap}
+  #liveCard td.wrap{white-space:normal}
+  .tier{border-radius:999px;padding:1px 9px;font-size:11.5px;font-weight:650;color:#06121a}
+  .tier.simple{background:var(--ok)} .tier.medium{background:var(--accent2)} .tier.hard{background:#f472b6}
+  .tier.kept{background:var(--line);color:var(--dim)}
+  .livewrap{overflow-x:auto}
+  tr.fresh td{animation:flash 1.6s ease-out}
+  @keyframes flash{from{background:rgba(94,234,212,.22)}to{background:transparent}}
+  /* Pool grid. An empty cell has to read as a hole in the grid, not as a blank
+     table cell nobody notices — that gap is the whole point of the view. */
+  #poolGrid td{vertical-align:top;font-size:12.5px}
+  #poolGrid th.sp{text-transform:none;letter-spacing:0;font-size:12px}
+  /* Not .tier: that class is the live table's pill, and its dark pill text made these
+     labels invisible against the panel. */
+  #poolGrid td.tname{font-weight:650;white-space:nowrap}
+  #poolGrid td.gap{background:repeating-linear-gradient(135deg,transparent 0 6px,rgba(139,151,173,.11) 6px 12px)}
+  #poolGrid tr.dead td.tname{color:var(--warn)}
+  .pool{display:block;margin:1px 0;overflow-wrap:anywhere}
+  .pool.off{color:var(--dim);text-decoration:line-through}
+  .nopool{color:var(--dim)}
+  .note{border-left:3px solid var(--line);background:rgba(139,151,173,.07);padding:10px 12px;
+    border-radius:8px;margin:10px 0 0;font-size:13.5px}
+  .note.dead{border-color:var(--warn);background:rgba(251,191,36,.09);color:#ffe2a6}
+  .note.empty{border-color:var(--accent2);background:rgba(129,140,248,.09)}
+  .note.cell{border-color:var(--line);color:var(--dim)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .seg button{border:0;border-radius:0;background:transparent;padding:8px 16px;color:var(--dim)}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button.on{color:#04201a;font-weight:650;background:var(--dim)}
+  .seg button.on[data-v=on]{background:var(--ok)}
+  .seg button.on[data-v=shadow]{background:var(--accent2);color:#0b0e14}
+  .jevrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 12px}
+  @media (max-width:700px){
+    main{padding:12px}
+    header{padding:10px 12px;gap:10px}
+    h1{font-size:15px}
+    .card{padding:12px 12px;border-radius:12px}
+    th,td{padding:7px 6px;font-size:12.5px}
+    .splitbar{height:22px}
+    .splitbar div{font-size:9.5px}
+    header .pill{font-size:11px}
+    .profiles button{padding:6px 11px;font-size:13.5px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Hermes Model Routing</h1>
+  <span class="pill" id="homeLabel">…</span>
+  <span class="pill" id="countLabel">…</span>
+  <span class="spacer"></span>
+  <span class="pill" id="pendingLabel">no pending changes</span>
+  <button class="ghost live" id="liveBtn"><span class="livedot"></span>Live</button>
+  <button class="ghost" id="refreshBtn">Refresh</button>
+  <button class="primary" id="applyBtn" disabled>Apply changes</button>
+</header>
+
+<main>
+  <div id="authWarn" style="display:none;padding:11px 14px;border-radius:11px;border:1px solid #7a4a12;background:#2a1d0d;color:#ffd7a6;font-size:13.5px"></div>
+
+  <div class="card" id="jevCard">
+    <h2>Jev routing <span class="badge" id="jevBadge">…</span></h2>
+    <div class="jevrow">
+      <div class="seg" id="jevSeg" role="group" aria-label="Jev routing">
+        <button data-v="off">Off</button><button data-v="shadow">Shadow</button><button data-v="on">On</button>
+      </div>
+      <span class="small" id="jevScope"></span>
+    </div>
+    <div class="small muted" id="jevCounts" style="margin:0 0 10px"></div>
+    <div class="small" id="jevBody"></div>
+  </div>
+
+  <div class="card" id="poolCard">
+    <h2>Routing pools <span class="badge" id="poolBadge">…</span></h2>
+    <p class="small muted" style="margin:0 0 12px">
+      Jev answers two things per turn: a tier across the rows, a kind of work across the columns.
+      <code>_pick</code> tries the kind's own pool first, then <code>general</code>, and falls up a tier
+      if nothing there fits. <code>vision</code> is chosen by the turn's images, not by Jev's answer.
+    </p>
+    <div class="livewrap"><table id="poolGrid">
+      <thead id="poolHead"></thead>
+      <tbody id="poolBody"></tbody>
+    </table></div>
+    <div id="poolWarn"></div>
+    <p class="small muted" id="poolSource" style="margin:12px 0 0"></p>
+  </div>
+
+  <div class="card" id="liveCard" style="display:none">
+    <h2>Jev live routing <span class="badge" id="liveBadge">…</span></h2>
+    <div class="legend" id="liveModels" style="margin:0 0 12px"></div>
+    <div class="livewrap"><table>
+      <thead><tr><th>Time</th><th>Profile</th><th>Decision</th><th>Kind of work</th><th>Routed to</th>
+        <th>From pool</th><th>Confidence</th><th>Jev</th><th>Note</th></tr></thead>
+      <tbody id="liveBody"></tbody>
+    </table></div>
+    <p class="small muted" id="liveEmpty" style="margin:12px 0 0"></p>
+  </div>
+
+  <div class="card">
+    <h2>Profile</h2>
+    <div class="profiles" id="profileList"></div>
+    <div class="small muted" id="profilePath" style="margin-top:10px"></div>
+    <div class="allnote" id="allNote"></div>
+  </div>
+
+  <div class="card">
+    <h2>How this profile is splitting models</h2>
+    <div class="splitbar" id="splitBar"></div>
+    <div class="legend" id="splitLegend"></div>
+  </div>
+
+  <div class="card">
+    <h2>Main model</h2>
+    <table>
+      <thead><tr><th style="width:30%">Use case</th><th style="width:20%">Provider</th><th>Model</th><th style="width:90px">State</th></tr></thead>
+      <tbody id="mainRow"></tbody>
+    </table>
+    <p class="small muted" style="margin:12px 0 0">
+      Use-case-specific models override this. A slot set to <code>auto</code> follows the main model.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Per-use-case models</h2>
+    <table>
+      <thead><tr><th style="width:26%">Use case</th><th style="width:18%">Provider</th><th>Model</th><th style="width:90px">State</th></tr></thead>
+      <tbody id="slotsBody"></tbody>
+    </table>
+    <p class="small muted" style="margin:12px 0 0">
+      Type to search the model list; any model id works. Changes are previewed, then written with a
+      backup and verified read-back.
+    </p>
+  </div>
+
+  <div class="card" id="previewCard" style="display:none">
+    <h2>Preview</h2>
+    <pre id="previewBody"></pre>
+    <div class="inline" style="margin-top:12px">
+      <button class="primary" id="confirmBtn">Confirm &amp; apply</button>
+      <button class="ghost" id="discardBtn">Discard</button>
+      <label class="small muted inline" style="margin-left:8px">
+        <input type="checkbox" id="fanout"> also apply this same split to every other profile
+      </label>
+    </div>
+  </div>
+
+  <div class="card" id="receiptCard" style="display:none">
+    <h2>Receipt</h2>
+    <div id="receiptBody"></div>
+  </div>
+</main>
+
+<div class="modal" id="allModal" role="dialog" aria-modal="true" aria-labelledby="allTitle">
+  <div class="box">
+    <h3 id="allTitle">Change this for every agent?</h3>
+    <p id="allText" style="margin:0 0 10px"></p>
+    <pre id="allRows" style="max-height:180px"></pre>
+    <p class="small muted" style="margin:10px 0 0">Each profile's config is backed up first. Running agents keep
+      their current model until their gateway reloads.</p>
+    <div class="acts">
+      <button class="ghost" id="allCancel">Cancel</button>
+      <button class="danger" id="allGo">Yes, change all</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const ALL = "__all__";
+let STATE = null, MODELS = [], CURRENT = null, PENDING = new Map();
+
+const PALETTE = ["#5eead4","#818cf8","#fbbf24","#f472b6","#60a5fa","#34d399","#fb923c","#a78bfa"];
+
+function modelOptions(current){
+  const ids = new Set(MODELS.map(m => m.id));
+  if (current) ids.add(current);
+  return [...ids].sort();
+}
+
+function cell(useCase, kind, field, provider, model){
+  const tr = document.createElement("tr");
+  const label = document.createElement("td");
+  label.textContent = kind === "main" ? useCase.label : useCase.label;
+  const pv = document.createElement("td");
+  const md = document.createElement("td");
+  const st = document.createElement("td");
+
+  const key = kind === "main" ? "__main__" : useCase.key;
+
+  const pInput = document.createElement("input");
+  pInput.type = "text"; pInput.value = provider || ""; pInput.setAttribute("list","providerList");
+  pInput.dataset.key = key; pInput.dataset.field = "provider";
+
+  const mInput = document.createElement("input");
+  mInput.type = "text"; mInput.value = model || ""; mInput.setAttribute("list","modelList");
+  mInput.dataset.key = key; mInput.dataset.field = "model";
+
+  const tag = document.createElement("span");
+  tag.className = "badge"; tag.textContent = "unchanged";
+
+  pInput.addEventListener("input", () => stage(key, "provider", pInput.value, pInput, tag));
+  mInput.addEventListener("input", () => stage(key, "model", mInput.value, mInput, tag));
+
+  pv.appendChild(pInput); md.appendChild(mInput); st.appendChild(tag);
+  tr.append(label, pv, md, st);
+  return tr;
+}
+
+function stage(key, field, value, input, tag){
+  const prof = CURRENT;
+  const pk = prof + "|" + key;
+  const entry = PENDING.get(pk) || {profile: prof, key: key, fields: {}};
+  const original = currentValue(key, field);
+  if (value === original){ delete entry.fields[field]; } else { entry.fields[field] = value; }
+  if (Object.keys(entry.fields).length) PENDING.set(pk, entry); else PENDING.delete(pk);
+
+  const changed = PENDING.has(pk);
+  input.classList.toggle("changed", changed);
+  tag.className = "badge" + (changed ? " changed" : "");
+  tag.textContent = changed ? "changed" : "unchanged";
+  renderPending();
+}
+
+function valueIn(p, key, field){
+  if (key === "__main__") return field === "provider" ? p.main.provider : p.main.model;
+  return ((p.slots[key] || {})[field]) || "";
+}
+
+/* For "All profiles": the shared value when every profile agrees, else "" (shown as mixed). */
+function commonValue(key, field){
+  const vals = new Set(STATE.profiles.map(p => valueIn(p, key, field)));
+  return vals.size === 1 ? [...vals][0] : "";
+}
+function isMixed(key, field){
+  return new Set(STATE.profiles.map(p => valueIn(p, key, field))).size > 1;
+}
+
+function currentValue(key, field){
+  if (CURRENT === ALL) return commonValue(key, field);
+  const p = STATE.profiles.find(x => x.name === CURRENT);
+  if (!p) return "";
+  if (key === "__main__") return field === "provider" ? p.main.provider : p.main.model;
+  const s = p.slots[key] || {provider:"", model:""};
+  return s[field] || "";
+}
+
+function changesFor(profile){
+  const out = {};
+  for (const e of PENDING.values()){
+    if (e.profile !== profile) continue;
+    out[e.key] = Object.assign({}, out[e.key], e.fields);
+  }
+  return out;
+}
+
+function renderPending(){
+  let n = 0;
+  for (const e of PENDING.values()) n += Object.keys(e.fields).length;
+  $("#pendingLabel").textContent = n ? n + " pending change" + (n>1?"s":"") : "no pending changes";
+  $("#applyBtn").disabled = n === 0;
+}
+
+function renderProfiles(){
+  const box = $("#profileList"); box.innerHTML = "";
+  const allBtn = document.createElement("button");
+  const allPend = [...PENDING.values()].some(e => e.profile === ALL);
+  allBtn.textContent = "All profiles" + (allPend ? " •" : "");
+  allBtn.className = "all" + (CURRENT === ALL ? " on" : "");
+  allBtn.onclick = () => { CURRENT = ALL; renderAll(); };
+  box.appendChild(allBtn);
+  STATE.profiles.forEach(p => {
+    const b = document.createElement("button");
+    const pend = [...PENDING.values()].some(e => e.profile === p.name);
+    b.textContent = p.name + (pend ? " •" : "");
+    b.className = p.name === CURRENT ? "on" : "";
+    b.onclick = () => { CURRENT = p.name; renderAll(); };
+    box.appendChild(b);
+  });
+  $("#profilePath").textContent = CURRENT === ALL ? "" : ((STATE.profiles.find(p=>p.name===CURRENT)||{}).path || "");
+  const note = $("#allNote");
+  note.style.display = CURRENT === ALL ? "block" : "none";
+  note.textContent = "Anything you set here becomes the default for that function in all " + STATE.profiles.length +
+    " profiles. Fields left alone are not touched. A blank field marked \u201cmixed\u201d means profiles currently differ.";
+}
+
+function renderSplit(){
+  const p = CURRENT === ALL ? allView() : (STATE.profiles.find(x => x.name === CURRENT) || {slots:{}, main:{model:""}});
+  const counts = new Map();
+  const bump = (m,label) => { const k = m || "(unset)"; counts.set(k, (counts.get(k)||0) + 1); };
+  bump(p.main.model, "main");
+  STATE.use_cases.filter(u => u.key !== "__main__").forEach(u => {
+    const s = p.slots[u.key];
+    bump(s && s.model ? s.model : "auto → " + p.main.model);
+  });
+  const entries = [...counts.entries()].sort((a,b) => b[1]-a[1]);
+  const total = entries.reduce((a,b) => a+b[1], 0);
+  const bar = $("#splitBar"); const leg = $("#splitLegend");
+  bar.innerHTML = ""; leg.innerHTML = "";
+  entries.forEach(([m,c], i) => {
+    const color = PALETTE[i % PALETTE.length];
+    const d = document.createElement("div");
+    d.style.width = (100*c/total) + "%";
+    d.style.background = color;
+    d.textContent = c > 0 ? m.split("/").pop() + " · " + c : "";
+    d.title = m + " — " + c + " of " + total;
+    bar.appendChild(d);
+    const l = document.createElement("span");
+    l.innerHTML = '<span class="dot" style="background:'+color+'"></span>' + m + " (" + c + ")";
+    leg.appendChild(l);
+  });
+}
+
+function allView(){
+  const slots = {};
+  STATE.use_cases.filter(u => u.key !== "__main__").forEach(u => {
+    slots[u.key] = {provider: commonValue(u.key, "provider"), model: commonValue(u.key, "model")};
+  });
+  return {main: {provider: commonValue("__main__", "provider"), model: commonValue("__main__", "model")}, slots};
+}
+
+function markMixed(){
+  if (CURRENT !== ALL) return;
+  document.querySelectorAll("input[data-key]").forEach(inp => {
+    if (!inp.value && isMixed(inp.dataset.key, inp.dataset.field)) inp.placeholder = "mixed";
+  });
+}
+
+async function loadPools(){
+  const r = await fetch("/api/jev/pools", {headers: HDR}).then(x => x.json()).catch(() => null);
+  if (r && !r.error){ POOLS = r; renderPools(); }
+}
+
+function renderAll(){
+  renderSwitch();
+  renderProfiles();
+  renderPools();
+  renderSplit();
+  const p = CURRENT === ALL ? allView() : STATE.profiles.find(x => x.name === CURRENT);
+  const main = $("#mainRow"); main.innerHTML = "";
+  main.appendChild(cell({key:"__main__", label:"Chat, delegation, agent loop"}, "main", "provider",
+                        p.main.provider, p.main.model));
+
+  const body = $("#slotsBody"); body.innerHTML = "";
+  let group = null;
+  STATE.use_cases.filter(u => u.key !== "__main__").forEach(u => {
+    if (u.group !== group){
+      group = u.group;
+      const tr = document.createElement("tr"); tr.className = "group";
+      const td = document.createElement("td"); td.colSpan = 4; td.textContent = group;
+      tr.appendChild(td); body.appendChild(tr);
+    }
+    const s = p.slots[u.key] || {provider:"", model:""};
+    body.appendChild(cell(u, "slot", "model", s.provider || "", s.model || ""));
+  });
+  renderPending();
+  markMixed();
+
+  // reflect any pending edits for this profile back into the inputs
+  PENDING.forEach(e => {
+    if (e.profile !== CURRENT) return;
+    document.querySelectorAll('[data-key="'+CSS.escape(e.key)+'"]').forEach(inp => {
+      const v = e.fields[inp.dataset.field];
+      if (v !== undefined){
+        inp.value = v; inp.classList.add("changed");
+        const tag = inp.closest("tr").querySelector(".badge");
+        if (tag){ tag.className = "badge changed"; tag.textContent = "changed"; }
+      }
+    });
+  });
+}
+
+function renderJev(){
+  const j = STATE.jev_mode;
+  $("#jevBody").innerHTML = "<p style='margin:0 0 8px'>" + j.intent + "</p>" +
+    "<p class='muted small' style='margin:0'>" + j.note + "</p>";
+}
+
+/* --- routing pools ---
+   Rendered as a grid rather than a list so a missing specialty pool is a hole you can
+   see. Pools live in jev/routing.json, which this page only reads: jevkit owns writing it. */
+let POOLS = null;
+
+function poolsFor(name){
+  if (!POOLS || !POOLS.profiles.length) return null;
+  const by = n => POOLS.profiles.find(p => p.name === n);
+  return (name !== ALL && by(name)) || by("default") || POOLS.profiles[0];
+}
+
+/* Only the provider prefix comes off. Splitting on every colon turned
+   `openrouter:anthropic/claude-haiku-5:free` into the model named "free". */
+const shortRef = r => String(r == null ? "" : r).replace(/^[^:]*:/, "");
+
+function poolCell(cell){
+  if (!cell || !cell.listed) return {html: '<span class="nopool">empty</span>', gap: true};
+  const html = cell.models.map(m =>
+    '<span class="pool' + (m.excluded ? " off" : "") + '" title="' + esc(m.ref) +
+    (m.excluded ? " — removed by an exclude pattern" : "") + '">' +
+    esc(shortRef(m.ref)) + "</span>").join("");
+  return {html: html, gap: cell.usable === 0};
+}
+
+function renderPools(){
+  if (!POOLS) return;
+  const p = poolsFor(CURRENT);
+  const head = $("#poolHead"), body = $("#poolBody");
+  head.innerHTML = ""; body.innerHTML = "";
+  if (!p){ $("#poolBadge").textContent = "no profiles"; return; }
+
+  const columns = POOLS.specialties.concat(p.unknown_pools || []);
+  const hr = document.createElement("tr");
+  hr.innerHTML = "<th>Tier</th>" + columns.map(s => '<th class="sp" title="' +
+    (POOLS.answerable.indexOf(s) >= 0 ? "Jev's answer can name this kind of work"
+     : s === "general" ? "Where every kind of work falls back to"
+     : "Never named by Jev's answer") + '">' + esc(s) + "</th>").join("");
+  head.appendChild(hr);
+
+  POOLS.tiers.forEach(tier => {
+    const tr = document.createElement("tr");
+    if ((p.dead_tiers || []).indexOf(tier) >= 0) tr.className = "dead";
+    let cells = '<td class="tname">' + esc(tier) + "</td>";
+    columns.forEach(s => {
+      const c = poolCell((p.tiers[tier] || {})[s]);
+      cells += '<td class="' + (c.gap ? "gap" : "") + '">' + c.html + "</td>";
+    });
+    tr.innerHTML = cells;
+    body.appendChild(tr);
+  });
+
+  $("#poolWarn").innerHTML = (p.warnings || []).map(w =>
+    '<div class="note ' + esc(w.level) + '">' + esc(w.text) + "</div>").join("");
+
+  const dead = (p.dead_tiers || []).length, total = POOLS.tiers.length;
+  $("#poolBadge").textContent = !p.configured ? "no pools configured"
+    : dead === total ? "kind of work is discarded"
+    : dead ? dead + " of " + total + " tiers discard it"
+    : "every tier specialises";
+  $("#poolBadge").className = "badge" + (dead || !p.configured ? " changed" : "");
+
+  const shared = (poolsFor("default") || {sources: []}).sources.join("|");
+  const own = POOLS.profiles.filter(x => x.name !== "default" && x.sources.join("|") !== shared).length;
+  $("#poolSource").textContent =
+    (p.sources.length ? "Read from " + p.sources.join(", ") : "No routing.json found; Jev has no pools to pick from.") +
+    (CURRENT === ALL && own ? ". Showing the shared pools; " + own + " profile(s) override them" : "") +
+    (p.exclude && p.exclude.length ? ". Excluded: " + p.exclude.join(", ") : "");
+}
+
+/* --- auth ---
+   Over Tailscale the server requires a token. The ?token= link exchanges it
+   once for an HttpOnly cookie (fetches then carry it automatically); a header
+   is also sent when a token is present locally. */
+const QS = new URLSearchParams(location.search);
+const TOKEN = QS.get("token") || localStorage.getItem("hermesDashToken") || "";
+if (QS.get("token")) {
+  try { localStorage.setItem("hermesDashToken", TOKEN); } catch (e) {}
+  history.replaceState(null, "", location.pathname);
+}
+const HDR = TOKEN ? {"X-Dashboard-Token": TOKEN} : {};
+
+function unauthorized(msg){
+  const el = document.getElementById("authWarn");
+  if (el){ el.style.display = ""; el.textContent = msg; }
+}
+
+async function load(){
+  const s = await fetch("/api/state", {headers: HDR}).then(r => r.json());
+  const m = {models: MODELS};
+  fetch("/api/models", {headers: HDR}).then(r => r.json()).then(fillModels).catch(() => {});
+  if (s && s.error === "unauthorized"){
+    unauthorized("Unauthorized \u2014 this dashboard needs its token. Open the full link including ?token=\u2026 once, then the browser remembers it.");
+    return;
+  }
+  STATE = s; MODELS = m.models || [];
+  if (CURRENT !== ALL && (!CURRENT || !STATE.profiles.some(p => p.name === CURRENT)))
+    CURRENT = STATE.profiles[0] ? STATE.profiles[0].name : null;
+
+  fillModels(m);
+  $("#homeLabel").textContent = STATE.hermes_home;
+  $("#countLabel").textContent = STATE.profiles.length + " profiles";
+  renderJev(); renderAll(); loadSwitches(); loadPools();
+  const errs = STATE.profiles.filter(p => p.error);
+  if (errs.length) console.warn("profiles with read errors", errs);
+}
+
+function fillModels(m){
+  MODELS = (m && m.models) || MODELS;
+  const dl = document.getElementById("modelList") || (() => {
+    const d = document.createElement("datalist"); d.id = "modelList"; document.body.appendChild(d); return d; })();
+  dl.innerHTML = ""; modelOptions("").forEach(id => { const o = document.createElement("option"); o.value = id; dl.appendChild(o); });
+
+  const pl = document.getElementById("providerList") || (() => {
+    const d = document.createElement("datalist"); d.id = "providerList"; document.body.appendChild(d); return d; })();
+  pl.innerHTML = ""; [...new Set(MODELS.map(x => x.provider).filter(Boolean))].forEach(p => {
+    const o = document.createElement("option"); o.value = p; pl.appendChild(o); });
+}
+
+$("#refreshBtn").onclick = load;
+
+let ALL_PLAN = null;
+
+async function planAll(changes){
+  const out = [];
+  for (const p of STATE.profiles){
+    const r = await fetch("/api/plan", {method:"POST", headers:{"Content-Type":"application/json", ...HDR},
+      body: JSON.stringify({profile: p.name, changes})}).then(x => x.json());
+    if (r.error) return {error: p.name + ": " + r.error};
+    if (r.rows.length) out.push({profile: p.name, rows: r.rows});
+  }
+  return {profiles: out};
+}
+
+$("#applyBtn").onclick = async () => {
+  const changes = changesFor(CURRENT);
+  if (CURRENT === ALL){
+    const r = await planAll(changes);
+    if (r.error){ alert(r.error); return; }
+    ALL_PLAN = r.profiles;
+    const setLines = Object.entries(changes).flatMap(([k, f]) => Object.entries(f).map(([field, v]) =>
+      (k === "__main__" ? "main" : k) + "." + field + "  →  " + v));
+    $("#previewCard").style.display = "";
+    $("#previewBody").textContent = setLines.join("\n") + "\n\nALL PROFILES: " + ALL_PLAN.length + " of " +
+      STATE.profiles.length + " will change (" + (STATE.profiles.length - ALL_PLAN.length) + " already match)";
+    $("#fanout").parentElement.style.display = "none";
+    $("#previewCard").scrollIntoView({behavior:"smooth", block:"center"});
+    return;
+  }
+  $("#fanout").parentElement.style.display = "";
+  const r = await fetch("/api/plan", {method:"POST", headers:{"Content-Type":"application/json", ...HDR},
+    body: JSON.stringify({profile: CURRENT, changes})}).then(x => x.json());
+  if (r.error){ alert(r.error); return; }
+  $("#previewCard").style.display = "";
+  $("#previewBody").textContent = (r.rows.length ? r.rows.map(x =>
+      (x.scope === "__main__" ? "main" : x.scope) + "." + x.field + ":  " + (x.before||"(unset)") + "  →  " + x.after
+    ).join("\n") : "nothing to change") + "\n\nprofile: " + CURRENT;
+  $("#previewCard").scrollIntoView({behavior:"smooth", block:"center"});
+};
+
+$("#discardBtn").onclick = () => {
+  PENDING.clear(); $("#previewCard").style.display = "none"; renderAll();
+};
+
+function askAll(changes, count){
+  return new Promise(resolve => {
+    const lines = Object.entries(changes).flatMap(([k, f]) => Object.entries(f).map(([field, v]) =>
+      (k === "__main__" ? "main model" : k) + " " + field + " → " + v));
+    $("#allText").textContent = "This is not just one agent. It sets the following as the default for " + count +
+      " Hermes profiles at once:";
+    $("#allRows").textContent = lines.join("\n");
+    $("#allGo").textContent = "Yes, change all " + count;
+    const modal = $("#allModal"); modal.classList.add("open");
+    const done = v => { modal.classList.remove("open"); resolve(v); };
+    $("#allGo").onclick = () => done(true);
+    $("#allCancel").onclick = () => done(false);
+    modal.onclick = e => { if (e.target === modal) done(false); };
+    $("#allCancel").focus();
+  });
+}
+
+$("#confirmBtn").onclick = async () => {
+  const changes = changesFor(CURRENT);
+  const everyone = CURRENT === ALL || $("#fanout").checked;
+  const targets = CURRENT === ALL ? (ALL_PLAN || []).map(x => x.profile)
+    : everyone ? STATE.profiles.map(p => p.name) : [CURRENT];
+  if (everyone && !(await askAll(changes, targets.length))) return;
+  const receipts = [];
+  for (const prof of targets){
+    const res = await fetch("/api/apply", {method:"POST", headers:{"Content-Type":"application/json", ...HDR},
+      body: JSON.stringify({profile: prof, changes, confirm: true})}).then(x => x.json());
+    receipts.push({profile: prof, res});
+  }
+  $("#receiptCard").style.display = "";
+  const bad = receipts.filter(x => !x.res.ok);
+  const lines = receipts.map(x => {
+    const r = x.res;
+    if (r.error) return x.profile + " — ERROR " + r.error;
+    return x.profile + " — " + r.changed + " change(s), verified=" + r.verified +
+      (r.reload_required ? ", reload required" : "") + (r.backup ? "\n    backup: " + r.backup : "");
+  }).join("\n");
+  $("#receiptBody").innerHTML =
+    "<div class='receipt" + (bad.length ? " bad" : "") + "'>" +
+    "<b>" + (bad.length ? "Some applies failed" : "Applied") + "</b>" +
+    "<pre style='margin:10px 0 0'>" + lines + "</pre>" +
+    "<p class='small muted' style='margin:8px 0 0'>Running sessions keep their current model until the " +
+    "gateway is reloaded. This dashboard does not restart anything.</p></div>";
+  PENDING.clear(); $("#previewCard").style.display = "none";
+  await load();
+};
+
+/* --- Jev routing switch ---
+   Follows the profile picker: "All profiles" sets the default for everyone (after a confirm),
+   a single profile sets just that one. The plugin reads the switch each turn, so no restart. */
+let SWITCHES = null;
+
+async function loadSwitches(){
+  const r = await fetch("/api/jev/switches", {headers: HDR}).then(x => x.json()).catch(() => null);
+  if (r && !r.error){ SWITCHES = r; renderSwitch(); }
+}
+
+function renderSwitch(){
+  if (!SWITCHES || !STATE) return;
+  $("#jevBadge").textContent = SWITCHES.plugin_installed ? "plugin installed" : "plugin not installed";
+  $("#jevBadge").className = "badge" + (SWITCHES.plugin_installed ? " changed" : "");
+  const all = CURRENT === ALL;
+  const eff = Object.values(SWITCHES.profiles).map(p => p.effective.routing);
+  const count = v => eff.filter(x => x === v).length;
+  let value;
+  if (all){
+    const uniq = [...new Set(eff)];
+    value = uniq.length === 1 ? uniq[0] : null;      // mixed: nothing highlighted
+  } else value = (SWITCHES.profiles[CURRENT] || {effective:{routing:"off"}}).effective.routing;
+  document.querySelectorAll("#jevSeg button").forEach(b => b.classList.toggle("on", b.dataset.v === value));
+  const own = !all && SWITCHES.profiles[CURRENT] && SWITCHES.profiles[CURRENT].own.routing;
+  $("#jevScope").innerHTML = all
+    ? "Jev routing for <b>all " + eff.length + " profiles</b>" + (value ? "" : " <span class='muted'>(currently mixed)</span>")
+    : "Jev routing for <b>" + esc(CURRENT) + "</b> <span class='muted'>(" + (own ? "its own setting" : "following the all-profiles default") + ")</span>";
+  $("#jevCounts").textContent = "Right now: " + count("on") + " on · " + count("shadow") + " shadow · " + count("off") +
+    " off.  On = Jev switches models. Shadow = Jev decides and logs but does not switch. Takes effect on the next message, no restart.";
+}
+
+document.querySelectorAll("#jevSeg button").forEach(b => b.onclick = async () => {
+  const value = b.dataset.v, all = CURRENT === ALL;
+  if (all){
+    const n = Object.keys(SWITCHES ? SWITCHES.profiles : {}).length;
+    const ok = await askAll({"Jev routing": {mode: value + (value === "on" ? "  (Jev will switch models for every agent)" : "")}}, n);
+    if (!ok) return;
+  }
+  const r = await fetch("/api/jev/switch", {method:"POST", headers:{"Content-Type":"application/json", ...HDR},
+    body: JSON.stringify({scope: all ? ALL : CURRENT, switch: "routing", value, confirm: all})}).then(x => x.json());
+  if (r.error){ alert(r.error); return; }
+  SWITCHES = r; renderSwitch(); if (LIVE_TIMER) pollLive();
+});
+
+/* --- Jev live --- */
+let LIVE_TIMER = null, LIVE_SEEN = 0;
+const esc = t => String(t == null ? "" : t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Which pool the model came from is the only thing that says whether asking Jev for a
+   kind of work paid for itself: the specialty pool means yes, general means the answer
+   was bought and discarded. */
+function poolOrigin(e){
+  const p = e.pool;
+  if (!p) return '<span class="nopool">—</span>';
+  if (!p.found) return '<span class="nopool" title="the pools changed since this decision">not in a pool now</span>';
+  const where = esc(p.tier) + " / " + esc(p.specialty);
+  const why = p.earned === false ? "Jev said " + esc(p.asked) + ", but that pool was empty, so it fell back to general"
+    : p.earned ? "the " + esc(p.asked) + " pool, chosen by Jev's answer"
+    : "Jev answered general, so there was no specialist pool to try";
+  return '<span title="' + why + (p.fell_up ? " (the " + esc(e.tier) + " tier had nothing that fits)" : "") + '">' +
+    where + (p.earned === false ? ' <span class="muted">(fallback)</span>' : "") + "</span>";
+}
+
+function liveRow(e, fresh){
+  const tr = document.createElement("tr");
+  if (fresh) tr.className = "fresh";
+  const t = new Date((e.ts || 0) * 1000).toLocaleTimeString();
+  let cells;
+  if (e.kind === "skill"){
+    cells = [t, e.profile, '<span class="tier kept">skill</span>', "", esc((e.picked || []).join(", ") || "none needed"), "",
+             e.needs_skill == null ? "" : Number(e.needs_skill).toFixed(2), (e.latency_ms || "") + (e.latency_ms ? " ms" : ""), esc(e.status || "")];
+  } else if (e.kind === "route_effective"){
+    cells = [t, e.profile, '<span class="tier kept">request</span>', "",
+             "<b>" + esc(shortRef(e.effective_request_model)) + "</b>", "", "", "",
+             esc((e.applied ? "Jev applied" : e.mode === "shadow" ? "shadow · kept" : "kept") +
+                 (e.first_request ? " · first request" : " · tool loop"))];
+  } else {
+    const tier = e.tier || "kept";
+    const model = shortRef(e.model || e.from);
+    cells = [t, e.profile, '<span class="tier ' + esc(tier) + '">' + esc(tier) + "</span>",
+             esc(e.specialty || ""), "<b>" + esc(model) + "</b>", poolOrigin(e),
+             e.confidence == null ? "" : Number(e.confidence).toFixed(2),
+             (e.latency_ms || "") + (e.latency_ms ? " ms" : ""),
+             esc((e.mode === "shadow" ? "shadow · " : "") + (e.private ? "private · " : "") +
+                 (e.tier ? (e.routed ? "proposed switch" : "already on it") : (e.reason || "")))];
+  }
+  tr.innerHTML = cells.map((c, i) => "<td" + (i === cells.length - 1 ? ' class="wrap"' : "") + ">" + c + "</td>").join("");
+  return tr;
+}
+
+async function pollLive(){
+  let r;
+  try { r = await fetch("/api/jev/live", {headers: HDR}).then(x => x.json()); } catch (e) { return; }
+  if (!r || r.error) return;
+  const body = $("#liveBody"); body.innerHTML = "";
+  r.events.forEach(e => body.appendChild(liveRow(e, LIVE_SEEN && e.ts > LIVE_SEEN)));
+  if (r.events.length) LIVE_SEEN = Math.max(LIVE_SEEN, r.events[0].ts);
+  else LIVE_SEEN = LIVE_SEEN || r.now;
+  const eff = SWITCHES ? Object.values(SWITCHES.profiles).map(p => p.effective.routing) : [];
+  $("#liveBadge").textContent = r.plugin_installed
+    ? (eff.filter(x => x === "on").length + " routing · " + eff.filter(x => x === "shadow").length + " shadow") : "plugin not installed";
+  $("#liveModels").innerHTML = '<span title="First requests visible in this recent event window, not provider billing">' +
+    esc(r.applied_turns) + '/' + esc(r.effective_turns) + ' Jev-applied · middleware request models (not provider usage)</span>' +
+    r.by_model.map(([m, c], i) =>
+    '<span><span class="dot" style="background:' + PALETTE[i % PALETTE.length] + '"></span>' + esc(shortRef(m)) + " (" + c + ")</span>").join("");
+  $("#liveEmpty").textContent = r.events.length ? "Decisions only. The text of a turn is never logged or shown here." :
+    "No decisions yet. Turn routing on for a profile with /jev routing on (or shadow to watch without switching), then send it a message.";
+}
+
+$("#liveBtn").onclick = () => {
+  const on = !LIVE_TIMER;
+  $("#liveBtn").classList.toggle("on", on);
+  $("#liveCard").style.display = on ? "" : "none";
+  if (on){ pollLive(); LIVE_TIMER = setInterval(pollLive, 2000); $("#liveCard").scrollIntoView({behavior:"smooth", block:"start"}); }
+  else { clearInterval(LIVE_TIMER); LIVE_TIMER = null; }
+};
+
+load().catch(e => { document.body.insertAdjacentHTML("afterbegin",
+  "<pre style='color:#f87171;padding:16px'>Failed to load: " + e + "</pre>"); });
+</script>
+</body>
+</html>
