@@ -1,769 +1,1229 @@
-# Agent Skill Vault
+# Hermes Agent 技能库备份
 
-Hermes Agent 技能库备份。共 **572 个技能**，19 个类别。每个技能的用途从 SKILL.md 自动提取。
+
+共 **1074 个技能**，20 个类别。每个技能的用途从 SKILL.md 自动提取。
+
+> 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
+> 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
 
 ## 目录
 
-- **design**（设计，107 个）- UI/动效/品牌/图表设计类技能。含 taste-skill 反模板化前端方法论（v2/v1/gpt 版）、Emil Kowalski 动效体系（animate/apple-design/review-animations）、44 种图表（...
-- **browser-act**（浏览器自动化，103 个）- Browser Use CLI 浏览器操作技能。103 个技能覆盖电商抓取（淘宝/1688/Amazon/Walmart/eBay/Etsy/闲鱼/Airbnb）、社媒监听（X/Instagram/Threads/Reddit/Facebo...
-- **openmontage**（视频/多媒体制作，90 个）- OpenMontage 视频创作体系。AI 视频生成（Kling/Seedance/LTX/Manim/Remotion/GSAP）、TTS/音乐（ElevenLabs/ACE-Step）、图像生成（FLUX/DashScope）、3D、字...
-- **marketing**（营销，58 个）- 58 个营销技能：A/B 测试、广告投放、SEO（AI/传统/程序化）、ASO、归因分析、流失预防、联名营销、冷邮件、社区营销、竞品分析、内容策略、文案、CRO、目录提交、邮件序列、活动运营、定价、公关、推荐体系、RevOps、销售赋能、上...
-- **gstack**（GStack 运营工具箱，55 个）- Garry Tan 的运营与工程工具箱。CEO 视角（cso/plan-ceo-review/office-hours）、工程流程（qa/ship/retro/review/investigate/benchmark）、设计（design-...
-- **media**（媒体资产，35 个）- 图像/视频/音频生成类技能：Fal 全家桶（图像/视频/3D/唇形/试穿/超分/视觉）、Venice 多模态、Sora、Replicate、YouTube 下载/剪辑、GIF 贴纸、截图、3D 设备 mockup、AI 音乐专辑。
-- **software-development**（软件开发，35 个）- 35 个软件工程方法论技能。Superpowers 全套（brainstorming/writing-plans/test-driven-development/systematic-debugging/subagent-driven-de...
-- **productivity**（生产力，29 个）- 29 个生产力技能：文档（docx/pdf/pptx/minimax 系列）、周度回顾规划、会议行动项、文档义务提取、Notion/Airtable/Google Workspace、ADHD 友好输出、文件规划、地图/路线、价格监控、Te...
-- **claude-mem**（持久记忆，22 个）- claude-mem 记忆体系（22 个）：跨会话记忆压缩检索（mem-search）、项目周报/时间线报告、PR 看护、GitHub issue 根因聚类、会话诊断、模式创建、成本报告、云同步、代码库预学习等。
-- **creative**（创意内容，10 个）- 10 个创意技能：ASCII 艺术/视频、SVG 架构图、Manim 数学动画、p5.js 生成艺术、信息图（21 布局 x 21 风格）、Claude Design 原型、DESIGN.md 规范、音乐创作。
-- **autonomous-ai-agents**（多智能体，7 个）- 7 个多智能体编排技能：Claude Code/Codex/OpenCode 委托、桌面计算机操作、多代理团队、Hermes 插件开发、workspace-dispatch 任务编排。
-- **research**（研究，6 个）- 6 个研究技能：arXiv 检索、竞品新闻监控、引用核验、last30days 舆论研究、LLM Wiki 知识库、D3 数据可视化。
-- **web**（网页，5 个）- 5 个网页技能：被封锁页面恢复（WAF/paywall/403 应对）、web-clone 整站复刻、网页工件构建、agent-browser。
-- **apple**（Apple 生态，4 个）- 4 个 Apple 设备技能：Apple Notes/Reminders/iMessage/FindMy 操作。
-- **email**（邮件，2 个）- 2 个邮件技能：Himalaya CLI（IMAP/SMTP）、收件箱分诊。
-- **devops**（DevOps，1 个）- DevOps 基础技能。
-- **note-taking**（笔记，1 个）- Obsidian vault 读写检索。
-- **social-media**（社媒，1 个）- X URL 抓取技能。
-- **writing**（写作，1 个）- humanizer：去除 AI 腔，让文本读起来像人写的。
+| 类别 | 技能数 | 说明 |
+|------|--------|------|
+| [claude-skills](#claude-skills) | 355 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [design](#design) | 112 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
+| [browser-act](#browser-act) | 102 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
+| [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
+| [security](#security) | 85 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
+| [software-development](#software-development) | 66 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
+| [marketing](#marketing) | 58 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
+| [gstack](#gstack) | 55 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
+| [media](#media) | 35 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
+| [web](#web) | 33 | 网页抓取 / 爬虫工具链（Scrapy/Scrapling/Crawlee/browser-use/Firecrawl…） |
+| [productivity](#productivity) | 30 | 办公文档 / 表格 / PPT / 邮件 / 协作 |
+| [claude-mem](#claude-mem) | 22 | Claude 跨会话记忆 / 知识图谱 |
+| [creative](#creative) | 10 | ASCII 艺术 / 手绘图 / 视觉设计 |
+| [autonomous-ai-agents](#autonomous-ai-agents) | 6 | 自主 agent 编排 / 委派 / 多 agent 团队 |
+| [research](#research) | 6 | 学术 / 文献 / 市场数据 / 内容监测 |
+| [apple](#apple) | 4 | Apple 平台 / SwiftUI / HIG |
+| [email](#email) | 2 | IMAP/SMTP 邮件 |
+| [devops](#devops) | 1 | SDLC / 部署 / CI |
+| [note-taking](#note-taking) | 1 | Obsidian 笔记 |
+| [social-media](#social-media) | 1 | 社媒运营 |
 
 ---
 
-# design / 设计
-
-UI/动效/品牌/图表设计类技能。含 taste-skill 反模板化前端方法论（v2/v1/gpt 版）、Emil Kowalski 动效体系（animate/apple-design/review-animations）、44 种图表（diagram-design）、OpenDesign 设计模板库、GSAP 全套、SwiftUI/Flutter、shadcn、3D/shader。
-
-**来源**: obra/superpowers, emilkowalski/skills, Leonxlnx/taste-skill, cathrynlavery/diagram-design, tt-a1i/archify, nexu-io/open-design, Graphify-Labs/graphify
+## claude-skills（355）
 
 | 技能 | 用途 |
 |------|------|
-| `8-bit-orbit-video-template` | \| Hyperframes-based video template for retro pixel deck motion design. Use when users want a high-fidelity, multi-scene HTML-to-video composition with advanced transitions, interactive preview controls, and ready-to-render default style. |
-| `after-hours-editorial-template` | \| Luxury dark-editorial HyperFrames template for three-page cinematic storyboards, inspired by haute couture title cards and magazine chapter spreads. Use when the user asks for premium fashion-style motion pages, moody serif-led storytelling, or a high-end... |
-| `algorithmic-art` | \| Create generative art using p5.js with seeded randomness so every render is reproducible. Useful for procedural posters, motion-style stills, and artistic frame studies. |
-| `animate` | Build an animation from scratch, making the decisions in the order that determines whether it feels right — should it animate at all, what purpose, which tool, which properties, which curve and duration, how it interrupts, how it exits. Writes the implement... |
-| `animate-expo` | Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right — should it animate, which thread it runs on, which properties, spring or timing, how the gesture hands off, how it degrades. Writes the imp... |
-| `animation-vocabulary` | Reverse-lookup glossary that turns a vague description of a web animation or motion effect into its exact term ("the bouncy thing when a popover opens" → Pop in; "the iOS rubber-band scroll" → Rubber-banding). Use when the user asks "what's it called when…"... |
-| `apple-design` | Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-driven UI, spring animations, drag/swipe/sheet interactions, momentum and interruptible transitions, translucent materials and de... |
-| `apple-hig` | \| Apple Human Interface Guidelines as 14 agent skills covering platforms, foundations, components, patterns, inputs, and technologies for iOS, macOS, visionOS, watchOS, and tvOS. |
-| `archify` | Create polished, validated architecture, workflow, sequence, data-flow, and lifecycle/state diagrams as explorable standalone HTML with inline SVG, dark/light themes, optional trace motion, and PNG/JPEG/WebP/SVG/WebM export. Accept plain-language requiremen... |
-| `article-magazine` | Huashu / huashu-md-html-inspired magazine article layout for turning Markdown or notes into a polished long-form HTML essay. |
-| `ask-sonner` | Guide to Sonner, the React toast library — install and wire up the Toaster, pick the right toast() call, promise and loading toasts, updating, dismissing and persisting toasts, styling, theming and icons, positioning and multiple toasters. Use when working ... |
-| `banner-design` | Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with optional generated or supplied visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instag... |
-| `brand` | Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides. argument-hint: "[update\|review\|create] [args] |
-| `brand-extract` | \| Extract a complete Brand Kit from a live website by driving the in-app browser. Use when a brand-extraction project opens with a site in the Browser tab, or when the user asks to "extract a brand", "pull the brand from <url>", "get the colors/fonts/logo f... |
-| `brand-guidelines` | \| Apply Anthropic's official brand colors and typography to artifacts for consistent visual identity and professional design standards. A reference for shaping your own. |
-| `brandkit` | Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool... |
-| `break-ui` | Try to break a piece of UI by feeding it worst-case data — long names, unbreakable emails, one-letter names, missing fields, huge counts, zero items, long labels, non-Latin text, emoji, extreme numbers — then render it behind a "Demo data / Worst case" togg... |
-| `brutalist-skill` | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel ... |
-| `canvas-design` | \| Create beautiful visual art in PNG and PDF documents using design philosophy and aesthetic principles for posters, illustrations, and static pieces. |
-| `chat-motion-overlay` | Generate configurable chat motion overlays from a transcript or screenshot, including plain bubble scenes, app-style chat containers, optional device frames, preset or uploaded avatars, nickname display rules, and transparent-video-ready Remotion bundles. U... |
-| `color-expert` | \| Color science expert skill with 286K words of reference material covering OKLCH/OKLAB, palette generation, accessibility/contrast, color naming, pigment mixing, and historical color theory. |
-| `creative-director` | \| AI creative director with recursive self-assessment: 20+ methodologies (SIT, TRIZ, Bisociation, SCAMPER, Synectics), 3-axis evaluation calibrated against Cannes/D&AD/HumanKind, 5-phase process from brief to presentation. |
-| `deck-guizang-editorial` | Editorial magazine meets e-ink: 10 layouts and 5 palettes (Ink, Indigo Porcelain, Forest Ink, Kraft Paper, Dune). |
-| `deck-open-slide-canvas` | Locked 1920x1080 canvas deck with React component-level free composition, not bound to a fixed template. |
-| `deck-swiss-international` | 16-column grid, one saturated accent, and 22 locked layouts (Klein Blue, Lemon, Mint, Safety Orange). |
-| `design` | Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini, Atlas Cloud, or MuAPI AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/... |
-| `design-brief` | \| Parse a structured design brief written in I-Lang protocol format into a concrete design spec. Eliminates ambiguity from vague requests like "make it professional" by requiring explicit dimensions: palette, typography, layout, mood, density, and constrain... |
-| `design-consultation` | \| Build a complete design system from scratch with creative risks and realistic product mockups. Useful for kickoff workshops and brand-from-zero work. |
-| `design-review` | \| Designer Who Codes: visual audit then fixes with atomic commits and before/after screenshots. Useful for tightening shipped UI before launch. |
-| `design-system` | Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compl... |
-| `diagram-design` | Create branded architecture, architecture delta, IT current-state, flowchart, sequence, state machine, ER/data model, timeline, swimlane, quadrant, radar/spider, polar chart (polar/radial lollipop), loop/flywheel, nested, tree, org chart, layer stack, explo... |
-| `digits-fintech-swiss-template` | \| Swiss-grid fintech deck template in black / warm paper / neon-lime contrast. Use when users ask for premium data-story slides with strict modular layout, bold numeric cards, restrained motion, and keyboard/click navigation in one HTML file. |
-| `doc-kami-parchment` | Warm parchment canvas (#f5f4ed), monochrome ink-blue accent (#1B365D), one serif family, and editorial-grade typography. |
-| `ecommerce-image-workflow` | \| Reference-product ecommerce image workflow for generating a compact set of product-faithful main, feature, and lifestyle images from real product reference photos. V1 requires uploaded product imagery and intentionally defers brief-only concept generation... |
-| `editorial-burgundy-principles-template` | \| Editorial studio deck template in burgundy / blush / muted-gold palette. Use when users ask for premium manifesto or culture slides with pill tags, large typographic statements, principle cards, and guided keyboard/click navigation. |
-| `emil-design-eng` | This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great. |
-| `emilkowalski-motion` | \| Motion-design follow-up skill inspired by Emil Kowalski's animation guidance. Use after an interface exists to add tasteful micro-interactions, state transitions, and page motion with product-grade restraint. |
-| `enhance-prompt` | \| Improve prompts with design specs and UI/UX vocabulary. Useful for design-to-code workflows and clarifying requests for visual output. |
-| `export-download-debugging` | \| Diagnose and fix browser, preview, or Electron export/download failures, especially image export issues involving Save As, Blob/Data URLs, the File System Access API, createWritable failures, and 0 KB files. |
-| `field-notes-editorial-template` | \| Editorial "Field Notes" report template with soft paper background, serif hero typography, rounded pastel insight cards, and a retention chart panel. Use when users ask for a premium magazine-style business report, board memo one-pager, or elegant data st... |
-| `figma-code-connect-components` | \| Connect Figma design components to code components using Code Connect so design-system updates flow into the codebase automatically. |
-| `figma-create-design-system-rules` | \| Generate project-specific design system rules for Figma-to-code workflows. Useful for capturing tokens, naming, and lint rules in one source. |
-| `figma-create-new-file` | \| Create a new blank Figma Design or FigJam file. Useful as the first step in scripted design-system or workshop workflows. |
-| `figma-generate-design` | \| Build or update screens in Figma from code or description using design system components. Translate app pages into Figma using design tokens. |
-| `figma-generate-library` | \| Build or update a professional-grade design system library in Figma from a codebase. Useful for keeping the Figma source of truth in sync with shipped components. |
-| `figma-implement-design` | \| Translate Figma designs into production-ready code with 1:1 visual fidelity. Useful for handing off Figma frames straight to a frontend agent. |
-| `figma-use` | \| Run Figma Plugin API scripts for canvas writes, inspections, variables, and design-system work. Prerequisite for every other Figma skill in this catalogue. |
-| `find-animation-opportunities` | Search a codebase or UI for places that don't animate but should, and reject everything that shouldn't. Read-only; it proposes motion with exact values, it does not implement it. Use when the user asks "what could be animated here?" or wants to "make this f... |
-| `flutter-animating-apps` | \| Implement animated effects, transitions, and motion in Flutter apps. Useful for native iOS/Android motion design. |
-| `frame-data-chart-nyt` | NYT-newsroom typography, staggered reveal animation, and editorial-grade charts (line, bar, or range band). |
-| `frame-flowchart-sticky` | SVG curve connectors, sticky-note nodes, and cursor interaction with a whiteboard-brainstorm feel. |
-| `frame-glitch-title` | Digital glitch, chromatic offset, and data-corruption title frame for video transitions or cyberpunk heroes. |
-| `frame-light-leak-cinema` | Film light leaks, grain, 16:9 letterbox, and large serif type for cinematic openings or chapter cards. |
-| `frame-liquid-bg-hero` | WebGL-style fluid displacement background with a quote overlay, suited to video intros, landing heroes, or posters. |
-| `frame-logo-outro` | Segmented logo assembly, glow bloom, and tagline reveal for video outros or brand closing frames. |
-| `frame-macos-notification` | Realistic macOS notification banner with app icon, title, and body, suited to video overlays or product teasers. |
-| `frontend-design` | \| Create distinctive, production-grade frontend interfaces with strong visual direction, polished typography, considered layout, and working HTML/CSS/JS or framework code. Use for websites, landing pages, dashboards, React components, application screens, a... |
-| `frontend-dev` | \| Full-stack frontend with cinematic animations, AI-generated media via MiniMax API, and generative art. Useful for hero pages and showcase sites. |
-| `frontend-skill` | \| Create visually strong landing pages, websites, and app UIs with restrained composition. OpenAI's production frontend playbook. |
-| `frontend-slides` | \| Generate animation-rich HTML presentations with visual style previews. Useful for online keynotes, embedded talks, and interactive briefs. |
-| `gpt-tasteskill` | Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure, wide editorial typography (bans 6-line wraps), gapless bento grids, strict GSAP ScrollTriggers (pinning, stacking, scrubb... |
-| `hand-drawn-diagrams` | \| Generate hand-drawn Excalidraw diagrams from a prompt — animated SVG, hosted edit link, and PNG export. Works with Claude Code, Codex, Gemini CLI, and any agent supporting standard skill paths. |
-| `hatch-pet` | Create, repair, validate, preview, and package Codex-compatible animated pet spritesheets from character art, screenshots, generated images, or visual references. Use when a user wants to hatch a Codex pet, create a custom animated pet, or build a built-in ... |
-| `html-ppt-retro-quarterly-review` | \| Retro Quarterly Review presentation template in a bold blue + orange editorial language. Use when users ask for a high-impact quarterly review / roadmap deck with heavyweight slab headlines, clean cream paper sections, structured grids, and fast premium m... |
-| `image-to-code-skill` | Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable,... |
-| `imagegen-frontend-mobile` | Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-platform mobile products. Prioritizes clean hierarchy, comfortably readable text, strong multi-screen consistency, contr... |
-| `imagegen-frontend-web` | Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multip... |
-| `impeccable-design-polish` | \| Follow-up design polish skill inspired by Impeccable. Use after a web or HTML artifact exists to audit, critique, polish, animate, harden, and prepare the page for a live/share pass. |
-| `improve-animations` | Survey a codebase's animation and motion code as a senior motion advisor, then produce a prioritized audit and self-contained implementation plans for other agents (or cheaper models) to execute. Read-only on source code — it plans improvements, it does not... |
-| `library-curator` | \| Search the OD Library (the global asset registry) and apply matching assets into the current project mid-task. Use when the user asks to reuse an image they captured/uploaded earlier, "pull a logo/screenshot from my library", or to find and drop a stored ... |
+| `agent-launcher__agent-launcher-orchestrator` | Use when a user wants to build, launch, grade, or schedule a Claude Managed Agent (CMA) in their own Anthropic account — "build me… |
+| `agent-launcher__grade-iterate` | Phase 3 of building a Claude Managed Agent — the bounded grade→iterate loop. Define a CMA outcome (a required markdown rubric grad… |
+| `agent-launcher__interview` | Phase 1 of building a Claude Managed Agent — interview the founder about the one job the agent should do, then produce a build she… |
+| `agent-launcher__run-without-you` | Phase 4 of building a Claude Managed Agent — make it run without you. Turn a graded agent into a recurring scheduled deployment (P… |
+| `agent-launcher__stage-launch` | Phase 2 of building a Claude Managed Agent — turn a validated build sheet into exact API payloads and a resumable BYOK curl launch… |
+| `agent-launcher__wrap-up` | Close out a launched Claude Managed Agent — recap every primitive the founder now owns, regenerate the single-file overview page, … |
+| `business-growth__business-growth-skills` | "Router/index for the 4 business & growth skills bundled in this plugin: customer-success-manager (health scoring, churn risk, exp… |
+| `business-growth__contract-and-proposal-writer` | "Generate professional, jurisdiction-aware business documents: freelance contracts, project proposals, SOWs, NDAs, and MSAs. Struc… |
+| `business-growth__customer-success-manager` | Monitors customer health, predicts churn risk, and identifies expansion opportunities using weighted scoring models for SaaS custo… |
+| `business-growth__revenue-operations` | Analyzes sales pipeline health, revenue forecasting accuracy, and go-to-market efficiency metrics for SaaS revenue optimization. U… |
+| `business-growth__sales-engineer` | Analyzes RFP/RFI responses for coverage gaps, builds competitive feature comparison matrices, and plans proof-of-concept (POC) eng… |
+| `business-operations__business-operations-skills` | Use when running, diagnosing, or designing internal business operations — process documentation, vendor SLAs, capacity planning, i… |
+| `business-operations__capacity-planner` | "Use when an ops leader (Director of CX, Head of Support, VP Ops, Head of BizOps, Head of IT ops, Head of Finance ops) is sizing o… |
+| `business-operations__internal-comms` | Use when a Head of People Ops, BizOps lead, or Internal Communications owner needs to draft and sequence an internal-only change-m… |
+| `business-operations__knowledge-ops` | Use when a Head of Ops, Knowledge Manager, or TPM-Internal needs to author, validate, or clean up company SOPs and internal runboo… |
+| `business-operations__process-mapper` | Use when a BizOps lead, COO, or process-improvement owner needs to document an end-to-end business process (procurement, employee … |
+| `business-operations__procurement-optimizer` | Use when running an annual SaaS audit, doing category-level spend review, or rationalizing the supplier base — when the user needs… |
+| `business-operations__vendor-management` | Use when reviewing, scoring, or auditing third-party SaaS / vendor relationships — running a vendor scorecard with industry tuning… |
+| `c-level-advisor__agent-protocol` | "Inter-agent communication protocol for C-suite agent teams. Defines invocation syntax, loop prevention, isolation rules, and resp… |
+| `c-level-advisor__arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
+| `c-level-advisor__board-deck-builder` | "Assembles comprehensive board and investor update decks by pulling perspectives from all C-suite roles. Use when preparing board … |
+| `c-level-advisor__board-meeting` | "Multi-agent board meeting protocol for strategic decisions. Runs a structured 6-phase deliberation: context loading, independent … |
+| `c-level-advisor__board-prep` | "Board meeting preparation for the adversarial scenario, not the friendly one. Forces numbers-cold mastery, anticipates hard quest… |
+| `c-level-advisor__c-level-skills` | "Index and router for the C-level advisory bundle: 33 skills covering 14 C-suite roles, orchestration, cross-cutting capabilities,… |
+| `c-level-advisor__ceo-advisor` | "Executive leadership guidance for strategic decision-making, organizational development, and stakeholder management. Use when pla… |
+| `c-level-advisor__cfo-advisor` | "Financial leadership for startups and scaling companies. Financial modeling, unit economics, fundraising strategy, cash managemen… |
+| `c-level-advisor__challenge` | "Pre-mortem plan analysis. Imagine the plan failed 12 months from now and work backwards to find the weaknesses. Surfaces assumpti… |
+| `c-level-advisor__change-management` | "Framework for rolling out organizational changes without chaos. Covers the ADKAR model adapted for startups, communication templa… |
+| `c-level-advisor__chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
+| `c-level-advisor__chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
+| `c-level-advisor__chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
+| `c-level-advisor__chief-of-staff` | "C-suite orchestration layer. Routes founder questions to the right advisor role(s), triggers multi-role board meetings for comple… |
+| `c-level-advisor__chro-advisor` | "People leadership for scaling companies. Hiring strategy, compensation design, org structure, culture, and retention. Use when bu… |
+| `c-level-advisor__ciso-advisor` | "Security leadership for growth-stage companies. Risk quantification in dollars, compliance roadmap (SOC 2/ISO 27001/HIPAA/GDPR), … |
+| `c-level-advisor__cmo-advisor` | "Marketing leadership for scaling companies. Brand positioning, growth model design, marketing budget allocation, and marketing or… |
+| `c-level-advisor__company-os` | "The meta-framework for how a company runs — the connective tissue between all C-suite roles. Covers operating system selection (E… |
+| `c-level-advisor__competitive-intel` | "Systematic competitor tracking that feeds CMO positioning, CRO battlecards, and CPO roadmap decisions. Use when analyzing competi… |
+| `c-level-advisor__context-engine` | "Loads and manages company context for all C-suite advisor skills. Reads ~/.claude/company-context.md, detects stale context (>90 … |
+| `c-level-advisor__coo-advisor` | "Operations leadership for scaling companies. Process design, OKR execution, operational cadence, and scaling playbooks. Use when … |
+| `c-level-advisor__cpo-advisor` | "Product leadership for scaling companies. Product vision, portfolio strategy, product-market fit, and product org design. Use whe… |
+| `c-level-advisor__cro-advisor` | "Revenue leadership for B2B SaaS companies. Revenue forecasting, sales model design, pricing strategy, net revenue retention, and … |
+| `c-level-advisor__cs-onboard` | "Founder onboarding interview that captures company context across 7 dimensions. Invoke with /cs:setup for initial interview or /c… |
+| `c-level-advisor__cto-advisor` | "Technical leadership guidance for engineering teams, architecture decisions, and technology strategy. Use when assessing technica… |
+| `c-level-advisor__culture-architect` | "Build, measure, and evolve company culture as operational behavior — not wall posters. Covers mission/vision/values workshops, va… |
+| `c-level-advisor__decision-logger` | "Two-layer memory architecture for board meeting decisions. Manages raw transcripts (Layer 1) and approved decisions (Layer 2). Us… |
+| `c-level-advisor__executive-mentor` | "Adversarial thinking partner for founders and executives. Stress-tests plans, prepares for brutal board meetings, dissects decisi… |
+| `c-level-advisor__founder-coach` | "Personal leadership development for founders and first-time CEOs. Covers founder archetype identification, delegation frameworks,… |
+| `c-level-advisor__general-counsel-advisor` | "General Counsel advisory for startups: contract review (MSA, SaaS, NDA, DPA, employment), IP strategy, term sheet decoding, and r… |
+| `c-level-advisor__hard-call` | "/em:hard-call — Framework for decisions with no good options. Use when every option is painful and a structured 10/10/10 + regret… |
+| `c-level-advisor__internal-narrative` | "Build and maintain one coherent company story across all audiences — employees, investors, customers, candidates, and partners. D… |
+| `c-level-advisor__intl-expansion` | "International market expansion strategy. Market selection, entry modes, localization, regulatory compliance, and go-to-market by … |
+| `c-level-advisor__ma-playbook` | "M&A strategy for acquiring companies or being acquired. Due diligence, valuation, integration, and deal structure. Use when evalu… |
+| `c-level-advisor__org-health-diagnostic` | "Cross-functional organizational health check combining signals from all C-suite roles. Scores 8 dimensions on a traffic-light sca… |
+| `c-level-advisor__postmortem` | "/em:postmortem — Honest analysis of what went wrong. Use after a failed launch, missed quarter, or bad hire to run a blameless 5-… |
+| `c-level-advisor__scenario-war-room` | "Cross-functional what-if modeling for cascading multi-variable scenarios. Unlike single-assumption stress testing, this models co… |
+| `c-level-advisor__strategic-alignment` | "Cascades strategy from boardroom to individual contributor. Detects and fixes misalignment between company goals and team executi… |
+| `c-level-advisor__stress-test` | "/em:stress-test — Business assumption stress testing. Use before betting on a plan whose core assumptions are unvalidated — e.g. … |
+| `c-level-advisor__vpe-advisor` | "VP of Engineering advisory for startups: delivery throughput (DORA 4 metrics + bottleneck identification), engineering hiring fun… |
+| `c-level-agents__boardroom` | "/cs:boardroom <brief> — 6-phase multi-role deliberation across the C-suite with Phase 2 isolation, critic pre-screen, and synthes… |
+| `c-level-agents__brief` | "/cs:brief <topic> — Generate a one-page strategy brief from an office-hours intake. First step in the strategic sprint pipeline. … |
+| `c-level-agents__c-level-agents` | "Founder-mode executive team. 13 cs-* C-suite agents (CFO, CMO, CRO, CPO, COO, CHRO, CISO, GC, CDO, CAIO, CCO, VPE, Chief of Staff… |
+| `c-level-agents__caio-review` | "/cs:caio-review <plan> — Eval-demanding Chief AI Officer interrogation of any plan that involves AI: model selection, risk classi… |
+| `c-level-agents__cco-review` | "/cs:cco-review <plan> — Retention-obsessed Chief Customer Officer interrogation of any plan that touches customer retention, segm… |
+| `c-level-agents__cdo-review` | "/cs:cdo-review <plan> — Decision-driven Chief Data Officer interrogation of any plan that touches training data, data architectur… |
+| `c-level-agents__cfo-review` | "/cs:cfo-review <plan> — Numerate-skeptic interrogation of any plan that touches money. Unit economics, runway, dilution, capital … |
+| `c-level-agents__ciso-review` | "/cs:ciso-review <plan> — Risk-paranoid interrogation of any plan that touches data, compliance, or production access. Use when la… |
+| `c-level-agents__cmo-review` | "/cs:cmo-review <plan> — Narrative-first interrogation of positioning, ICP, message house, and channel mix. Use when launching a c… |
+| `c-level-agents__cpo-review` | "/cs:cpo-review <plan> — JTBD-driven interrogation of product roadmap, PMF signal, and portfolio focus. Use when committing a quar… |
+| `c-level-agents__cro-review` | "/cs:cro-review <plan> — Pipeline-paranoid interrogation of revenue, win rate, NRR, and ramp time. Use when the forecast misses pi… |
+| `c-level-agents__cross-eval` | "/cs:cross-eval <memo> — Multi-model consensus on a board memo or strategy brief. Claude + Codex + Gemini cross-review with gracef… |
+| `c-level-agents__cto-review` | "/cs:cto-review <plan> — Architecture and scaling interrogation. Tech debt, scaling cliffs, team scaling, build-vs-buy. Use when c… |
+| `c-level-agents__decide` | "/cs:decide <memo> — Log a decision to two-layer memory via decision-logger. Approved memo becomes durable; raw transcripts kept f… |
+| `c-level-agents__execute` | "/cs:execute <decision> — Generate a 90-day execution plan with weekly milestones, DRIs, and check-in cadence from an approved dec… |
+| `c-level-agents__founder-mode` | "/cs:founder-mode <question> — Auto-routes any founder question to the right C-role advisor or to /cs:boardroom for multi-role top… |
+| `c-level-agents__gc-review` | "/cs:gc-review <plan> — General Counsel interrogation of contracts, IP, regulatory, term sheets, and employment-law surface. Use w… |
+| `c-level-agents__onboard` | "/cs:onboard — Founder interview that populates ~/.claude/company-context.md using the canonical 7-dimension cs-onboard schema. Th… |
+| `c-level-agents__post-mortem` | "/cs:post-mortem <decision> — Honest retrospective on an executed decision, scored against original assumptions and dissent. Close… |
+| `c-level-agents__vpe-review` | "/cs:vpe-review <plan> — Throughput-first VP of Engineering interrogation of any plan that touches delivery, eng hiring, team stru… |
+| `commercial__channel-economics` | "Use when reviewing or rebalancing direct vs. partner-led channel economics — computing fully-loaded cost-to-serve per channel, ch… |
+| `commercial__commercial-forecaster` | "Use when building a quarterly bookings forecast, ARR projection, pipeline forecast, NRR projection, or commit/best-case/pipe-only… |
+| `commercial__commercial-policy` | "Use when designing or revising a company's commercial policy — the rules of engagement governing discounts off list price, approv… |
+| `commercial__commercial-skills` | Use when reviewing, approving, or designing commercial motion — pricing models, deal review, discount approval, partnership econom… |
+| `commercial__deal-desk` | Use when reviewing a specific inbound deal before close — when sales has asked for a discount that exceeds AE authority, when the … |
+| `commercial__partnerships-architect` | "Use when a startup is approached by a prospective partner and someone has to decide should we sign this partner, at what partner … |
+| `commercial__pricing-strategist` | "Use when designing or revisiting product pricing — selecting a pricing model (subscription seat-based, usage-based, value-based, … |
+| `commercial__rfp-responder` | "Use when an RFP, RFI, RFQ, security questionnaire, vendor questionnaire, or proposal request arrives and the team needs a structu… |
+| `compliance-os__ai-act-readiness` | "/cs:ai-act-readiness <system> — EU AI Act 6-question forcing interrogation. Use during AI-system intake, before EU deployment, or… |
+| `compliance-os__aims-audit` | "/cs:aims-audit <scope> — ISO/IEC 42001 AIMS internal-audit 6-question forcing interrogation. Use before certification stage 1, be… |
+| `compliance-os__compliance-os` | "Compliance OS — meta-orchestrator that lets compliance teams CONFIGURE which frameworks apply, COMPUTE cross-framework control ov… |
+| `compliance-os__compliance-readiness` | "/cs:compliance-readiness <program> — Multi-framework compliance officer 6-question forcing interrogation of any compliance progra… |
+| `compliance-os__fda-qsr-audit-prep` | "/cs:fda-qsr-audit-prep <scope> — FDA 21 CFR 820 (QSR / QMSR) audit 6-question forcing interrogation. Post-Feb 2026 substantially … |
+| `compliance-os__gdpr-audit-prep` | "/cs:gdpr-audit-prep <scope> — GDPR audit 6-question Article-cited forcing interrogation. Use before annual internal GDPR review, … |
+| `compliance-os__iso13485-audit-prep` | "/cs:iso13485-audit-prep <scope> — ISO 13485 QMS audit 6-question forcing interrogation. Design controls + CAPA + post-market focu… |
+| `compliance-os__iso27001-audit-prep` | "/cs:iso27001-audit-prep <scope> — ISO 27001 ISMS audit readiness 6-question forcing interrogation. Use before annual Clause 9.2 i… |
+| `compliance-os__soc2-audit-prep` | "/cs:soc2-audit-prep <scope> — SOC 2 Type II readiness 6-question forcing interrogation. Observation-period focused. Use before Ty… |
+| `engineering-team__a11y-audit` | "Accessibility audit skill for scanning, fixing, and verifying WCAG 2.2 Level A and AA compliance across React, Next.js, Vue, Angu… |
+| `engineering-team__adversarial-reviewer` | "Adversarial code review that breaks the self-review monoculture. Use when you want a genuinely critical review of recent changes,… |
+| `engineering-team__ai-security` | "Use when assessing AI/ML systems for prompt injection, jailbreak vulnerabilities, model inversion risk, data poisoning exposure, … |
+| `engineering-team__aws-solution-architect` | Design AWS architectures for startups using serverless patterns and IaC templates. Use when asked to design serverless architectur… |
+| `engineering-team__azure-cloud-architect` | "Design Azure architectures for startups and enterprises. Use when asked to design Azure infrastructure, create Bicep/ARM template… |
+| `engineering-team__browserstack` | >- |
+| `engineering-team__cloud-security` | "Use when assessing cloud infrastructure for security misconfigurations, IAM privilege escalation paths, S3 public exposure, open … |
+| `engineering-team__code-reviewer` | Code review automation for TypeScript, JavaScript, Python, Go, Swift, Kotlin, C#, .NET, Java, C, C++, Rust, Ruby, PHP, and Dart/Fl… |
+| `engineering-team__coverage` | >- |
+| `engineering-team__email-template-builder` | "Build complete transactional email systems: React Email templates, provider integration (Resend, Postmark, SendGrid, AWS SES), pr… |
+| `engineering-team__embedded-iot-mentor` | Mentor for embedded and IoT hardware projects. Helps select MCUs, dev boards, and toolchains, decides where sensor readings end up… |
+| `engineering-team__engineering-skills` | "Index of the engineering-team skills bundle for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw, and 6 more tools. Architecture,… |
+| `engineering-team__epic-design` | > |
+| `engineering-team__extract` | "Turn a proven pattern or debugging solution into a standalone reusable skill with SKILL.md, reference docs, and examples. Use whe… |
+| `engineering-team__fix` | >- |
+| `engineering-team__gcp-cloud-architect` | "Design GCP architectures for startups and enterprises. Use when asked to design Google Cloud infrastructure, deploy to GKE or Clo… |
+| `engineering-team__generate` | >- |
+| `engineering-team__google-workspace-cli` | "Google Workspace administration via the gws CLI (github.com/googleworkspace/cli). Install, authenticate, and automate Gmail, Driv… |
+| `engineering-team__incident-commander` | "Comprehensive incident response framework from detection through resolution and post-incident review. Battle-tested SRE/DevOps pr… |
+| `engineering-team__incident-response` | "Use when a security incident has been detected or declared and needs classification, triage, escalation path determination, and f… |
+| `engineering-team__memory-review` | "Analyze auto-memory for promotion candidates, stale entries, consolidation opportunities, and health metrics. Use when the user r… |
+| `engineering-team__memory-status` | "Memory health dashboard showing line counts, topic files, capacity, stale entries, and recommendations. Use when the user runs /s… |
+| `engineering-team__migrate` | >- |
+| `engineering-team__ms365-tenant-manager` | Microsoft 365 tenant administration for Global Administrators. Automate M365 tenant setup, Office 365 admin tasks, Azure AD user m… |
+| `engineering-team__named-persona-adversarial-review` | "Code review through the lens of real engineers' documented philosophies (Torvalds, Thompson, Carmack, Kent Beck, Jobs, Cagan). Co… |
+| `engineering-team__promote` | "Graduate a proven pattern from auto-memory (MEMORY.md) to CLAUDE.md or .claude/rules/ for permanent enforcement. Use when the use… |
+| `engineering-team__pw` | "Production-grade Playwright testing toolkit. Use when the user mentions Playwright tests, end-to-end testing, browser automation,… |
+| `engineering-team__pw-init` | >- |
+| `engineering-team__pw-review` | >- |
+| `engineering-team__red-team` | "Use when planning or executing authorized red team engagements, attack path analysis, or offensive security simulations. Covers M… |
+| `engineering-team__remember` | "Explicitly save important knowledge to auto-memory with timestamp and context. Use when a discovery is too important to rely on a… |
+| `engineering-team__report` | >- |
+| `engineering-team__security-pen-testing` | "Use when the user asks to perform security audits, penetration testing, vulnerability scanning, OWASP Top 10 checks, or offensive… |
+| `engineering-team__self-improving-agent` | "Curate Claude Code's auto-memory into durable project knowledge. Analyze MEMORY.md for patterns, promote proven learnings to CLAU… |
+| `engineering-team__senior-architect` | This skill should be used when the user asks to "design system architecture", "evaluate microservices vs monolith", "create archit… |
+| `engineering-team__senior-backend` | Designs and implements backend systems including REST APIs, microservices, database architectures, authentication flows, and secur… |
+| `engineering-team__senior-computer-vision` | Computer vision engineering skill for object detection, image segmentation, and visual AI systems. Covers CNN and Vision Transform… |
+| `engineering-team__senior-data-engineer` | Data engineering skill for building scalable data pipelines, ETL/ELT systems, and data infrastructure. Expertise in Python, SQL, S… |
+| `engineering-team__senior-data-scientist` | World-class senior data scientist skill specialising in statistical modeling, experiment design, causal inference, and predictive … |
+| `engineering-team__senior-devops` | Comprehensive DevOps skill for CI/CD, infrastructure automation, containerization, and cloud platforms (AWS, GCP, Azure). Includes… |
+| `engineering-team__senior-frontend` | Frontend development skill for React, Next.js, TypeScript, and Tailwind CSS applications. Use when building React components, opti… |
+| `engineering-team__senior-fullstack` | Fullstack development toolkit with project scaffolding for Next.js, FastAPI, MERN, and Django stacks, code quality analysis with s… |
+| `engineering-team__senior-ml-engineer` | ML engineering skill for productionizing models, building MLOps pipelines, and integrating LLMs. Covers model deployment, feature … |
+| `engineering-team__senior-prompt-engineer` | Use when the user asks to optimize prompts, design prompt templates, evaluate LLM outputs with an eval set, measure RAG retrieval … |
+| `engineering-team__senior-qa` | Generates unit tests, integration tests, and E2E tests for React/Next.js applications. Scans components to create Jest + React Tes… |
+| `engineering-team__senior-secops` | Senior SecOps engineer skill for application security, vulnerability management, compliance verification, and secure development p… |
+| `engineering-team__senior-security` | Use when the user asks for STRIDE threat modeling, DREAD risk scoring, data-flow-diagram threat analysis, or a quick secret scan —… |
+| `engineering-team__snowflake-development` | "Use when writing Snowflake SQL, building data pipelines with Dynamic Tables or Streams/Tasks, using Cortex AI functions, creating… |
+| `engineering-team__stripe-integration-expert` | "Production-grade Stripe integrations: subscriptions with trials and proration, one-time payments, usage-based billing, checkout s… |
+| `engineering-team__tdd-guide` | "Test-driven development skill for writing unit tests, generating test fixtures and mocks, analyzing coverage gaps, and guiding re… |
+| `engineering-team__tech-stack-evaluator` | Technology stack evaluation and comparison with TCO analysis, security assessment, and ecosystem health scoring. Use when comparin… |
+| `engineering-team__testrail` | >- |
+| `engineering-team__threat-detection` | "Use when hunting for threats in an environment, analyzing IOCs, or detecting behavioral anomalies in telemetry. Covers hypothesis… |
+| `engineering__agent-designer` | "Use when the user asks to design a multi-agent system, pick an orchestration pattern (supervisor/swarm/pipeline), generate tool s… |
+| `engineering__agent-harness` | "Turn any domain folder of skills into a bounded agentic loop: compile a goal into a verifiable task plan, execute tasks with the … |
+| `engineering__agent-memory` | Use when a project's CLAUDE.md has grown past what anyone reads and you want the agent to learn durable facts from its own session… |
+| `engineering__agent-workflow-designer` | "Design production-grade multi-agent workflows with clear pattern choice (sequential, parallel, hierarchical), handoff contracts, … |
+| `engineering__agenthub` | "Multi-agent collaboration plugin that spawns N parallel subagents competing on the same task via git worktree isolation. Agents w… |
+| `engineering__api-design-reviewer` | "Comprehensive REST API design review with automated linting, breaking-change detection, and design scorecards. Catches inconsiste… |
+| `engineering__api-test-suite-builder` | "Use when the user asks to generate API tests, create integration test suites, test REST endpoints, or build contract tests." |
+| `engineering__ar-resume` | "Resume a paused experiment. Checkout the experiment branch, read results history, continue iterating. Use when the user runs /ar:… |
+| `engineering__ar-status` | "Show experiment dashboard with results, active loops, and progress. Use when the user runs /ar:ar-status or asks how an autoresea… |
+| `engineering__autoresearch-agent` | "Autonomous experiment loop that optimizes any file by a measurable metric. Inspired by Karpathy's autoresearch. The agent edits a… |
+| `engineering__behuman` | "Use when the user wants more human-like AI responses — less robotic, less listy, more authentic. Triggers: 'behuman', 'be real', … |
+| `engineering__board` | "Read, write, and browse the AgentHub message board for agent coordination. Use when the user runs /hub:board or asks to post, rea… |
+| `engineering__book-to-skill` | "Converts books, documentation folders, and source collections (PDF, EPUB, DOCX, HTML, Markdown, RST, AsciiDoc, RTF, MOBI/AZW) int… |
+| `engineering__boost-asio-pro` | "Use when writing or reviewing asynchronous C++ networking code with Boost.Asio or standalone Asio — TCP/UDP servers and clients, … |
+| `engineering__browser-automation` | "Use when the user asks to automate browser tasks, scrape websites, fill forms, capture screenshots, extract structured data from … |
+| `engineering__caveman` | > |
+| `engineering__changelog-generator` | "Produce consistent, auditable release notes from Conventional Commits. Separates commit parsing, semantic-bump logic, and changel… |
+| `engineering__chaos-engineering` | Use when planning, running, or learning from chaos engineering experiments. Triggers on "chaos experiment", "fault injection", "ga… |
+| `engineering__ci-cd-pipeline-builder` | "Generate pragmatic CI/CD pipelines from detected project stack signals — fast baseline generation, repeatable checks, environment… |
+| `engineering__claude-coach` | Personal coach that teaches users to become Claude power users. Use this skill the FIRST time a user asks to "learn Claude", "be a… |
+| `engineering__code-tour` | "Use when the user asks to create a CodeTour .tour file — persona-targeted, step-by-step walkthroughs that link to real files and … |
+| `engineering__codebase-onboarding` | "Analyze a codebase and generate onboarding documentation for engineers, tech leads, and contractors. Fast fact-gathering and repe… |
+| `engineering__collab-proof` | "Use when you want to understand what Claude contributed vs what you drove in a session. Triggers on: /collab-proof, session retro… |
+| `engineering__data-quality-auditor` | Audit datasets for completeness, consistency, accuracy, and validity. Profile data distributions, detect anomalies and outliers, s… |
+| `engineering__database-designer` | "Use when the user asks to design database schemas, plan data migrations, optimize queries, choose between SQL and NoSQL, or model… |
+| `engineering__database-schema-designer` | "Use when the user asks to create ERD diagrams, normalize database schemas, design table relationships, or plan schema migrations.… |
+| `engineering__deep-learning-book` | "Study companion and working knowledge base for the Deep Learning textbook by Goodfellow, Bengio & Courville (MIT Press, 2016), re… |
+| `engineering__demo-video` | "Use when the user asks to create a demo video, product walkthrough, feature showcase, animated presentation, marketing video, or … |
+| `engineering__dependency-auditor` | "Audit and manage dependencies across multi-language projects. Identifies vulnerabilities, license conflicts, transitive dependenc… |
+| `engineering__docker-development` | "Docker and container development agent skill and plugin for Dockerfile optimization, docker-compose orchestration, multi-stage bu… |
+| `engineering__engineering-advanced-skills` | "Index of 37 advanced engineering agent skills for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Use when browsing or choosing… |
+| `engineering__env-secrets-manager` | "Manage environment-variable hygiene and secrets safety across local development and production. Practical auditing, drift awarene… |
+| `engineering__eval` | "Evaluate and rank agent results by metric or LLM judge for an AgentHub session. Use when the user runs /hub:eval or asks to score… |
+| `engineering__feature-flags-architect` | Use when adding, retiring, or auditing feature flags. Triggers on "add a flag", "ship behind a flag", "rollout plan", "kill switch… |
+| `engineering__focused-fix` | "Use when the user asks to fix, debug, or make a specific feature/module/area work end-to-end. Triggers: 'make X work', 'fix the Y… |
+| `engineering__git-worktree-manager` | "Run parallel feature work safely with Git worktrees. Standardizes branch isolation, port allocation, environment sync, and cleanu… |
+| `engineering__grill-me` | Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision … |
+| `engineering__grill-with-docs` | Docs-anchored grilling session — challenges a plan against the project's existing language (CONTEXT.md) and recorded decisions (do… |
+| `engineering__helm-chart-builder` | "Helm chart development agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw — chart scaffolding, values de… |
+| `engineering__hivemind` | Orchestrate free opencode workers from Claude Code to cut token costs. Use when delegating grunt work to a single worker or a para… |
+| `engineering__hub-init` | "Create a new AgentHub collaboration session with task, agent count, and evaluation criteria. Use when the user runs /hub:hub-init… |
+| `engineering__hub-status` | "Show DAG state, agent progress, and branch status for an AgentHub session. Use when the user runs /hub:hub-status or asks how the… |
+| `engineering__human-gate` | "Runs the human-verification lane of an agent loop, and proves review happened before work is called done. Builds a single-file HT… |
+| `engineering__interview-system-designer` | This skill should be used when the user asks to "design interview processes", "create hiring pipelines", "calibrate interview loop… |
+| `engineering__karpathy-coder` | Use when writing, reviewing, or committing code to enforce Karpathy's 4 coding principles — surface assumptions before coding, kee… |
+| `engineering__kubernetes-operator` | Use when building a Kubernetes Operator — custom controllers that reconcile CRD state. Triggers on "build an operator", "CRD desig… |
+| `engineering__llm-cost-optimizer` | "Use proactively whenever LLM API costs come up -- or should. Triggers include: 'my AI costs are too high', 'optimize token usage'… |
+| `engineering__loop` | "Start an autonomous experiment loop with user-selected interval (10min, 1h, daily, weekly, monthly). Uses CronCreate for scheduli… |
+| `engineering__mcp-server-builder` | "Design and ship production-ready MCP (Model Context Protocol) servers from OpenAPI contracts instead of hand-written tool wrapper… |
+| `engineering__memory-engineering` | Use when designing, reviewing, or paying for an agent memory system — adding memory to an agent, choosing between long-context / R… |
+| `engineering__merge` | "Merge the winning agent's branch into base, archive losers, and clean up worktrees. Use when the user runs /hub:merge or asks to … |
+| `engineering__migration-architect` | "Zero-downtime migration planning, compatibility validation, and rollback strategy generation. Tools for system, database, and inf… |
+| `engineering__minimalist` | "Use when the user asks to write code efficiently, avoid over-engineering, reduce dependencies, or prevent unnecessary abstraction… |
+| `engineering__monorepo-navigator` | "Navigate, manage, and optimize monorepos. Covers Turborepo, Nx, pnpm workspaces, and Lerna. Cross-package impact analysis, select… |
+| `engineering__observability-designer` | "Design production-ready observability strategies combining metrics, logs, and traces. Includes SLI/SLO design, golden-signals mon… |
+| `engineering__performance-profiler` | "Systematic performance profiling for Node.js, Python, and Go applications. Identifies CPU, memory, and I/O bottlenecks, generates… |
+| `engineering__pr-review-expert` | "Use when the user asks to review pull requests, analyze code changes, check for security issues in PRs, or assess code quality of… |
+| `engineering__prompt-governance` | "Use when managing prompts in production at scale: versioning prompts, running A/B tests on prompts, building prompt registries, p… |
+| `engineering__rag-architect` | "Use when the user asks to design a RAG pipeline, choose a chunking strategy or embedding model, pick a vector database, or evalua… |
+| `engineering__run` | "One-shot lifecycle command that chains init → baseline → spawn → eval → merge in a single invocation. Use when the user runs /hub… |
+| `engineering__runbook-generator` | "Generate operational runbooks from a service name — deployment, incident response, maintenance, and rollback workflows. Templated… |
+| `engineering__sample-skill` | "Reference BASIC-tier skill used as a fixture by skill-tester. Counts words and characters and applies basic text transformations.… |
+| `engineering__secrets-vault-manager` | "Use when the user asks to set up secret management infrastructure, integrate HashiCorp Vault, configure cloud secret stores (AWS … |
+| `engineering__security-guidance` | PreToolUse security-anti-pattern hook for Claude Code. Catches 12 common security risks (command injection, XSS, SQL injection, un… |
+| `engineering__self-eval` | "Honestly evaluate AI work quality using a two-axis scoring system. Use after completing a task, code review, or work session to g… |
+| `engineering__setup` | "Set up a new autoresearch experiment interactively. Collects domain, target file, eval command, metric, direction, and evaluator.… |
+| `engineering__ship-gate` | > |
+| `engineering__skill-doctor` | Use when the user wants their agent setup graded from real conversation history, asks which installed skills are actually working,… |
+| `engineering__skill-security-auditor` | > |
+| `engineering__skill-tester` | "Validate, test, and score the quality of skills within the claude-skills ecosystem. Comprehensive meta-skill: structure validatio… |
+| `engineering__skillopt-sleep` | "Use when the user wants their Claude agent to self-improve from past usage, asks about a nightly/offline 'sleep' or 'dream' cycle… |
+| `engineering__slo-architect` | Use when defining, reviewing, or operating SLOs/SLIs/error budgets. Triggers on "define an SLO", "what should our SLO be", "error … |
+| `engineering__spawn` | "Launch N parallel subagents in isolated git worktrees to compete on the session task. Use when the user runs /hub:spawn or asks t… |
+| `engineering__spec-driven-workflow` | "Use when the user asks to write specs before code, define acceptance criteria, plan features before implementation, generate test… |
+| `engineering__spinning-up-deep-rl` | "Knowledge base from \"Spinning Up in Deep RL\" by Joshua Achiam (OpenAI, MIT-licensed). Use when applying Achiam's frameworks for… |
+| `engineering__sql-database-assistant` | "Use when the user asks to write SQL queries, optimize database performance, generate migrations, explore database schemas, or wor… |
+| `engineering__statistical-analyst` | Run hypothesis tests, analyze A/B experiment results, calculate sample sizes, and interpret statistical significance with effect s… |
+| `engineering__strict-api` | "Use when the user says 'no hallucinations', 'verify APIs', 'reality check', or 'don't invent functions'. Prevents the agent from … |
+| `engineering__tc-tracker` | "Use when the user asks to track technical changes, create change records, manage TC lifecycles, or hand off work between AI sessi… |
+| `engineering__tech-debt-tracker` | Scan codebases for technical debt, score severity, track trends, and generate prioritized remediation plans. Use when users mentio… |
+| `engineering__terraform-patterns` | "Terraform infrastructure-as-code agent skill and plugin for Claude Code, Codex, Gemini CLI, Cursor, OpenClaw. Covers module desig… |
+| `engineering__universal-scraping-architect` | "Use for web scraping, crawling, document extraction, API parsing, or building validation-heavy data pipelines using Firecrawl or … |
+| `engineering__workflow-builder` | Design and write deterministic multi-agent workflow scripts (.js files in .claude/workflows/) for Claude Code's Workflow tool. Use… |
+| `engineering__write-a-skill` | Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write… |
+| `engineering__zero-hallucination-coder` | "Runs a disciplined Discuss -> Map -> Decompose -> Execute -> Verify loop that grounds code in verified structure — no invented AP… |
+| `finance__business-investment-advisor` | "Business investment analysis and capital allocation advisor. Use when evaluating whether to invest in equipment, real estate, a n… |
+| `finance__finance-skills` | "Router/index for the 2 finance skills bundled in this plugin: financial-analyst (ratio analysis, DCF valuation, budget variance, … |
+| `finance__financial-analyst` | Performs financial ratio analysis, DCF valuation, budget variance analysis, and rolling forecast construction for strategic decisi… |
+| `finance__saas-metrics-coach` | SaaS financial health advisor. Use when a user shares revenue or customer numbers, or mentions ARR, MRR, churn, LTV, CAC, NRR, or … |
+| `finance__stock-analysis` | Produce a rigorous, sector-relative, multi-factor fundamental analysis of a publicly listed company — Indian (NSE/BSE) or US/globa… |
+| `loop-library__loop-library` | Discover, find, compare, audit, repair, adapt, and design repeatable AI-agent loops with explicit triggers, actions, verification,… |
+| `markdown-html__markdown-html-orchestrator` | Use when a user wants to convert any markdown file in their Claude project into a single-file, lightly-interactive HTML — long-for… |
+| `markdown-html__md-document` | Converts long-form markdown (specs, RFCs, reports, plans, explainers) into a single-file, lightly-interactive HTML document with s… |
+| `markdown-html__md-review` | Converts a markdown PR writeup or code review (one with ```diff fenced blocks and severity-tagged > [!BLOCKER]/[!MAJOR]/[!MINOR]/[… |
+| `markdown-html__md-slides` | "Converts a markdown deck (slides separated by `---` HR boundaries or by `# ` H1 headings, with optional `<!-- notes: ... -->` pre… |
+| `marketing-skill__ab-test-setup` | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split te… |
+| `marketing-skill__aeo` | "Answer Engine Optimization (AEO) skill — optimize content to be cited by AI language models (ChatGPT, Perplexity, Claude, Gemini,… |
+| `marketing-skill__analytics-tracking` | "Set up, audit, and debug analytics tracking implementation — GA4, Google Tag Manager, event taxonomy, conversion tracking, and da… |
+| `marketing-skill__app-store-optimization` | App Store Optimization (ASO) toolkit for researching keywords, analyzing competitor rankings, generating metadata suggestions, and… |
+| `marketing-skill__business-name-fit` | Suggest, pick, or vet a business, startup, or product name that stays true to the founder's cultural origin while working professi… |
+| `marketing-skill__campaign-analytics` | Analyzes campaign performance with multi-touch attribution, funnel conversion analysis, and ROI calculation for marketing optimiza… |
+| `marketing-skill__competitor-alternatives` | "When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user men… |
+| `marketing-skill__content-creator` | "Deprecated redirect skill that routes legacy 'content creator' requests to the correct specialist. Use when a user invokes 'conte… |
+| `marketing-skill__content-humanizer` | "Makes AI-generated content sound genuinely human — not just cleaned up, but alive. Use when content feels robotic, uses too many … |
+| `marketing-skill__content-production` | "Full content production pipeline — takes a topic from blank page to published-ready piece. Use when you need to execute content: … |
+| `marketing-skill__email-sequence` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `marketing-skill__form-cro` | When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo reque… |
+| `marketing-skill__free-tool-strategy` | "When the user wants to build a free tool for marketing — lead generation, SEO value, or brand awareness. Use when they mention 'e… |
+| `marketing-skill__launch-strategy` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `marketing-skill__local-seo-manager` | "Manage local SEO for service-area businesses — appliance repair, HVAC, plumbing, cleaning, and any business that serves customers… |
+| `marketing-skill__marketing-context` | "Create and maintain the marketing context document that all marketing skills read before starting. Use when the user mentions 'ma… |
+| `marketing-skill__marketing-demand-acquisition` | Creates demand generation campaigns, optimizes paid ad spend across LinkedIn, Google, and Meta, develops SEO strategies, and struc… |
+| `marketing-skill__marketing-ops` | "Central router for the marketing skill ecosystem. Use when unsure which marketing skill to use, when orchestrating a multi-skill … |
+| `marketing-skill__marketing-skills` | "Directory and router for the marketing skills library. Use when you need to find the right marketing skill for a task, see what m… |
+| `marketing-skill__marketing-strategy-pmm` | Product marketing skill for positioning, GTM strategy, competitive intelligence, and product launches. Use when the user asks abou… |
+| `marketing-skill__onboarding-cro` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `marketing-skill__page-cro` | When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, prici… |
+| `marketing-skill__paid-ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `marketing-skill__popup-cro` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `marketing-skill__pricing-strategy` | "Design, optimize, and communicate SaaS pricing — tier structure, value metrics, pricing pages, and price increase strategy. Use w… |
+| `marketing-skill__prompt-engineer-toolkit` | "Turns marketing prompts into tested, versioned production assets: A/B prompt evaluation against structured test cases, immutable … |
+| `marketing-skill__referral-program` | "When the user wants to design, launch, or optimize a referral or affiliate program. Use when they mention 'referral program,' 'af… |
+| `marketing-skill__schema-markup` | "When the user wants to implement, audit, or validate structured data (schema markup) on their website. Use when the user mentions… |
+| `marketing-skill__signup-flow-cro` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `marketing-skill__social-content` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Fac… |
+| `marketing-skill__social-media-analyzer` | Social media campaign analysis and performance tracking. Calculates engagement rates, ROI, and benchmarks across platforms. Use wh… |
+| `marketing-skill__social-media-manager` | "When the user wants to develop social media strategy, plan content calendars, manage community engagement, or grow their social p… |
+| `marketing-skill__video-content-strategist` | "Use when planning video content strategy, writing video scripts, optimizing YouTube channels, building short-form video pipelines… |
+| `marketing-skill__webinar-marketing` | "When the user wants to plan, promote, run, or improve a webinar or virtual event to generate and convert demand. Use when the use… |
+| `marketing-skill__x-twitter-growth` | "X/Twitter growth engine for building audience, crafting viral content, and analyzing engagement. Use when the user wants to grow … |
+| `marketing-skill__youtube-full` | "Use when the user needs YouTube transcripts, video search, channel browsing, playlist extraction, or content monitoring. Trigger … |
+| `marketing__landing` | "Generates a premium single-page HTML landing page with 3D CSS animations, GSAP scroll effects, and mouse-parallax depth. Forcing … |
+| `marketing__linkedin-analytics` | Use when someone wants to understand their own LinkedIn numbers — which posts worked, why reach dropped, whether a pattern is real… |
+| `marketing__linkedin-content` | Use when someone wants to write, edit, or lint a LinkedIn post — a story, how-to, opinion piece, carousel script, video script, or… |
+| `marketing__linkedin-engagement` | Use when someone wants to grow reach through comments, replies, groups, or outreach on LinkedIn — a commenting roster, a connectio… |
+| `marketing__linkedin-profile` | Use when someone wants their LinkedIn profile audited or rewritten — headline, About section, experience bullets, Featured, banner… |
+| `marketing__linkedin-skills` | Use when someone wants to grow an organic LinkedIn presence — a content strategy for a career change or consulting or thought lead… |
+| `marketing__linkedin-strategy` | Use when someone needs a LinkedIn plan rather than a post — content pillars, positioning for a career change or consulting or thou… |
+| `product-team__agile-product-owner` | Agile product ownership for backlog management and sprint execution. Covers user story writing, acceptance criteria, sprint planni… |
+| `product-team__apple-hig-expert` | "Audits and designs iOS/macOS/watchOS/visionOS interfaces against the Apple Human Interface Guidelines, including the Liquid Glass… |
+| `product-team__code-to-prd` | "Reverse-engineer any codebase into a complete Product Requirements Document (PRD). Analyzes routes, components, state management,… |
+| `product-team__competitive-teardown` | "Analyzes competitor products and companies by synthesizing data from pricing pages, app store reviews, job postings, SEO signals,… |
+| `product-team__experiment-designer` | Use when planning product experiments, writing testable hypotheses, estimating sample size, prioritizing tests, or interpreting A/… |
+| `product-team__landing-page-generator` | "Generates high-converting landing pages as complete Next.js/React (TSX) components with Tailwind CSS. Creates hero sections, feat… |
+| `product-team__product-analytics` | Use when defining product KPIs, building metric dashboards, running cohort or retention analysis, or interpreting feature adoption… |
+| `product-team__product-discovery` | Use when validating product opportunities, mapping assumptions, planning discovery sprints, or testing problem-solution fit before… |
+| `product-team__product-manager-toolkit` | Comprehensive toolkit for product managers including RICE prioritization, customer interview analysis, PRD templates, discovery fr… |
+| `product-team__product-skills` | "Use when coordinating product work across the 12 bundled product sub-skills (RICE, OKRs, UX research, design tokens, competitive … |
+| `product-team__product-strategist` | Strategic product leadership toolkit for Head of Product covering OKR cascade generation, quarterly planning, competitive landscap… |
+| `product-team__research-summarizer` | "Structured research summarization agent skill for non-dev users. Handles academic papers, web articles, reports, and documentatio… |
+| `product-team__roadmap-communicator` | Use when preparing roadmap narratives, release notes, changelogs, or stakeholder updates tailored for executives, engineering team… |
+| `product-team__saas-scaffolder` | "Generates complete, production-ready SaaS project boilerplate including authentication, database schemas, billing integration, AP… |
+| `product-team__spec-to-repo` | "Use when the user says 'build me an app', 'create a project from this spec', 'scaffold a new repo', 'generate a starter', 'turn t… |
+| `product-team__ui-design-system` | UI design system toolkit for Senior UI Designer including design token generation, component documentation, responsive design calc… |
+| `product-team__ux-researcher-designer` | UX research and design toolkit for Senior UX Designer/Researcher including data-driven persona generation, journey mapping, usabil… |
+| `productivity__andreessen` | "Marc Andreessen-mode decision and productivity skill. A blunt, market-first operator that pressure-tests ideas, ventures, feature… |
+| `productivity__capture` | "Captures and organizes chaotic brain dumps into a structured, actionable system with zero information loss. Use this skill whenev… |
+| `productivity__deep-work` | Use when someone wants to plan a deep work day, time-block their calendar or task list, budget or cut shallow work, protect focus … |
+| `productivity__fable-goal` | Convert a rambling description of a desired outcome into one polished, autonomous /goal prompt ready to paste into a fresh session… |
+| `productivity__inbox-setup` | "One-time setup skill that builds a personalized inbox triage knowledge base via interactive interview. Interviews the user about … |
+| `productivity__inbox-triage` | "Runs a full inbox triage using the knowledge base created by the 'inbox-setup' skill. Light-intake by design (most invocations sk… |
+| `productivity__meetings` | Use when someone wants to decide whether a meeting is worth calling, price a meeting in dollars, build a timeboxed agenda with des… |
+| `productivity__reflect` | "Mid-conversation reflection skill that pauses execution and zooms out from detail-mode to honestly reassess direction, assumption… |
+| `productivity__roast` | Use when someone asks to roast an idea, pressure-test or stress-test an idea, validate a business idea, "convene the panel", get a… |
+| `productivity__swedish-mentor` | Mentor Swedish language learners by selecting YouTube video clips and podcast episodes by CEFR level and skill (listening, reading… |
+| `productivity__weekly-review` | Use when someone wants to run a weekly review, close open loops, audit stalled projects and commitments, get their system back to … |
+| `project-management__atlassian-admin` | Atlassian Administrator for managing and organizing Atlassian products (Jira, Confluence, Bitbucket, Trello), users, permissions, … |
+| `project-management__atlassian-templates` | Atlassian Template and Files Creator/Modifier expert for creating, modifying, and managing Jira and Confluence templates, blueprin… |
+| `project-management__confluence-expert` | Atlassian Confluence expert for creating and managing spaces, knowledge bases, and documentation. Configures space permissions and… |
+| `project-management__jira-expert` | Atlassian Jira expert for creating and managing projects, planning, product discovery, JQL queries, workflows, custom fields, auto… |
+| `project-management__meeting-analyzer` | Analyzes meeting transcripts and recordings to surface behavioral patterns, communication anti-patterns, and actionable coaching f… |
+| `project-management__pm-skills` | "Use when coordinating project-delivery work across the 8 project-management sub-skills — sprint/velocity analytics, portfolio hea… |
+| `project-management__scrum-master` | "Advanced Scrum Master skill for data-driven agile team analysis and coaching. Use when the user asks about sprint planning, veloc… |
+| `project-management__senior-pm` | Senior Project Manager for enterprise software, SaaS, and digital transformation projects. Specializes in portfolio management, qu… |
+| `project-management__team-communications` | Write internal company communications — 3P updates (Progress/Plans/Problems), company-wide newsletters, FAQ roundups, incident rep… |
+| `ra-qm-team__agent-decision-receipts` | "Mint a tamper-evident, post-quantum-signed receipt for a consequential agent action (deploy, delete, pay, grant-access, model dec… |
+| `ra-qm-team__capa-officer` | CAPA system management for medical device QMS. Covers root cause analysis, corrective action planning, effectiveness verification,… |
+| `ra-qm-team__eu-ai-act-specialist` | "EU AI Act (Regulation (EU) 2024/1689) operational compliance for compliance teams. Three Article-level decisions: (1) What's the … |
+| `ra-qm-team__fda-consultant-specialist` | FDA regulatory consultant for medical device companies. Provides 510(k)/PMA/De Novo pathway guidance, QMSR (21 CFR 820, which inco… |
+| `ra-qm-team__gdpr-dsgvo-expert` | GDPR and German DSGVO compliance automation. Scans codebases for privacy risks, generates DPIA documentation, tracks data subject … |
+| `ra-qm-team__information-security-manager-iso27001` | ISO 27001 ISMS implementation and cybersecurity governance for HealthTech and MedTech companies. Use when designing an ISMS, runni… |
+| `ra-qm-team__isms-audit-expert` | Information Security Management System (ISMS) audit expert for ISO 27001 compliance verification, security control assessment, and… |
+| `ra-qm-team__iso42001-specialist` | "ISO/IEC 42001:2023 AI Management System (AIMS) specialist for compliance teams running internal audits. Three decisions: (1) Wher… |
+| `ra-qm-team__mdr-745-specialist` | EU MDR 2017/745 compliance specialist for medical device classification, technical documentation, clinical evidence, and post-mark… |
+| `ra-qm-team__qms-audit-expert` | ISO 13485 internal audit expertise for medical device QMS. Covers audit planning, execution, nonconformity classification, and CAP… |
+| `ra-qm-team__quality-documentation-manager` | Document control system management for medical device QMS. Covers document numbering, version control, change management, and 21 C… |
+| `ra-qm-team__quality-manager-qmr` | Senior Quality Manager Responsible Person (QMR) for HealthTech and MedTech companies. Provides quality system governance, manageme… |
+| `ra-qm-team__quality-manager-qms-iso13485` | ISO 13485 Quality Management System implementation and maintenance for medical device organizations. Provides QMS design, document… |
+| `ra-qm-team__ra-qm-skills` | "Router/index for the 15 regulatory & quality-management skills bundled in this plugin (ISO 13485 QMS, EU MDR 2017/745, FDA submis… |
+| `ra-qm-team__regulatory-affairs-head` | Senior Regulatory Affairs Manager for HealthTech and MedTech companies. Prepares FDA 510(k), De Novo, and PMA submission packages;… |
+| `ra-qm-team__risk-management-specialist` | Medical device risk management specialist implementing ISO 14971 throughout product lifecycle. Provides risk analysis, risk evalua… |
+| `ra-qm-team__soc2-compliance` | "Use when the user asks to prepare for SOC 2 audits, map Trust Service Criteria, build control matrices, collect audit evidence, p… |
+| `research-ops__clinical-research` | Use when designing a prospective clinical study before submission — selecting and classifying endpoints (primary / key-secondary /… |
+| `research-ops__market-research` | Use when doing upstream market-research methodology — sizing a market as TAM/SAM/SOM computed BOTH top-down and bottoms-up (never … |
+| `research-ops__product-research` | Use when planning and synthesizing product/user research as a method-and-repository discipline — selecting the right method for th… |
+| `research-ops__research-finance` | Use when managing the money for an internal R&D program or portfolio — building a multi-period program budget with the F&A (indire… |
+| `research-ops__research-ops-skills` | Use when planning, funding, scoping, or synthesizing enterprise research across workstreams — clinical study design, R&D program f… |
+| `research__deep-research` | "Run a disciplined, multi-source research investigation for a high-stakes question or decision — fan-out web search across many ch… |
+| `research__deepread` | "Use when the user asks to deeply read a book, article, PDF, or document set; extract claims and evidence; build a knowledge map; … |
+| `research__dossier` | "Decision-grade entity research skill — produces a hypothesis-tested dossier on a specific company, person, nonprofit, or governme… |
+| `research__grants` | "NIH grant research skill for clinical researchers. Grill-me intake (research idea + career stage + preliminary data + environment… |
+| `research__litreview` | "Academic literature orientation skill that searches papers via free keyless APIs (PubMed E-utilities + OpenAlex) by default — wit… |
+| `research__notebooklm` | "Browser automation skill for controlling Google's NotebookLM. Use when the user wants anything done in NotebookLM (e.g., 'open No… |
+| `research__patent` | "Patent prior-art and landscape intelligence skill — not generic patent help. Commits to one of five sub-use-cases via forcing int… |
+| `research__pulse` | "Multi-source recency research skill that takes the pulse of any topic across Reddit, Hacker News, the open web, and optionally X/… |
+| `research__research` | Default entry point for any research request — a hybrid router that classifies the question deterministically and either delegates… |
+| `research__syllabus` | "Generates a curated supplementary reading list from any course syllabus using Consensus academic search. Grill-me intake (syllabu… |
+
+---
+
+## design（112）
+
+| 技能 | 用途 |
+|------|------|
+| `21st-dev` | 21st.dev 在线 UI 目录操作技能：搜索 1.2 万+ 真实设计工程做的 React/Tailwind/shadcn 组件、模板、主题，取码进项目；或 AI 生成新 UI；或搜品牌 logo（JSX）。做落地页/组件需要"有品味的人写过的 UI"时优先… |
+| `3dviz-pro-max` | Design and build expressive 3D scenes, explainers and interactive models with grounded subject knowledge. Use for 3D creation or e… |
+| `8-bit-orbit-video-template` | (无描述) |
+| `after-hours-editorial-template` | (无描述) |
+| `algorithmic-art` | (无描述) |
+| `animate` | Build an animation from scratch, making the decisions in the order that determines whether it feels right — should it animate at a… |
+| `animate-expo` | Build animations in React Native and Expo, making the decisions in the order that determines whether they feel right — should it a… |
+| `animation-vocabulary` | Reverse-lookup glossary that turns a vague description of a web animation or motion effect into its exact term ("the bouncy thing … |
+| `apple-design` | Apple's approach to interface design and fluid, physical motion, translated for the web. Use when building or reviewing gesture-dr… |
+| `apple-hig` | (无描述) |
+| `archify` | "Create polished, validated architecture, workflow, sequence, data-flow, and lifecycle/state diagrams as explorable standalone HTM… |
+| `article-magazine` | "Huashu / huashu-md-html-inspired magazine article layout for turning Markdown or notes into a polished long-form HTML essay." |
+| `ask-sonner` | Guide to Sonner, the React toast library — install and wire up the Toaster, pick the right toast() call, promise and loading toast… |
+| `banner-design` | "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with optional ge… |
+| `brand` | Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voi… |
+| `brand-extract` | (无描述) |
+| `brand-guidelines` | (无描述) |
+| `brandkit` | Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-w… |
+| `break-ui` | Try to break a piece of UI by feeding it worst-case data — long names, unbreakable emails, one-letter names, missing fields, huge … |
+| `brutalist-skill` | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contra… |
+| `canvas-design` | (无描述) |
+| `chat-motion-overlay` | Generate configurable chat motion overlays from a transcript or screenshot, including plain bubble scenes, app-style chat containe… |
+| `color-expert` | (无描述) |
+| `creative-director` | (无描述) |
+| `deck-guizang-editorial` | "Editorial magazine meets e-ink: 10 layouts and 5 palettes (Ink, Indigo Porcelain, Forest Ink, Kraft Paper, Dune)." |
+| `deck-open-slide-canvas` | "Locked 1920x1080 canvas deck with React component-level free composition, not bound to a fixed template." |
+| `deck-swiss-international` | "16-column grid, one saturated accent, and 22 locked layouts (Klein Blue, Lemon, Mint, Safety Orange)." |
+| `design` | "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini, Atlas Cloud, or MuAPI … |
+| `design-brief` | (无描述) |
+| `design-system` | Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variabl… |
+| `diagram-design` | Create branded architecture, architecture delta, IT current-state, flowchart, sequence, state machine, ER/data model, timeline, sw… |
+| `digits-fintech-swiss-template` | (无描述) |
+| `doc-kami-parchment` | "Warm parchment canvas (#f5f4ed), monochrome ink-blue accent (#1B365D), one serif family, and editorial-grade typography." |
+| `ecommerce-image-workflow` | (无描述) |
+| `editorial-burgundy-principles-template` | (无描述) |
+| `emil-design-eng` | This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that … |
+| `emilkowalski-motion` | (无描述) |
+| `enhance-prompt` | (无描述) |
+| `export-download-debugging` | (无描述) |
+| `field-notes-editorial-template` | (无描述) |
+| `figma-code-connect-components` | (无描述) |
+| `figma-create-design-system-rules` | (无描述) |
+| `figma-create-new-file` | (无描述) |
+| `figma-generate-design` | (无描述) |
+| `figma-generate-library` | (无描述) |
+| `figma-implement-design` | (无描述) |
+| `figma-use` | (无描述) |
+| `find-animation-opportunities` | Search a codebase or UI for places that don't animate but should, and reject everything that shouldn't. Read-only; it proposes mot… |
+| `flutter-animating-apps` | (无描述) |
+| `frame-data-chart-nyt` | "NYT-newsroom typography, staggered reveal animation, and editorial-grade charts (line, bar, or range band)." |
+| `frame-flowchart-sticky` | "SVG curve connectors, sticky-note nodes, and cursor interaction with a whiteboard-brainstorm feel." |
+| `frame-glitch-title` | "Digital glitch, chromatic offset, and data-corruption title frame for video transitions or cyberpunk heroes." |
+| `frame-light-leak-cinema` | "Film light leaks, grain, 16:9 letterbox, and large serif type for cinematic openings or chapter cards." |
+| `frame-liquid-bg-hero` | "WebGL-style fluid displacement background with a quote overlay, suited to video intros, landing heroes, or posters." |
+| `frame-logo-outro` | "Segmented logo assembly, glow bloom, and tagline reveal for video outros or brand closing frames." |
+| `frame-macos-notification` | "Realistic macOS notification banner with app icon, title, and body, suited to video overlays or product teasers." |
+| `frontend-design` | (无描述) |
+| `frontend-dev` | (无描述) |
+| `frontend-skill` | (无描述) |
+| `frontend-slides` | (无描述) |
+| `gpt-tasteskill` | Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page struc… |
+| `hand-drawn-diagrams` | (无描述) |
+| `hatch-pet` | Create, repair, validate, preview, and package Codex-compatible animated pet spritesheets from character art, screenshots, generat… |
+| `html-ppt-retro-quarterly-review` | (无描述) |
+| `image-to-code-skill` | Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, … |
+| `imagegen-frontend-mobile` | Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and… |
+| `imagegen-frontend-web` | Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — ge… |
+| `img2threejs` | Turn an object or character reference image into a quality-gated, animation-ready procedural Three.js model built in code. Use for… |
+| `impeccable-design-polish` | (无描述) |
+| `improve-animations` | Survey a codebase's animation and motion code as a senior motion advisor, then produce a prioritized audit and self-contained impl… |
+| `library-curator` | (无描述) |
 | `login-flow` | Mobile login and authentication flow screens |
-| `minimalist-skill` | Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows. |
-| `mobile-native` | Make a web app feel native on a phone — the small CSS and meta-tag fixes that separate "a website in a browser" from something that feels installed. Covers sticky hover states, tap highlight flashes, the 100vh bug, inputs that zoom the page, laggy taps, pul... |
-| `od-next-media-inputs` | \| Prepare required media inputs within an existing OD Next plan. Reuse capability evidence, acquire and measure assets efficiently, and resolve asynchronous jobs without removing required content or weakening quality standards. |
-| `output-skill` | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output. |
-| `pick-ui-library` | Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, virtualization, drag and drop, toasts, state, styling, and more. Only runs when explicitly invoked; it does not trigger on its ow... |
-| `plan-design-review` | \| Senior Designer review: rates each design dimension 0-10, explains what a 10 looks like, and flags AI Slop signals. Useful as a gate before merging UI work. |
-| `platform-design` | \| 300+ design rules from Apple HIG, Material Design 3, and WCAG 2.2 for cross-platform apps. Useful when shipping a single design across iOS, Android, and the web. |
-| `poster-hero` | Vertical poster or Moments-style share image with strong visual impact. |
-| `pptx-html-fidelity-audit` | Audit a python-pptx export against its source HTML deck, identify layout/content drift (footer overflow, cropped content, missing italic/em, lost styling, off-rhythm spacing), and re-export with strict footer-rail + cursor-flow layout discipline. Use this s... |
-| `pr-feedback-quality-gate` | \| Safely track pull request feedback, resolve review comments or merge conflicts, validate fixes, and use a read-only cross-review before committing or pushing follow-up changes. |
-| `prototype` | Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Only runs when explicitly invoked; it does not trigger on its own. disable-model-... |
-| `redesign-skill` | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS. |
-| `reference-design-contract` | \| Turn vague taste, screenshots, URLs, product notes, or "make it feel like this" references into a grounded DESIGN.md plus an implementation handoff. Use it before prototypes, decks, redesigns, or image remix work when the user needs a reusable visual dire... |
-| `review-animations` | Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to flagging; approval is earned. disable-model-invocation: true |
-| `shadcn-ui` | \| Build UI components with shadcn/ui. Pairs with the Stitch design loop to ship structured, accessible components quickly. |
-| `shader-dev` | \| GLSL shader techniques for ray marching, fluid simulation, particle systems, and procedural generation. Useful for hero visuals and motion stills. |
-| `slack-gif-creator` | \| Create animated GIFs optimized for Slack with validators for size constraints and composable animation primitives. |
-| `slides` | Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies. argument-hint: "[topic] [slide-count] |
-| `soft-skill` | Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic. |
-| `stitch-loop` | \| Iterative design-to-code feedback loop. Critique → adjust → ship cycle for tightening visual fidelity between brief and built UI. |
-| `stitch-skill` | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance. |
-| `swiftui-design` | \| SwiftUI 前端设计 skill — anti AI-slop rules, design direction advisor, brand asset protocol, and five-dimension review. Works with Claude Code, Cursor, Codex, and OpenCode. |
-| `swiss-creative-mode-template` | \| Swiss-inspired creative-mode presentation template skill with bold editorial typography, high-contrast geometric cards, interactive slide navigation, theme switching, hotspot overlays, and palette choreography in a single-file HTML artifact. Use when user... |
-| `swiss-user-research-video-template` | \| Swiss-style user-research narrative template in warm-paper editorial aesthetics. Use when users ask for a premium research deck or story-first live artifact with minimalist typography, high-clarity layout, subtle motion, donut breakdowns, and keyboard/cli... |
-| `taste-skill` | Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-f... |
-| `taste-skill-v1` | The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 experimental), which is a substantial rewrite. Use this v1 install name only if you need exact backward compatibility. |
-| `theme-factory` | \| Apply professional font and color themes to artifacts including slides, docs, reports, and HTML landing pages. Ships 10 pre-set themes. |
-| `threejs` | \| Three.js skills for creating 3D elements and interactive experiences in the browser — scenes, materials, controls, and post-processing. |
-| `ui-skills` | \| Opinionated, evolving constraints to guide agents when building interfaces. Useful for keeping output coherent across many small UI pieces. |
-| `ui-styling` | Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive l... |
-| `ui-ux-pro-max` | UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, chart... |
-| `vfx-text-cursor` | Cursor light trail, chromatic rays, and directional flares for word-by-word quote reveals in video intros. |
-| `weread-year-in-review-video-template` | \| WeRead-inspired HyperFrames video template for vertical annual reading reports, personal reading dashboards, book-note recaps, and shareable year-in-review stories. Use when users want a 9:16 HTML-to-MP4 reading report with warm paper texture, editorial C... |
-| `wpds` | \| WordPress Design System. Apply WordPress's official design tokens, typography, and component patterns to themes and sites. |
-| `write-swift` | How to write modern Swift well — modeling with value types, Swift 6 data-race safety and approachable concurrency (@concurrent, main-actor-by-default, actors, task groups), protocols and generics (some vs any), API design, performance and ARC, Swift Testing... |
-| `writing-guidelines` | \| Review docs/prose for Writing Guidelines compliance. Use when asked to "review my docs", "check writing style", "audit prose", "review docs voice and tone", or "check this page against the writing handbook". |
+| `magic-ui` | Use this skill when users want to add, customize, or troubleshoot Magic UI components in React/Next.js projects. It covers compone… |
+| `minimalist-skill` | Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no… |
+| `mobile-native` | Make a web app feel native on a phone — the small CSS and meta-tag fixes that separate "a website in a browser" from something tha… |
+| `od-next-media-inputs` | (无描述) |
+| `output-skill` | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit s… |
+| `pick-ui-library` | Pick the right library for a given frontend task from a curated, opinionated list — numbers, OTP inputs, charts, command menus, vi… |
+| `platform-design` | (无描述) |
+| `poster-hero` | "Vertical poster or Moments-style share image with strong visual impact." |
+| `pptx-html-fidelity-audit` | Audit a python-pptx export against its source HTML deck, identify layout/content drift (footer overflow, cropped content, missing … |
+| `pr-feedback-quality-gate` | (无描述) |
+| `prototype` | Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through th… |
+| `react-bits` | 213 个动画 React 组件素材库（DavidHDev/react-bits，MIT+CC，48k star）。文字动画/背景/UI 组件/微交互，每个 4 变体（JS-CSS/JS-TW/TS-CSS/TS-TW）。做 React/Next.js 页面要… |
+| `redesign-skill` | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-en… |
+| `reference-design-contract` | (无描述) |
+| `review-animations` | Reviews animation and motion code against a high craft bar derived from Emil Kowalski's design engineering philosophy. Default to … |
+| `shadcn-ui` | (无描述) |
+| `shader-dev` | (无描述) |
+| `shadergradient` | 3D 动态渐变/流体背景组件（ruucm/shadergradient，MIT，React + @react-three/fiber）。npm 装 @shadergradient/react，10 个内置 presets（halo/pensive/mint/i… |
+| `slack-gif-creator` | (无描述) |
+| `slides` | Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide s… |
+| `soft-skill` | Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that m… |
+| `stitch-loop` | (无描述) |
+| `stitch-skill` | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI sta… |
+| `swiftui-design` | (无描述) |
+| `swiss-creative-mode-template` | (无描述) |
+| `swiss-user-research-video-template` | (无描述) |
+| `taste-skill` | Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design directio… |
+| `taste-skill-v1` | The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend… |
+| `theme-factory` | (无描述) |
+| `threejs` | (无描述) |
+| `threeui-threejs-components` | 47 个现成 Three.js / WebGL shader 组件素材库（来自 MengTo/threeui，MIT）。落地页背景、3D 场景、shader 按钮/开关、CRT、粒子场、地球、织物、文字特效等。做 threejs 场景、WebGL 背景、创意 … |
+| `ui-skills` | (无描述) |
+| `ui-styling` | Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first … |
+| `ui-ux-pro-max` | "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing … |
+| `uiverse-galaxy` | 3802 个零依赖 UI 组件素材库（uiverse-io/galaxy，UIVerse，MIT，13k star）。按钮/卡片/加载器/表单/开关等，每个 HTML 文件同时含 CSS 版和 Tailwind 版两段代码，copy-paste 即用。做 UI… |
+| `vfx-text-cursor` | "Cursor light trail, chromatic rays, and directional flares for word-by-word quote reveals in video intros." |
+| `weread-year-in-review-video-template` | (无描述) |
+| `wpds` | (无描述) |
+| `write-swift` | How to write modern Swift well — modeling with value types, Swift 6 data-race safety and approachable concurrency (@concurrent, ma… |
+| `writing-guidelines` | (无描述) |
 
 ---
 
-# browser-act / 浏览器自动化
-
-Browser Use CLI 浏览器操作技能。103 个技能覆盖电商抓取（淘宝/1688/Amazon/Walmart/eBay/Etsy/闲鱼/Airbnb）、社媒监听（X/Instagram/Threads/Reddit/Facebook/小红书/知乎）、Lead 生成（Google Maps/LinkedIn/Trustpilot）、视频平台（TikTok/YouTube/Douyin）、搜索研究等。
-
-**来源**: browser-act/skills
+## browser-act（102）
 
 | 技能 | 用途 |
 |------|------|
-| `browser-act` | Browser automation CLI for AI agents. NEVER run browser-act commands directly via Bash — always invoke this skill first. Use browser-act when a user mentions it by name, includes or asks to run a browser-act CLI command (e.g., browser-act browser list), or ... |
-| `browser-act-skill-forge` | Forges reusable Skill packages (SKILL.md + scripts) from website exploration via browser-act — no re-exploration later. Use when: user wants a reusable Skill for any website, needs to understand a site's internal APIs, wants to reproduce an existing scraper... |
-| `solutions\ecommerce\1688-product-detail` | Extracts comprehensive wholesale product data from 1688.com product detail pages: title, tiered pricing, SKU variants with dimensions/weight, product images, seller info, shop scores, buyer protection, cross-border flags, product attributes, coupon/promotio... |
-| `solutions\ecommerce\airbnb-listing-detail` | Fetches complete Airbnb listing details for a given numeric listing ID via the internal GraphQL API, returning title, room type, description, amenities, photos, coordinates, city, house rules, highlights, ratings, review count, bedroom configuration, and pr... |
-| `solutions\ecommerce\airbnb-search-listing` | Extracts Airbnb accommodation search results from a destination query via SSR-embedded data, returning listing ID, URL, name, coordinates, rating, price, photos, and badge info for each result, plus pagination cursors for multi-page retrieval. Use when user... |
-| `solutions\ecommerce\amazon-alexa-qa` | Amazon Alexa for Shopping Q&A automation: submits questions to Amazon's Alexa/Rufus AI shopping assistant and collects response text; supports optional keyword search context (navigate to search results page before asking for category-specific answers). Use... |
-| `solutions\ecommerce\amazon-asin-lookup-api-skill` | This skill helps users extract structured product details from Amazon using a specific ASIN (Amazon Standard Identification Number). Use this skill when the user asks to get Amazon product details by ASIN, lookup Amazon product title and price using ASIN, e... |
-| `solutions\ecommerce\amazon-best-selling-products-finder-api-skill` | This skill helps users extract structured best-selling product data from Amazon via the BrowserAct API. Agent should proactively apply this skill when users express needs like search for best selling products on Amazon, extract Amazon product data based on ... |
-| `solutions\ecommerce\amazon-bestseller-listing` | Amazon Best Sellers listing scraper: extract product cards from any Amazon Best Sellers (zgbs) or /gp/bestsellers/ category page — returns rank (position on chart), asin, title, url, image, imageAlt, price, stars, reviewCount, ratingRaw per item, plus categ... |
-| `solutions\ecommerce\amazon-buy-box-monitor-api-skill` | This skill helps users extract basic product details other sellers prices and seller ratings from Amazon via ASIN automatically using the BrowserAct API. Agent should proactively apply this skill when users express needs like query Amazon buy box informatio... |
-| `solutions\ecommerce\amazon-competitor-analyzer` | Scrapes Amazon product data from ASINs using browseract.com automation API and performs surgical competitive analysis. Compares specifications, pricing, review quality, and visual strategies to identify competitor moats and vulnerabilities. |
-| `solutions\ecommerce\amazon-listing-competitor-analysis-skill` | This skill helps users analyze Amazon competitor listings by ASIN and produce structured competitive intelligence plus strategic opportunity points for their own go-to-market. The Agent should proactively apply this skill when users want to analyze a compet... |
-| `solutions\ecommerce\amazon-product-api-skill` | This skill helps users extract structured product listings from Amazon, including titles, ASINs, prices, ratings, and specifications. Use this skill when users want to search for products on Amazon, find the best selling brand products, track price changes ... |
-| `solutions\ecommerce\amazon-product-detail` | Amazon product detail page scraper: extract full product data from any open Amazon product detail URL (any /dp/{asin} or /gp/product/{asin} page across all Amazon regional TLDs) — returns asin, url, title, brand, price, listPrice, stars, reviewsCount, stars... |
-| `solutions\ecommerce\amazon-product-search-api-skill` | This skill is designed to help users automatically extract product data from Amazon search results. The Agent should proactively apply this skill when users request searching for products related to keywords, finding best-selling items from specific brands,... |
-| `solutions\ecommerce\amazon-reviews-api-skill` | This skill helps users automatically extract Amazon product reviews via the Amazon Reviews API. Agent should proactively apply this skill when users express needs like getting reviews for Amazon product with ASIN B07TS6R1SF, analyzing customer feedback for ... |
-| `solutions\ecommerce\amazon-search-listing` | Amazon search and category listing scraper: extract product listings from any Amazon search results page, keyword search URL, or category browse page and return per-item cards (asin, title, url, image, price, listPrice, stars, reviewCount, badges, isAmazonC... |
-| `solutions\ecommerce\ebay-item-detail` | Extracts full item detail from any open eBay item URL, returning JSON with url, itemNumber, title, subTitle, categories, price, priceWithCurrency, currency, wasPrice, available, availableText, sold, image, images, seller, sellerUrl, sellerFeedbackCount, sel... |
-| `solutions\ecommerce\ebay-search-listing` | Extracts product listings from any eBay search or category page URL, returning per-item cards (itemNumber, url, title, subtitle, caption, price, priceWithCurrency, currency, wasPrice, bids, shipping, seller, sellerFeedbackCount, sellerPositiveRating, review... |
-| `solutions\ecommerce\ebay-sold-listings-search` | eBay sold-listings scraper across 8 marketplaces (ebay.com/.co.uk/.de/.fr/.it/.es/.ca/.com.au). Takes keyword plus filters (category, price range, item condition, item location, sort order, completed toggle) and returns paginated real-sale records with item... |
-| `solutions\ecommerce\ecommerce-listing` | Extract product list from any e-commerce category page, search results page, or keyword search with filters. Returns paginated product arrays with URL, name, price, currency, image, rating, review count per item. Supports URL input, keyword search, and site... |
-| `solutions\ecommerce\ecommerce-product-detail` | Extract complete product information from any e-commerce product page. Returns name, price, currency, brand, images, description, SKU/ASIN/EAN/UPC/GTIN/MPN identifiers, stock availability, rating, review count, variants, and seller. Works on Shopify, Amazon... |
-| `solutions\ecommerce\ecommerce-reviews` | Extract customer reviews from any e-commerce product page or reviews page. Returns reviewer name, star rating, date, review title, review body, verified purchase status, and helpful votes per review. Works on Amazon, WooCommerce, Shopify, and any site with ... |
-| `solutions\ecommerce\ecommerce-seller-info` | Extract seller or merchant profile data from marketplace platform seller pages. Returns seller name, rating, review count, positive feedback percentage, joined date, and return policy. Works on Amazon seller pages, eBay seller pages, and any e-commerce site... |
-| `solutions\ecommerce\etsy-category-listing` | Etsy category page scraper: given an Etsy category URL (e.g. https://www.etsy.com/c/jewelry) and optional page number, returns paginated product listings with listingId, shopId, title, url, image, salePrice, originalPrice, currency, rating, reviewCount, sho... |
-| `solutions\ecommerce\etsy-keyword-search` | Etsy keyword search scraper: given a search keyword and optional page number, returns paginated product listings with listingId, shopId, title, url, image, salePrice, originalPrice, currency, rating, reviewCount, shopName, isAd, freeShipping, badge from ets... |
-| `solutions\ecommerce\etsy-product-detail` | Etsy product detail scraper: given an Etsy listing URL, returns full product detail including listingId, title, priceCurrent, priceOriginal, currency, images (all), description, shopName, shopUrl, rating, reviewCount, favorites, inCartCount, variations (wit... |
-| `solutions\ecommerce\etsy-shop-catalog` | Etsy shop catalog scraper: given an Etsy shop URL (e.g. https://www.etsy.com/shop/{shop-name}) and optional page number, returns paginated product listings from that shop's own storefront with listingId, shopId, title, url, image, salePrice, originalPrice, ... |
-| `solutions\ecommerce\goofish-item-detail` | Extracts full detail data from a single Goofish (闲鱼/xianyu, goofish.com) second-hand item page. Input: item URL or item ID. Output: title, price, seller info (name, labels), full description, image gallery, item tags/attributes, want-count. Use when user me... |
-| `solutions\ecommerce\goofish-search-list` | Scrapes second-hand item search results from Goofish (闲鱼/xianyu, goofish.com) — China's largest second-hand marketplace. Input: keyword, optional sort/filter params. Output: list of items with id, title, price, image, location, want-count per page (30 items... |
-| `solutions\ecommerce\taobao-keyword-search` | Search Taobao and Tmall product listings by keyword, returning paginated product cards with title, price, shop, image, sales, and tags. Use when user asks to search Taobao, find products on Taobao/Tmall, scrape Taobao search results, get product listings fr... |
-| `solutions\ecommerce\taobao-product-detail` | Fetch full product detail from a Taobao or Tmall product page by itemId, returning title, price, shop info, images, SKU variants, and product attributes. Use when user asks to get product details from Taobao, scrape a Taobao item page, extract product info ... |
-| `solutions\ecommerce\taobao-product-reviews` | Fetch customer reviews for a Taobao or Tmall product by itemId, returning reviewer name, date, purchased variant, review text, and photo URLs. Use when user asks to get product reviews from Taobao, scrape Taobao customer feedback, extract buyer reviews by i... |
-| `solutions\ecommerce\taobao-shop-catalog` | Browse a Taobao or Tmall shop's product catalog by shopId, returning paginated product listings with itemId and title. Use when user asks to scrape a Taobao shop, get all products from a store, list items in a Taobao/Tmall shop, fetch shop catalog by userId... |
-| `solutions\ecommerce\walmart-category-listing` | Walmart category page scraper: input a walmart.com browse or category URL with optional page number, extract paginated product listings with itemId, url, title, brand, image, price, wasPrice, rating, reviewCount, availability, seller info, fulfillmentBadge,... |
-| `solutions\ecommerce\walmart-keyword-search` | Walmart keyword search scraper: input a search keyword and page number, navigate to walmart.com search results, extract paginated product listings with itemId, url, title, brand, image, price, wasPrice, rating, reviewCount, availability, seller info, fulfil... |
-| `solutions\ecommerce\walmart-product-detail` | Walmart product detail page extractor: given a walmart.com product URL (walmart.com/ip/...), extract full product data including itemId, title, brand, model, UPC, price, wasPrice, currency, availability, category path, seller info, all images, shortDescript... |
-| `solutions\ecommerce\walmart-product-reviews` | Walmart product reviews scraper: given a walmart.com product item ID, navigate to the reviews page and extract paginated customer reviews including reviewId, rating, title, review text, author nickname, submission date, verified purchase status, helpful vot... |
-| `solutions\lead-generation\business-contact-social-links-skill` | This skill helps users automatically extract official website and social media profiles. Agent should proactively apply this skill when users express needs like search for official website and social media contacts of a company, find YouTube and LinkedIn pr... |
-| `solutions\lead-generation\github-project-contributor-finder-api-skill` | This skill helps users extract GitHub repository project details and contributor contact information using keywords, stars, and update dates. Agent should proactively apply this skill when users express needs like search for GitHub projects by keywords, fin... |
-| `solutions\lead-generation\google-maps-api-skill` | This skill helps users automatically scrape business data from Google Maps using the BrowserAct Google Maps API. Agent should proactively trigger this skill for needs like finding restaurants in a specific city, extracting contact info of dental clinics, re... |
-| `solutions\lead-generation\google-maps-contact-extract` | Extracts business contact details from Google Maps search results and place detail pages, then visits each business website to collect emails, phone numbers, and social media profiles (Facebook, Instagram, Twitter/X, LinkedIn, YouTube, TikTok, Pinterest, Di... |
-| `solutions\lead-generation\google-maps-reviews-api-skill` | This skill is designed to help users automatically extract reviews from Google Maps via the Google Maps Reviews API. Agent should proactively apply this skill when users request to find reviews for local businesses (e.g., coffee shops, clinics), monitor cus... |
-| `solutions\lead-generation\google-maps-search-api-skill` | This skill is designed to help users automatically extract business data from Google Maps search results. The Agent should proactively apply this skill when the user makes the following requests searching for coffee shops in a specific city, finding dentist... |
-| `solutions\lead-generation\google-social-media-finder` | Searches Google to discover social media profiles associated with a person, brand, or username; returns platform name, profile URL, username, bio snippet, and follower count across X, Instagram, Facebook, LinkedIn, TikTok, YouTube, Pinterest, Reddit, Snapch... |
-| `solutions\lead-generation\indeed-job-search` | Scrape job listings from Indeed.com by keyword, location, and country. Returns job title, company, salary, rating, description, benefits, and apply links. Use when user mentions Indeed, Indeed scraper, Indeed jobs, scrape Indeed, job search Indeed, Indeed j... |
-| `solutions\lead-generation\industry-key-contact-radar-api-skill` | This skill helps users discover key contacts across industries, roles, and social platforms via the BrowserAct API. Agent should proactively apply this skill when users express needs like finding public profiles for founders or CEOs, discovering key decisio... |
-| `solutions\lead-generation\linkedin-jobs-search` | Search LinkedIn job listings and extract full job details. Supports filtering by work type (remote/on-site/hybrid), contract type (full-time/part-time/contract/internship), experience level, date posted, and company. Returns job title, company, location, wo... |
-| `solutions\lead-generation\producthunt-launches` | Scrape Product Hunt daily/weekly/monthly/yearly leaderboard launches with full product details, maker profiles, and website contact info. Use when user mentions Product Hunt, producthunt, PH scraper, product hunt launches, product hunt leaderboard, scrape p... |
-| `solutions\lead-generation\social-media-finder-skill` | This skill helps users automatically find social media profiles across platforms like Facebook, Twitter, Instagram, LinkedIn, etc. using the BrowserAct API. Agent should proactively apply this skill when users express needs like finding someone's social med... |
-| `solutions\lead-generation\trustpilot-company-info` | Trustpilot company profile lookup on trustpilot.com — input a company domain (e.g. apple.com, shopify.com, shopwagandtail.com) and extract company metadata: official display name, businessUnitId, TrustScore (1-5), star rating, total review count, last-12-mo... |
-| `solutions\lead-generation\youtube-channel-business-email` | YouTube channel business email and contact extractor: accepts a channel id (UCxxx), handle (@name), or URL; navigates the channel About view; extracts the business email from the description text plus full channel metadata (name, id, country, subscriber cou... |
-| `solutions\search-research\google-image-api-skill` | This skill helps users automatically extract structured image data from Google Images via BrowserAct API. Agent should proactively apply this skill when users express needs like finding images for specific keywords, gathering product style images for compet... |
-| `solutions\search-research\google-news-api-skill` | This skill helps users automatically extract structured news data from Google News via BrowserAct API. Agent should proactively apply this skill when users express needs like searching for news about a specific topic, tracking industry trends, monitoring pu... |
-| `solutions\search-research\google-search-serp` | Extracts Google Search results page (SERP) data including organic results, paid ads, related searches, People Also Ask questions, AI Overview text, and total result count from google.com. Use when user mentions Google search results, SERP scraping, google s... |
-| `solutions\search-research\web-research-assistant` | AI-powered web research assistant that leverages BrowserAct API to supplement restricted web access by searching the internet for additional information. Designed for OpenClaw and Claude Code. |
-| `solutions\search-research\web-search-scraper-api-skill` | This skill helps users automatically extract complete Markdown content from any website via the BrowserAct Web Search Scraper API. The Agent should proactively apply this skill when users express needs like extract complete markdown from a specific website,... |
-| `solutions\search-research\webcrawler-deep-crawl` | Deep-crawl any website from start URLs, return per-page LLM-ready text/markdown/HTML plus metadata (title, description, author, language, canonical URL, OG) and in-scope outbound links. Use when user mentions deep crawl website, recursive crawl, crawl a who... |
-| `solutions\social-listening\facebook-ads-library-search` | Searches Meta Ad Library (Facebook/Instagram/WhatsApp ads) by keyword or Facebook page ID and extracts ad details including creatives, copy, CTA, publisher platforms, spend, impressions, reach estimates, and page transparency info. Use when user mentions Me... |
-| `solutions\social-listening\facebook-groups-scrape-posts` | Scrapes posts from a Facebook group given a group URL, sort order, and desired count — returns structured post metadata including post_id, permalink, author, timestamp, body text, images/videos, reaction counts, reaction type breakdown, comment count, and s... |
-| `solutions\social-listening\facebook-page-posts` | Scrapes posts from any public Facebook Page timeline, returning structured data including post text, author info, engagement metrics (likes/comments/shares), reaction breakdowns (like/love/haha/wow/sad/angry/care), hashtags and external links, and media typ... |
-| `solutions\social-listening\facebook-page-profile-posts` | Scrapes posts from any public Facebook Page or personal Profile timeline, returning structured data including post text, author info with profile picture, engagement metrics (likes/comments/shares), full reaction breakdown (Like/Love/Wow/Haha/Sad/Angry/Care... |
-| `solutions\social-listening\instagram-hashtag-posts` | Scrapes Instagram posts by hashtag, returning media items with captions, like/comment counts, media URLs and user info from the hashtag explore feed. Use when user mentions Instagram hashtag scraping, get posts by hashtag, IG hashtag feed, scrape Instagram ... |
-| `solutions\social-listening\instagram-place-posts` | Scrapes Instagram posts tagged at a specific location or place, returning media items with captions, like/comment counts, media URLs and user info. Use when user mentions Instagram location posts, posts from a place on Instagram, Instagram geotag scraping, ... |
-| `solutions\social-listening\instagram-post-comments` | Fetches comments from an Instagram post including comment text, username, timestamp, like count and reply count. Use when user mentions Instagram comments scraping, get comments from Instagram post, Instagram comment list, pull Instagram comments, read Inst... |
-| `solutions\social-listening\instagram-profile-meta` | Fetches Instagram user profile metadata including bio, follower count, following count, post count, verification status and other profile details. Use when user mentions Instagram profile info, user stats, account details, follower count, bio scraping, Inst... |
-| `solutions\social-listening\instagram-profile-posts` | Scrapes posts from an Instagram user's profile feed including captions, media URLs, like/comment counts, timestamps and location tags. Use when user mentions scraping Instagram posts, download Instagram feed, get posts from Instagram account, IG profile pos... |
-| `solutions\social-listening\reddit-competitor-analysis-api-skill` | This skill helps users extract structured data from Reddit posts and comments via BrowserAct API. Agent should proactively apply this skill when users express needs like analyzing competitor mentions on Reddit, tracking brand sentiment in Reddit comments, e... |
-| `solutions\social-listening\reddit-warmup` | Builds authentic-looking Reddit accounts through a 30-day progression, then uses them to promote any brand the user configures. State files are managed as local files under `~/.reddit-warmup/<username>/`. |
-| `solutions\social-listening\threads-keyword-search` | Searches Threads posts by keyword or hashtag and returns matching posts with engagement metrics, extracted from SSR-embedded JSON. Use when user asks to search Threads posts, find Threads content by topic, scrape Threads search results, collect Threads post... |
-| `solutions\social-listening\threads-profile-search` | Discovers Threads user accounts by keyword, extracting profile data including username, display name, verification status, biography, and follower count. Use when user asks to find Threads accounts, search Threads profiles, discover Threads users by keyword... |
-| `solutions\social-listening\threads-user-posts` | Fetches public posts from a Threads user's profile page, extracting post text, engagement metrics, and media info from SSR-embedded JSON. Use when user asks to scrape Threads posts, get someone's Threads feed, pull posts from a Threads account, collect Thre... |
-| `solutions\social-listening\trustpilot-company-info` | Trustpilot company profile lookup on trustpilot.com — input a company domain (e.g. apple.com, shopify.com, shopwagandtail.com) and extract company metadata: official display name, businessUnitId, TrustScore (1-5), star rating, total review count, last-12-mo... |
-| `solutions\social-listening\trustpilot-reviews` | Trustpilot customer reviews scraper for any company listed on trustpilot.com — given a company domain (e.g. shopify.com, apple.com, shopwagandtail.com) plus optional filters (page number, single star rating 1-5, single language ISO code, verified-only flag,... |
-| `solutions\social-listening\wechat-article-search-api-skill` | This skill helps users extract full article contents from WeChat using the BrowserAct API. The Agent should proactively apply this skill when users express needs like finding full WeChat articles for specific keywords, tracking WeChat public accounts for in... |
-| `solutions\social-listening\x-dm-auto-chat` | X (Twitter) DM automated chat end-to-end Skill: scan DM inbox to identify pending-reply conversations, read message history, generate persona-based replies and send; also supports searching users and starting new conversations. Built-in E2E passcode unlock,... |
-| `solutions\social-listening\x-keyword-comment` | X (Twitter) keyword-based reply posting: search tweets by keyword, read each tweet's content, generate contextual replies from a configured brand persona, and post replies to the reply area. Use when user wants to batch reply to X tweets by keyword, auto-co... |
-| `solutions\social-listening\x-tweet-by-conversation` | Collects every tweet in an X (Twitter) conversation thread given a conversation id (root tweet id) — the focal tweet plus all replies, sub-replies, and quote chains — and returns normalized per-tweet data with text, author, engagement counts, media, hashtag... |
-| `solutions\social-listening\x-tweet-by-handle` | Scrapes tweets from an X (Twitter) user profile timeline given a handle, with selectable mode: tweets, tweets+replies, or media-only. Returns normalized per-tweet data including text, author profile, engagement counts, media, hashtags, mentions, and cursor ... |
-| `solutions\social-listening\x-tweet-by-url` | Scrapes tweets from any X (Twitter) URL — search results, user profile, single tweet detail, or list timeline — and returns normalized per-tweet data with text, author, engagement counts, media, hashtags, mentions, and cursor for pagination. Use when user m... |
-| `solutions\social-listening\x-tweet-search` | Scrapes tweets from X (Twitter) by search query, user handle, or direct URL — returns full tweet data including text, author info, engagement metrics, media, and hashtags. Use when user mentions X, Twitter, tweet scraping, scrape tweets, get tweets, fetch t... |
-| `solutions\social-listening\x-tweet-search-by-query` | Searches X (Twitter) for tweets by free-form advanced query and returns a normalized tweet list with text, author profile, engagement counts, media, hashtags, mentions, and cursor for pagination. Use when user mentions X search, Twitter search, scrape tweet... |
-| `solutions\social-listening\xiaohongshu-auto-posting` | Automates the complete Xiaohongshu (XHS / Little Red Book) content operation workflow: pain-point topic collection → style case collection → topic selection → content writing → publishing → performance tracking. Use when user mentions xiaohongshu auto posti... |
-| `solutions\social-listening\xiaohongshu-note-detail` | Fetch Xiaohongshu (RedNote / xhs) note detail and comments by note ID, returning title, description, author info, engagement stats, tags, and paginated comment list. Use when user mentions note detail xiaohongshu, get rednote post, xhs note content, xiaohon... |
-| `solutions\social-listening\xiaohongshu-search` | Search Xiaohongshu (RedNote / xhs) notes by keyword and return a paginated list with title, author, engagement stats (likes, collects, comments), cover image URL, and xsecToken for detail lookup. Use when user mentions find notes on xiaohongshu, search redn... |
-| `solutions\social-listening\xiaohongshu-search-full` | Search Xiaohongshu (XHS / RedNote) notes by keyword with full field extraction including body text, topics/tags, image list URLs, video stream URL, publish timestamp, and all engagement stats (likes, collects, comments, shares). Supports all page filter opt... |
-| `solutions\social-listening\xiaohongshu-user-profile` | Fetch Xiaohongshu (RedNote / xhs) user profile information and their published notes list by user ID, returning nickname, bio, follower/following counts, engagement totals, tags, and paginated notes with engagement stats. Use when user mentions user profile... |
-| `solutions\social-listening\zhihu-search-api-skill` | This skill helps users automatically extract structured article details and full content from Zhihu via the BrowserAct API. Agent should proactively apply this skill when users express needs like: searching for Zhihu articles on a specific topic, tracking i... |
-| `solutions\video-platforms\douyin-video-search` | Searches Douyin (douyin.com) for videos by keyword and returns structured video data including author info, stats, cover, description, hashtags, and download URL. Supports date range filtering and sorting by relevance, likes, or recency. Use when user menti... |
-| `solutions\video-platforms\tiktok-hashtag-videos` | TikTok hashtag video scraper: input a hashtag name → output paginated video list with full metadata (author profile, engagement stats, music, video meta, hashtag list). Use when user mentions TikTok hashtag scraping, TikTok tag videos, scrape TikTok by hash... |
-| `solutions\video-platforms\tiktok-profile-videos` | TikTok user profile video scraper: input a TikTok username → output the user's profile info plus paginated video list with full metadata (engagement stats, music, video meta). Use when user mentions TikTok profile scraping, scrape TikTok user videos, get Ti... |
-| `solutions\video-platforms\tiktok-search-videos` | TikTok keyword search video scraper: input search keyword → output paginated video list with full metadata (author, engagement stats, music, video meta). Use when user mentions TikTok search scraping, search TikTok by keyword, TikTok search results, extract... |
-| `solutions\video-platforms\tiktok-video-detail` | TikTok single video detail scraper: input a TikTok video URL → output full video metadata (author profile, engagement stats, music, video meta, hashtags, mentions, slideshow images). Use when user mentions TikTok video detail, get TikTok video data, extract... |
-| `solutions\video-platforms\youtube-api-skill` | This skill helps users automatically extract detailed video metrics and channel information from YouTube based on keyword searches using the BrowserAct API. The Agent should proactively apply this skill when users express needs such as extract specific keyw... |
-| `solutions\video-platforms\youtube-batch-transcript-extractor-api-skill` | This skill helps users automatically extract YouTube video transcripts and metadata in batch via the BrowserAct API. The Agent should proactively apply this skill when users express needs like batch extract full transcripts from YouTube videos for specific ... |
-| `solutions\video-platforms\youtube-channel-api-skill` | This skill helps users automatically extract structured channel data from YouTube search results via BrowserAct API. Agent should proactively apply this skill when users express needs like finding YouTube channels about specific topics, collecting data on Y... |
-| `solutions\video-platforms\youtube-comments-api-skill` | This skill helps users extract structured video list data and comment data from YouTube using the BrowserAct API. The Agent should proactively apply this skill when users request searching for YouTube videos and their comments, analyzing viewer sentiment fo... |
-| `solutions\video-platforms\youtube-influencer-finder-api-skill` | This skill helps users extract YouTube influencer profiles including social links, subscriber counts, and channel stats via the BrowserAct API. Agent should proactively apply this skill when users express needs like finding YouTube creators for specific key... |
-| `solutions\video-platforms\youtube-search-api-skill` | This skill helps users automatically extract structured data from YouTube search results using the BrowserAct API. The Agent should proactively apply this skill when users express needs like searching for YouTube videos by keywords, finding the latest YouTu... |
-| `solutions\video-platforms\youtube-transcript` | YouTube transcript extraction and content reformatting: given a YouTube video URL, opens the video's transcript panel, extracts all timestamped segments, and transforms the raw transcript into summaries, chapter outlines, Twitter/X threads, blog posts, or n... |
-| `solutions\video-platforms\youtube-transcript-analysis-api-skill` | This skill helps users extract YouTube video transcripts and perform deep competitive analysis on the content. Agent should proactively apply this skill when users express needs like analyze YouTube video content strategy, perform competitive video content ... |
-| `solutions\video-platforms\youtube-transcript-extractor-api-skill` | This skill helps users automatically extract YouTube video transcripts and metadata via the BrowserAct API. The Agent should proactively apply this skill when users express needs like extracting full transcript from a specific YouTube video, getting subtitl... |
-| `solutions\video-platforms\youtube-video-api-skill` | This skill helps users automatically extract channel-level and video detail data from a specific YouTube channel via BrowserAct API. Agent should proactively apply this skill when users express needs like extracting channel video data, getting latest or pop... |
+| `browser-act` | "Browser automation CLI for AI agents. NEVER run browser-act commands directly via Bash — always invoke this skill first. Use brow… |
+| `browser-act-skill-forge` | "Forges reusable Skill packages (SKILL.md + scripts) from website exploration via browser-act — no re-exploration later. Use when:… |
+| `solutions/ecommerce/1688-product-detail` | "Extracts comprehensive wholesale product data from 1688.com product detail pages: title, tiered pricing, SKU variants with dimens… |
+| `solutions/ecommerce/airbnb-listing-detail` | "Fetches complete Airbnb listing details for a given numeric listing ID via the internal GraphQL API, returning title, room type, … |
+| `solutions/ecommerce/airbnb-search-listing` | "Extracts Airbnb accommodation search results from a destination query via SSR-embedded data, returning listing ID, URL, name, coo… |
+| `solutions/ecommerce/amazon-alexa-qa` | "Amazon Alexa for Shopping Q&A automation: submits questions to Amazon's Alexa/Rufus AI shopping assistant and collects response t… |
+| `solutions/ecommerce/amazon-asin-lookup-api-skill` | "This skill helps users extract structured product details from Amazon using a specific ASIN (Amazon Standard Identification Numbe… |
+| `solutions/ecommerce/amazon-best-selling-products-finder-api-skill` | "This skill helps users extract structured best-selling product data from Amazon via the BrowserAct API. Agent should proactively … |
+| `solutions/ecommerce/amazon-bestseller-listing` | "Amazon Best Sellers listing scraper: extract product cards from any Amazon Best Sellers (zgbs) or /gp/bestsellers/ category page … |
+| `solutions/ecommerce/amazon-buy-box-monitor-api-skill` | "This skill helps users extract basic product details other sellers prices and seller ratings from Amazon via ASIN automatically u… |
+| `solutions/ecommerce/amazon-competitor-analyzer` | Scrapes Amazon product data from ASINs using browseract.com automation API and performs surgical competitive analysis. Compares sp… |
+| `solutions/ecommerce/amazon-listing-competitor-analysis-skill` | "This skill helps users analyze Amazon competitor listings by ASIN and produce structured competitive intelligence plus strategic … |
+| `solutions/ecommerce/amazon-product-api-skill` | "This skill helps users extract structured product listings from Amazon, including titles, ASINs, prices, ratings, and specificati… |
+| `solutions/ecommerce/amazon-product-detail` | "Amazon product detail page scraper: extract full product data from any open Amazon product detail URL (any /dp/{asin} or /gp/prod… |
+| `solutions/ecommerce/amazon-product-search-api-skill` | "This skill is designed to help users automatically extract product data from Amazon search results. The Agent should proactively … |
+| `solutions/ecommerce/amazon-reviews-api-skill` | "This skill helps users automatically extract Amazon product reviews via the Amazon Reviews API. Agent should proactively apply th… |
+| `solutions/ecommerce/amazon-search-listing` | "Amazon search and category listing scraper: extract product listings from any Amazon search results page, keyword search URL, or … |
+| `solutions/ecommerce/ebay-item-detail` | "Extracts full item detail from any open eBay item URL, returning JSON with url, itemNumber, title, subTitle, categories, price, p… |
+| `solutions/ecommerce/ebay-search-listing` | "Extracts product listings from any eBay search or category page URL, returning per-item cards (itemNumber, url, title, subtitle, … |
+| `solutions/ecommerce/ebay-sold-listings-search` | "eBay sold-listings scraper across 8 marketplaces (ebay.com/.co.uk/.de/.fr/.it/.es/.ca/.com.au). Takes keyword plus filters (categ… |
+| `solutions/ecommerce/ecommerce-listing` | "Extract product list from any e-commerce category page, search results page, or keyword search with filters. Returns paginated pr… |
+| `solutions/ecommerce/ecommerce-product-detail` | "Extract complete product information from any e-commerce product page. Returns name, price, currency, brand, images, description,… |
+| `solutions/ecommerce/ecommerce-reviews` | "Extract customer reviews from any e-commerce product page or reviews page. Returns reviewer name, star rating, date, review title… |
+| `solutions/ecommerce/ecommerce-seller-info` | "Extract seller or merchant profile data from marketplace platform seller pages. Returns seller name, rating, review count, positi… |
+| `solutions/ecommerce/etsy-category-listing` | "Etsy category page scraper: given an Etsy category URL (e.g. https://www.etsy.com/c/jewelry) and optional page number, returns pa… |
+| `solutions/ecommerce/etsy-keyword-search` | "Etsy keyword search scraper: given a search keyword and optional page number, returns paginated product listings with listingId, … |
+| `solutions/ecommerce/etsy-product-detail` | "Etsy product detail scraper: given an Etsy listing URL, returns full product detail including listingId, title, priceCurrent, pri… |
+| `solutions/ecommerce/etsy-shop-catalog` | "Etsy shop catalog scraper: given an Etsy shop URL (e.g. https://www.etsy.com/shop/{shop-name}) and optional page number, returns … |
+| `solutions/ecommerce/goofish-item-detail` | "Extracts full detail data from a single Goofish (闲鱼/xianyu, goofish.com) second-hand item page. Input: item URL or item ID. Outpu… |
+| `solutions/ecommerce/goofish-search-list` | "Scrapes second-hand item search results from Goofish (闲鱼/xianyu, goofish.com) — China's largest second-hand marketplace. Input: k… |
+| `solutions/ecommerce/taobao-keyword-search` | "Search Taobao and Tmall product listings by keyword, returning paginated product cards with title, price, shop, image, sales, and… |
+| `solutions/ecommerce/taobao-product-detail` | "Fetch full product detail from a Taobao or Tmall product page by itemId, returning title, price, shop info, images, SKU variants,… |
+| `solutions/ecommerce/taobao-product-reviews` | "Fetch customer reviews for a Taobao or Tmall product by itemId, returning reviewer name, date, purchased variant, review text, an… |
+| `solutions/ecommerce/taobao-shop-catalog` | "Browse a Taobao or Tmall shop's product catalog by shopId, returning paginated product listings with itemId and title. Use when u… |
+| `solutions/ecommerce/walmart-category-listing` | "Walmart category page scraper: input a walmart.com browse or category URL with optional page number, extract paginated product li… |
+| `solutions/ecommerce/walmart-keyword-search` | "Walmart keyword search scraper: input a search keyword and page number, navigate to walmart.com search results, extract paginated… |
+| `solutions/ecommerce/walmart-product-detail` | "Walmart product detail page extractor: given a walmart.com product URL (walmart.com/ip/...), extract full product data including … |
+| `solutions/ecommerce/walmart-product-reviews` | "Walmart product reviews scraper: given a walmart.com product item ID, navigate to the reviews page and extract paginated customer… |
+| `solutions/lead-generation/business-contact-social-links-skill` | "This skill helps users automatically extract official website and social media profiles. Agent should proactively apply this skil… |
+| `solutions/lead-generation/github-project-contributor-finder-api-skill` | "This skill helps users extract GitHub repository project details and contributor contact information using keywords, stars, and u… |
+| `solutions/lead-generation/google-maps-api-skill` | "This skill helps users automatically scrape business data from Google Maps using the BrowserAct Google Maps API. Agent should pro… |
+| `solutions/lead-generation/google-maps-contact-extract` | "Extracts business contact details from Google Maps search results and place detail pages, then visits each business website to co… |
+| `solutions/lead-generation/google-maps-reviews-api-skill` | "This skill is designed to help users automatically extract reviews from Google Maps via the Google Maps Reviews API. Agent should… |
+| `solutions/lead-generation/google-maps-search-api-skill` | "This skill is designed to help users automatically extract business data from Google Maps search results. The Agent should proact… |
+| `solutions/lead-generation/google-social-media-finder` | "Searches Google to discover social media profiles associated with a person, brand, or username; returns platform name, profile UR… |
+| `solutions/lead-generation/indeed-job-search` | "Scrape job listings from Indeed.com by keyword, location, and country. Returns job title, company, salary, rating, description, b… |
+| `solutions/lead-generation/industry-key-contact-radar-api-skill` | "This skill helps users discover key contacts across industries, roles, and social platforms via the BrowserAct API. Agent should … |
+| `solutions/lead-generation/linkedin-jobs-search` | "Search LinkedIn job listings and extract full job details. Supports filtering by work type (remote/on-site/hybrid), contract type… |
+| `solutions/lead-generation/producthunt-launches` | "Scrape Product Hunt daily/weekly/monthly/yearly leaderboard launches with full product details, maker profiles, and website conta… |
+| `solutions/lead-generation/social-media-finder-skill` | "This skill helps users automatically find social media profiles across platforms like Facebook, Twitter, Instagram, LinkedIn, etc… |
+| `solutions/lead-generation/trustpilot-company-info` | "Trustpilot company profile lookup on trustpilot.com — input a company domain (e.g. apple.com, shopify.com, shopwagandtail.com) an… |
+| `solutions/lead-generation/youtube-channel-business-email` | "YouTube channel business email and contact extractor: accepts a channel id (UCxxx), handle (@name), or URL; navigates the channel… |
+| `solutions/search-research/google-image-api-skill` | This skill helps users automatically extract structured image data from Google Images via BrowserAct API. Agent should proactively… |
+| `solutions/search-research/google-news-api-skill` | "This skill helps users automatically extract structured news data from Google News via BrowserAct API. Agent should proactively a… |
+| `solutions/search-research/google-search-serp` | "Extracts Google Search results page (SERP) data including organic results, paid ads, related searches, People Also Ask questions,… |
+| `solutions/search-research/web-research-assistant` | AI-powered web research assistant that leverages BrowserAct API to supplement restricted web access by searching the internet for … |
+| `solutions/search-research/web-search-scraper-api-skill` | "This skill helps users automatically extract complete Markdown content from any website via the BrowserAct Web Search Scraper API… |
+| `solutions/search-research/webcrawler-deep-crawl` | "Deep-crawl any website from start URLs, return per-page LLM-ready text/markdown/HTML plus metadata (title, description, author, l… |
+| `solutions/social-listening/facebook-ads-library-search` | "Searches Meta Ad Library (Facebook/Instagram/WhatsApp ads) by keyword or Facebook page ID and extracts ad details including creat… |
+| `solutions/social-listening/facebook-groups-scrape-posts` | "Scrapes posts from a Facebook group given a group URL, sort order, and desired count — returns structured post metadata including… |
+| `solutions/social-listening/facebook-page-posts` | "Scrapes posts from any public Facebook Page timeline, returning structured data including post text, author info, engagement metr… |
+| `solutions/social-listening/facebook-page-profile-posts` | "Scrapes posts from any public Facebook Page or personal Profile timeline, returning structured data including post text, author i… |
+| `solutions/social-listening/instagram-hashtag-posts` | "Scrapes Instagram posts by hashtag, returning media items with captions, like/comment counts, media URLs and user info from the h… |
+| `solutions/social-listening/instagram-place-posts` | "Scrapes Instagram posts tagged at a specific location or place, returning media items with captions, like/comment counts, media U… |
+| `solutions/social-listening/instagram-post-comments` | "Fetches comments from an Instagram post including comment text, username, timestamp, like count and reply count. Use when user me… |
+| `solutions/social-listening/instagram-profile-meta` | "Fetches Instagram user profile metadata including bio, follower count, following count, post count, verification status and other… |
+| `solutions/social-listening/instagram-profile-posts` | "Scrapes posts from an Instagram user's profile feed including captions, media URLs, like/comment counts, timestamps and location … |
+| `solutions/social-listening/reddit-competitor-analysis-api-skill` | "This skill helps users extract structured data from Reddit posts and comments via BrowserAct API. Agent should proactively apply … |
+| `solutions/social-listening/reddit-warmup` | (auto) skill without frontmatter |
+| `solutions/social-listening/threads-keyword-search` | "Searches Threads posts by keyword or hashtag and returns matching posts with engagement metrics, extracted from SSR-embedded JSON… |
+| `solutions/social-listening/threads-profile-search` | "Discovers Threads user accounts by keyword, extracting profile data including username, display name, verification status, biogra… |
+| `solutions/social-listening/threads-user-posts` | "Fetches public posts from a Threads user's profile page, extracting post text, engagement metrics, and media info from SSR-embedd… |
+| `solutions/social-listening/trustpilot-reviews` | "Trustpilot customer reviews scraper for any company listed on trustpilot.com — given a company domain (e.g. shopify.com, apple.co… |
+| `solutions/social-listening/wechat-article-search-api-skill` | "This skill helps users extract full article contents from WeChat using the BrowserAct API. The Agent should proactively apply thi… |
+| `solutions/social-listening/x-dm-auto-chat` | "X (Twitter) DM automated chat end-to-end Skill: scan DM inbox to identify pending-reply conversations, read message history, gene… |
+| `solutions/social-listening/x-keyword-comment` | "X (Twitter) keyword-based reply posting: search tweets by keyword, read each tweet's content, generate contextual replies from a … |
+| `solutions/social-listening/x-tweet-by-conversation` | "Collects every tweet in an X (Twitter) conversation thread given a conversation id (root tweet id) — the focal tweet plus all rep… |
+| `solutions/social-listening/x-tweet-by-handle` | "Scrapes tweets from an X (Twitter) user profile timeline given a handle, with selectable mode: tweets, tweets+replies, or media-o… |
+| `solutions/social-listening/x-tweet-by-url` | "Scrapes tweets from any X (Twitter) URL — search results, user profile, single tweet detail, or list timeline — and returns norma… |
+| `solutions/social-listening/x-tweet-search` | "Scrapes tweets from X (Twitter) by search query, user handle, or direct URL — returns full tweet data including text, author info… |
+| `solutions/social-listening/x-tweet-search-by-query` | "Searches X (Twitter) for tweets by free-form advanced query and returns a normalized tweet list with text, author profile, engage… |
+| `solutions/social-listening/xiaohongshu-auto-posting` | "Automates the complete Xiaohongshu (XHS / Little Red Book) content operation workflow: pain-point topic collection → style case c… |
+| `solutions/social-listening/xiaohongshu-note-detail` | "Fetch Xiaohongshu (RedNote / xhs) note detail and comments by note ID, returning title, description, author info, engagement stat… |
+| `solutions/social-listening/xiaohongshu-search` | "Search Xiaohongshu (RedNote / xhs) notes by keyword and return a paginated list with title, author, engagement stats (likes, coll… |
+| `solutions/social-listening/xiaohongshu-search-full` | "Search Xiaohongshu (XHS / RedNote) notes by keyword with full field extraction including body text, topics/tags, image list URLs,… |
+| `solutions/social-listening/xiaohongshu-user-profile` | "Fetch Xiaohongshu (RedNote / xhs) user profile information and their published notes list by user ID, returning nickname, bio, fo… |
+| `solutions/social-listening/zhihu-search-api-skill` | "This skill helps users automatically extract structured article details and full content from Zhihu via the BrowserAct API. Agent… |
+| `solutions/video-platforms/douyin-video-search` | "Searches Douyin (douyin.com) for videos by keyword and returns structured video data including author info, stats, cover, descrip… |
+| `solutions/video-platforms/tiktok-hashtag-videos` | "TikTok hashtag video scraper: input a hashtag name → output paginated video list with full metadata (author profile, engagement s… |
+| `solutions/video-platforms/tiktok-profile-videos` | "TikTok user profile video scraper: input a TikTok username → output the user's profile info plus paginated video list with full m… |
+| `solutions/video-platforms/tiktok-search-videos` | "TikTok keyword search video scraper: input search keyword → output paginated video list with full metadata (author, engagement st… |
+| `solutions/video-platforms/tiktok-video-detail` | "TikTok single video detail scraper: input a TikTok video URL → output full video metadata (author profile, engagement stats, musi… |
+| `solutions/video-platforms/youtube-api-skill` | "This skill helps users automatically extract detailed video metrics and channel information from YouTube based on keyword searche… |
+| `solutions/video-platforms/youtube-batch-transcript-extractor-api-skill` | "This skill helps users automatically extract YouTube video transcripts and metadata in batch via the BrowserAct API. The Agent sh… |
+| `solutions/video-platforms/youtube-channel-api-skill` | "This skill helps users automatically extract structured channel data from YouTube search results via BrowserAct API. Agent should… |
+| `solutions/video-platforms/youtube-comments-api-skill` | "This skill helps users extract structured video list data and comment data from YouTube using the BrowserAct API. The Agent shoul… |
+| `solutions/video-platforms/youtube-influencer-finder-api-skill` | This skill helps users extract YouTube influencer profiles including social links, subscriber counts, and channel stats via the Br… |
+| `solutions/video-platforms/youtube-search-api-skill` | This skill helps users automatically extract structured data from YouTube search results using the BrowserAct API. The Agent shoul… |
+| `solutions/video-platforms/youtube-transcript` | "YouTube transcript extraction and content reformatting: given a YouTube video URL, opens the video's transcript panel, extracts a… |
+| `solutions/video-platforms/youtube-transcript-analysis-api-skill` | "This skill helps users extract YouTube video transcripts and perform deep competitive analysis on the content. Agent should proac… |
+| `solutions/video-platforms/youtube-transcript-extractor-api-skill` | "This skill helps users automatically extract YouTube video transcripts and metadata via the BrowserAct API. The Agent should proa… |
+| `solutions/video-platforms/youtube-video-api-skill` | This skill helps users automatically extract channel-level and video detail data from a specific YouTube channel via BrowserAct AP… |
 
 ---
 
-# openmontage / 视频/多媒体制作
-
-OpenMontage 视频创作体系。AI 视频生成（Kling/Seedance/LTX/Manim/Remotion/GSAP）、TTS/音乐（ElevenLabs/ACE-Step）、图像生成（FLUX/DashScope）、3D、字幕翻译、画面复刻、HyperFrames 动效模板等 90 个技能。
-
-**来源**: calesthio/OpenMontage
+## openmontage（90）
 
 | 技能 | 用途 |
 |------|------|
-| `3d-asset-generation` | Generate, reconstruct, inspect, and route production 3D assets for OpenMontage worlds using Atlas Cloud, fal.ai, licensed catalogs, and Blender. |
-| `acestep` | AI music generation with ACE-Step 1.5 — background music, vocal tracks, covers, stem extraction for video production. Use when generating music, soundtracks, jingles, or working with audio stems. Triggers include background music, soundtrack, jingle, music ... |
-| `agents` | Build voice AI agents with ElevenLabs. Use when creating voice assistants, customer service bots, interactive voice characters, or any real-time voice conversation experience. |
-| `ai-video-gen` | \| Generate AI videos from text prompts using multiple provider gateways. Use when: (1) Generating videos from text descriptions, (2) Creating AI-generated video clips for content production, (3) Image-to-video generation with a reference image, (4) Choosing... |
-| `atlas-cloud` | Generate or edit images and videos through the Atlas Cloud gateway. Use for Atlas-hosted Seedance 2.5/2.0, Gemini Omni Flash, MiniMax H3, Seedream 5.0, GPT Image 2, Nano Banana 2, or when one ATLASCLOUD_API_KEY should access multiple media model families. |
-| `avatar-video` | \| Create AI avatar videos with precise control over avatars, voices, scripts, scenes, and backgrounds using HeyGen's v2 API. Use when: (1) Choosing a specific avatar and voice for a video, (2) Writing exact scripts for an avatar to speak, (3) Building multi... |
-| `azure-speech-to-text` | Transcribe audio to text using Azure AI Speech (Fast Transcription REST API). Use when converting audio/video to text, generating subtitles, or processing spoken content in OpenMontage. Optional cloud STT provider — preferred when AZURE_SPEECH_KEY is config... |
-| `azure-text-to-speech` | Generate neural narration audio using Azure AI Speech (REST text-to-speech). Use when synthesizing voiceovers or narration in OpenMontage. Optional cloud TTS provider — preferred when AZURE_SPEECH_KEY is configured; the local piper_tts remains the default o... |
+| `3d-asset-generation` | Generate, reconstruct, inspect, and route production 3D assets for OpenMontage worlds using Atlas Cloud, fal.ai, licensed catalogs… |
+| `acestep` | AI music generation with ACE-Step 1.5 — background music, vocal tracks, covers, stem extraction for video production. Use when gen… |
+| `agents` | Build voice AI agents with ElevenLabs. Use when creating voice assistants, customer service bots, interactive voice characters, or… |
+| `ai-video-gen` | (无描述) |
+| `atlas-cloud` | Generate or edit images and videos through the Atlas Cloud gateway. Use for Atlas-hosted Seedance 2.5/2.0, Gemini Omni Flash, Mini… |
+| `avatar-video` | (无描述) |
+| `azure-speech-to-text` | Transcribe audio to text using Azure AI Speech (Fast Transcription REST API). Use when converting audio/video to text, generating … |
+| `azure-text-to-speech` | Generate neural narration audio using Azure AI Speech (REST text-to-speech). Use when synthesizing voiceovers or narration in Open… |
 | `beautiful-mermaid` | Render Mermaid diagrams as SVG and PNG using the Beautiful Mermaid library. Use when the user asks to render a Mermaid diagram. |
-| `bfl-api` | BFL FLUX API integration guide covering endpoints, async polling patterns, rate limiting, error handling, webhooks, and regional endpoints with Python and TypeScript code examples. |
-| `canvas-procedural-animation` | Use p5.js/canvas for local procedural character effects: particles, weather, squash/stretch, walk cycles, and environmental motion. |
-| `character-animation-qa` | Review local character animation with schema checks, Playwright browser previews, frame sampling, and FFmpeg/ffprobe final output checks. |
+| `bfl-api` | BFL FLUX API integration guide covering endpoints, async polling patterns, rate limiting, error handling, webhooks, and regional e… |
+| `canvas-procedural-animation` | Use p5.js/canvas for local procedural character effects: particles, weather, squash/stretch, walk cycles, and environmental motion… |
+| `character-animation-qa` | Review local character animation with schema checks, Playwright browser previews, frame sampling, and FFmpeg/ffprobe final output … |
 | `character-rigging` | Build data-driven 2D character rigs for local animation: parts, pivots, layers, constraints, views, and reusable rig packages. |
-| `comfyui` | Use when working with ComfyUI workflows in OpenMontage, including comfyui_image/comfyui_video/comfyui_music, custom workflow_json/workflow_path inputs, output_node selection, missing model setup, LoRAs, low-VRAM workflow choices, and community workflow impo... |
-| `create-video` | \| Create videos from a text prompt using HeyGen's Video Agent. Use when: (1) Creating a video from a description or idea, (2) Generating explainer, demo, or marketing videos from a prompt, (3) Making a video without specifying exact avatars, voices, or scen... |
-| `d3-viz` | Creating interactive data visualisations using d3.js. This skill should be used when creating custom charts, graphs, network diagrams, geographic visualisations, or any complex SVG-based data visualisation that requires fine-grained control over visual elem... |
-| `dashscope` | DashScope (Alibaba Cloud Bailian / 阿里云百炼) integration — image generation (qwen-image-2.0-pro), text-to-speech (qwen3-tts-flash), and ASR with word-level timestamps (qwen3-asr-flash-filetrans). Use when generating images via Qwen-Image, narrating via Qwen-TT... |
-| `doubao-tts` | Generate Mandarin and multilingual narration with Volcengine Doubao Speech 2.0. Use when creating Chinese voiceovers, when the user prefers Doubao/Volcengine/火山引擎/豆包 TTS, or when narration needs character-level timestamp metadata for subtitles. |
-| `elevenlabs` | Generate AI voiceovers, sound effects, and music using ElevenLabs APIs. Use when creating audio content for videos, podcasts, or games. Triggers include generating voiceovers, narration, dialogue, sound effects from descriptions, background music, soundtrac... |
-| `faceswap` | \| Swap faces in a video using AI via the HeyGen API. Use when: (1) Replacing a face in a video with another face, (2) Face swapping from a source image onto a target video, (3) Creating personalized videos by swapping in a person's face, (4) Working with He... |
-| `ffmpeg` | Video and audio processing with FFmpeg. Use for format conversion, resizing, compression, audio extraction, and preparing assets for Remotion. Triggers include converting GIF to MP4, resizing video, extracting audio, compressing files, or any media transfor... |
-| `fish-audio-tts` | Generate expressive, multilingual narration with fish.audio (S1 / S2-generation models) and reuse cloned voices via reference_id. Use when the user prefers fish.audio/Fish Audio TTS, wants a specific playground voice model, or needs high-emotion voice-clone... |
-| `flux-best-practices` | Comprehensive guide for BFL FLUX image generation models. Covers prompting, T2I, I2I, structured JSON, hex colors, typography, multi-reference editing, and model-specific best practices for FLUX.2 and FLUX.1 families. |
+| `comfyui` | Use when working with ComfyUI workflows in OpenMontage, including comfyui_image/comfyui_video/comfyui_music, custom workflow_json/… |
+| `create-video` | (无描述) |
+| `d3-viz` | Creating interactive data visualisations using d3.js. This skill should be used when creating custom charts, graphs, network diagr… |
+| `dashscope` | DashScope (Alibaba Cloud Bailian / 阿里云百炼) integration — image generation (qwen-image-2.0-pro), text-to-speech (qwen3-tts-flash), a… |
+| `doubao-tts` | Generate Mandarin and multilingual narration with Volcengine Doubao Speech 2.0. Use when creating Chinese voiceovers, when the use… |
+| `elevenlabs` | Generate AI voiceovers, sound effects, and music using ElevenLabs APIs. Use when creating audio content for videos, podcasts, or g… |
+| `faceswap` | (无描述) |
+| `ffmpeg` | Video and audio processing with FFmpeg. Use for format conversion, resizing, compression, audio extraction, and preparing assets f… |
+| `fish-audio-tts` | Generate expressive, multilingual narration with fish.audio (S1 / S2-generation models) and reuse cloned voices via reference_id. … |
+| `flux-best-practices` | Comprehensive guide for BFL FLUX image generation models. Covers prompting, T2I, I2I, structured JSON, hex colors, typography, mul… |
 | `framer-motion` | Use when implementing Disney's 12 animation principles with Framer Motion in React applications |
-| `gemini-omni` | \| Generate and conversationally edit short videos with Google Gemini Omni Flash (`gemini-omni-flash-preview`). Use when: (1) iterating on a clip with natural-language edits instead of regenerating ("make the phone invisible, keep everything else the same"),... |
-| `grok-media` | xAI Grok image and video generation guide covering authentication, endpoints, prompt structure, image editing, reference-image video, and async polling. |
-| `gsap-core` | Official GSAP skill for the core API — gsap.to(), from(), fromTo(), easing, duration, stagger, defaults, gsap.matchMedia() (responsive, prefers-reduced-motion). Use when the user asks for a JavaScript animation library, animation in React/Vue/vanilla, GSAP ... |
-| `gsap-frameworks` | Official GSAP skill for Vue, Svelte, and other non-React frameworks — lifecycle, scoping selectors, cleanup on unmount. Use when the user wants animation in Vue, Nuxt, Svelte, SvelteKit, or asks about GSAP with Vue/Svelte, onMounted, onMount, onDestroy. Rec... |
-| `gsap-performance` | Official GSAP skill for performance — prefer transforms, avoid layout thrashing, will-change, batching. Use when optimizing GSAP animations, reducing jank, or when the user asks about animation performance, FPS, or smooth 60fps. |
-| `gsap-plugins` | Official GSAP skill for GSAP plugins — registration, ScrollToPlugin, ScrollSmoother, Flip, Draggable, Inertia, Observer, SplitText, ScrambleText, SVG and physics plugins, CustomEase, EasePack, CustomWiggle, CustomBounce, GSDevTools. Use when the user asks a... |
-| `gsap-react` | Official GSAP skill for React — useGSAP hook, refs, gsap.context(), cleanup. Use when the user wants animation in React or Next.js, or asks about GSAP with React, useGSAP, or cleanup on unmount. Recommend GSAP for React animation unless the user has chosen ... |
-| `gsap-scrolltrigger` | Official GSAP skill for ScrollTrigger — scroll-linked animations, pinning, scrub, triggers. Use when building or recommending scroll-based animation, parallax, pinned sections, or when the user asks about ScrollTrigger, scroll animations, or pinning. Recomm... |
-| `gsap-timeline` | Official GSAP skill for timelines — gsap.timeline(), position parameter, nesting, playback. Use when sequencing animations, choreographing keyframes, or when the user asks about animation sequencing, timelines, or animation order (in GSAP or when recommendi... |
-| `gsap-utils` | Official GSAP skill for gsap.utils — clamp, mapRange, normalize, interpolate, random, snap, toArray, wrap, pipe. Use when the user asks about gsap.utils, clamp, mapRange, random, snap, toArray, wrap, or helper utilities in GSAP. |
-| `heygen` | \| [DEPRECATED] Use `create-video` for prompt-based video generation or `avatar-video` for precise avatar/scene control. This legacy skill combines both workflows — the newer focused skills provide clearer guidance. |
-| `hyperframes` | > READ THIS FIRST for any request to make, create, edit, animate, or render a video, animation, or motion graphic — a promo, explainer, captioned clip, title card, overlay, or any composition. HyperFrames renders video from HTML; this is the entry skill and... |
-| `hyperframes-animation` | All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, AND the seven runtime adapters (GSAP default, plus Lottie, Three.js, Anime.js, CSS keyframes, Web Animations AP... |
-| `hyperframes-cli` | HyperFrames CLI dev loop. Use when running npx hyperframes init, add, catalog, capture, lint, validate, inspect, layout, snapshot, preview, play, render, publish, lambda, doctor, browser, info, upgrade, skills, compositions, docs, benchmark, telemetry, tran... |
-| `hyperframes-core` | The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing attributes, `class="clip"`, tracks, sub-compositions, variables, framework-owned media playback, deterministic-render rules, and validati... |
-| `hyperframes-creative` | Non-animation creative direction for HyperFrames videos. Use for design spec (frame.md / design.md) handling, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns, and brand / style decisions. For atomic motion patter... |
-| `hyperframes-media` | Audio and media assets for HyperFrames compositions, produced by one shared audio engine (`scripts/audio.mjs`) — multi-provider TTS (HeyGen / ElevenLabs / Kokoro local), background music + sound effects (HeyGen audio-library retrieval by default, with local... |
-| `hyperframes-registry` | Install and wire registry blocks and components into HyperFrames compositions. Use when running hyperframes add, installing a block or component, wiring an installed item into index.html, or working with hyperframes.json. Covers the add command, install loc... |
-| `kling-official` | Official Kling direct API guidance for OpenMontage providers. Use before calling `kling_official_video`, `kling_official_image`, `kling_tts`, `kling_avatar`, or `kling_lip_sync`. |
+| `gemini-omni` | (无描述) |
+| `grok-media` | xAI Grok image and video generation guide covering authentication, endpoints, prompt structure, image editing, reference-image vid… |
+| `gsap-core` | Official GSAP skill for the core API — gsap.to(), from(), fromTo(), easing, duration, stagger, defaults, gsap.matchMedia() (respon… |
+| `gsap-frameworks` | Official GSAP skill for Vue, Svelte, and other non-React frameworks — lifecycle, scoping selectors, cleanup on unmount. Use when t… |
+| `gsap-performance` | Official GSAP skill for performance — prefer transforms, avoid layout thrashing, will-change, batching. Use when optimizing GSAP a… |
+| `gsap-plugins` | Official GSAP skill for GSAP plugins — registration, ScrollToPlugin, ScrollSmoother, Flip, Draggable, Inertia, Observer, SplitText… |
+| `gsap-react` | Official GSAP skill for React — useGSAP hook, refs, gsap.context(), cleanup. Use when the user wants animation in React or Next.js… |
+| `gsap-scrolltrigger` | Official GSAP skill for ScrollTrigger — scroll-linked animations, pinning, scrub, triggers. Use when building or recommending scro… |
+| `gsap-timeline` | Official GSAP skill for timelines — gsap.timeline(), position parameter, nesting, playback. Use when sequencing animations, choreo… |
+| `gsap-utils` | Official GSAP skill for gsap.utils — clamp, mapRange, normalize, interpolate, random, snap, toArray, wrap, pipe. Use when the user… |
+| `heygen` | (无描述) |
+| `hyperframes` | > |
+| `hyperframes-animation` | "All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-de… |
+| `hyperframes-cli` | HyperFrames CLI dev loop. Use when running npx hyperframes init, add, catalog, capture, lint, validate, inspect, layout, snapshot,… |
+| `hyperframes-core` | The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing attributes… |
+| `hyperframes-creative` | Non-animation creative direction for HyperFrames videos. Use for design spec (frame.md / design.md) handling, palettes, typography… |
+| `hyperframes-media` | Audio and media assets for HyperFrames compositions, produced by one shared audio engine (`scripts/audio.mjs`) — multi-provider TT… |
+| `hyperframes-registry` | Install and wire registry blocks and components into HyperFrames compositions. Use when running hyperframes add, installing a bloc… |
+| `kling-official` | Official Kling direct API guidance for OpenMontage providers. Use before calling `kling_official_video`, `kling_official_image`, `… |
 | `lottie-bodymovin` | Use when implementing Disney's 12 animation principles with Lottie animations exported from After Effects |
-| `ltx2` | AI video generation with LTX-2.3 22B — text-to-video, image-to-video clips for video production. Use when generating video clips, animating images, creating b-roll, animated backgrounds, or motion content. Triggers include video generation, animate image, b... |
-| `lyria` | Generate and validate music with Google Lyria 3 through the Gemini Interactions API. Use before calling OpenMontage `google_music`, designing Lyria 3 Clip or Pro prompts, using image-to-music or custom lyrics, choosing between Lyria 3 and Lyria RealTime, di... |
-| `manim-composer` | \| Trigger when: (1) User wants to create an educational/explainer video, (2) User has a vague concept they want visualized, (3) User mentions "3b1b style" or "explain like 3Blue1Brown", (4) User wants to plan a Manim video or animation sequence, (5) User as... |
-| `manimce-best-practices` | \| Trigger when: (1) User mentions "manim" or "Manim Community" or "ManimCE", (2) Code contains `from manim import *`, (3) User runs `manim` CLI commands, (4) Working with Scene, MathTex, Create(), or ManimCE-specific classes. Best practices for Manim Commun... |
-| `manimgl-best-practices` | \| Trigger when: (1) User mentions "manimgl" or "ManimGL" or "3b1b manim", (2) Code contains `from manimlib import *`, (3) User runs `manimgl` CLI commands, (4) Working with InteractiveScene, self.frame, self.embed(), ShowCreation(), or ManimGL-specific patt... |
-| `media-use` | Agent Media OS — resolve any media need (BGM, SFX, image, icon) into a frozen local file + ledger record. One verb (`resolve`) handles the full cascade — project cache, global cache, HeyGen catalog search, freeze, register. Keeps search noise on disk, hands... |
-| `minimax-h3` | \| Generate MiniMax H3 (Hailuo 3.0) video through the official MiniMax v2 API, fal.ai, Runway, ComfyUI Partner Nodes, or local open weights in ComfyUI. Use for 4-15 second 2K clips, first/last-frame animation, and image/video/audio reference-conditioned video. |
-| `motion-graphics` | > Use when the user wants a short, design-led motion graphic where motion is the message: kinetic typography, stat or number count-up, chart/data-viz hit, logo sting, brand lockup, lower-third, callout, social overlay, animated headline/tweet/news item, mot... |
-| `music` | Generate music using ElevenLabs Music API. Use when creating instrumental tracks, songs with lyrics, background music, jingles, or any AI-generated music composition. Supports prompt-based generation, composition plans for granular control, and detailed out... |
-| `music-to-video` | Use when the user has a music track (an audio file, or a video to pull audio from) and wants a beat-synced HyperFrames video, calm to hard-hitting. The music drives everything: one analyzer reads it once, the orchestrator lays out the frames and fills a per... |
-| `playwright-recording` | Record browser interactions as video using Playwright. Use for capturing demo videos, app walkthroughs, and UI flows for Remotion videos. Triggers include recording a demo, capturing browser video, screen recording a website, or creating walkthrough footage. |
+| `ltx2` | AI video generation with LTX-2.3 22B — text-to-video, image-to-video clips for video production. Use when generating video clips, … |
+| `lyria` | Generate and validate music with Google Lyria 3 through the Gemini Interactions API. Use before calling OpenMontage `google_music`… |
+| `manim-composer` | (无描述) |
+| `manimce-best-practices` | (无描述) |
+| `manimgl-best-practices` | (无描述) |
+| `media-use` | Agent Media OS — resolve any media need (BGM, SFX, image, icon) into a frozen local file + ledger record. One verb (`resolve`) han… |
+| `minimax-h3` | (无描述) |
+| `motion-graphics` | > |
+| `music` | Generate music using ElevenLabs Music API. Use when creating instrumental tracks, songs with lyrics, background music, jingles, or… |
+| `music-to-video` | "Use when the user has a music track (an audio file, or a video to pull audio from) and wants a beat-synced HyperFrames video, cal… |
+| `playwright-recording` | Record browser interactions as video using Playwright. Use for capturing demo videos, app walkthroughs, and UI flows for Remotion … |
 | `pose-library-design` | Design reusable 2D character pose libraries, action cycles, and expression states for data-driven animation. |
 | `provider-model-refresh` | Use the September 2026 image, video, speech and Avatar V adapters with explicit model/host contracts. |
-| `remotion` | Toolkit-specific Remotion patterns — custom transitions, shared components, and project conventions. For core Remotion framework knowledge (hooks, animations, rendering, etc.), see the `remotion-official` skill. |
+| `remotion` | Toolkit-specific Remotion patterns — custom transitions, shared components, and project conventions. For core Remotion framework k… |
 | `remotion-best-practices` | Best practices for Remotion - Video creation in React |
-| `remotion-to-hyperframes` | Port an existing Remotion (React) composition to HyperFrames HTML. Use ONLY when the user explicitly asks to port/convert/migrate/translate a Remotion source. Do NOT use: (a) authoring a new HyperFrames composition; (b) Remotion mentioned in passing; (c) Re... |
-| `seedance-2-0` | \| Generate cinematic clips with ByteDance Seedance 2.0 — the preferred premium video model in OpenMontage when a paid gateway is configured. Use when: (1) producing trailers, teasers, hype edits, or premium cinematic clips, (2) needing native synchronized a... |
-| `seedance-2-5` | \| Generate 4-30 second cinematic video with ByteDance Seedance 2.5 through fal.ai, Volcengine Ark, Runway, or ComfyUI Partner Nodes. Use for long single generations, synchronized audio, and large multimodal reference sets (up to 30 images, 10 videos, and 10... |
-| `setup-api-key` | Guides users through setting up an ElevenLabs API key for ElevenLabs MCP tools. Use when the user needs to configure an ElevenLabs API key, when ElevenLabs tools fail due to missing API key, or when the user mentions needing access to ElevenLabs. First chec... |
-| `sound-effects` | Generate sound effects from text descriptions using ElevenLabs. Use when creating sound effects, generating audio textures, producing ambient sounds, cinematic impacts, UI sounds, or any audio that isn't speech. Supports looping, duration control, and promp... |
-| `speech-to-text` | Transcribe audio to text using ElevenLabs Scribe v2. Use when converting audio/video to text, generating subtitles, transcribing meetings, or processing spoken content. |
+| `remotion-to-hyperframes` | 'Port an existing Remotion (React) composition to HyperFrames HTML. Use ONLY when the user explicitly asks to port/convert/migrate… |
+| `seedance-2-0` | (无描述) |
+| `seedance-2-5` | (无描述) |
+| `setup-api-key` | Guides users through setting up an ElevenLabs API key for ElevenLabs MCP tools. Use when the user needs to configure an ElevenLabs… |
+| `sound-effects` | Generate sound effects from text descriptions using ElevenLabs. Use when creating sound effects, generating audio textures, produc… |
+| `speech-to-text` | Transcribe audio to text using ElevenLabs Scribe v2. Use when converting audio/video to text, generating subtitles, transcribing m… |
 | `svg-character-animation` | Animate SVG character rigs with GSAP, CSS transforms, Remotion frame control, and HyperFrames-compatible browser previews. |
 | `synthetic-screen-recording` | Synthetic terminal-style screen recording guidance for Remotion `TerminalScene`. |
-| `tailwind-design-system` | Build scalable design systems with Tailwind CSS v4, design tokens, component libraries, and responsive patterns. Use when creating component libraries, implementing design systems, or standardizing UI patterns. |
-| `text-to-speech` | \| Generate speech audio from text using HeyGen's Starfish TTS model. Use when: (1) Generating standalone speech audio files from text, (2) Converting text to speech with voice selection, speed, and pitch control, (3) Creating audio for voiceovers, narration... |
-| `threejs-animation` | Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations. |
-| `threejs-fundamentals` | Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with transforms. |
-| `threejs-geometry` | Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing. Use when creating 3D shapes, working with vertices, building custom meshes, or optimizing with instanced rendering. |
-| `threejs-interaction` | Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experiences. |
-| `threejs-lighting` | Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance. |
-| `threejs-loaders` | Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR environments, or managing loading progress. |
-| `threejs-materials` | Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance. |
-| `threejs-postprocessing` | Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, blur, glow, or creating custom screen-space shaders. |
-| `threejs-shaders` | Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying vertices, writing fragment shaders, or extending built-in materials. |
-| `threejs-textures` | Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization. |
-| `threejs-world-generation` | Build deterministic, editable, free-viewpoint Three.js worlds from text or structured briefs. Use for cinematic 3D terrain, semantic regions, procedural biomes, explicit landmarks, environmental scattering, camera fly-throughs, world diagnostics, or request... |
-| `vercel-composition-patterns` | React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or c... |
-| `vercel-react-best-practices` | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js... |
-| `video-download` | \| Download video and audio from YouTube and 1000+ sites using yt-dlp. No API keys needed. Use when: (1) Downloading a video from YouTube or other sites, (2) Extracting audio from a video URL, (3) Downloading subtitles/captions from a video, (4) Getting vide... |
-| `video-edit` | \| Edit videos locally using ffmpeg. Trim, concat, resize, speed, overlay, extract audio, compress, and convert. Use when: (1) Trimming or cutting video segments, (2) Concatenating multiple clips, (3) Resizing video for social platforms, (4) Extracting or re... |
-| `video-toolkit` | Create professional videos autonomously using claude-code-video-toolkit — AI voiceovers, image generation, music, talking heads, and Remotion rendering. |
-| `video-translate` | \| Translate and dub existing videos into multiple languages using HeyGen. Use when: (1) Translating a video into another language, (2) Dubbing video content with lip-sync, (3) Creating multi-language versions of existing videos, (4) Audio-only translation w... |
-| `video-understand` | \| Understand video content locally using ffmpeg frame extraction and Whisper transcription. No API keys needed. Use when: (1) Understanding what a video contains, (2) Transcribing video audio locally, (3) Extracting key frames for visual analysis, (4) Getti... |
-| `visual-style` | \| Create, extract, and apply portable visual design systems via visual-style.md files. Use when: (1) Creating a visual-style.md design system from scratch, (2) Extracting a visual style from a website URL, video, or PDF brand guide, (3) Applying a visual st... |
-| `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices". |
-| `website-to-video` | Capture a general website/URL and turn it into a HyperFrames video (site tour, showcase, or social clip from the site's own visuals). Uses headless Chrome screenshots + brand assets. Use when intent is general — portfolio/blog/landing-page showcase or socia... |
+| `tailwind-design-system` | Build scalable design systems with Tailwind CSS v4, design tokens, component libraries, and responsive patterns. Use when creating… |
+| `text-to-speech` | (无描述) |
+| `threejs-animation` | Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing … |
+| `threejs-fundamentals` | Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, … |
+| `threejs-geometry` | Three.js geometry creation - built-in shapes, BufferGeometry, custom geometry, instancing. Use when creating 3D shapes, working wi… |
+| `threejs-interaction` | Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click… |
+| `threejs-lighting` | Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or op… |
+| `threejs-loaders` | Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR environments, o… |
+| `threejs-materials` | Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, cre… |
+| `threejs-postprocessing` | Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, blur, glow, … |
+| `threejs-shaders` | Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying vertices, wr… |
+| `threejs-textures` | Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, c… |
+| `threejs-world-generation` | Build deterministic, editable, free-viewpoint Three.js worlds from text or structured briefs. Use for cinematic 3D terrain, semant… |
+| `vercel-composition-patterns` | (无描述) |
+| `vercel-react-best-practices` | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, … |
+| `video-download` | (无描述) |
+| `video-edit` | (无描述) |
+| `video-toolkit` | Create professional videos autonomously using claude-code-video-toolkit — AI voiceovers, image generation, music, talking heads, a… |
+| `video-translate` | (无描述) |
+| `video-understand` | (无描述) |
+| `visual-style` | (无描述) |
+| `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "… |
+| `website-to-video` | "Capture a general website/URL and turn it into a HyperFrames video (site tour, showcase, or social clip from the site's own visua… |
 
 ---
 
-# marketing / 营销
-
-58 个营销技能：A/B 测试、广告投放、SEO（AI/传统/程序化）、ASO、归因分析、流失预防、联名营销、冷邮件、社区营销、竞品分析、内容策略、文案、CRO、目录提交、邮件序列、活动运营、定价、公关、推荐体系、RevOps、销售赋能、上线运营、SMS/社交/视频营销等。
-
-**来源**: coreyhaines31/marketingskills, nexu-io/open-design
+## security（85）
 
 | 技能 | 用途 |
 |------|------|
-| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant copy," "multivariate test," "hypothe... |
-| `ad-creative` | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad copy variations,' 'ad creative,' 'generate headlines,' 'RS... |
-| `ads` | When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC,' 'paid media,' 'ROAS,' 'CPA,' 'ad campaign,' 'retargeting,' 'audience target... |
-| `ai-seo` | When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generative engine optimization,' 'LLM optimiz... |
-| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google Analytics," "conversion tracking," "event tracking," "UTM parameters," "tag manager," "GTM," "analytics im... |
-| `aso` | When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app store optimization,' 'optimize my app listing,' 'improve app visibility,' 'app store ranking,' 'audit my listing,' 'why aren't pe... |
-| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution model, or reconcile conflicting numbers across tools. Also use when the user mentions "attribution," "attribution model," "first-to... |
-| `card-twitter` | Twitter quote or data card designed to pair with a post. |
-| `card-xiaohongshu` | Xiaohongshu-style knowledge cards, arranged as a swipeable multi-card carousel. |
-| `churn-prevention` | When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retention strategies. Also use when the user mentions 'churn,' 'cancel flow,' 'offboarding,' 'save offer,' 'dunning,' 'failed payment re... |
-| `co-marketing` | When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the user says 'co-marketing,' 'partner marketing,' 'joint campaign,' 'who should we partner with,' 'integration marketing,' 'cross-pro... |
-| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting emails, cold email campaigns, sales development emails, or SDR emails. Also use when the user mentions "cold outreach," "prosp... |
-| `community-marketing` | Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community strategy, grow a Discord or Slack community, manage a forum or subreddit, build brand advocates, increase word-of-mouth, drive com... |
-| `competitive-ads-extractor` | \| Extract and analyze competitors' ads from ad libraries to understand messaging and creative approaches that resonate. |
-| `competitor-profiling` | When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor profile,' 'competitor research,' 'competitor analysis,' 'profile this competitor,' 'analyze competitor,' 'competitive intelligence,... |
-| `competitors` | When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user mentions 'alternative page,' 'vs page,' 'competitor comparison,' 'comparison page,' '[Product] vs [Product],' '[Product] alternativ... |
-| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions "content strategy," "what should I write about," "content ideas," "blog strategy," "topic clusters," "content ... |
-| `copy-editing` | When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' 'copy sweep,' 'tighten... |
-| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user says "write copy for," "improve this copy," "rewrite this p... |
-| `cro` | When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pages, pricing pages, feature pages, lead capture forms, or contact forms. Also use when the user says 'CRO,' 'conversion rate opti... |
-| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP research," "talk to customers," "analyze transcripts," "customer interviews," "survey analysis," "support ticket analysis," "voice... |
-| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain rating, and discovery. Also use when the user mentions "directory submissions," "submit to directories," "backlinks from direc... |
-| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user mentions "email sequence," "drip campaign," "nurture sequence," "onboarding emails," "welcome sequence," "re... |
-| `events` | When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, dinners, workshops, virtual summits, or user conferences. Also use when the user mentions 'event marketing,' 'field marketing,' '... |
-| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions "engineering as marketing," "free tool," "marketing tool," "calculator," "generator," "inter... |
-| `image` | When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, profile banners, listing visuals, or brand assets. Also use when the user mentions 'AI image generation,' 'generate an image,' '... |
-| `influencer-marketing` | When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partners, structuring deals, briefing creators, disclosure compliance, and measuring ROI. Also use when the user mentions 'influencer m... |
-| `launch` | When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' 'product update,... |
-| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgrade," "downloadable," "ebook," "cheat sheet," "checklist," "template download,"... |
-| `marketing-council` | When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary marketers (Seth Godin, David Ogilvy, Eugene Schwartz, April Dunford, Rory Sutherland, Alex Hormozi, Byron Sharp, and more). Also us... |
-| `marketing-ideas` | When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to... |
-| `marketing-loops` | When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (weekly, daily, on a trigger) rather than a one-off task. Also use when the user mentions 'marketing loop,' 'recurring marketing wor... |
-| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the user mentions "marketing plan," "growth plan," "GTM plan," "go-to-market plan," "AARRR plan," "90-day marketing plan," "12-month ... |
-| `marketing-psychology` | When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science,' 'why people buy,' 'decision-making... |
-| `offers` | When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus stacking, guarantee design, scarcity/urgency, naming, and payment structure. Also use when the user mentions 'offer,' 'offer design... |
-| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions "onboarding flow," "activation rate," "user activation," "first-run experience," "empty states," "onboarding che... |
-| `paywall-upgrade-cro` | \| Design and optimize upgrade screens, paywalls, and upsell modals. Useful for SaaS conversion design and pricing-page experiments. |
-| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the user mentions "paywall," "upgrade screen," "upgrade modal," "upsell," "feature gate," "convert free to paid," "freemium conversion... |
-| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when the user mentions "exit intent," "popup conversions," "modal optimization," "lead capture popup," "email popup," "announcement b... |
-| `pricing` | When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,... |
-| `product-marketing` | When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' 'who is my target audience,' 'describe my product,' 'ICP,' 'ideal cust... |
-| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SEO," "template pages," "pages at scale," "directory pages," "location pages," "[keyword] + [city] pages," "comparison pages," "i... |
-| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small businesses. Also use when the user mentions "prospecting," "build a prospect list," "find prospects," "find leads," "lead gen ... |
-| `public-relations` | When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull requests). Also use when the user mentions 'PR,' 'press,' 'press release,' 'media outreach,' 'pitch a journalist,' 'get featured,'... |
-| `referrals` | When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use when the user mentions 'referral,' 'affiliate,' 'ambassador,' 'word of mouth,' 'viral loop,' 'refer a friend,' 'partner program,' ... |
-| `revops` | When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations,' 'lead scoring,' 'lead routing,' 'MQL,' 'SQL,' 'pipeline stages,' 'deal desk... |
-| `sales-enablement` | When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when the user mentions 'sales deck,' 'pitch deck,' 'one-pager,' 'leave-behind,' 'objection handling,' 'deal-specific ROI analysis,' '... |
-| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "schema markup," "structured data," "JSON-LD," "rich snippets," "schema.org," "FAQ schema," "product schema," "review schema," "bre... |
-| `screenshots-marketing` | \| Generate marketing screenshots with Playwright. Useful for landing-page hero shots, App Store screenshots, and changelog visuals. |
-| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I not ranking," "SEO issues," "on-page SEO," "meta tags review," "SEO health check," "my traffic dropped," "los... |
-| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions "signup conversions," "registration friction," "signup form optimization," "free trial signup," "reduce signup dropoff," "acco... |
-| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. Also use when the user mentions "sitemap," "site map," "visual sitemap," "site structure," "page hierarchy," "information archit... |
-| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, post-purchase, win-back, promotional sends, or transactional/auth SMS. Also use when the user mentions "SMS marketing," "text me... |
-| `social` | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or Facebook, or wants to do social listening and engagement triage. Also use when the user mentions 'LinkedIn post,' 'Twitter threa... |
-| `social-reddit-card` | Realistic Reddit post card with vote rail and comment count, suited to video overlays or story sharing. |
-| `social-spotify-card` | Spotify Now Playing-style card with album art, progress bar, and playback controls, suited to video overlays or personal homepages. |
-| `social-x-post-card` | Realistic X post card with engagement metrics (likes, reposts, views), suited to video overlays or shareable image cards. |
-| `video` | When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the user mentions 'video production,' 'AI video,' 'Remotion,' 'Hyperframes,' 'HeyGen,' 'Synthesia,' 'Veo,' 'Sora,' 'Runway,' 'Kling,' ... |
+| `address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
+| `aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
+| `agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
+| `algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
+| `atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
+| `audit-augmentation` | > |
+| `audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
+| `audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
+| `burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
+| `c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
+| `cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
+| `cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
+| `chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
+| `code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
+| `code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
+| `codeql` | >- |
+| `constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
+| `constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
+| `cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
+| `coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
+| `crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
+| `devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
+| `diagramming-code` | > |
+| `differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
+| `dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
+| `dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
+| `entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
+| `firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
+| `fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
+| `fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
+| `fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
+| `genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
+| `gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
+| `github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
+| `goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
+| `graph-evolution` | > |
+| `guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
+| `harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
+| `interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
+| `let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
+| `libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
+| `libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
+| `mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
+| `modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
+| `modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
+| `mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
+| `open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
+| `ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
+| `panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
+| `post-patch-validation` | > |
+| `pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
+| `property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
+| `review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
+| `review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
+| `rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
+| `ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
+| `sarif-parsing` | >- |
+| `second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
+| `secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
+| `semgrep` | >- |
+| `semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
+| `semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
+| `sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
+| `skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
+| `slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
+| `solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
+| `spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
+| `substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
+| `supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
+| `testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
+| `token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
+| `ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
+| `trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
+| `trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
+| `trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
+| `trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
+| `trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
+| `trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
+| `variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
+| `vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
+| `vulnerability-triage-brocards` | >- |
+| `writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
+| `wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
+| `yara-rule-authoring` | > |
+| `zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
 
 ---
 
-# gstack / GStack 运营工具箱
-
-Garry Tan 的运营与工程工具箱。CEO 视角（cso/plan-ceo-review/office-hours）、工程流程（qa/ship/retro/review/investigate/benchmark）、设计（design-shotgun/design-review/design-html）、iOS 全套（ios-qa/ios-fix/ios-sync 等）、上下文管理（context-save/restore/learn/freeze/unfreeze）、部署（setup-deploy/land-and-deploy）。
-
-**来源**: garrytan/gstack
+## software-development（66）
 
 | 技能 | 用途 |
 |------|------|
-| `autoplan` | Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisions using 6 decision principles. (gstack) |
+| `academy-guide` | > |
+| `api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `brainstorming` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior.… |
+| `browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
+| `ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
+| `claude-api` | - |
+| `code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
+| `code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
+| `codebase-inspection` | "Inspect codebases w/ pygount: LOC, languages, ratios." |
+| `constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
+| `context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
+| `debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
+| `deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
+| `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor … |
+| `discernment-nudge` | > |
+| `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
+| `documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
+| `dogfood` | "Exploratory QA of web apps: find bugs, evidence, reports." |
+| `doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
+| `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline exe… |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skil… |
+| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
+| `frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
+| `git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
+| `github` | "GitHub via gh CLI: PRs, issues, reviews, repos, auth." |
+| `graphify` | "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ e… |
+| `hermes-agent-skill-authoring` | "Author in-repo SKILL.md files: frontmatter and structure." |
+| `hermes-self-evolution` | > |
+| `idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
+| `incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
+| `inspecting-hermes-desktop-dom` | "Read the live Hermes desktop DOM/CSS over CDP." |
+| `installing-external-skills` | "Install GitHub repos as Hermes skills." |
+| `interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
+| `mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
+| `node-inspect-debugger` | "Debug Node.js via --inspect + Chrome DevTools Protocol CLI." |
+| `observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
+| `performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
+| `planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
+| `ponytail` | > |
+| `ponytail-audit` | > |
+| `ponytail-debt` | > |
+| `ponytail-gain` | > |
+| `ponytail-help` | > |
+| `ponytail-review` | > |
+| `python-debugpy` | "Debug Python: pdb REPL + debugpy remote (DAP)." |
+| `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically ques… |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
+| `security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
+| `shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
+| `simplify-code` | "Parallel 4-agent cleanup of recent code changes." |
+| `skill-builder` | Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documenta… |
+| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
+| `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a sk… |
+| `source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
+| `spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
+| `spike` | "Throwaway experiments to validate an idea before build." |
+| `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
+| `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| `test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
+| `using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
+| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an i… |
+| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response includ… |
+| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification com… |
+| `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
+| `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
+| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
+
+---
+
+## marketing（58）
+
+| 技能 | 用途 |
+|------|------|
+| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
+| `ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
+| `ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
+| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
+| `aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
+| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
+| `card-twitter` | "Twitter quote or data card designed to pair with a post." |
+| `card-xiaohongshu` | "Xiaohongshu-style knowledge cards, arranged as a swipeable multi-card carousel." |
+| `churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
+| `co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
+| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
+| `community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
+| `competitive-ads-extractor` | (无描述) |
+| `competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
+| `competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
+| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
+| `copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
+| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
+| `cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
+| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
+| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
+| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
+| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
+| `image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
+| `influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
+| `launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
+| `marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
+| `marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
+| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
+| `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
+| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `paywall-upgrade-cro` | (无描述) |
+| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
+| `product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
+| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
+| `public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
+| `referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
+| `revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
+| `sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
+| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
+| `screenshots-marketing` | (无描述) |
+| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
+| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
+| `social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
+| `social-reddit-card` | "Realistic Reddit post card with vote rail and comment count, suited to video overlays or story sharing." |
+| `social-spotify-card` | "Spotify Now Playing-style card with album art, progress bar, and playback controls, suited to video overlays or personal homepage… |
+| `social-x-post-card` | "Realistic X post card with engagement metrics (likes, reposts, views), suited to video overlays or shareable image cards." |
+| `video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
+
+---
+
+## gstack（55）
+
+| 技能 | 用途 |
+|------|------|
+| `autoplan` | Auto-review pipeline — reads the full CEO, design, eng, and DX review skills from disk and runs them sequentially with auto-decisi… |
 | `benchmark` | Performance regression detection. (gstack) |
 | `benchmark-models` | Cross-model benchmark for gstack skills. (gstack) |
-| `browse` | Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. (gstack) |
-| `canary` | Post-deploy canary monitoring. (gstack) allowed-tools: - Bash - Read - Write - Glob - AskUserQuestion |
+| `browse` | "Drive a real browser through Aside: open a page, read it, click through a flow, take screenshots, check console errors. (gstack)" |
+| `canary` | Post-deploy canary monitoring. (gstack) |
 | `careful` | Safety guardrails for destructive commands. (gstack) |
 | `codex` | OpenAI Codex CLI wrapper — three modes. (gstack) |
-| `context-restore` | Restore working context saved earlier by /context-save. (gstack) allowed-tools: - Bash - Read - Glob - Grep - AskUserQuestion |
-| `context-save` | Save working context. (gstack) allowed-tools: - Bash - Read - Write - Glob - Grep - AskUserQuestion |
-| `cso` | Security audit: supported static findings; qualified profiles add reproduction and repair candidates. (gstack)" allowed-tools: - "Bash(~/.claude/skills/gstack/bin/gstack-cso-launcher *)" - "Bash(~/.claude/skills/gstack/bin/gstack-cso-launcher.exe *) |
-| `design-consultation` | Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography, color, layout, spacing, motion), and generates font+color preview... (gstack)" allowed-tools: - Bash - Read - Write - Edit - G... |
-| `design-html` | Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack) |
-| `design-review` | Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then fixes them. (gstack)" allowed-tools: - Bash - Read - Write - Edit - Glob - Grep - AskUserQuestion - WebSearch |
-| `design-shotgun` | Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. (gstack) |
-| `deslop-shared-libs` | Find worthwhile shared-code extractions in recent work. (gstack) allowed-tools: - Bash - Read - Glob - Grep |
+| `context-restore` | Restore working context saved earlier by /context-save. (gstack) |
+| `context-save` | Save working context. (gstack) |
+| `cso` | "Security audit: supported static findings; qualified profiles add reproduction and repair candidates. (gstack)" |
+| `design-consultation` | "Design consultation: understands your product, researches the landscape, proposes a complete design system (aesthetic, typography… |
+| `design-html` | "Design finalization: generates production-quality Pretext-native HTML/CSS. (gstack)" |
+| `design-review` | "Designer's eye QA: finds visual inconsistency, spacing issues, hierarchy problems, AI slop patterns, and slow interactions — then… |
+| `design-shotgun` | "Design shotgun: generate multiple AI design variants, open a comparison board, collect structured feedback, and iterate. (gstack)… |
+| `deslop-shared-libs` | Find worthwhile shared-code extractions in recent work. (gstack) |
 | `devex-review` | Live developer experience audit. (gstack) |
-| `diagram` | Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on excalidraw.com, and rendered SVG + PNG. (gstack)" allowed-tools: - Bash - Read - Write - AskUserQuestion |
-| `document-generate` | Generate missing documentation from scratch for a feature, module, or entire project. (gstack) allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - AskUserQuestion |
-| `document-release` | Release documentation audit. (gstack) allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - AskUserQuestion |
+| `diagram` | "Turn an English description (or mermaid source) into a diagram triplet: the source, an editable .excalidraw file you can open on … |
+| `document-generate` | Generate missing documentation from scratch for a feature, module, or entire project. (gstack) |
+| `document-release` | Release documentation audit. (gstack) |
 | `freeze` | Restrict file edits to a specific directory for the session. (gstack) |
 | `gstack-upgrade` | Upgrade gstack to the latest version. |
-| `guard` | Full safety mode: destructive command warnings + directory-scoped edits. (gstack) |
+| `guard` | "Full safety mode: destructive command warnings + directory-scoped edits. (gstack)" |
 | `health` | Code quality dashboard. (gstack) |
-| `investigate` | Systematic debugging with root cause investigation. (gstack) allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - AskUserQuestion - WebSearch |
-| `ios-clean` | Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. (gstack)" allowed-tools: - Bash - Read - Edit - Glob - Grep - AskUserQuestion |
-| `ios-design-review` | Visual design audit for iOS apps on real hardware. (gstack) allowed-tools: - Bash - Read - Glob - Grep - AskUserQuestion |
-| `ios-fix` | Autonomous iOS bug fixer. (gstack) allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - AskUserQuestion |
-| `ios-qa` | Live-device iOS QA for SwiftUI apps. (gstack) allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - AskUserQuestion |
-| `ios-sync` | Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack) allowed-tools: - Bash - Read - Write - Edit - Glob - Grep - AskUserQuestion |
-| `land-and-deploy` | Land and deploy workflow. (gstack) allowed-tools: - Bash - Read - Write - Glob - AskUserQuestion |
+| `investigate` | Systematic debugging with root cause investigation. (gstack) |
+| `ios-clean` | "Remove the DebugBridge SPM package and all #if DEBUG wiring from an iOS app. (gstack)" |
+| `ios-design-review` | Visual design audit for iOS apps on real hardware. (gstack) |
+| `ios-fix` | Autonomous iOS bug fixer. (gstack) |
+| `ios-qa` | Live-device iOS QA for SwiftUI apps. (gstack) |
+| `ios-sync` | Regenerate the iOS debug bridge against the latest upstream gstack templates. (gstack) |
+| `land-and-deploy` | Land and deploy workflow. (gstack) |
 | `landing-report` | Read-only queue dashboard for workspace-aware ship. (gstack) |
 | `learn` | Manage project learnings. |
 | `make-pdf` | Turn any markdown file into a publication-quality PDF. (gstack) |
-| `office-hours` | YC Office Hours — two modes. (gstack) allowed-tools: - Bash - Read - Grep - Glob - Write - Edit - AskUserQuestion - WebSearch |
+| `office-hours` | YC Office Hours — two modes. (gstack) |
 | `open-gstack-browser` | Launch GStack Browser — AI-controlled Chromium with the sidebar extension baked in. |
 | `pair-agent` | Pair a remote AI agent with your browser. (gstack) |
-| `plan-ceo-review` | CEO/founder-mode plan review. (gstack) allowed-tools: - Read - Grep - Glob - Bash - AskUserQuestion - WebSearch |
-| `plan-design-review` | Designer's eye plan review — interactive, like CEO and Eng review. (gstack) allowed-tools: - Read - Edit - Grep - Glob - Bash - AskUserQuestion |
-| `plan-devex-review` | Interactive developer experience plan review. (gstack) allowed-tools: - Read - Edit - Grep - Glob - Bash - AskUserQuestion - WebSearch |
-| `plan-eng-review` | Eng manager-mode plan review. (gstack) allowed-tools: - Read - Write - Grep - Glob - AskUserQuestion - Bash - WebSearch |
-| `plan-tune` | Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). (gstack) |
-| `qa` | Fix browser/API/CLI/job/worker/webhook bugs. (gstack) allowed-tools: - Bash - Read - Write - Edit - Glob - Grep - AskUserQuestion - WebSearch |
-| `qa-only` | Report browser/API/CLI/job/worker/webhook bugs. (gstack) allowed-tools: - Bash - Read - Write - AskUserQuestion - WebSearch |
-| `retro` | Weekly engineering retrospective. (gstack) allowed-tools: - Bash - Read - Write - Glob - AskUserQuestion |
-| `review` | Pre-landing PR review. (gstack) allowed-tools: - Bash - Read - Edit - Write - Grep - Glob - Agent - AskUserQuestion - WebSearch |
-| `scrape` | Pull data from a web page through the Aside browser — your real, already signed-in sessions. (gstack) allowed-tools: - Bash - Read - AskUserQuestion |
+| `plan-ceo-review` | CEO/founder-mode plan review. (gstack) |
+| `plan-design-review` | Designer's eye plan review — interactive, like CEO and Eng review. (gstack) |
+| `plan-devex-review` | Interactive developer experience plan review. (gstack) |
+| `plan-eng-review` | Eng manager-mode plan review. (gstack) |
+| `plan-tune` | "Self-tuning question sensitivity + developer psychographic for gstack (v1: observational). (gstack)" |
+| `qa` | Fix browser/API/CLI/job/worker/webhook bugs. (gstack) |
+| `qa-only` | Report browser/API/CLI/job/worker/webhook bugs. (gstack) |
+| `retro` | Weekly engineering retrospective. (gstack) |
+| `review` | Pre-landing PR review. (gstack) |
+| `scrape` | Pull data from a web page through the Aside browser — your real, already signed-in sessions. (gstack) |
 | `setup-browser-cookies` | Import cookies from your real Chromium browser into the headless browse session. (gstack) |
 | `setup-deploy` | Configure deployment settings for /land-and-deploy. |
-| `setup-gbrain` | Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remote trust policy. (gstack) |
-| `ship` | Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. (gstack)" allowed-tools: - Bash - Read - Write - Edit - Grep - Glob - Agent - AskUserQuestion - WebSearch |
-| `skillify` | Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack) allowed-tools: - Bash - Read - Write - AskUserQuestion |
-| `spec` | Turn vague intent into a precise, executable spec in five phases. (gstack) allowed-tools: - Bash - Read - Grep - Glob - AskUserQuestion |
+| `setup-gbrain` | "Set up gbrain for this coding agent: install the CLI, initialize a local PGLite or Supabase brain, register MCP, capture per-remo… |
+| `ship` | "Ship workflow: detect + merge base branch, run tests, review diff, bump VERSION, update CHANGELOG, commit, push, create PR. (gsta… |
+| `skillify` | Codify the most recent successful /scrape flow into a permanent browser-skill on disk. (gstack) |
+| `spec` | Turn vague intent into a precise, executable spec in five phases. (gstack) |
 | `sync-gbrain` | Keep gbrain current with this repo's code and refresh agent search guidance in CLAUDE.md. (gstack) |
 | `test-audit` | Find low-value or duplicate tests and the test-only code they keep alive. (gstack) |
 | `unfreeze` | Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack) |
 
 ---
 
-# media / 媒体资产
-
-29 个媒体生成技能：Fal 全家桶（图像/视频/3D/唇形/试穿/超分/视觉）、Venice 多模态、Sora、Replicate、YouTube 下载/剪辑、GIF 贴纸、截图、3D 设备 mockup、AI 音乐专辑。
-
-**来源**: nexu-io/open-design
+## media（35）
 
 | 技能 | 用途 |
 |------|------|
-| `ai-music-album` | \| Full-lifecycle AI music album production — concept, lyric drafting, track sequencing, and export. Useful for indie album experiments and brand soundtracks. |
-| `fal-3d` | \| Generate 3D models from text or images via fal.ai. Useful for game assets, AR previews, product mockups, and concept sculpting. |
-| `fal-generate` | \| Generate images and videos using fal.ai AI models. Production-grade catalogue covering Flux, SDXL, ideogram, and other community-hosted endpoints. |
-| `fal-image-edit` | \| AI-powered image editing with style transfer, background removal, object removal, and inpainting via fal.ai hosted models. |
-| `fal-kling-o3` | \| Generate images and videos with Kling O3 — Kling's most powerful model family — via fal.ai. |
-| `fal-lip-sync` | \| Create talking head videos and lip sync audio to video via fal.ai. Useful for explainer avatars, multilingual dubbing previews, and social cuts. |
-| `fal-realtime` | \| Real-time and streaming AI image generation via fal.ai. Suited for moodboard exploration, draft variations, and rapid creative iteration. |
-| `fal-restore` | \| Restore and fix image quality — deblur, denoise, fix faces, and restore old documents using fal.ai's hosted restoration models. |
-| `fal-train` | \| Train custom AI models (LoRA) on fal.ai for personalized image generation tailored to a brand, character, or style. |
-| `fal-tryon` | \| Virtual try-on — see how clothes look on a person via fal.ai's hosted try-on models. Useful for ecommerce, lookbooks, and styling experiments. |
-| `fal-upscale` | \| Upscale and enhance image and video resolution using AI super-resolution models hosted on fal.ai. |
-| `fal-video-edit` | \| Edit existing videos using AI — remix style, upscale, remove background, and add audio via fal.ai's hosted video models. |
-| `fal-vision` | \| Analyze images — segment objects, detect, run OCR, describe, and answer visual questions via fal.ai vision models. |
-| `full-page-screenshot` | \| Capture full-page screenshots of web pages via Chrome DevTools Protocol with zero dependencies. Useful for portfolios, case studies, and audit reports. |
-| `gif-search` | Search/download GIFs from Tenor via curl + jq. |
-| `gif-sticker-maker` | \| Convert photos into animated GIF stickers in Funko Pop / Pop Mart style via the MiniMax API. Useful for personalized chat stickers and avatar packs. |
-| `image-enhancer` | \| Improve image and screenshot quality by enhancing resolution, sharpness, and clarity for professional presentations and documentation. |
-| `imagegen` | \| Generate and edit images using OpenAI's Image API for project assets — UI mockups, icons, illustrations, social cards, and visual references. |
-| `imagen` | \| Generate images using Google Gemini's image generation API for UI mockups, icons, illustrations, and visual assets. |
-| `mockup-device-3d` | Static iPhone and MacBook 3D-style showcase with real HTML embedded on screens, glass-lens refraction, and 360-degree turntable composition. |
-| `pixelbin-media` | \| Generate and edit images and videos with an 85+ API portfolio and build visually appealing website pages via Pixelbin. |
-| `replicate` | \| Discover, compare, and run AI models using Replicate's API. Strong fit for image, audio, and video generation pipelines that swap models frequently. |
-| `screenshot` | \| Capture desktop, app windows, or pixel regions across OS platforms. Useful for marketing screenshots, design reviews, and bug reports. |
-| `songsee` | Audio spectrograms/features (mel, chroma, MFCC) via CLI. |
-| `sora` | \| Generate, remix, and manage short video clips via OpenAI's Sora API. Useful for cinematic shots, b-roll, and rapid concept video iteration. |
-| `speech` | \| Generate spoken audio from text using OpenAI's API with built-in voices. Useful for narrated explainers, lecture audio, and quick voiceover tracks. |
-| `venice-audio-music` | \| Music generation queueing, retrieval, and completion endpoints via Venice.ai. Suited for jingles, background loops, and prototype scoring. |
-| `venice-audio-speech` | \| Text-to-speech models, voices, formats, and streaming via Venice.ai. Useful for narration, voiceover, and conversational agent voices. |
-| `venice-image-edit` | \| Image edits, upscaling, and background removal via the Venice.ai API. |
-| `venice-image-generate` | \| Image generation endpoints and available styles via the Venice.ai API. |
-| `venice-video` | \| Video generation and transcription workflows via the Venice.ai API. |
-| `video-downloader` | \| Download videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options. |
-| `video-hyperframes` | Hyperframes / Remotion-compatible continuous frame animation with autoplay support. |
-| `youtube-clipper` | \| YouTube clip generation and editing with automated workflows — pull source video, slice highlights, add captions, and export. |
-| `youtube-content` | YouTube transcripts to summaries, threads, blogs. |
+| `ai-music-album` | (无描述) |
+| `fal-3d` | (无描述) |
+| `fal-generate` | (无描述) |
+| `fal-image-edit` | (无描述) |
+| `fal-kling-o3` | (无描述) |
+| `fal-lip-sync` | (无描述) |
+| `fal-realtime` | (无描述) |
+| `fal-restore` | (无描述) |
+| `fal-train` | (无描述) |
+| `fal-tryon` | (无描述) |
+| `fal-upscale` | (无描述) |
+| `fal-video-edit` | (无描述) |
+| `fal-vision` | (无描述) |
+| `full-page-screenshot` | (无描述) |
+| `gif-search` | "Search/download GIFs from Tenor via curl + jq." |
+| `gif-sticker-maker` | (无描述) |
+| `image-enhancer` | (无描述) |
+| `imagegen` | (无描述) |
+| `imagen` | (无描述) |
+| `mockup-device-3d` | "Static iPhone and MacBook 3D-style showcase with real HTML embedded on screens, glass-lens refraction, and 360-degree turntable c… |
+| `pixelbin-media` | (无描述) |
+| `replicate` | (无描述) |
+| `screenshot` | (无描述) |
+| `songsee` | "Audio spectrograms/features (mel, chroma, MFCC) via CLI." |
+| `sora` | (无描述) |
+| `speech` | (无描述) |
+| `venice-audio-music` | (无描述) |
+| `venice-audio-speech` | (无描述) |
+| `venice-image-edit` | (无描述) |
+| `venice-image-generate` | (无描述) |
+| `venice-video` | (无描述) |
+| `video-downloader` | (无描述) |
+| `video-hyperframes` | "Hyperframes / Remotion-compatible continuous frame animation with autoplay support." |
+| `youtube-clipper` | (无描述) |
+| `youtube-content` | "YouTube transcripts to summaries, threads, blogs." |
 
 ---
 
-# software-development / 软件开发
-
-35 个软件工程方法论技能。Superpowers 全套（brainstorming/writing-plans/test-driven-development/systematic-debugging/subagent-driven-development/code-review 流程）、Ponytail（YAGNI 最小代码哲学 + 审计/评审/债务台账）、Hermes 技能进化引擎（GEPA/DSPy 自动优化技能）、Graphify 代码图谱、技能编写规范。
-
-**来源**: obra/superpowers, DietrichGebert/ponytail, NousResearch/hermes-agent-self-evolution, NVIDIA/SkillSpector, yusufkaraaslan/Skill_Seekers, Graphify-Labs/graphify
+## web（33）
 
 | 技能 | 用途 |
 |------|------|
-| `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation. |
-| `codebase-inspection` | Inspect codebases w/ pygount: LOC, languages, ratios. |
-| `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, "it took too long", "why is it so expensive", "what is it doing" — or wants to build a bug r... |
-| `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
-| `dogfood` | Exploratory QA of web apps: find bugs, evidence, reports. |
-| `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available |
-| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
-| `github` | GitHub via gh CLI: PRs, issues, reviews, repos, auth. |
-| `graphify` | Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (code, docs, papers, images, videos) into... |
-| `hermes-agent-skill-authoring` | Author in-repo SKILL.md files: frontmatter and structure. |
-| `hermes-self-evolution` | > Evolve and optimize Hermes Agent skills, tool descriptions, and system prompts using DSPy + GEPA (Genetic-Pareto Prompt Evolution, ICLR 2026 Oral). Reflective evolutionary search that reads execution traces, proposes targeted mutations, evaluates candidat... |
-| `inspecting-hermes-desktop-dom` | Read the live Hermes desktop DOM/CSS over CDP. |
-| `installing-external-skills` | Install GitHub repos as Hermes skills. |
-| `node-inspect-debugger` | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. |
-| `ponytail` | > Forces the laziest solution that actually works, simplest, shortest, most minimal. Channels a senior dev who has seen everything: question whether the task needs to exist at all (YAGNI), reach for the standard library before custom code, native platform f... |
-| `ponytail-audit` | > Whole-repo audit for over-engineering. Like ponytail-review, but scans the entire codebase instead of a diff: a ranked list of what to delete, simplify, or replace with stdlib/native equivalents. Use when the user says "audit this codebase", "audit for ov... |
-| `ponytail-debt` | > Harvest every `ponytail:` comment in the codebase into a debt ledger, so the deliberate shortcuts and deferrals ponytail leaves behind get tracked instead of rotting into "later means never". Use when the user says "ponytail debt", "/ponytail-debt", "what... |
-| `ponytail-gain` | > Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the agentic benchmark averages. One-shot display, not a persistent mode, and not a per-repo number. Trigger: /ponytail-gain, "ponytail gain", "what does ponyta... |
-| `ponytail-help` | > Quick-reference card for all ponytail modes, skills, and commands. One-shot display, not a persistent mode. Trigger: /ponytail-help, "ponytail help", "what ponytail commands", "how do I use ponytail". |
-| `ponytail-review` | > Code review focused exclusively on over-engineering. Finds what to delete: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding: location, what to cut, what replaces it. Use when the user say... |
-| `python-debugpy` | Debug Python: pdb REPL + debugpy remote (DAP). |
-| `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation |
-| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
-| `simplify-code` | Parallel 4-agent cleanup of recent code changes. |
-| `skill-builder` | Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documentation, repos, PDFs, videos, or other knowledge sources. |
-| `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a skill or downloaded skill folder is safe, trustworthy, installable, over-permissioned, or malicious. |
-| `spike` | Throwaway experiments to validate an idea before build. |
-| `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
-| `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
-| `test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
-| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback |
-| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions |
-| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always |
-| `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
-| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
+| `agent-browser` | (无描述) |
+| `agent-reach` | > |
+| `artifacts-builder` | (无描述) |
+| `autoscraper` | Auto-scrape HTML without writing selectors — use AutoScraper's AutoScraper.get_selectors() to learn a selector from one sample ele… |
+| `blocked-page-recovery` | "Use when a fetch fails: 403/429, paywall, WAF, bot wall." |
+| `browser-use` | Drive a real browser with an AI agent using Browser Use (installed, Python 3.14, 0.13.x) — lets the agent look at the page, decide… |
+| `crawl4ai` | Use Crawl4AI to scrape websites, crawl whole sites, or extract structured data into LLM-ready markdown/JSON — the go-to when web e… |
+| `crawlee` | Build reliable Node.js web scrapers/crawlers with Apify Crawlee (installed at C:\Users\mwr_w\tools\node-packages). Use when the us… |
+| `curl-impersonate` | Bypass TLS/HTTP2 fingerprinting by making curl handshakes byte-identical to Chrome/Edge/Firefox/Safari — curl-impersonate (prebuil… |
+| `firecrawl` | (无描述) |
+| `firecrawl-agent` | Autonomously navigate websites and extract structured data across pages. Use when the task requires navigation or no suitable read… |
+| `firecrawl-alexandria` | Find a direct path to structured data through ready-made workflows, data APIs, and indexes. Follow the search skill to discover an… |
+| `firecrawl-build` | Integrate Firecrawl into application code whenever a product, agent, or workflow needs web data inside the app — web search, live … |
+| `firecrawl-build-interact` | Integrate Firecrawl `/interact` into product code for dynamic pages and browser actions after scraping. Use when a feature needs c… |
+| `firecrawl-build-onboarding` | Get Firecrawl credentials and SDK setup into a project. Use when an application needs `FIRECRAWL_API_KEY`, when an agent should ad… |
+| `firecrawl-build-scrape` | Integrate Firecrawl `/scrape` into product code for single-page extraction. Use when an app already has a URL and needs markdown, … |
+| `firecrawl-build-search` | Integrate Firecrawl `/search` into product code and agent workflows. Use when an app needs discovery before extraction, when the f… |
+| `firecrawl-crawl` | (无描述) |
+| `firecrawl-developer-index` | Search an index of public repositories, GitHub issues, merged pull requests, repository READMEs, and curated documentation sites. … |
+| `firecrawl-download` | (无描述) |
+| `firecrawl-interact` | (无描述) |
+| `firecrawl-map` | (无描述) |
+| `firecrawl-monitor` | (无描述) |
+| `firecrawl-parse` | (无描述) |
+| `firecrawl-research-index` | Find the papers that answer a research query in Firecrawl's research paper index — a corpus of paper abstracts whose largest share… |
+| `firecrawl-scrape` | Read a known webpage or execute a discovered workflow or data-provider capability. Use for page content or structured results once… |
+| `firecrawl-search` | Find web sources with query-relevant page excerpts and optional full-page content, and discover workflows, data APIs, and indexes.… |
+| `markitdown` | Convert PDF/Word/Excel/PowerPoint/HTML/images/audio/CSV/ZIP/Youtube to clean Markdown for LLM/RAG with Microsoft MarkItDown (insta… |
+| `scrapling` | Scrape web pages using Scrapling with anti-bot bypass (like Cloudflare Turnstile), stealth headless browsing, spiders framework, a… |
+| `scrapy` | Build production-grade web crawlers and scrape structured data from many pages at scale with Scrapy (installed, v2.19, Python 3.14… |
+| `scrcpy` | Mirror and control an Android device (video+audio) from the computer via USB/TCP without installing anything on the phone — Genymo… |
+| `web-artifacts-builder` | (无描述) |
+| `web-clone` | > |
 
 ---
 
-# productivity / 生产力
-
-29 个生产力技能：文档（docx/pdf/pptx/minimax 系列）、周度回顾规划、会议行动项、文档义务提取、Notion/Airtable/Google Workspace、ADHD 友好输出、文件规划、地图/路线、价格监控、Teams 会议管道、Obsidian 笔记。
-
-**来源**: built-in, nexu-io/open-design, ayghri/i-have-adhd, Other/Planning-with-Files
+## productivity（30）
 
 | 技能 | 用途 |
 |------|------|
 | `airtable` | Airtable REST API via curl. Records CRUD, filters, upserts. |
 | `box` | Box manages cloud files, sharing, search, and metadata. |
-| `data-report` | Turns CSV, Excel, or JSON data into a polished visual report page. |
-| `doc` | \| Read, create, and edit .docx documents with formatting and layout fidelity via OpenAI's document skill. |
-| `document-to-action-items` | Extract cited obligations, deadlines, tasks from documents. |
+| `data-report` | "Turns CSV, Excel, or JSON data into a polished visual report page." |
+| `doc` | (无描述) |
+| `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, t… |
+| `document-to-action-items` | "Extract cited obligations, deadlines, tasks from documents." |
 | `docx` | Create, read, edit, template, and review Word .docx files. |
-| `domain-name-brainstormer` | \| Generate creative domain name ideas and check availability across multiple TLDs including .com, .io, .dev, and .ai. |
-| `faq-page` | \| A Frequently Asked Questions (FAQ) page with collapsible accordion sections, search functionality, and category filtering. Use when the brief asks for "FAQ", "help center", "questions", or "support page". |
-| `google-workspace` | Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python. |
-| `i-have-adhd` | Shape output for a reader with ADHD: lead with the next action, number multi-step work, restate state across turns, suppress tangents, give specific time estimates, make wins visible. Invoke with /i-have-adhd; stays on until "stop adhd mode".' disable-model... |
-| `maps` | Geocode, POIs, routes, timezones via OpenStreetMap/OSRM. |
-| `meeting-action-items` | Turn meeting notes into cited decisions, owners, tickets. |
-| `minimax-docx` | \| Professional DOCX document creation and editing using OpenXML SDK. Useful for branded reports, polished proposals, and template-based authoring. |
-| `minimax-pdf` | \| Generate, fill, and reformat PDFs with a token-based design system and 15 cover styles. Useful for branded PDFs, e-guides, and reports. |
-| `nanobanana-ppt` | \| AI-powered PPT generation with document analysis and styled images via the NanoBanana stack. Combines image generation with structured deck output. |
-| `notion` | Notion API + ntn CLI: pages, databases, markdown, Workers. |
-| `pdf` | PDF files: create, read, merge, fill, OCR, edit text. |
-| `planning-with-files` | Persistent file-based planning for multi-step AI-agent work. Keeps task_plan.md, findings.md, and progress.md on disk; lifecycle hooks inject selected project planning context. Automatic recovery reads project planning files only. Explicit session-catchup.p... |
+| `domain-name-brainstormer` | (无描述) |
+| `faq-page` | (无描述) |
+| `google-workspace` | "Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python." |
+| `i-have-adhd` | 'Shape output for a reader with ADHD: lead with the next action, number multi-step work, restate state across turns, suppress tang… |
+| `maps` | "Geocode, POIs, routes, timezones via OpenStreetMap/OSRM." |
+| `meeting-action-items` | "Turn meeting notes into cited decisions, owners, tickets." |
+| `minimax-docx` | (无描述) |
+| `minimax-pdf` | (无描述) |
+| `nanobanana-ppt` | (无描述) |
+| `notion` | "Notion API + ntn CLI: pages, databases, markdown, Workers." |
+| `pdf` | "PDF files: create, read, merge, fill, OCR, edit text." |
+| `planning-with-files` | "Persistent file-based planning for multi-step AI-agent work. Keeps task_plan.md, findings.md, and progress.md on disk; lifecycle … |
 | `powerpoint` | Create, read, edit .pptx decks with python-pptx. |
-| `ppt-keynote` | Apple Keynote-quality slides, one card per screen, with keyboard left/right navigation. |
-| `pptx` | \| Read, generate, and adjust PowerPoint slides, layouts, and templates. Useful for executive decks, training material, and product reviews. |
-| `pptx-generator` | \| Create and edit PowerPoint presentations from scratch with PptxGenJS — MiniMax's production-tested deck pipeline. |
-| `product-price-monitor` | Watch product, flight, or listing prices; alert on target. |
-| `release-notes-one-pager` | \| Release notes one-page HTML with highlights, Added, Fixed, Breaking changes, Known issues, and Upgrade note. Writes explicit "None" style sections whenever the user does not provide details. |
-| `research-decision-room` | \| Turn messy user research notes, interviews, support tickets, surveys, and product context into an evidence-backed decision room: a single HTML artifact with an evidence ledger, theme map, confidence heatmap, opportunity matrix, decision memo, and experime... |
-| `resume-modern` | Modern minimal resume, single A4 page, ready for print or PDF export. |
+| `ppt-keynote` | "Apple Keynote-quality slides, one card per screen, with keyboard left/right navigation." |
+| `pptx` | (无描述) |
+| `pptx-generator` | (无描述) |
+| `product-price-monitor` | "Watch product, flight, or listing prices; alert on target." |
+| `release-notes-one-pager` | (无描述) |
+| `research-decision-room` | (无描述) |
+| `resume-modern` | "Modern minimal resume, single A4 page, ready for print or PDF export." |
 | `teams-meeting-pipeline` | Teams meeting summaries, job replay, Graph subscriptions. |
-| `weekly-review-planning` | Weekly reset: commitments, stalled work, next-week plan. |
+| `weekly-review-planning` | "Weekly reset: commitments, stalled work, next-week plan." |
 | `xlsx` | Create, read, edit Excel .xlsx workbooks and CSVs. |
 
 ---
 
-# claude-mem / 持久记忆
-
-claude-mem 记忆体系（22 个）：跨会话记忆压缩检索（mem-search）、项目周报/时间线报告、PR 看护、GitHub issue 根因聚类、会话诊断、模式创建、成本报告、云同步、代码库预学习等。
-
-**来源**: thedotmack/claude-mem
+## claude-mem（22）
 
 | 技能 | 用途 |
 |------|------|
-| `agent-cost-report` | >- Believable agent cost report for any period, default the last 7 full days PT, not counting today. Measured tokens from Claude Code transcripts priced at OpenRouter list prices (ESTIMATED), measured provider spend when a sanctioned source exists, note-tak... |
-| `babysit` | Watch a pull request or review cycle until it is ready to merge. Use when asked to babysit, monitor, or keep checking PR comments, reviews, and CI until all actionable issues are resolved. |
-| `ccs-align` | Run the CCS Align seat's hourly breathing cycle — prove the local claude-mem worker is healthy, pull needle observations through search → timeline → get_observations, land them in a seat-owned middle cache via atomic grab → append → filter exclude-marks → r... |
-| `cloud-sync` | Set up or check claude-mem cloud sync with cmem.ai Pro. Use when the user says "set up cloud sync", "sync my memories", "cmem pro", "cloud backup", "sync status", or wants their memory database backed up or synced to their cmem.ai account. allowed-tools: - ... |
-| `design-is` | Audit a design against Dieter Rams' ten "Good design is..." principles, then hand off a /make-plan prompt for one of three outcomes — new design, refine design, or redesign. Use when the user says "audit this design", "design review", "check this UI against... |
-| `do` | Execute a phased implementation plan using subagents. Use when asked to execute, run, or carry out a plan — especially one created by make-plan. |
-| `handoff` | Generate a HANDOFF.md that captures goal, current state, files touched, failed attempts, and next steps — so a fresh Claude session can continue exactly where this one left off. Use when sessions are getting long, Claude keeps retrying the same broken solut... |
-| `how-it-works` | Explain how claude-mem captures observations, when memory injection kicks in, and where data lives. Use when the user asks "how does claude-mem work?" or "what is this thing doing?". |
-| `knowledge-agent` | Build and query AI-powered knowledge bases from claude-mem observations. Use when users want to create focused "brains" from their observation history, ask questions about past work patterns, or compile expertise on specific topics. |
-| `learn-codebase` | Prime a codebase by reading every source file in full. Use when starting work on a new or unfamiliar project, or when the user asks to "learn the codebase", "read the codebase", "prime", or "get up to speed". |
-| `make-plan` | Create a detailed, phased implementation plan with documentation discovery. Use when asked to plan a feature, task, or multi-step implementation — especially before executing with do. |
-| `mem-search` | Search claude-mem's persistent cross-session memory database. Use when user asks "did we already solve this?", "how did we do X last time?", or needs work from previous sessions. |
-| `mode-creator` | Interactively create, install, activate, and verify custom claude-mem modes, including domain-specific observation types, concept tags, optional Telegram alerts, bot setup, worker restart, and startup-context verification. Use this whenever someone asks to ... |
-| `oh-my-issues` | Cluster a GitHub issue backlog by root cause into a small set of plan-master issues, redirect children with a standardized comment, and bundle architectural-fix PRs that close clusters atomically. Use when an issue tracker has accumulated dozens of reports ... |
-| `pathfinder` | Map a codebase into feature-grouped flowcharts, identify duplicated concerns across features, and propose a unified architecture. Use when asked to "find the ideal path," unify duplicated systems, or audit architecture before a refactor. Emits a proposed un... |
-| `smart-explore` | Token-optimized structural code search using tree-sitter AST parsing. Use instead of reading full files when you need to understand code structure, find functions, or explore a codebase efficiently. |
-| `standup` | Facilitate a read-only standup across git worktrees, branches, or PRs to compare changes and produce one consolidation plan. allowed-tools: - Bash - Read - Edit - Task - AskUserQuestion |
-| `timeline-report` | Generate a "Journey Into [Project]" narrative report analyzing a project's entire development history from claude-mem's timeline. Use when asked for a timeline report, project history analysis, development journey, or full project report. |
-| `version-bump` | Automated semantic versioning and release workflow for Claude Code plugins. Handles version increments across package.json, marketplace.json, plugin.json manifests, build verification, git tagging, GitHub releases, and changelog generation. NPM publishing i... |
-| `weekly-digests` | Generate a serial week-by-week narrative digest of a project's full claude-mem timeline. Splits the timeline into per-ISO-week files, then runs one consecutive subagent per week — each receiving the prior week's carry-forward block — to produce one chapter ... |
-| `what-the` | What the? Use when the user wants a plain-English breakdown of something technical — the who, what, where, why, and when. |
-| `wowerpoint` | Turn one document into a kawaii NotebookLM slide-deck PDF. Use for "wowerpoint this", "make a deck about <file>", "turn this report into slides", or any request to render a single document as shareable narrative slides. |
+| `agent-cost-report` | >- |
+| `babysit` | Watch a pull request or review cycle until it is ready to merge. Use when asked to babysit, monitor, or keep checking PR comments,… |
+| `ccs-align` | Run the CCS Align seat's hourly breathing cycle — prove the local claude-mem worker is healthy, pull needle observations through s… |
+| `cloud-sync` | Set up or check claude-mem cloud sync with cmem.ai Pro. Use when the user says "set up cloud sync", "sync my memories", "cmem pro"… |
+| `design-is` | Audit a design against Dieter Rams' ten "Good design is..." principles, then hand off a /make-plan prompt for one of three outcome… |
+| `do` | Execute a phased implementation plan using subagents. Use when asked to execute, run, or carry out a plan — especially one created… |
+| `handoff` | Generate a HANDOFF.md that captures goal, current state, files touched, failed attempts, and next steps — so a fresh Claude sessio… |
+| `how-it-works` | Explain how claude-mem captures observations, when memory injection kicks in, and where data lives. Use when the user asks "how do… |
+| `knowledge-agent` | Build and query AI-powered knowledge bases from claude-mem observations. Use when users want to create focused "brains" from their… |
+| `learn-codebase` | Prime a codebase by reading every source file in full. Use when starting work on a new or unfamiliar project, or when the user ask… |
+| `make-plan` | Create a detailed, phased implementation plan with documentation discovery. Use when asked to plan a feature, task, or multi-step … |
+| `mem-search` | Search claude-mem's persistent cross-session memory database. Use when user asks "did we already solve this?", "how did we do X la… |
+| `mode-creator` | Interactively create, install, activate, and verify custom claude-mem modes, including domain-specific observation types, concept … |
+| `oh-my-issues` | Cluster a GitHub issue backlog by root cause into a small set of plan-master issues, redirect children with a standardized comment… |
+| `pathfinder` | Map a codebase into feature-grouped flowcharts, identify duplicated concerns across features, and propose a unified architecture. … |
+| `smart-explore` | Token-optimized structural code search using tree-sitter AST parsing. Use instead of reading full files when you need to understan… |
+| `standup` | Facilitate a read-only standup across git worktrees, branches, or PRs to compare changes and produce one consolidation plan. |
+| `timeline-report` | Generate a "Journey Into [Project]" narrative report analyzing a project's entire development history from claude-mem's timeline. … |
+| `version-bump` | Automated semantic versioning and release workflow for Claude Code plugins. Handles version increments across package.json, market… |
+| `weekly-digests` | Generate a serial week-by-week narrative digest of a project's full claude-mem timeline. Splits the timeline into per-ISO-week fil… |
+| `what-the` | "What the? Use when the user wants a plain-English breakdown of something technical — the who, what, where, why, and when." |
+| `wowerpoint` | Turn one document into a kawaii NotebookLM slide-deck PDF. Use for "wowerpoint this", "make a deck about <file>", "turn this repor… |
 
 ---
 
-# creative / 创意内容
-
-10 个创意技能：ASCII 艺术/视频、SVG 架构图、Manim 数学动画、p5.js 生成艺术、信息图（21 布局 x 21 风格）、Claude Design 原型、DESIGN.md 规范、音乐创作。
-
-**来源**: built-in + OpenMontage
+## creative（10）
 
 | 技能 | 用途 |
 |------|------|
-| `architecture-diagram` | Dark-themed SVG architecture/cloud/infra diagrams as HTML. |
-| `ascii-video` | ASCII video: convert video/audio to colored ASCII MP4/GIF. |
-| `baoyu-infographic` | Infographics: 21 layouts x 21 styles (信息图, 可视化). |
+| `architecture-diagram` | "Dark-themed SVG architecture/cloud/infra diagrams as HTML." |
+| `ascii-video` | "ASCII video: convert video/audio to colored ASCII MP4/GIF." |
+| `baoyu-infographic` | "Infographics: 21 layouts x 21 styles (信息图, 可视化)." |
 | `claude-design` | Design one-off HTML artifacts (landing, deck, prototype). |
 | `design-md` | Author/validate/export Google's DESIGN.md token spec files. |
-| `humanizer` | Humanize text: strip AI-isms and add real voice. |
-| `manim-video` | Manim CE animations: 3Blue1Brown math/algo videos. |
-| `p5js` | p5.js sketches: gen art, shaders, interactive, 3D. |
+| `humanizer` | "Humanize text: strip AI-isms and add real voice." |
+| `manim-video` | "Manim CE animations: 3Blue1Brown math/algo videos." |
+| `p5js` | "p5.js sketches: gen art, shaders, interactive, 3D." |
 | `popular-web-designs` | 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS. |
-| `songwriting-and-ai-music` | Songwriting craft and Suno AI music prompts. |
+| `songwriting-and-ai-music` | "Songwriting craft and Suno AI music prompts." |
 
 ---
 
-# autonomous-ai-agents / 多智能体
-
-7 个多智能体编排技能：Claude Code/Codex/OpenCode 委托、桌面计算机操作、多代理团队、Hermes 插件开发、workspace-dispatch 任务编排。
-
-**来源**: outsourc-e/hermes-workspace, built-in
+## autonomous-ai-agents（6）
 
 | 技能 | 用途 |
 |------|------|
-| `claude-code` | Delegate coding to Claude Code CLI (features, PRs). |
-| `codex` | Delegate coding to OpenAI Codex CLI (features, PRs). |
-| `computer-use` | Drive the desktop background-first; escalate on signal. |
-| `hermes-agent` | Use, configure, theme, extend, and orchestrate Hermes Agent. |
-| `multi-agent-teams` | Compose Hermes bot groups and multi-agent dev pipelines. |
-| `opencode` | Delegate coding to OpenCode CLI (features, PR review). |
-| `workspace-dispatch` | \| Single-agent mission orchestrator. Decomposes a mission into tasks, spawns one worker per task using the default model, verifies exit criteria, and chains tasks with retry. No critic pattern — each worker self-verifies. Simple, fast, works with any model ... |
+| `claude-code` | "Delegate coding to Claude Code CLI (features, PRs)." |
+| `computer-use` | "Drive the desktop background-first; escalate on signal." |
+| `hermes-agent` | "Use, configure, theme, extend, and orchestrate Hermes Agent." |
+| `multi-agent-teams` | "Compose Hermes bot groups and multi-agent dev pipelines." |
+| `opencode` | "Delegate coding to OpenCode CLI (features, PR review)." |
+| `workspace-dispatch` | (无描述) |
 
 ---
 
-# research / 研究
-
-6 个研究技能：arXiv 检索、竞品新闻监控、引用核验、last30days 舆论研究、LLM Wiki 知识库、D3 数据可视化。
-
-**来源**: Graphify-Labs/graphify, mvanhorn/last30days-skill, nexu-io/open-design
+## research（6）
 
 | 技能 | 用途 |
 |------|------|
-| `arxiv` | Search arXiv papers by keyword, author, category, or ID. |
-| `competitor-news-monitor` | Watch named companies for material news; cited digests. |
-| `d3-visualization` | \| Teaches the agent to produce D3 charts and interactive data visualizations. A comprehensive D3.js skill with examples across chart types and techniques giving the agent expert-level knowledge to generate complex, interactive visualizations. Useful for edi... |
-| `grounded-citations` | Ground answers and documents in cited, verifiable sources. |
-| `last30days` | Research what people actually say about any topic in the last 30 days. Pulls posts and engagement from Reddit, X, YouTube, TikTok, Hacker News, Polymarket, GitHub, and the web. Includes a doctor health check to diagnose broken or missing sources." argument-... |
-| `llm-wiki` | Karpathy's LLM Wiki: build/query interlinked markdown KB. |
+| `arxiv` | "Search arXiv papers by keyword, author, category, or ID." |
+| `competitor-news-monitor` | "Watch named companies for material news; cited digests." |
+| `d3-visualization` | (无描述) |
+| `grounded-citations` | "Ground answers and documents in cited, verifiable sources." |
+| `last30days` | "Research what people actually say about any topic in the last 30 days. Pulls posts and engagement from Reddit, X, YouTube, TikTok… |
+| `llm-wiki` | "Karpathy's LLM Wiki: build/query interlinked markdown KB." |
 
 ---
 
-# web / 网页
-
-5 个网页技能：被封锁页面恢复（WAF/paywall/403 应对）、web-clone 整站复刻、网页工件构建、agent-browser。
-
-**来源**: nexu-io/open-design, built-in
+## apple（4）
 
 | 技能 | 用途 |
 |------|------|
-| `agent-browser` | \| Browser automation CLI for AI agents. Use when the user needs to inspect, test, or automate browser behavior: navigating pages, filling forms, clicking buttons, taking screenshots, extracting page data, reading selected OpenDesign browser-tab context, tes... |
-| `artifacts-builder` | \| Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). |
-| `blocked-page-recovery` | Use when a fetch fails: 403/429, paywall, WAF, bot wall. |
-| `web-artifacts-builder` | \| Build complex claude.ai HTML artifacts with React and Tailwind. Anthropic's reference workflow for shipping rich, embeddable artifacts. |
-| `web-clone` | > 网站复刻 / 克隆方法论。USE WHEN 用户说 复刻网站、克隆网站、clone website、抄个站、仿站、 照着这个站做一个、reproduce site、还原某个网页效果、把这个站搬下来改成我的、 复刻某个交互/WebGL/Canvas/Three.js 效果。提供「先拿真源码 → 判路径 → 逆向拆解 → 搭工程 → 替换内容」的可移植决策树，覆盖静态站 / React-Vue-Next 内容站 / WebGL-Canvas 重前端站三大分支，并强制核对任何 AI 二手分析里的可执行代码。 |
-
----
-
-# apple / Apple 生态
-
-4 个 Apple 设备技能：Apple Notes/Reminders/iMessage/FindMy 操作。
-
-**来源**: built-in
-
-| 技能 | 用途 |
-|------|------|
-| `apple-notes` | Manage Apple Notes via memo CLI: create, search, edit. |
-| `apple-reminders` | Apple Reminders via remindctl: add, list, complete. |
-| `findmy` | Track Apple devices/AirTags via FindMy.app on macOS. |
+| `apple-notes` | "Manage Apple Notes via memo CLI: create, search, edit." |
+| `apple-reminders` | "Apple Reminders via remindctl: add, list, complete." |
+| `findmy` | "Track Apple devices/AirTags via FindMy.app on macOS." |
 | `imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. |
 
 ---
 
-# email / 邮件
-
-2 个邮件技能：Himalaya CLI（IMAP/SMTP）、收件箱分诊。
-
-**来源**: built-in
+## email（2）
 
 | 技能 | 用途 |
 |------|------|
-| `email-inbox-triage` | Triage an inbox: prioritize threads, draft replies safely. |
-| `himalaya` | Himalaya CLI: IMAP/SMTP email from terminal. |
+| `email-inbox-triage` | "Triage an inbox: prioritize threads, draft replies safely." |
+| `himalaya` | "Himalaya CLI: IMAP/SMTP email from terminal." |
 
 ---
 
-# devops / DevOps
-
-DevOps 基础技能。
-
-**来源**: built-in
+## devops（1）
 
 | 技能 | 用途 |
 |------|------|
@@ -771,11 +1231,7 @@ DevOps 基础技能。
 
 ---
 
-# note-taking / 笔记
-
-Obsidian vault 读写检索。
-
-**来源**: built-in (obsidian)
+## note-taking（1）
 
 | 技能 | 用途 |
 |------|------|
@@ -783,233 +1239,207 @@ Obsidian vault 读写检索。
 
 ---
 
-# social-media / 社媒
-
-X URL 抓取技能。
-
-**来源**: nexu-io/open-design
+## social-media（1）
 
 | 技能 | 用途 |
 |------|------|
-| `xurl` | X/Twitter via xurl CLI: raw post search, posting, DM, media. |
-
----
-
-# writing / 写作
-
-humanizer：去除 AI 腔，让文本读起来像人写的。
-
-**来源**: blader/humanizer
-
-| 技能 | 用途 |
-|------|------|
-| `humanizer` | \| Rewrite AI-sounding text so it reads like the writer without changing what it says. Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dashes everywhere, inflated claims, sales languag... |
+| `xurl` | "X/Twitter via xurl CLI: raw post search, posting, DM, media." |
 
 ---
 
 ## 给其他智能体安装（分平台说明）
 
-本仓库的技能遵循 **Agent Skills** 通用格式（每个技能是一个文件夹，核心是带 YAML frontmatter 的 `SKILL.md`，含 name/description）。不同平台安装方式如下：
+本仓库技能遵循 **Agent Skills** 通用格式（每个技能是文件夹，核心是带 YAML frontmatter 的 `SKILL.md`）。
 
-### Hermes Agent（即"源主"环境）
-
+### Hermes Agent（源主环境）
 ```bash
 git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
-cd -AGENT-SKILL && ./restore.sh   # 拷贝到 ~/.hermes/skills/
+cd -AGENT-SKILL && ./restore.sh   # 拷到 $HERMES_HOME/skills/
 ```
-
-Hermes 会自动按 SKILL.md 的 description 触发对应技能，无需额外配置。重启会话后生效。
+Hermes 按 SKILL.md 的 description 自动触发，重启会话后生效。
 
 ### Claude Code
-
 ```bash
 git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
 mkdir -p ~/.claude/skills
-# 把需要的类别目录拷进去（SKILL.md 格式兼容）
-cp -r -AGENT-SKILL/design ~/.claude/skills/
-cp -r -AGENT-SKILL/software-development ~/.claude/skills/
+cp -r -AGENT-SKILL/design -AGENT-SKILL/security -AGENT-SKILL/claude-skills ~/.claude/skills/
 ```
 
-Claude Code 会自动发现 `~/.claude/skills/` 下的技能。也可以用 `/plugin` 机制安装（若对方配了本仓库为 plugin source）。
-
 ### Cursor / Codex / OpenCode / 通用 Agent Skills 平台
-
-这些平台遵循 Agent Skills 标准，技能目录位置各有不同（如 Codex 的 `~/.codex/skills/`、OpenCode 的 skills 路径、Cursor 的 `.cursor/skills/`）。步骤统一：
-
 ```bash
 git clone https://github.com/renmingweiwilliam118-alt/-AGENT-SKILL.git
 cp -r -AGENT-SKILL/<类别> <平台的技能目录>/
 ```
+（Codex: `~/.codex/skills/`，OpenCode: skills 路径，Cursor: `.cursor/skills/`）
 
 ### 不支持 Skills 的纯聊天模型
+没有安装位置。把所需技能的 `SKILL.md` 全文作为系统提示词粘进对话，或让模型 RAG 检索该文件。
 
-没有可安装位置。做法：把所需技能的 `SKILL.md` 全文（frontmatter + 正文）作为系统提示词的一部分粘贴进对话，或让模型通过 RAG 检索该文件。效果取决于模型上下文长度和遵守程度。
+---
 
-### 依赖说明（哪些技能"装了能跑"取决于环境）
+## 需要 API Key 的技能（135 个）
 
-| 技能群 | 依赖 | 缺失时的表现 |
-|---|---|---|
-| browser-act（103 个） | Browser Use CLI 环境 | 技能文件可装，但执行抓取需要浏览器自动化后端 |
-| open-design 媒体类（fal/venice/sora 等） | 对应厂商 API 密钥（FAL_KEY、VENICE_KEY 等） | 调用返回 401，需先配 key |
-| gstack 部分（ios-qa/ios-fix 等） | iOS 真机 / Xcode 环境 | 仅 macOS + Xcode 下可用 |
-| openmontage 视频类 | 各模型 API 或本地 ffmpeg | 按具体技能的依赖走 |
-| 纯方法论（taste-skill、superpowers、ponytail、systematic-debugging 等） | 无 | 任何平台即用 |
+> 这些技能文件可装，但**实际运行需对应厂商 API 密钥**。密钥不要提交仓库；装好后放环境变量或平台设置里。
 
-## 需要 API Key 的技能（128 个）
+| 类别/技能 | 需要的密钥 | 在哪里申请 |
+|-----------|-----------|-----------|
+| `autonomous-ai-agents/claude-code` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com → API keys |
+| `autonomous-ai-agents/codex` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
+| `autonomous-ai-agents/opencode` | OPENROUTER_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-asin-lookup-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-best-selling-products-finder-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-buy-box-monitor-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-competitor-analyzer` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-listing-competitor-analysis-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-product-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-product-search-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\ecommerce\amazon-reviews-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\business-contact-social-links-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\github-project-contributor-finder-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\google-maps-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\google-maps-reviews-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\google-maps-search-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\industry-key-contact-radar-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\lead-generation\social-media-finder-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\search-research\google-image-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\search-research\google-news-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\search-research\web-research-assistant` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\search-research\web-search-scraper-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\social-listening\reddit-competitor-analysis-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\social-listening\wechat-article-search-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\social-listening\zhihu-search-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-batch-transcript-extractor-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-channel-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-comments-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-influencer-finder-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-search-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-transcript-analysis-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-transcript-extractor-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `browser-act/solutions\video-platforms\youtube-video-api-skill` | BROWSERACT_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `claude-mem/agent-cost-report` | OPENROUTER_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `claude-skills/agent-launcher__agent-launcher-orchestrator` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com |
+| `claude-skills/agent-launcher__stage-launch` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com |
+| `claude-skills/c-level-agents__cross-eval` | OPENAI_API_KEY | OpenAI — platform.openai.com |
+| `claude-skills/engineering__universal-scraping-architect` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev（本机已配） |
+| `claude-skills/finance__stock-analysis` | EDGAR | SEC EDGAR（免费无 key） |
+| `claude-skills/research__dossier` | EDGAR | SEC EDGAR（免费无 key） |
+| `design/21st-dev` | API_KEY_21ST | 21st.dev — https://21st.dev/mcp 免费即时申请（旧 Magic console key 已作废） |
+| `design/design` | GEMINI_API_KEY<br>MUAPI_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>厂商官方 API 平台注册后生成 key |
+| `design/hatch-pet` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
+| `design/taste-skill` | SHOPIFY_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/autoplan` | CODEX_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/benchmark` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/benchmark-models` | ANTHROPIC_API_KEY<br>GOOGLE_API_KEY<br>SHORT_KEY | Anthropic — console.anthropic.com → API keys<br>Google API — console.cloud.google.com → API 与凭据<br>厂商官方 API 平台注册后生成 key |
+| `gstack/browse` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/canary` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/codex` | CODEX_API_KEY<br>OPENAI_API_KEY<br>SHORT_KEY | OpenAI — platform.openai.com → API keys<br>厂商官方 API 平台注册后生成 key |
+| `gstack/context-restore` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/context-save` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/design-consultation` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/design-html` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/design-shotgun` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/diagram` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/document-generate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/document-release` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/health` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/investigate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/ios-clean` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/ios-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/ios-fix` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/ios-qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/ios-sync` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/land-and-deploy` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/landing-report` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/learn` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/make-pdf` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/office-hours` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/open-gstack-browser` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/pair-agent` | SHORT_KEY<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key |
+| `gstack/plan-ceo-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/plan-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/plan-devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/plan-eng-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/plan-tune` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/qa-only` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/retro` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/scrape` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/setup-browser-cookies` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/setup-deploy` | RENDER_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/setup-gbrain` | SHORT_KEY<br>SUPABASE_ACCESS_TOKEN<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key |
+| `gstack/ship` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/skillify` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/spec` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/sync-gbrain` | SHORT_KEY<br>VOYAGE_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `gstack/test-audit` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
+| `media/gif-search` | TENOR_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `openmontage/acestep` | RUNPOD_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `openmontage/agents` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/ai-video-gen` | FAL_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>HEYGEN_API_KEY<br>KLING_API_KEY | Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key<br>HeyGen — platform.heygen.com → API 设置<br>fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
+| `openmontage/atlas-cloud` | ATLASCLOUD_API_KEY<br>ATLAS_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `openmontage/avatar-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/bfl-api` | BFL_API_KEY<br>YOUR_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `openmontage/create-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/dashscope` | DASHSCOPE_API_KEY | 阿里云百炼/DashScope — bailian.console.aliyun.com → API-KEY 管理 |
+| `openmontage/elevenlabs` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/faceswap` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/gemini-omni` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key |
+| `openmontage/grok-media` | XAI_API_KEY | xAI — console.x.ai → API Keys |
+| `openmontage/heygen` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/hyperframes-media` | ELEVENLABS_API_KEY<br>HEYGEN_API_KEY<br>HYPERFRAMES_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key |
+| `openmontage/kling-official` | FAL_KEY<br>KLING_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
+| `openmontage/lyria` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key |
+| `openmontage/media-use` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/motion-graphics` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key |
+| `openmontage/music` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/seedance-2-0` | FAL_KEY<br>HEYGEN_API_KEY<br>HIGGSFIELD_API_KEY<br>RUNWAY_API_KEY | HeyGen — platform.heygen.com → API 设置<br>fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
+| `openmontage/setup-api-key` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/sound-effects` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/speech-to-text` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
+| `openmontage/text-to-speech` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `openmontage/video-translate` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
+| `productivity/airtable` | AIRTABLE_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `productivity/notion` | NOTION_API_KEY | 厂商官方 API 平台注册后生成 key |
+| `productivity/teams-meeting-pipeline` | MSGRAPH_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
+| `research/last30days` | AUTH_TOKEN<br>BRAVE_API_KEY<br>EXA_API_KEY<br>LAST30DAYS_API_KEY<br>OPENAI_API_KEY<br>OPENROUTER_API_KEY<br>PARALLEL_API_KEY<br>PERPLEXITY_API_KEY<br>SCRAPECREATORS_API_KEY<br>SERPER_API_KEY<br>TRUTHSOCIAL_TOKEN<br>XAI_API_KEY<br>XQUIK_API_KEY | Exa — exa.ai → API Keys<br>OpenAI — platform.openai.com → API keys<br>Serper.dev — serper.dev → API Keys（Google 搜索代理）<br>xAI — console.x.ai → API Keys<br>厂商官方 API 平台注册后生成 key |
+| `security/devcontainer-setup` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com |
+| `social-media/xurl` | YOUR_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
+| `software-development/graphify` | ANTHROPIC_API_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>OPENAI_API_KEY | Anthropic — console.anthropic.com → API keys<br>Google API — console.cloud.google.com → API 与凭据<br>Google Gemini — aistudio.google.com → Get API key<br>OpenAI — platform.openai.com → API keys |
+| `web/agent-reach` | TWITTER_AUTH_TOKEN | 厂商官方 API 平台注册后生成 key |
+| `web/blocked-page-recovery` | JINA_API_KEY | Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名） |
+| `web/firecrawl` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-build` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-build-interact` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-build-onboarding` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-build-scrape` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-build-search` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+| `web/firecrawl-developer-index` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
 
-> 这些技能文件可安装，但**实际运行需要对应厂商的 API 密钥**。密钥不要提交到仓库；
-> 安装后在环境变量或各平台的设置里配置即可。
-
-| 类别 | 技能 | 需要的密钥 | 在哪里申请 |
-|------|------|-----------|-----------|
-| autonomous-ai-agents | `claude-code` | ANTHROPIC_API_KEY | Anthropic — console.anthropic.com → API keys |
-|  | `codex` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
-|  | `opencode` | OPENROUTER_API_KEY | OpenRouter — openrouter.ai → Keys（聚合多家模型） |
-| browser-act | `solutions\ecommerce\amazon-asin-lookup-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-best-selling-products-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-buy-box-monitor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-competitor-analyzer` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-listing-competitor-analysis-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-product-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-product-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\ecommerce\amazon-reviews-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\business-contact-social-links-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\github-project-contributor-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\google-maps-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\google-maps-reviews-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\google-maps-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\industry-key-contact-radar-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\lead-generation\social-media-finder-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\search-research\google-image-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\search-research\google-news-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\search-research\web-research-assistant` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\search-research\web-search-scraper-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\social-listening\reddit-competitor-analysis-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\social-listening\wechat-article-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\social-listening\zhihu-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-batch-transcript-extractor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-channel-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-comments-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-influencer-finder-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-search-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-transcript-analysis-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-transcript-extractor-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-|  | `solutions\video-platforms\youtube-video-api-skill` | BROWSERACT_API_KEY | Browser Act — browseract.ai 注册（新用户送积分） |
-| claude-mem | `agent-cost-report` | OPENROUTER_API_KEY | OpenRouter — openrouter.ai → Keys（聚合多家模型） |
-| design | `design` | GEMINI_API_KEY<br>MUAPI_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>厂商官方 API 平台注册后生成 key |
-|  | `21st-dev` | API_KEY_21ST | 21st.dev — https://21st.dev/mcp 免费即时申请（旧 Magic console key 已作废）
-|  | `hatch-pet` | OPENAI_API_KEY | OpenAI — platform.openai.com → API keys |
-|  | `taste-skill` | SHOPIFY_API_KEY | 厂商官方 API 平台注册后生成 key |
-| gstack | `autoplan` | CODEX_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `benchmark` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `benchmark-models` | ANTHROPIC_API_KEY<br>GOOGLE_API_KEY<br>SHORT_KEY | Anthropic — console.anthropic.com → API keys<br>Google API — console.cloud.google.com → API 与凭据<br>厂商官方 API 平台注册后生成 key |
-|  | `browse` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `canary` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `codex` | CODEX_API_KEY<br>OPENAI_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>OpenAI — platform.openai.com → API keys<br>厂商官方 API 平台注册后生成 key |
-|  | `context-restore` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `context-save` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `design-consultation` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `design-html` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `design-shotgun` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `diagram` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `document-generate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `document-release` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `health` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `investigate` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `ios-clean` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `ios-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `ios-fix` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `ios-qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `ios-sync` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `land-and-deploy` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `landing-report` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `learn` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `make-pdf` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `office-hours` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `open-gstack-browser` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `pair-agent` | SHORT_KEY<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `plan-ceo-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `plan-design-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `plan-devex-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `plan-eng-review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `plan-tune` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `qa` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `qa-only` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `retro` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `review` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `scrape` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `setup-browser-cookies` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `setup-deploy` | RENDER_API_KEY<br>SHORT_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `setup-gbrain` | SHORT_KEY<br>SUPABASE_ACCESS_TOKEN<br>YOUR_TOKEN | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `ship` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `skillify` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `spec` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `sync-gbrain` | SHORT_KEY<br>VOYAGE_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `test-audit` | SHORT_KEY | 厂商官方 API 平台注册后生成 key |
-| media | `gif-search` | TENOR_API_KEY | 厂商官方 API 平台注册后生成 key |
-| openmontage | `acestep` | RUNPOD_API_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `agents` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `ai-video-gen` | FAL_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>HEYGEN_API_KEY<br>KLING_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key |
-|  | `atlas-cloud` | ATLASCLOUD_API_KEY<br>ATLAS_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `avatar-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `bfl-api` | BFL_API_KEY<br>YOUR_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `create-video` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `dashscope` | DASHSCOPE_API_KEY | 阿里云百炼/DashScope — bailian.console.aliyun.com → API-KEY 管理 |
-|  | `elevenlabs` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `faceswap` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `gemini-omni` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
-|  | `grok-media` | XAI_API_KEY | xAI — console.x.ai → API Keys |
-|  | `heygen` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `hyperframes-media` | ELEVENLABS_API_KEY<br>HEYGEN_API_KEY<br>HYPERFRAMES_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key |
-|  | `kling-official` | FAL_KEY<br>KLING_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>厂商官方 API 平台注册后生成 key |
-|  | `lyria` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
-|  | `media-use` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `motion-graphics` | GEMINI_API_KEY<br>GOOGLE_API_KEY | Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据 |
-|  | `music` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `seedance-2-0` | FAL_KEY<br>HEYGEN_API_KEY<br>HIGGSFIELD_API_KEY<br>RUNWAY_API_KEY | fal.ai — fal.ai → Dashboards → Keys<br>HeyGen — platform.heygen.com → API 设置<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key |
-|  | `setup-api-key` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `sound-effects` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `speech-to-text` | ELEVENLABS_API_KEY | ElevenLabs — elevenlabs.io → Profile → API Keys |
-|  | `text-to-speech` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-|  | `video-translate` | HEYGEN_API_KEY | HeyGen — platform.heygen.com → API 设置 |
-| productivity | `airtable` | AIRTABLE_API_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `notion` | NOTION_API_KEY | 厂商官方 API 平台注册后生成 key |
-|  | `teams-meeting-pipeline` | MSGRAPH_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
-| research | `last30days` | AUTH_TOKEN<br>BRAVE_API_KEY<br>EXA_API_KEY<br>LAST30DAYS_API_KEY<br>OPENAI_API_KEY<br>OPENROUTER_API_KEY<br>PARALLEL_API_KEY<br>PERPLEXITY_API_KEY<br>SCRAPECREATORS_API_KEY<br>SERPER_API_KEY<br>TRUTHSOCIAL_TOKEN<br>XAI_API_KEY<br>XQUIK_API_KEY | 厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>Exa — exa.ai → API Keys<br>厂商官方 API 平台注册后生成 key<br>OpenAI — platform.openai.com → API keys<br>OpenRouter — openrouter.ai → Keys（聚合多家模型）<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>厂商官方 API 平台注册后生成 key<br>Serper.dev — serper.dev → API Keys（Google 搜索代理）<br>厂商官方 API 平台注册后生成 key<br>xAI — console.x.ai → API Keys<br>厂商官方 API 平台注册后生成 key |
-| social-media | `xurl` | YOUR_CLIENT_ID | 厂商官方 API 平台注册后生成 key |
-| software-development | `graphify` | ANTHROPIC_API_KEY<br>GEMINI_API_KEY<br>GOOGLE_API_KEY<br>OPENAI_API_KEY | Anthropic — console.anthropic.com → API keys<br>Google Gemini — aistudio.google.com → Get API key<br>Google API — console.cloud.google.com → API 与凭据<br>OpenAI — platform.openai.com → API keys |
-| web | `agent-reach` | TWITTER_AUTH_TOKEN | 厂商官方 API 平台注册后生成 key |
-|  | `blocked-page-recovery` | JINA_API_KEY | Jina — jina.ai → Dashboard → API Keys（r.jina.ai 支持匿名） |
-|  | `firecrawl` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-build` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-build-interact` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-build-onboarding` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-build-scrape` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-build-search` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
-|  | `firecrawl-developer-index` | FIRECRAWL_API_KEY | Firecrawl — firecrawl.dev 注册账号 → API Keys（有免费额度；本仓库 key 已存于 `firecrawl` CLI 凭据，无需再配） |
+> 本机已配：`FIRECRAWL_API_KEY`（firecrawl CLI 凭据）、`API_KEY_21ST`（`~/.21st/api-key`）。
 
 ---
 
 ## 抓网页 / 爬虫工具选择表（本机实测可用）
 
-> 本机已装好一套互补的爬虫工具链（Python 3.14 + Node），覆盖从"取单页"到"整站批量"到"绕过 anti-bot"。按场景挑，别乱起浏览器。
+> 本机装了互补爬虫工具链（Python 3.14 + Node），从"取单页"到"整站批量"到"绕 anti-bot"。按场景挑。
 
 | 场景 | 首选工具 | 本机状态 |
 |------|---------|---------|
-| 单页快速取内容（喂 LLM/RAG，最轻） | 内置 `web_extract` / `agent-reach` | ✅ 零依赖，不起浏览器 |
-| 整站批量、上千 URL、要并发/节流/重试 | **Scrapy** | ✅ 已装 v2.19 |
-| anti-bot / Cloudflare / TLS 指纹拦截 | **Scrapling**（`impersonate`/`StealthyFetcher`） | ✅ 已装 0.4.15 + curl_cffi + browserforge，实测抓 200 |
-| 重复 DOM 结构、少写选择器 | **AutoScraper** | ✅ 已装 1.1 |
-| Node/TS 技术栈爬虫 | **Crawlee** | ✅ 已装（`tools/node-packages`） |
-| 文档/Office/PDF → markdown | **MarkItDown** | ✅ 已装 0.1.8 [all] |
-| 让 AI 自动开浏览器做多步操作 | **browser-use** | ⚠️ 库已装 0.13，但需 LLM key（OpenAI/Anthropic/本地 Ollama）才跑得动 |
-| 手机投屏/键鼠控制 Android | **scrcpy** | ✅ 已装 v5.0（`tools/scrcpy`），需实体手机+USB 调试 |
-| TLS/HTTP2 指纹对抗（知识） | **curl-impersonate** | ⚠️ 无 Windows 二进制，本机用 Scrapling 的 `impersonate` 替代 |
+| 单页快速取内容（喂 LLM/RAG，最轻） | 内置 `web_extract` / `agent-reach` | ✅ 零依赖 |
+| 整站批量、上千 URL、并发/节流/重试 | **Scrapy** | ✅ v2.19 |
+| anti-bot / Cloudflare / TLS 指纹 | **Scrapling**（impersonate/StealthyFetcher） | ✅ 0.4.15 + curl_cffi + browserforge |
+| 重复 DOM 结构、少写选择器 | **AutoScraper** | ✅ 1.1 |
+| Node/TS 技术栈 | **Crawlee** | ✅ tools/node-packages |
+| 文档/Office/PDF → markdown | **MarkItDown** | ✅ 0.1.8 [all] |
+| AI 自动开浏览器多步操作 | **browser-use** | ⚠️ 库已装 0.13，需 LLM key |
+| 手机投屏/控制 Android | **scrcpy** | ✅ v5.0（tools/scrcpy） |
+| TLS/HTTP2 指纹对抗（知识） | **curl-impersonate** | ⚠️ 无 Windows 二进制，用 Scrapling 替代 |
 
-**分工原则**：能用 `web_extract` 解决就别起爬虫；静态整站爬用 Scrapy；被指纹/anti-bot 拦就上 Scrapling；要 AI 自主操作浏览器才动用 browser-use（并先配好 LLM 后端）。
+**分工**：`web_extract` 能解决就别起爬虫；整站批量用 Scrapy；被指纹/anti-bot 拦上 Scrapling；要 AI 自主操作浏览器才动用 browser-use。
 
 ## 恢复方法
 
@@ -1021,7 +1451,7 @@ cd -AGENT-SKILL && ./restore.sh
 ## 更新方法
 
 ```bash
-cp -r $HERMES_HOME/skills/. ./   # 把新技能复制进来
+cp -r $HERMES_HOME/skills/. ./   # 新技能复制进来
 git add -A && git commit -m "更新" && git push
 ```
 
@@ -1042,12 +1472,36 @@ git add -A && git commit -m "更新" && git push
 - `github.com/NousResearch/hermes-agent-self-evolution`
 - `github.com/NVIDIA/SkillSpector`
 - `github.com/yusufkaraaslan/Skill_Seekers`
-- `github.com/built-in`
 - `github.com/ayghri/i-have-adhd`
-- `github.com/Other/Planning-with-Files`
+- `github.com/Planning-with-Files`
 - `github.com/thedotmack/claude-mem`
-- `github.com/built-in + OpenMontage`
 - `github.com/outsourc-e/hermes-workspace`
 - `github.com/mvanhorn/last30days-skill`
-- `github.com/built-in (obsidian)`
 - `github.com/blader/humanizer`
+- `github.com/MengTo/threeui`
+- `github.com/img2threejs/img2threejs`
+- `github.com/viettranx/3dviz-pro-max`
+- `github.com/Panniantong/Agent-Reach`
+- `github.com/firecrawl/firecrawl`
+- `github.com/firecrawl/cli`
+- `github.com/unclecode/crawl4ai`
+- `github.com/D4Vinci/Scrapling`
+- `github.com/scrapy/scrapy`
+- `github.com/microsoft/markitdown`
+- `github.com/alirezamika/autoscraper`
+- `github.com/apify/crawlee`
+- `github.com/browser-use/browser-use`
+- `github.com/Genymobile/scrcpy`
+- `github.com/lwthiker/curl-impersonate`
+- `github.com/magicuidesign/magicui`
+- `github.com/DavidHDev/react-bits`
+- `github.com/uiverse-io/galaxy`
+- `github.com/ruucm/shadergradient`
+- `github.com/21st-dev/magic-mcp`
+- `github.com/addyosmani/agent-skills`
+- `github.com/trailofbits/skills`
+- `github.com/anthropics/skills`
+- `github.com/alirezarezvani/claude-skills`
+
+> 注：K-Dense-AI/scientific-agent-skills（47k★，170+ 科研技能，473MB）未整库安装（过大），
+> 需要时按其 `scientific-skills/` 目录单独取用。

@@ -1,3 +1,8 @@
+---
+name: reddit-warmup
+description: (auto) skill without frontmatter
+---
+
 ﻿---
 name: reddit-warmup
 description: "Runtime-neutral Reddit account warm-up and brand promotion skill for AI agents. Systematically grow newly registered or existing Reddit accounts into credible identities, then organically plant brand content in target subreddits to eventually promote products or tools. Use for: register or take over a Reddit account and start the full warm-up cycle, build a credible Reddit account from scratch, run automated daily tasks on a schedule, camp on a post after publishing to reply, run multiple accounts sequentially. Triggers: reddit warmup / 30-day warmup / start warmup / build reddit karma / reddit brand promotion / reddit automated posting / today's task - reddit warmup <user> / Day N warmup / enter brand phase / refresh subreddit pool / camp <user> / stop camping / pause warmup / resume warmup / delete account / promote on reddit. EXECUTION RULE: before taking any action, load the reference files listed in the Phase Router section of this skill. Do not call browser-act, write any state file, or execute any step until the required reference files have been loaded."

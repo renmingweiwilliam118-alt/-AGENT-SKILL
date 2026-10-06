@@ -423,5 +423,26 @@
   },
   "design/21st-dev": {
     "API_KEY_21ST": "21st.dev — https://21st.dev/mcp 免费即时申请（旧 Magic console key 已作废）"
+  },
+  "security/devcontainer-setup": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com"
+  },
+  "claude-skills/agent-launcher__agent-launcher-orchestrator": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com"
+  },
+  "claude-skills/agent-launcher__stage-launch": {
+    "ANTHROPIC_API_KEY": "Anthropic — console.anthropic.com"
+  },
+  "claude-skills/c-level-agents__cross-eval": {
+    "OPENAI_API_KEY": "OpenAI — platform.openai.com"
+  },
+  "claude-skills/engineering__universal-scraping-architect": {
+    "FIRECRAWL_API_KEY": "Firecrawl — firecrawl.dev（本机已配）"
+  },
+  "claude-skills/finance__stock-analysis": {
+    "EDGAR": "SEC EDGAR（免费无 key）"
+  },
+  "claude-skills/research__dossier": {
+    "EDGAR": "SEC EDGAR（免费无 key）"
   }
 }
