@@ -213,12 +213,25 @@ function safeMetadata(value: string, key: string): boolean {
   if (key === 'signature' && /^[a-f0-9]{128}$/.test(value)) return true;
   if (key === 'image' && /^[a-z0-9./:_-]+@sha256:[a-f0-9]{64}$/.test(value)) return true;
   if (key === 'integrity' && /^(?:sha256|sha512)-[A-Za-z0-9+/]+={0,2}$/.test(value)) return true;
+  if (
+    ['catalog', 'catalogRevision', 'scannerCatalog'].includes(key) &&
+    /^cso-(?:scanners|v3|eval)-[a-z0-9._-]{1,120}$/.test(value)
+  )
+    return true;
+  if (
+    key === 'workflow' &&
+    /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/actions\/runs\/[0-9]{1,20}$/.test(value)
+  )
+    return true;
   return false;
 }
+// Run ids are public CI metadata to the shared redactor; here only the validated
+// workflow slot may carry one.
+const RUN_ID_SEGMENT = /(\/actions\/runs\/)[0-9]+/g;
 function sanitizeJson(value: unknown, key: string, seen: WeakSet<object>, trustedMetadata: boolean): unknown {
   if (typeof value === 'string') {
     if (trustedMetadata && safeMetadata(value, key)) return value;
-    return redact(value);
+    return redact(value).replace(RUN_ID_SEGMENT, '$1<REDACTED-ci-run-id>');
   }
   if (value === null || typeof value !== 'object') return value;
   if (seen.has(value as object)) throw new CsoError('INVALID_SCHEMA', 'Cyclic JSON cannot be persisted');
@@ -486,6 +499,26 @@ function hardenGit(file: string, args: string[]): { args: string[]; configs?: Gi
     ],
   };
 }
+/** Ceiling for one supervised child command. */
+export const COMMAND_TIMEOUT_MS = 300_000;
+/**
+ * Ceiling for one dependency fetch or install command inside a preparation
+ * container. Rails lockfiles that pin only the `ruby` platform compile native
+ * gems offline, which takes about 385 s at the app role's CPU share. Every
+ * other command keeps COMMAND_TIMEOUT_MS, and both stay inside the caller's
+ * aggregate deadline.
+ */
+export const PREPARATION_COMMAND_TIMEOUT_MS = 900_000;
+export function commandTimeoutMs(
+  deadline: number,
+  phase: 'command' | 'preparation',
+  now = Date.now(),
+): number {
+  return Math.max(
+    1,
+    Math.min(phase === 'preparation' ? PREPARATION_COMMAND_TIMEOUT_MS : COMMAND_TIMEOUT_MS, deadline - now),
+  );
+}
 export async function runProcess(
   file: string,
   args: string[],
@@ -498,6 +531,8 @@ export async function runProcess(
     raw?: boolean; // Only for inert Git framing or private helper/Docker control JSON that is validated before use. Never print or persist raw results.
     /** `splice` replaces each located sensitive span with a marker instead of withholding both channels. */
     redaction?: 'withhold' | 'splice';
+    /** Allows PREPARATION_COMMAND_TIMEOUT_MS; only preparation dependency commands set it. */
+    preparationCommand?: true;
   },
 ): Promise<ProcessResult> {
   if (!isAbsolute(file) || !isAbsolute(opts.cwd) || !existsSync(opts.cwd))
@@ -535,7 +570,13 @@ export async function runProcess(
         timedOut = true;
         kill();
       },
-      Math.max(1, Math.min(opts.timeoutMs ?? 30_000, 300_000)),
+      Math.max(
+        1,
+        Math.min(
+          opts.timeoutMs ?? 30_000,
+          opts.preparationCommand ? PREPARATION_COMMAND_TIMEOUT_MS : COMMAND_TIMEOUT_MS,
+        ),
+      ),
     );
     const capture = (target: Buffer[]) => (chunk: Buffer) => {
       bytes += chunk.length;

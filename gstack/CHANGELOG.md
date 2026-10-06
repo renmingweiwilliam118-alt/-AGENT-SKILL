@@ -1,5 +1,108 @@
 # Changelog
 
+## [1.91.30.0] - 2026-10-05
+
+**A failed eval now says what happened, with the evidence and the next command.**
+**Bun is checked before anything installs, and make-pdf and /review work in Codex.**
+
+This release follows up on the severe fix wave. Its eight census runs had 21 red verdicts, and 27 of the 28 failed trials were labelled `assertion`, including timeouts and provider refusals, so the reports misdescribed their own failures. Now every failed trial records a machine-checked cause beside the unchanged pass/fail class, and each red line in the census report carries the expected and received values (or the judge's failing scores), the artifact holding the transcript, and a command that reruns only that case. For everyone using gstack: setup refuses a Bun too old to keep a project's `.env` away from gstack's tools, auto-update checks that before moving your checkout, and make-pdf and /review work inside Codex.
+
+### The numbers that matter
+
+Each row is a regression test on this release that fails on v1.91.19.0, or a measurement from the 2026-10-03/04 census artifacts named in the row.
+
+| Check | v1.91.19.0 | v1.91.30.0 |
+|---|---|---|
+| make-pdf blocks on Codex that use `$P` without finding it | 7 of 8 | 0 |
+| /review with a read-only `.git` (Codex's sandbox) | prints nothing, "Nothing to review" | reviews against the local base, says `stale at <rev>` |
+| `./setup` with Bun 1.3.2 | installs; compiled tools read the project's `.env` | refused before writing anything |
+| Census cost line when billing was not captured | `$0.00` | known sum plus "N of M trial(s) cost unknown" |
+| plan-mode-no-op recorded wall (census 37151477069) | 346 s (its test times summed) | 176 s (the shard's wall) |
+| Gate census slowest slice, replanned with measured walls (census 37198445662) | ~677 s | <=539 s planned |
+
+The first three rows are the ones users feel. The last three are why the next census reports are believable: costs, times and causes now mean what they say.
+
+### What changes for you
+
+- **Failure reports explain themselves.** A red census line keeps its error and adds `cause <cause>: <evidence>` (refusal, API error, provider stall, session or observer timeout, assertion), Expected/Received or `dimension mean < threshold (n samples) "rationale"`, `evidence: <artifact>` and `after a repair: <command>`. Model-written text is sanitized before it reaches an issue or PR comment.
+- **Bun floor and safe auto-update.** Setup refuses Bun older than 1.3.3 and warns below 1.4.0, the tested version. Team-mode auto-update and `/gstack-upgrade` read the incoming release's Bun requirement first and hold the update, leaving your install untouched, when your Bun is too old. The first update run by an older auto-updater cannot do this check.
+- **make-pdf on Codex** and the other env-var hosts finds its binary in every block, and `MAKE_PDF_BIN` works there too. Install paths with spaces work.
+- **/review in Codex's sandbox.** The working-tree fingerprint writes its git objects to a private temp directory, and a base that cannot be fetched is reported as stale instead of ending the review.
+- **/freeze, /guard, /unfreeze and /investigate's edit boundary work on Codex** and the other env-var hosts. Their scripts used a path a global install does not have, and setup never installed `freeze/bin`; both are fixed, and /benchmark-models, /retro and /diagram find their helpers the same way.
+- **`browse stop` reaps a surviving headless Chromium** again on Playwright 1.62, only for browsers gstack launched.
+- **/ship's documentation gate** records post-audit file hashes with its helper instead of having the model retype them.
+- **/plan-ceo-review** shows its mode line (`Mode: ...` or `Auto-decided review mode → ...`) word for word right after the mode is chosen.
+- **/qa** names where its report filename parts come from and labels timing as probe budget and guarded command time. **/deslop-shared-libs** names a concrete risk for every recommendation.
+- **/office-hours spec review stops when nothing blocking is left.** Each finding is blocking or minor; minor findings are recorded in Reviewer Concerns and never force another round, and the parent fixes only blocking ones between rounds. Rounds 2 and 3 re-review the exact design diff the helper captured since the last round. The reviewer returns a one-line sha256 receipt for its saved verdict instead of echoing it. Callers can lower the 3-round cap with `--max-rounds`.
+- **`GSTACK_DESIGN_IMAGE_MODEL`** switches the design tool's image model (default `gpt-image-2`); a value that is not a gpt-image model name is refused before any request.
+
+### Behavior changes you may notice
+
+- **LLM judges pass a dimension when 2 of their 3 samples meet its threshold** (EVAL_POLICY v3, the per-dimension median; it was the mean, so one low sample beside two passing ones failed the panel). Thresholds, sample count, judge model and prompts are unchanged; panel logs still show every sample and the mean. Policy v3 and HARNESS_VERSION 2 start a new pass-rate series for every case.
+- **Office-hours review verdicts are schema version 2** (`severity` and `changed_text` on every finding). An in-progress review saved by an older version is refused; start a fresh review directory.
+- **Bun below 1.3.3 stops setup** with `gstack needs Bun 1.3.3 or newer`; nothing is installed. Fix: `bun upgrade`, then `./setup`.
+- **Auto-update can say `update held (bun-too-old: ...)`** and `/gstack-upgrade` can stop with `BUN_TOO_OLD`; your current version keeps working. Fix: `bun upgrade`.
+- **/review in a read-only checkout reports `Base coverage: stale at <revision>`** instead of stopping with "Nothing to review".
+- **Browser Quick QA has a 3-minute budget** (was 30 seconds, too short for a homepage and five pages with their checkpoints).
+- **/review's plan-completion question is not asked in spawned or non-interactive runs;** they report REQUIREMENTS MISSING and continue without recording anything.
+- **`live-model-check.ts` ignores `GSTACK_DESIGN_MODEL`** and always checks the default models.
+- **A census dispatched on a branch no longer comments on or closes main's tracking issue** (periodic and marathon). Its report goes to the run's step summary and a `census-report` (or `marathon-report`) artifact; main posts as before.
+- For contributors: `bun run eval:pass-rates` rejects unknown flags and case ids (exit 2) and `--gate` also fails when a session ran above 85% of its armed budget; every `claude -p` eval session streams partial messages (only a liveness summary is kept) and writes `session-ledger.jsonl`; overlay comparisons count an overlay-off wrong answer as a measured result (contract v4); the AUQ matrix scores recommendation substance with a 3-sample judge panel.
+
+### Itemized changes
+
+#### Added
+- `bun run eval:pass-rates --headroom` (slowest armed session per case against its budget), `--reds` (verdict reds by class and cause, with the all-green probability and its interval) and `--run <id>` (one census's reds, downloading only the slices they name); `--help` works offline.
+- The weekly tracking issue shows every pass-rate alarm line (it showed only the header), the red ledger by class and cause, session headroom, the all-green probability, and a link to the new guide `docs/evals/census-red.md` (from a red census line to a diagnosis with free commands). The marathon issue closes itself on the next green main run.
+- Periodic cases `codex-multiblock-live` (installs gstack for Codex into a fresh `CODEX_HOME` and runs a later /learn block that must find gstack on its own) and `design-model-smoke` (the design tool's default OpenAI models; reported as skipped without `OPENAI_API_KEY`, never as a pass).
+- `docs/troubleshooting.md` sections for the Bun floor, held updates, stale /review bases, fingerprint temp-dir errors, the image model override, an unrecorded Chromium PID, and census report lines.
+
+#### Fixed
+- `bun run scripts/test-paid-shards.ts --case <id>` selects cases registered in a loop and whole-file cases such as plan-mode-no-op; it used to select nothing.
+- The plan-review floor test approves its own plan-file edit when the diff preview soft-wraps unchanged lines.
+- The /plan-ceo-review approach-menu eval no longer asks for "verbatim ... exact prose" output, which tripped the provider's output-extraction refusal.
+- `gstack-docs-candidate --help` prints its usage and exits 0; its usage error pointed at a `--help` that failed. The docs gate fixtures declare it, and an "atomic replacement unproven" line now names the check and the tool failure that denied it.
+- The prosons neutral-posture check no longer reads "a coverage call, not a taste call" as the neutral dodge.
+
+#### For contributors
+- Session ledger (`test/helpers/session-ledger.ts`), a pure failure-cause classifier beside `failureClassOf`, and one sanitizer for published text (`scripts/lib/published-text.ts`). Verdicts, `failure_class` and `error` are unchanged under EVAL_POLICY v1 (main and branch report code agree on all 15 stored census lanes).
+- Replay corpora for five repeat-offender detectors in the free suite, and an audit of phrase-only detectors (`docs/evals/detector-inventory.md`). The CEO auto-decide detector credits the mode handoff only when the chat shows its line.
+- Judge calibration controls (`docs/evals/judge-controls-2026-10.md`). The workflow judges passed bundles with a required step removed, so `test/workflow-required-steps.test.ts` now checks every step and phase heading of the judged workflow skills.
+- Paid shard durations refreshed from census 37198445662; a JUnit case's recorded wall is capped by its shard's wall.
+- The docsync fixture saves its observation interface to a file its children read instead of having the parent copy it into each child prompt.
+
+## [1.91.29.0] - 2026-10-05
+
+**Native runtime qualification can pass for Node, Bun, Python and Rails.**
+
+Main run 37345275258 of `cso-runtime-images.yml` staged every image, but eight `qualify-native` rows failed. Two causes showed up in the logs, and more were hiding behind them. Every cause below is fixed, and each was reproduced on a local amd64 Docker daemon against freshly built images.
+
+- **Promotion evidence is recomputed for injected runtimes.** The cold-start test put the staged runtimes into its test catalog without re-binding `promotion.evidenceDigest`, so Bun, Python and Rails failed with `RUNTIME_PROMOTION_EVIDENCE_MISMATCH`. A shared `installStagedRuntime` helper re-binds the digest, and the test now validates the catalog it builds.
+- **npm dependency acquisition works.** npm 11 refuses to load the same file as both its user and global config. The preparation commands passed `/opt/cso/empty-config` for both, so every Node acquisition failed. The global config now points at its own empty file, `/opt/cso/empty-globalconfig`, which the Node image creates.
+- **Prepared output can leave its container.** `docker cp` cannot read tmpfs mounts. The acquisition `/archives` and offline `/work` directories are now Docker local volumes backed by tmpfs, with the same size, owner, mode and `nosuid`/`nodev` options as before (`/archives` stays `noexec`). The runner refuses to start a container when Docker did not keep those options.
+- **The offline seed stays up.** The in-image `seed` command exited while the offline commands were still to run, because it was waiting on a promise that nothing kept alive. It now holds a timer until the container stops.
+- **Prepared trees can execute.** Docker's tmpfs default is `noexec`, so virtualenv Python and binstubs under `/work` exited with status 126. `/work` now mounts `exec` explicitly.
+- **The registry broker releases its connections.** Under Bun, `pipe()` never closed the upstream socket. A Rails acquisition opens about 70 tunnels, which filled the broker's 64-connection limit and timed out. The broker and the in-container forwarder now forward end and close explicitly, and a free test opens 70 tunnels.
+- **Gem acquisition is batched.** Each `gem fetch` process spends about 11 seconds loading the RubyGems index, so acquisition now runs one `gem fetch` per platform for all exact gems.
+- **Rails commands wait for the source copy.** `db:prepare` ran while `run-app` was still copying the prepared tree, and failed with "Could not locate Gemfile". Rails application and test containers now start through `startHeldApplication`, which waits until the copy has finished.
+- **Test fixtures.** The Python cold fixture called a method that `unittest.TestCase` does not have, and the Rails cold fixture had no `bin/rails`, so `rails server` printed the `rails new` help instead of booting.
+- **Dependency installs get a bounded longer ceiling.** The Rails fixture's lockfile lists only the `ruby` platform, so `bundle install --local` compiles nokogiri, sqlite3 and pg. At the app container's 0.85 CPU share that takes about 385 seconds, past the 300-second limit on one command. Dependency fetch and install commands in the preparation phases now get `PREPARATION_COMMAND_TIMEOUT_MS` (900 seconds). Every other command keeps 300 seconds, both stay inside the journey deadline, and a free test pins which calls can ask for the longer ceiling. The CPU share and `ISOLATION_POLICY_HASH` are unchanged.
+- **Export refusals name their reason.** A prepared-tree export the helper refuses now fails with `PREPARED_EXPORT_REJECTED`, the helper's exit status and its fixed reason or filesystem errno. Target paths are never included, and nothing retries. One unexplained refusal was seen locally in 20 exports, so a recurrence on CI will now say why.
+
+- **The `/cso --diff` eval accepts every correct name for the webhook bug.** `cso-diff-mode` matched only `signature|authenticat|forg` in the root cause and impact, so a correct finding titled "no authenticity verification" failed it. It now also matches `authentic`, `spoof` and `hmac`, and checks the finding title. A solo panel on main measured the case at 10/10 with and without the qualified scanner images available.
+
+The images change (`/opt/cso/preparation` and the Node recipe), so qualification needs a fresh staging run on main.
+
+## [1.91.27.0] - 2026-10-05
+
+**The first protected-main runtime staging run can finish, and a qualified scanner catalog can ship.**
+
+The first `cso-runtime-images.yml` dispatch on main staged all ten runtime images but four rows stopped before qualification. Both causes are fixed:
+
+- **Rails SBOMs fit the attestation limit.** BuildKit's Rails SBOM lists about 19,600 files (20 MB), past `actions/attest`'s 16 MiB cap. The runtime and scanner release workflows now sign a package-level SPDX 2.3 document (`scripts/cso-sbom-packages.jq`: packages and package relationships kept, file entries and file relationships dropped, about 0.8 MB for Rails) and reject any document whose relationships name unknown elements.
+- **A qualified scanner catalog no longer breaks every scan.** Persisted scanner outcomes record the catalog revision (`cso-scanners-<sha>-<runId>`) and each profile's workflow run URL. The 11-digit Actions run id read as a phone number to the redactor, so every `gstack-cso scan` against a real catalog failed with `REDACTION_FAILED`. Catalog revisions and exact Actions run URLs are now schema-bound helper metadata; the same digits anywhere else are still redacted. Three tests that assumed the shipped catalog is empty now hold for either state, so the scanner promotion job's own validation passes.
+- **The staged-image test probes tools in a real role container.** It ran `npm --version` and the other version probes inside the group's network anchor, which is limited to 8 processes; Node's worker threads exceed that and abort (exit 134). The probes now run in the verifier container that the same test already starts. Production code never executes in the anchor.
+
 ## [1.91.25.0] - 2026-10-05
 
 **gstack can grade a private, two-architecture `/cso` release run, and the runtime release gates check more for themselves.**

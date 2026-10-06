@@ -28,6 +28,7 @@ Each file in [`.out-of-scope/`](./.out-of-scope/) records one rejected concept a
 - [`new-skills.md`](./.out-of-scope/new-skills.md)
 - [`question-limits.md`](./.out-of-scope/question-limits.md)
 - [`setup-skill-verify-mode.md`](./.out-of-scope/setup-skill-verify-mode.md)
+- [`subagent-recursion.md`](./.out-of-scope/subagent-recursion.md)
 
 ## Unclear issues
 
