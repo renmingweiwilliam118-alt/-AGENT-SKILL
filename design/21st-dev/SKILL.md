@@ -23,16 +23,25 @@ curl -s -X POST https://21st.dev/api/mcp ... # 或走 stdio 代理
 
 **API key**：`https://21st.dev/mcp` 免费即时申请（旧 Magic console 的 key 已作废，必须重新申请）。环境变量名 `API_KEY_21ST`。
 
-## 核心工具（MCP 工具名）
+> **本机已配置**：key 存在 `C:\Users\mwr_w\.21st\api-key`（权限 600，不在任何 git 仓库里），并已 `setx API_KEY_21ST`（用户级环境变量，新终端/新会话生效）。取 key：`cat /c/Users/mwr_w/.21st/api-key`。验证通过：`tools/list` 返回 34 个工具。
+
+## 核心工具（已验证：该 key 实际返回 34 个工具，列常用）
 
 | 工具 | 用途 |
 |------|------|
-| `search` | 自然语言搜组件/模板/主题（"pricing table"、"animated hero"），返回名称+预览+安装 id |
-| `get_component` | 取所选组件的完整代码 + 依赖 + 安装说明 |
+| `search` | 自然语言搜组件/模板/主题/shader/渐变（"pricing table"、"animated hero"），返回名称+预览+安装 id |
+| `search_picker` | 同 `search`，但在支持内嵌 UI 的客户端渲染选择器 |
+| `get_component` | 取所选组件完整代码 + demo + 安装说明 |
+| `get_theme` | 取主题完整 CSS（:root/.dark token，直接塞进 Tailwind） |
+| `get_inspiration` | 设计灵感候选（元数据 rerank，适合先看看再定方向） |
 | `generate` | AI 从描述生成新 UI（消耗 credit；需账号开启 AI，先查 `get_usage.aiGenerationEnabled`） |
-| `get_inspiration` | 设计灵感候选（旧名 `21st_magic_component_inspiration`） |
-| `search_logo` | 品牌 logo → 可直接粘的 JSX/TSX（一次一个品牌） |
-| `get_generation` / `get_take` | 读已有 AI 草稿的代码 |
+| `get_generation` / `get_take` / `get_generation_job` | 读/取/轮询 AI 草稿的 take（`get_generation_job` 免费） |
+| `search_logo` | 品牌/UI SVG logo（开库，如 'discord'、'nextjs'），返回可粘 JSX，一次一个品牌 |
+| `bookmark` / `list_bookmarks` / 团队库系列 | 收藏 + 团队共享库管理 |
+| `get_usage` | 查取码档位/配额 + AI 是否开启 |
+| `submit_component` / `edit_*` / `delete_*` / `get_profile` 等 | 发布/管理自己的组件、主题、模板、bento 主页 |
+
+**验证方式**（key 有效 + 工具全开）：node 脚本走 MCP 流式 HTTP 握手 initialize → tools/list，返回 34 工具。curl 直连/代理打 21st.dev 会被 Cloudflare TLS 指纹挡死（http=000），必须用 node fetch 或官方代理。
 
 ## 标准工作流
 
