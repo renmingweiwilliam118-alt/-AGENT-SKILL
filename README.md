@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1175 个技能**，22 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1931 个技能**，25 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -10,35 +10,495 @@
 
 | 类别 | 技能数 | 说明 |
 |------|--------|------|
-| [claude-skills](#claude-skills) | 390 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [claude-skills](#claude-skills) | 844 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [security](#security) | 170 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
+| [software-development](#software-development) | 147 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
 | [design](#design) | 113 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
 | [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
+| [marketing](#marketing) | 100 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
-| [security](#security) | 85 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
-| [software-development](#software-development) | 68 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
+| [mattpocock](#mattpocock) | 76 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [gstack](#gstack) | 63 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
-| [marketing](#marketing) | 58 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
-| [mattpocock](#mattpocock) | 38 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [media](#media) | 36 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
 | [web](#web) | 33 | 网页抓取 / 爬虫工具链（Scrapy/Scrapling/Crawlee/browser-use/Firecrawl…） |
 | [productivity](#productivity) | 30 | 办公文档 / 表格 / PPT / 邮件 / 协作 |
+| [addyosmani](#addyosmani) | 25 |  |
 | [claude-mem](#claude-mem) | 22 | Claude 跨会话记忆 / 知识图谱 |
-| [hermes-jev](#hermes-jev) | 11 |  |
+| [hermes-jev](#hermes-jev) | 22 |  |
+| [anthropics](#anthropics) | 19 |  |
+| [autonomous-ai-agents](#autonomous-ai-agents) | 10 | 自主 agent 编排 / 委派 / 多 agent 团队 |
 | [creative](#creative) | 10 | ASCII 艺术 / 手绘图 / 视觉设计 |
-| [autonomous-ai-agents](#autonomous-ai-agents) | 9 | 自主 agent 编排 / 委派 / 多 agent 团队 |
 | [research](#research) | 7 | 学术 / 文献 / 市场数据 / 内容监测 |
 | [apple](#apple) | 4 | Apple 平台 / SwiftUI / HIG |
 | [email](#email) | 2 | IMAP/SMTP 邮件 |
+| [social-media](#social-media) | 2 | 社媒运营 |
 | [devops](#devops) | 1 | SDLC / 部署 / CI |
 | [note-taking](#note-taking) | 1 | Obsidian 笔记 |
-| [social-media](#social-media) | 1 | 社媒运营 |
+| [typesafe-ai](#typesafe-ai) | 1 |  |
 
 ---
 
-## claude-skills（390）
+## claude-skills（844）
 
 | 技能 | 用途 |
 |------|------|
+| `.gemini/skills/a11y-audit` | (无描述) |
+| `.gemini/skills/ab-test-setup` | (无描述) |
+| `.gemini/skills/ad-creative` | (无描述) |
+| `.gemini/skills/adversarial-reviewer` | (无描述) |
+| `.gemini/skills/aeo` | (无描述) |
+| `.gemini/skills/agent-decision-receipts` | (无描述) |
+| `.gemini/skills/agent-designer` | (无描述) |
+| `.gemini/skills/agent-harness` | (无描述) |
+| `.gemini/skills/agent-launcher-orchestrator` | (无描述) |
+| `.gemini/skills/agent-memory` | (无描述) |
+| `.gemini/skills/agent-protocol` | (无描述) |
+| `.gemini/skills/agent-workflow-designer` | (无描述) |
+| `.gemini/skills/agenthub` | (无描述) |
+| `.gemini/skills/agile-product-owner` | (无描述) |
+| `.gemini/skills/ai-act-readiness` | (无描述) |
+| `.gemini/skills/ai-security` | (无描述) |
+| `.gemini/skills/aims-audit` | (无描述) |
+| `.gemini/skills/analytics-tracking` | (无描述) |
+| `.gemini/skills/andreessen` | (无描述) |
+| `.gemini/skills/api-design-reviewer` | (无描述) |
+| `.gemini/skills/api-test-suite-builder` | (无描述) |
+| `.gemini/skills/app-store-optimization` | (无描述) |
+| `.gemini/skills/apple-hig-expert` | (无描述) |
+| `.gemini/skills/ar-resume` | (无描述) |
+| `.gemini/skills/ar-status` | (无描述) |
+| `.gemini/skills/arquiteto-de-empresa` | (无描述) |
+| `.gemini/skills/atlassian-admin` | (无描述) |
+| `.gemini/skills/atlassian-templates` | (无描述) |
+| `.gemini/skills/autoresearch-agent` | (无描述) |
+| `.gemini/skills/aws-solution-architect` | (无描述) |
+| `.gemini/skills/azure-cloud-architect` | (无描述) |
+| `.gemini/skills/behuman` | (无描述) |
+| `.gemini/skills/board` | (无描述) |
+| `.gemini/skills/board-deck-builder` | (无描述) |
+| `.gemini/skills/board-meeting` | (无描述) |
+| `.gemini/skills/board-prep` | (无描述) |
+| `.gemini/skills/boardroom` | (无描述) |
+| `.gemini/skills/book-to-skill` | (无描述) |
+| `.gemini/skills/boost-asio-pro` | (无描述) |
+| `.gemini/skills/brand-guidelines` | (无描述) |
+| `.gemini/skills/brief` | (无描述) |
+| `.gemini/skills/browser-automation` | (无描述) |
+| `.gemini/skills/browserstack` | (无描述) |
+| `.gemini/skills/business-growth-skills` | (无描述) |
+| `.gemini/skills/business-investment-advisor` | (无描述) |
+| `.gemini/skills/business-name-fit` | (无描述) |
+| `.gemini/skills/business-operations-skills` | (无描述) |
+| `.gemini/skills/c-level-agents` | (无描述) |
+| `.gemini/skills/c-level-skills` | (无描述) |
+| `.gemini/skills/caio-review` | (无描述) |
+| `.gemini/skills/campaign-analytics` | (无描述) |
+| `.gemini/skills/capa-officer` | (无描述) |
+| `.gemini/skills/capacity-planner` | (无描述) |
+| `.gemini/skills/capture` | (无描述) |
+| `.gemini/skills/caveman` | (无描述) |
+| `.gemini/skills/cco-review` | (无描述) |
+| `.gemini/skills/cdo-review` | (无描述) |
+| `.gemini/skills/ceo-advisor` | (无描述) |
+| `.gemini/skills/cfo-advisor` | (无描述) |
+| `.gemini/skills/cfo-review` | (无描述) |
+| `.gemini/skills/challenge` | (无描述) |
+| `.gemini/skills/change-management` | (无描述) |
+| `.gemini/skills/changelog` | (无描述) |
+| `.gemini/skills/changelog-generator` | (无描述) |
+| `.gemini/skills/channel-economics` | (无描述) |
+| `.gemini/skills/chaos-engineering` | (无描述) |
+| `.gemini/skills/chaos-experiment` | (无描述) |
+| `.gemini/skills/chief-ai-officer-advisor` | (无描述) |
+| `.gemini/skills/chief-customer-officer-advisor` | (无描述) |
+| `.gemini/skills/chief-data-officer-advisor` | (无描述) |
+| `.gemini/skills/chief-of-staff` | (无描述) |
+| `.gemini/skills/chro-advisor` | (无描述) |
+| `.gemini/skills/churn-prevention` | (无描述) |
+| `.gemini/skills/ci-cd-pipeline-builder` | (无描述) |
+| `.gemini/skills/ciso-advisor` | (无描述) |
+| `.gemini/skills/ciso-review` | (无描述) |
+| `.gemini/skills/claude-coach` | (无描述) |
+| `.gemini/skills/clinical-research` | (无描述) |
+| `.gemini/skills/cloud-security` | (无描述) |
+| `.gemini/skills/cmd-a11y-audit` | (无描述) |
+| `.gemini/skills/cmd-code-to-prd` | (无描述) |
+| `.gemini/skills/cmd-cs-aeo` | (无描述) |
+| `.gemini/skills/cmd-focused-fix` | (无描述) |
+| `.gemini/skills/cmo-advisor` | (无描述) |
+| `.gemini/skills/cmo-review` | (无描述) |
+| `.gemini/skills/code-reviewer` | (无描述) |
+| `.gemini/skills/code-to-prd` | (无描述) |
+| `.gemini/skills/code-tour` | (无描述) |
+| `.gemini/skills/codebase-onboarding` | (无描述) |
+| `.gemini/skills/cold-email` | (无描述) |
+| `.gemini/skills/collab-proof` | (无描述) |
+| `.gemini/skills/commercial-forecaster` | (无描述) |
+| `.gemini/skills/commercial-policy` | (无描述) |
+| `.gemini/skills/commercial-skills` | (无描述) |
+| `.gemini/skills/company-os` | (无描述) |
+| `.gemini/skills/competitive-intel` | (无描述) |
+| `.gemini/skills/competitive-matrix` | (无描述) |
+| `.gemini/skills/competitive-teardown` | (无描述) |
+| `.gemini/skills/competitor-alternatives` | (无描述) |
+| `.gemini/skills/compliance-os-bundle` | (无描述) |
+| `.gemini/skills/compliance-readiness` | (无描述) |
+| `.gemini/skills/confluence-expert` | (无描述) |
+| `.gemini/skills/content-creator` | (无描述) |
+| `.gemini/skills/content-humanizer` | (无描述) |
+| `.gemini/skills/content-production` | (无描述) |
+| `.gemini/skills/content-strategist` | (无描述) |
+| `.gemini/skills/content-strategy` | (无描述) |
+| `.gemini/skills/context-engine` | (无描述) |
+| `.gemini/skills/contract-and-proposal-writer` | (无描述) |
+| `.gemini/skills/coo-advisor` | (无描述) |
+| `.gemini/skills/copy-editing` | (无描述) |
+| `.gemini/skills/copywriting` | (无描述) |
+| `.gemini/skills/cpo-advisor` | (无描述) |
+| `.gemini/skills/cpo-review` | (无描述) |
+| `.gemini/skills/cro-advisor` | (无描述) |
+| `.gemini/skills/cro-review` | (无描述) |
+| `.gemini/skills/cross-eval` | (无描述) |
+| `.gemini/skills/cs-aeo` | (无描述) |
+| `.gemini/skills/cs-agile-product-owner` | (无描述) |
+| `.gemini/skills/cs-backend-engineer` | (无描述) |
+| `.gemini/skills/cs-backend-review` | (无描述) |
+| `.gemini/skills/cs-ceo-advisor` | (无描述) |
+| `.gemini/skills/cs-content-creator` | (无描述) |
+| `.gemini/skills/cs-cto-advisor` | (无描述) |
+| `.gemini/skills/cs-demand-gen-specialist` | (无描述) |
+| `.gemini/skills/cs-engineer-grill` | (无描述) |
+| `.gemini/skills/cs-engineering-lead` | (无描述) |
+| `.gemini/skills/cs-financial-analyst` | (无描述) |
+| `.gemini/skills/cs-frontend-engineer` | (无描述) |
+| `.gemini/skills/cs-frontend-review` | (无描述) |
+| `.gemini/skills/cs-fullstack-engineer` | (无描述) |
+| `.gemini/skills/cs-fullstack-review` | (无描述) |
+| `.gemini/skills/cs-growth-strategist` | (无描述) |
+| `.gemini/skills/cs-karpathy-reviewer` | (无描述) |
+| `.gemini/skills/cs-onboard` | (无描述) |
+| `.gemini/skills/cs-product-analyst` | (无描述) |
+| `.gemini/skills/cs-product-manager` | (无描述) |
+| `.gemini/skills/cs-product-strategist` | (无描述) |
+| `.gemini/skills/cs-project-manager` | (无描述) |
+| `.gemini/skills/cs-quality-regulatory` | (无描述) |
+| `.gemini/skills/cs-senior-engineer` | (无描述) |
+| `.gemini/skills/cs-ux-researcher` | (无描述) |
+| `.gemini/skills/cs-webinar` | (无描述) |
+| `.gemini/skills/cs-webinar-marketer` | (无描述) |
+| `.gemini/skills/cs-wiki-ingestor` | (无描述) |
+| `.gemini/skills/cs-wiki-librarian` | (无描述) |
+| `.gemini/skills/cs-wiki-linter` | (无描述) |
+| `.gemini/skills/cs-workspace-admin` | (无描述) |
+| `.gemini/skills/cto-advisor` | (无描述) |
+| `.gemini/skills/cto-review` | (无描述) |
+| `.gemini/skills/culture-architect` | (无描述) |
+| `.gemini/skills/customer-success-manager` | (无描述) |
+| `.gemini/skills/data-quality-auditor` | (无描述) |
+| `.gemini/skills/database-designer` | (无描述) |
+| `.gemini/skills/database-schema-designer` | (无描述) |
+| `.gemini/skills/deal-desk` | (无描述) |
+| `.gemini/skills/decide` | (无描述) |
+| `.gemini/skills/decision-logger` | (无描述) |
+| `.gemini/skills/deep-research` | (无描述) |
+| `.gemini/skills/deep-work` | (无描述) |
+| `.gemini/skills/deepread` | (无描述) |
+| `.gemini/skills/demo-video` | (无描述) |
+| `.gemini/skills/dependency-auditor` | (无描述) |
+| `.gemini/skills/design-system` | (无描述) |
+| `.gemini/skills/devops-engineer` | (无描述) |
+| `.gemini/skills/docker-development` | (无描述) |
+| `.gemini/skills/dossier` | (无描述) |
+| `.gemini/skills/email-sequence` | (无描述) |
+| `.gemini/skills/email-template-builder` | (无描述) |
+| `.gemini/skills/embedded-iot-mentor` | (无描述) |
+| `.gemini/skills/engineering-advanced-skills` | (无描述) |
+| `.gemini/skills/engineering-skills` | (无描述) |
+| `.gemini/skills/env-secrets-manager` | (无描述) |
+| `.gemini/skills/epic-design` | (无描述) |
+| `.gemini/skills/eu-ai-act-specialist` | (无描述) |
+| `.gemini/skills/eval` | (无描述) |
+| `.gemini/skills/execute` | (无描述) |
+| `.gemini/skills/executive-mentor` | (无描述) |
+| `.gemini/skills/experiment-designer` | (无描述) |
+| `.gemini/skills/extract` | (无描述) |
+| `.gemini/skills/fable-goal` | (无描述) |
+| `.gemini/skills/fda-consultant-specialist` | (无描述) |
+| `.gemini/skills/fda-qsr-audit-prep` | (无描述) |
+| `.gemini/skills/feature-flags-architect` | (无描述) |
+| `.gemini/skills/finance-lead` | (无描述) |
+| `.gemini/skills/finance-skills` | (无描述) |
+| `.gemini/skills/financial-analyst` | (无描述) |
+| `.gemini/skills/financial-health` | (无描述) |
+| `.gemini/skills/fix` | (无描述) |
+| `.gemini/skills/flag-cleanup` | (无描述) |
+| `.gemini/skills/focused-fix` | (无描述) |
+| `.gemini/skills/form-cro` | (无描述) |
+| `.gemini/skills/founder-coach` | (无描述) |
+| `.gemini/skills/founder-mode` | (无描述) |
+| `.gemini/skills/free-tool-strategy` | (无描述) |
+| `.gemini/skills/freeze` | (无描述) |
+| `.gemini/skills/full-page-screenshot` | (无描述) |
+| `.gemini/skills/gc-review` | (无描述) |
+| `.gemini/skills/gcp-cloud-architect` | (无描述) |
+| `.gemini/skills/gdpr-audit-prep` | (无描述) |
+| `.gemini/skills/gdpr-dsgvo-expert` | (无描述) |
+| `.gemini/skills/general-counsel-advisor` | (无描述) |
+| `.gemini/skills/generate` | (无描述) |
+| `.gemini/skills/git-worktree-manager` | (无描述) |
+| `.gemini/skills/google-workspace` | (无描述) |
+| `.gemini/skills/google-workspace-cli` | (无描述) |
+| `.gemini/skills/grade-iterate` | (无描述) |
+| `.gemini/skills/grants` | (无描述) |
+| `.gemini/skills/grill-me` | (无描述) |
+| `.gemini/skills/grill-with-docs` | (无描述) |
+| `.gemini/skills/growth-marketer` | (无描述) |
+| `.gemini/skills/handoff` | (无描述) |
+| `.gemini/skills/hard-call` | (无描述) |
+| `.gemini/skills/helm-chart-builder` | (无描述) |
+| `.gemini/skills/hivemind` | (无描述) |
+| `.gemini/skills/hub-init` | (无描述) |
+| `.gemini/skills/hub-status` | (无描述) |
+| `.gemini/skills/human-gate` | (无描述) |
+| `.gemini/skills/inbox-setup` | (无描述) |
+| `.gemini/skills/inbox-triage` | (无描述) |
+| `.gemini/skills/incident-commander` | (无描述) |
+| `.gemini/skills/incident-response` | (无描述) |
+| `.gemini/skills/information-security-manager-iso27001` | (无描述) |
+| `.gemini/skills/internal-comms` | (无描述) |
+| `.gemini/skills/internal-narrative` | (无描述) |
+| `.gemini/skills/interview` | (无描述) |
+| `.gemini/skills/interview-system-designer` | (无描述) |
+| `.gemini/skills/intl-expansion` | (无描述) |
+| `.gemini/skills/isms-audit-expert` | (无描述) |
+| `.gemini/skills/iso13485-audit-prep` | (无描述) |
+| `.gemini/skills/iso27001-audit-prep` | (无描述) |
+| `.gemini/skills/iso42001-specialist` | (无描述) |
+| `.gemini/skills/jira-expert` | (无描述) |
+| `.gemini/skills/karpathy-check` | (无描述) |
+| `.gemini/skills/karpathy-coder` | (无描述) |
+| `.gemini/skills/knowledge-ops` | (无描述) |
+| `.gemini/skills/kubernetes-operator` | (无描述) |
+| `.gemini/skills/landing` | (无描述) |
+| `.gemini/skills/landing-page-generator` | (无描述) |
+| `.gemini/skills/launch-strategy` | (无描述) |
+| `.gemini/skills/linkedin-analytics` | (无描述) |
+| `.gemini/skills/linkedin-content` | (无描述) |
+| `.gemini/skills/linkedin-engagement` | (无描述) |
+| `.gemini/skills/linkedin-profile` | (无描述) |
+| `.gemini/skills/linkedin-skills` | (无描述) |
+| `.gemini/skills/linkedin-strategy` | (无描述) |
+| `.gemini/skills/litreview` | (无描述) |
+| `.gemini/skills/llm-cost-optimizer` | (无描述) |
+| `.gemini/skills/llm-wiki` | (无描述) |
+| `.gemini/skills/local-seo-manager` | (无描述) |
+| `.gemini/skills/loop` | (无描述) |
+| `.gemini/skills/ma-playbook` | (无描述) |
+| `.gemini/skills/markdown-html-orchestrator` | (无描述) |
+| `.gemini/skills/market-research` | (无描述) |
+| `.gemini/skills/marketing-context` | (无描述) |
+| `.gemini/skills/marketing-demand-acquisition` | (无描述) |
+| `.gemini/skills/marketing-ideas` | (无描述) |
+| `.gemini/skills/marketing-ops` | (无描述) |
+| `.gemini/skills/marketing-psychology` | (无描述) |
+| `.gemini/skills/marketing-skills` | (无描述) |
+| `.gemini/skills/marketing-strategy-pmm` | (无描述) |
+| `.gemini/skills/mcp-server-builder` | (无描述) |
+| `.gemini/skills/md-document` | (无描述) |
+| `.gemini/skills/md-review` | (无描述) |
+| `.gemini/skills/md-slides` | (无描述) |
+| `.gemini/skills/mdr-745-specialist` | (无描述) |
+| `.gemini/skills/meeting-analyzer` | (无描述) |
+| `.gemini/skills/meetings` | (无描述) |
+| `.gemini/skills/memory-engineering` | (无描述) |
+| `.gemini/skills/memory-review` | (无描述) |
+| `.gemini/skills/memory-status` | (无描述) |
+| `.gemini/skills/merge` | (无描述) |
+| `.gemini/skills/migrate` | (无描述) |
+| `.gemini/skills/migration-architect` | (无描述) |
+| `.gemini/skills/minimalist` | (无描述) |
+| `.gemini/skills/monorepo-navigator` | (无描述) |
+| `.gemini/skills/ms365-tenant-manager` | (无描述) |
+| `.gemini/skills/named-persona-adversarial-review` | (无描述) |
+| `.gemini/skills/notebooklm` | (无描述) |
+| `.gemini/skills/observability-designer` | (无描述) |
+| `.gemini/skills/office-hours` | (无描述) |
+| `.gemini/skills/okr` | (无描述) |
+| `.gemini/skills/onboard` | (无描述) |
+| `.gemini/skills/onboarding-cro` | (无描述) |
+| `.gemini/skills/operator-audit` | (无描述) |
+| `.gemini/skills/org-health-diagnostic` | (无描述) |
+| `.gemini/skills/page-cro` | (无描述) |
+| `.gemini/skills/paid-ads` | (无描述) |
+| `.gemini/skills/partnerships-architect` | (无描述) |
+| `.gemini/skills/patent` | (无描述) |
+| `.gemini/skills/paywall-upgrade-cro` | (无描述) |
+| `.gemini/skills/performance-profiler` | (无描述) |
+| `.gemini/skills/persona` | (无描述) |
+| `.gemini/skills/pipeline` | (无描述) |
+| `.gemini/skills/plugin-audit` | (无描述) |
+| `.gemini/skills/pm-skills` | (无描述) |
+| `.gemini/skills/popup-cro` | (无描述) |
+| `.gemini/skills/post-mortem` | (无描述) |
+| `.gemini/skills/postmortem` | (无描述) |
+| `.gemini/skills/pr-review-expert` | (无描述) |
+| `.gemini/skills/prd` | (无描述) |
+| `.gemini/skills/pricing-strategist` | (无描述) |
+| `.gemini/skills/pricing-strategy` | (无描述) |
+| `.gemini/skills/process-mapper` | (无描述) |
+| `.gemini/skills/procurement-optimizer` | (无描述) |
+| `.gemini/skills/product-analytics` | (无描述) |
+| `.gemini/skills/product-discovery` | (无描述) |
+| `.gemini/skills/product-manager` | (无描述) |
+| `.gemini/skills/product-manager-toolkit` | (无描述) |
+| `.gemini/skills/product-research` | (无描述) |
+| `.gemini/skills/product-skills` | (无描述) |
+| `.gemini/skills/product-strategist` | (无描述) |
+| `.gemini/skills/programmatic-seo` | (无描述) |
+| `.gemini/skills/project-health` | (无描述) |
+| `.gemini/skills/promote` | (无描述) |
+| `.gemini/skills/prompt-engineer-toolkit` | (无描述) |
+| `.gemini/skills/prompt-governance` | (无描述) |
+| `.gemini/skills/pulse` | (无描述) |
+| `.gemini/skills/pw` | (无描述) |
+| `.gemini/skills/pw-init` | (无描述) |
+| `.gemini/skills/pw-review` | (无描述) |
+| `.gemini/skills/qms-audit-expert` | (无描述) |
+| `.gemini/skills/quality-documentation-manager` | (无描述) |
+| `.gemini/skills/quality-manager-qmr` | (无描述) |
+| `.gemini/skills/quality-manager-qms-iso13485` | (无描述) |
+| `.gemini/skills/ra-qm-skills` | (无描述) |
+| `.gemini/skills/rag-architect` | (无描述) |
+| `.gemini/skills/README` | (无描述) |
+| `.gemini/skills/red-team` | (无描述) |
+| `.gemini/skills/referral-program` | (无描述) |
+| `.gemini/skills/reflect` | (无描述) |
+| `.gemini/skills/regulatory-affairs-head` | (无描述) |
+| `.gemini/skills/remember` | (无描述) |
+| `.gemini/skills/report` | (无描述) |
+| `.gemini/skills/research-bundle` | (无描述) |
+| `.gemini/skills/research-finance` | (无描述) |
+| `.gemini/skills/research-ops-skills` | (无描述) |
+| `.gemini/skills/research-summarizer` | (无描述) |
+| `.gemini/skills/retro` | (无描述) |
+| `.gemini/skills/revenue-operations` | (无描述) |
+| `.gemini/skills/rfp-responder` | (无描述) |
+| `.gemini/skills/rice` | (无描述) |
+| `.gemini/skills/risk-management-specialist` | (无描述) |
+| `.gemini/skills/roadmap-communicator` | (无描述) |
+| `.gemini/skills/roast` | (无描述) |
+| `.gemini/skills/run` | (无描述) |
+| `.gemini/skills/run-without-you` | (无描述) |
+| `.gemini/skills/runbook-generator` | (无描述) |
+| `.gemini/skills/saas-health` | (无描述) |
+| `.gemini/skills/saas-metrics-coach` | (无描述) |
+| `.gemini/skills/saas-scaffolder` | (无描述) |
+| `.gemini/skills/sales-engineer` | (无描述) |
+| `.gemini/skills/sample-skill` | (无描述) |
+| `.gemini/skills/scenario-war-room` | (无描述) |
+| `.gemini/skills/schema-markup` | (无描述) |
+| `.gemini/skills/scrum-master` | (无描述) |
+| `.gemini/skills/secrets-vault-manager` | (无描述) |
+| `.gemini/skills/security-guidance` | (无描述) |
+| `.gemini/skills/security-pen-testing` | (无描述) |
+| `.gemini/skills/self-eval` | (无描述) |
+| `.gemini/skills/self-improving-agent` | (无描述) |
+| `.gemini/skills/senior-architect` | (无描述) |
+| `.gemini/skills/senior-backend` | (无描述) |
+| `.gemini/skills/senior-computer-vision` | (无描述) |
+| `.gemini/skills/senior-data-engineer` | (无描述) |
+| `.gemini/skills/senior-data-scientist` | (无描述) |
+| `.gemini/skills/senior-devops` | (无描述) |
+| `.gemini/skills/senior-frontend` | (无描述) |
+| `.gemini/skills/senior-fullstack` | (无描述) |
+| `.gemini/skills/senior-ml-engineer` | (无描述) |
+| `.gemini/skills/senior-pm` | (无描述) |
+| `.gemini/skills/senior-prompt-engineer` | (无描述) |
+| `.gemini/skills/senior-qa` | (无描述) |
+| `.gemini/skills/senior-secops` | (无描述) |
+| `.gemini/skills/senior-security` | (无描述) |
+| `.gemini/skills/seo-audit` | (无描述) |
+| `.gemini/skills/seo-auditor` | (无描述) |
+| `.gemini/skills/setup` | (无描述) |
+| `.gemini/skills/ship-gate` | (无描述) |
+| `.gemini/skills/signup-flow-cro` | (无描述) |
+| `.gemini/skills/site-architecture` | (无描述) |
+| `.gemini/skills/skill-doctor` | (无描述) |
+| `.gemini/skills/skill-security-auditor` | (无描述) |
+| `.gemini/skills/skill-tester` | (无描述) |
+| `.gemini/skills/skillopt-sleep` | (无描述) |
+| `.gemini/skills/skills-arquiteto-de-empresa` | (无描述) |
+| `.gemini/skills/skills-chaos-engineering` | (无描述) |
+| `.gemini/skills/skills-chief-ai-officer-advisor` | (无描述) |
+| `.gemini/skills/skills-chief-customer-officer-advisor` | (无描述) |
+| `.gemini/skills/skills-chief-data-officer-advisor` | (无描述) |
+| `.gemini/skills/skills-eu-ai-act-specialist` | (无描述) |
+| `.gemini/skills/skills-feature-flags-architect` | (无描述) |
+| `.gemini/skills/skills-general-counsel-advisor` | (无描述) |
+| `.gemini/skills/skills-handoff` | (无描述) |
+| `.gemini/skills/skills-iso42001-specialist` | (无描述) |
+| `.gemini/skills/skills-kubernetes-operator` | (无描述) |
+| `.gemini/skills/skills-run` | (无描述) |
+| `.gemini/skills/skills-slo-architect` | (无描述) |
+| `.gemini/skills/skills-vpe-advisor` | (无描述) |
+| `.gemini/skills/slo-architect` | (无描述) |
+| `.gemini/skills/slo-design` | (无描述) |
+| `.gemini/skills/snowflake-development` | (无描述) |
+| `.gemini/skills/soc2-audit-prep` | (无描述) |
+| `.gemini/skills/soc2-compliance` | (无描述) |
+| `.gemini/skills/social-content` | (无描述) |
+| `.gemini/skills/social-media-analyzer` | (无描述) |
+| `.gemini/skills/social-media-manager` | (无描述) |
+| `.gemini/skills/solo-founder` | (无描述) |
+| `.gemini/skills/spawn` | (无描述) |
+| `.gemini/skills/spec-driven-workflow` | (无描述) |
+| `.gemini/skills/spec-to-repo` | (无描述) |
+| `.gemini/skills/sprint-health` | (无描述) |
+| `.gemini/skills/sprint-plan` | (无描述) |
+| `.gemini/skills/sql-database-assistant` | (无描述) |
+| `.gemini/skills/stage-launch` | (无描述) |
+| `.gemini/skills/startup-cto` | (无描述) |
+| `.gemini/skills/statistical-analyst` | (无描述) |
+| `.gemini/skills/stock-analysis` | (无描述) |
+| `.gemini/skills/strategic-alignment` | (无描述) |
+| `.gemini/skills/stress-test` | (无描述) |
+| `.gemini/skills/strict-api` | (无描述) |
+| `.gemini/skills/stripe-integration-expert` | (无描述) |
+| `.gemini/skills/swedish-mentor` | (无描述) |
+| `.gemini/skills/syllabus` | (无描述) |
+| `.gemini/skills/tc` | (无描述) |
+| `.gemini/skills/tc-tracker` | (无描述) |
+| `.gemini/skills/tdd` | (无描述) |
+| `.gemini/skills/tdd-guide` | (无描述) |
+| `.gemini/skills/team-communications` | (无描述) |
+| `.gemini/skills/tech-debt` | (无描述) |
+| `.gemini/skills/tech-debt-tracker` | (无描述) |
+| `.gemini/skills/tech-stack-evaluator` | (无描述) |
+| `.gemini/skills/TEMPLATE` | (无描述) |
+| `.gemini/skills/terraform-patterns` | (无描述) |
+| `.gemini/skills/testrail` | (无描述) |
+| `.gemini/skills/threat-detection` | (无描述) |
+| `.gemini/skills/ui-design-system` | (无描述) |
+| `.gemini/skills/universal-scraping-architect` | (无描述) |
+| `.gemini/skills/user-story` | (无描述) |
+| `.gemini/skills/ux-researcher-designer` | (无描述) |
+| `.gemini/skills/vendor-management` | (无描述) |
+| `.gemini/skills/video-content-strategist` | (无描述) |
+| `.gemini/skills/vpe-advisor` | (无描述) |
+| `.gemini/skills/vpe-review` | (无描述) |
+| `.gemini/skills/webinar-marketing` | (无描述) |
+| `.gemini/skills/weekly-review` | (无描述) |
+| `.gemini/skills/wiki-ingest` | (无描述) |
+| `.gemini/skills/wiki-init` | (无描述) |
+| `.gemini/skills/wiki-lint` | (无描述) |
+| `.gemini/skills/wiki-log` | (无描述) |
+| `.gemini/skills/wiki-query` | (无描述) |
+| `.gemini/skills/workflow-builder` | (无描述) |
+| `.gemini/skills/wrap-up` | (无描述) |
+| `.gemini/skills/write-a-skill` | (无描述) |
+| `.gemini/skills/x-twitter-growth` | (无描述) |
+| `.gemini/skills/youtube-full` | (无描述) |
+| `.gemini/skills/zero-hallucination-coder` | (无描述) |
 | `agent-launcher/skills/agent-launcher-orchestrator` | Use when a user wants to build, launch, grade, or schedule a Claude Managed Agent (CMA) in their own Anthropic account — "build me… |
 | `agent-launcher/skills/grade-iterate` | Phase 3 of building a Claude Managed Agent — the bounded grade→iterate loop. Define a CMA outcome (a required markdown rubric grad… |
 | `agent-launcher/skills/interview` | Phase 1 of building a Claude Managed Agent — interview the founder about the one job the agent should do, then produce a build she… |
@@ -58,11 +518,9 @@
 | `business-operations/skills/procurement-optimizer` | Use when running an annual SaaS audit, doing category-level spend review, or rationalizing the supplier base — when the user needs… |
 | `business-operations/skills/vendor-management` | Use when reviewing, scoring, or auditing third-party SaaS / vendor relationships — running a vendor scorecard with industry tuning… |
 | `c-level-advisor/arquiteto-de-empresa/skills/arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
-| `c-level-advisor/ceo-advisor/ceo-advisor` | Comprehensive CEO leadership skill providing strategic planning frameworks, financial scenario modeling, board governance guidance… |
 | `c-level-advisor/chief-ai-officer-advisor/skills/chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
 | `c-level-advisor/chief-customer-officer-advisor/skills/chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
 | `c-level-advisor/chief-data-officer-advisor/skills/chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
-| `c-level-advisor/cto-advisor/cto-advisor` | Strategic technology leadership skill providing frameworks for architecture decisions, team scaling, technical debt management, te… |
 | `c-level-advisor/executive-mentor/skills/board-prep` | "Board meeting preparation for the adversarial scenario, not the friendly one. Forces numbers-cold mastery, anticipates hard quest… |
 | `c-level-advisor/executive-mentor/skills/challenge` | "Pre-mortem plan analysis. Imagine the plan failed 12 months from now and work backwards to find the weaknesses. Surfaces assumpti… |
 | `c-level-advisor/executive-mentor/skills/executive-mentor` | "Adversarial thinking partner for founders and executives. Stress-tests plans, prepares for brutal board meetings, dissects decisi… |
@@ -147,7 +605,6 @@
 | `engineering-team/a11y-audit/skills/a11y-audit` | "Accessibility audit skill for scanning, fixing, and verifying WCAG 2.2 Level A and AA compliance across React, Next.js, Vue, Angu… |
 | `engineering-team/google-workspace-cli/skills/google-workspace-cli` | "Google Workspace administration via the gws CLI (github.com/googleworkspace/cli). Install, authenticate, and automate Gmail, Driv… |
 | `engineering-team/playwright-pro/skills/browserstack` | >- |
-| `engineering-team/playwright-pro/skills/coverage` | >- |
 | `engineering-team/playwright-pro/skills/fix` | >- |
 | `engineering-team/playwright-pro/skills/generate` | >- |
 | `engineering-team/playwright-pro/skills/migrate` | >- |
@@ -432,6 +889,337 @@
 
 ---
 
+## security（170）
+
+| 技能 | 用途 |
+|------|------|
+| `agentic-actions-auditor/skills/agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
+| `audit-context-building/skills/audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
+| `building-secure-contracts/skills/algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
+| `building-secure-contracts/skills/audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
+| `building-secure-contracts/skills/cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
+| `building-secure-contracts/skills/code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
+| `building-secure-contracts/skills/cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
+| `building-secure-contracts/skills/guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
+| `building-secure-contracts/skills/secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
+| `building-secure-contracts/skills/solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
+| `building-secure-contracts/skills/substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
+| `building-secure-contracts/skills/token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
+| `building-secure-contracts/skills/ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
+| `burpsuite-project-parser/skills/burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
+| `c-review/skills/c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
+| `claude-in-chrome-troubleshooting/skills/chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
+| `code-improver/skills/code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
+| `code-improver/skills/pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
+| `code-improver/skills/skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
+| `code-improver/tests/fixtures/pr-review-toolkit/skills/review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
+| `code-improver/tests/fixtures/review-panel/skills/panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
+| `constant-time-analysis/skills/constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
+| `culture-index/skills/interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
+| `devcontainer-setup/skills/devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
+| `differential-review/skills/differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
+| `dimensional-analysis/skills/dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
+| `dwarf-expert/skills/dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
+| `entry-point-analyzer/skills/entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
+| `firebase-apk-scanner/skills/firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
+| `fp-check/skills/fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
+| `gh-cli/skills/gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
+| `github-triage/skills/github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
+| `goal-prompt/skills/goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
+| `let-fate-decide/skills/let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
+| `modern-cpp/skills/modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
+| `modern-python/skills/modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
+| `mutation-testing/skills/mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
+| `open-sourcing/skills/open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
+| `plugins/agentic-actions-auditor/skills/agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
+| `plugins/audit-context-building/skills/audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
+| `plugins/building-secure-contracts/skills/algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
+| `plugins/building-secure-contracts/skills/audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
+| `plugins/building-secure-contracts/skills/cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
+| `plugins/building-secure-contracts/skills/code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
+| `plugins/building-secure-contracts/skills/cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
+| `plugins/building-secure-contracts/skills/guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
+| `plugins/building-secure-contracts/skills/secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
+| `plugins/building-secure-contracts/skills/solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
+| `plugins/building-secure-contracts/skills/substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
+| `plugins/building-secure-contracts/skills/token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
+| `plugins/building-secure-contracts/skills/ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
+| `plugins/burpsuite-project-parser/skills/burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
+| `plugins/c-review/skills/c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
+| `plugins/claude-in-chrome-troubleshooting/skills/chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
+| `plugins/code-improver/skills/code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
+| `plugins/code-improver/skills/pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
+| `plugins/code-improver/skills/skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
+| `plugins/code-improver/tests/fixtures/pr-review-toolkit/skills/review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
+| `plugins/code-improver/tests/fixtures/review-panel/skills/panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
+| `plugins/constant-time-analysis/skills/constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
+| `plugins/culture-index/skills/interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
+| `plugins/devcontainer-setup/skills/devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
+| `plugins/differential-review/skills/differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
+| `plugins/dimensional-analysis/skills/dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
+| `plugins/dwarf-expert/skills/dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
+| `plugins/entry-point-analyzer/skills/entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
+| `plugins/firebase-apk-scanner/skills/firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
+| `plugins/fp-check/skills/fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
+| `plugins/gh-cli/skills/gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
+| `plugins/github-triage/skills/github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
+| `plugins/goal-prompt/skills/goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
+| `plugins/let-fate-decide/skills/let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
+| `plugins/modern-cpp/skills/modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
+| `plugins/modern-python/skills/modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
+| `plugins/mutation-testing/skills/mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
+| `plugins/open-sourcing/skills/open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
+| `plugins/post-patch-validation/skills/post-patch-validation` | > |
+| `plugins/property-based-testing/skills/property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
+| `plugins/review-walkthrough/skills/review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
+| `plugins/rust-review/skills/rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
+| `plugins/second-opinion/skills/second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
+| `plugins/semgrep-rule-creator/skills/semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
+| `plugins/semgrep-rule-variant-creator/skills/semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
+| `plugins/sharp-edges/skills/sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
+| `plugins/spec-to-code-compliance/skills/spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
+| `plugins/static-analysis/skills/codeql` | >- |
+| `plugins/static-analysis/skills/sarif-parsing` | >- |
+| `plugins/static-analysis/skills/semgrep` | >- |
+| `plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
+| `plugins/testing-handbook-skills/skills/address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
+| `plugins/testing-handbook-skills/skills/aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
+| `plugins/testing-handbook-skills/skills/atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
+| `plugins/testing-handbook-skills/skills/cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
+| `plugins/testing-handbook-skills/skills/constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
+| `plugins/testing-handbook-skills/skills/coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
+| `plugins/testing-handbook-skills/skills/fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
+| `plugins/testing-handbook-skills/skills/fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
+| `plugins/testing-handbook-skills/skills/harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
+| `plugins/testing-handbook-skills/skills/libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
+| `plugins/testing-handbook-skills/skills/libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
+| `plugins/testing-handbook-skills/skills/ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
+| `plugins/testing-handbook-skills/skills/ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
+| `plugins/testing-handbook-skills/skills/testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
+| `plugins/testing-handbook-skills/skills/wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
+| `plugins/trailmark/skills/audit-augmentation` | > |
+| `plugins/trailmark/skills/crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
+| `plugins/trailmark/skills/diagramming-code` | > |
+| `plugins/trailmark/skills/genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
+| `plugins/trailmark/skills/graph-evolution` | > |
+| `plugins/trailmark/skills/mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
+| `plugins/trailmark/skills/slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
+| `plugins/trailmark/skills/trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
+| `plugins/trailmark/skills/trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
+| `plugins/trailmark/skills/trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
+| `plugins/trailmark/skills/trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
+| `plugins/trailmark/skills/trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
+| `plugins/trailmark/skills/trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
+| `plugins/trailmark/skills/vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
+| `plugins/variant-analysis/skills/variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
+| `plugins/vulnerability-triage-brocards/skills/vulnerability-triage-brocards` | >- |
+| `plugins/writing-lean-proofs/skills/writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
+| `plugins/yara-authoring/skills/yara-rule-authoring` | > |
+| `plugins/zeroize-audit/skills/zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
+| `post-patch-validation/skills/post-patch-validation` | > |
+| `property-based-testing/skills/property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
+| `review-walkthrough/skills/review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
+| `rust-review/skills/rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
+| `second-opinion/skills/second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
+| `semgrep-rule-creator/skills/semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
+| `semgrep-rule-variant-creator/skills/semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
+| `sharp-edges/skills/sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
+| `spec-to-code-compliance/skills/spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
+| `static-analysis/skills/codeql` | >- |
+| `static-analysis/skills/sarif-parsing` | >- |
+| `static-analysis/skills/semgrep` | >- |
+| `supply-chain-risk-auditor/skills/supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
+| `testing-handbook-skills/skills/address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
+| `testing-handbook-skills/skills/aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
+| `testing-handbook-skills/skills/atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
+| `testing-handbook-skills/skills/cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
+| `testing-handbook-skills/skills/constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
+| `testing-handbook-skills/skills/coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
+| `testing-handbook-skills/skills/fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
+| `testing-handbook-skills/skills/fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
+| `testing-handbook-skills/skills/harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
+| `testing-handbook-skills/skills/libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
+| `testing-handbook-skills/skills/libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
+| `testing-handbook-skills/skills/ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
+| `testing-handbook-skills/skills/ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
+| `testing-handbook-skills/skills/testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
+| `testing-handbook-skills/skills/wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
+| `trailmark/skills/audit-augmentation` | > |
+| `trailmark/skills/crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
+| `trailmark/skills/diagramming-code` | > |
+| `trailmark/skills/genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
+| `trailmark/skills/graph-evolution` | > |
+| `trailmark/skills/mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
+| `trailmark/skills/slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
+| `trailmark/skills/trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
+| `trailmark/skills/trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
+| `trailmark/skills/trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
+| `trailmark/skills/trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
+| `trailmark/skills/trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
+| `trailmark/skills/trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
+| `trailmark/skills/vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
+| `variant-analysis/skills/variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
+| `vulnerability-triage-brocards/skills/vulnerability-triage-brocards` | >- |
+| `writing-lean-proofs/skills/writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
+| `yara-authoring/skills/yara-rule-authoring` | > |
+| `zeroize-audit/skills/zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
+
+---
+
+## software-development（147）
+
+| 技能 | 用途 |
+|------|------|
+| `academy-guide` | > |
+| `addyosmani/api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `addyosmani/browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
+| `addyosmani/ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
+| `addyosmani/code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
+| `addyosmani/code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
+| `addyosmani/constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
+| `addyosmani/context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
+| `addyosmani/debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
+| `addyosmani/deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
+| `addyosmani/documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
+| `addyosmani/doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
+| `addyosmani/frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
+| `addyosmani/git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
+| `addyosmani/idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
+| `addyosmani/incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
+| `addyosmani/interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
+| `addyosmani/observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
+| `addyosmani/performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
+| `addyosmani/planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
+| `addyosmani/security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
+| `addyosmani/shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
+| `addyosmani/skills/api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `addyosmani/skills/browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
+| `addyosmani/skills/ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
+| `addyosmani/skills/code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
+| `addyosmani/skills/code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
+| `addyosmani/skills/constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
+| `addyosmani/skills/context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
+| `addyosmani/skills/debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
+| `addyosmani/skills/deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
+| `addyosmani/skills/documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
+| `addyosmani/skills/doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
+| `addyosmani/skills/frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
+| `addyosmani/skills/git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
+| `addyosmani/skills/idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
+| `addyosmani/skills/incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
+| `addyosmani/skills/interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
+| `addyosmani/skills/observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
+| `addyosmani/skills/performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
+| `addyosmani/skills/planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
+| `addyosmani/skills/security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
+| `addyosmani/skills/shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
+| `addyosmani/skills/source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
+| `addyosmani/skills/spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
+| `addyosmani/skills/test-driven-development` | Drives development with tests using the red-green-refactor loop. Use when implementing any logic, fixing any bug, or changing any … |
+| `addyosmani/skills/using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
+| `addyosmani/source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
+| `addyosmani/spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
+| `addyosmani/test-driven-development` | Drives development with tests using the red-green-refactor loop. Use when implementing any logic, fixing any bug, or changing any … |
+| `addyosmani/using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
+| `algorithmic-art` | Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request cre… |
+| `anthropics/academy-guide` | > |
+| `anthropics/algorithmic-art` | Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request cre… |
+| `anthropics/brand-guidelines` | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and… |
+| `anthropics/canvas-design` | Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to cr… |
+| `anthropics/claude-api` | - |
+| `anthropics/discernment-nudge` | > |
+| `anthropics/doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, t… |
+| `anthropics/docx` | "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx… |
+| `anthropics/frontend-design` | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direct… |
+| `anthropics/internal-comms` | A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude s… |
+| `anthropics/mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
+| `anthropics/pdf` | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, c… |
+| `anthropics/pptx` | "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide d… |
+| `anthropics/skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
+| `anthropics/skills/academy-guide` | > |
+| `anthropics/skills/algorithmic-art` | Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request cre… |
+| `anthropics/skills/brand-guidelines` | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and… |
+| `anthropics/skills/canvas-design` | Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to cr… |
+| `anthropics/skills/claude-api` | - |
+| `anthropics/skills/discernment-nudge` | > |
+| `anthropics/skills/doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, t… |
+| `anthropics/skills/docx` | "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx… |
+| `anthropics/skills/frontend-design` | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direct… |
+| `anthropics/skills/internal-comms` | A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude s… |
+| `anthropics/skills/mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
+| `anthropics/skills/pdf` | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, c… |
+| `anthropics/skills/pptx` | "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide d… |
+| `anthropics/skills/skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
+| `anthropics/skills/slack-gif-creator` | Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation conc… |
+| `anthropics/skills/theme-factory` | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10… |
+| `anthropics/skills/web-artifacts-builder` | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tai… |
+| `anthropics/skills/webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
+| `anthropics/skills/xlsx` | "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, rea… |
+| `anthropics/slack-gif-creator` | Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation conc… |
+| `anthropics/template` | Replace with description of the skill and when Claude should use it. |
+| `anthropics/theme-factory` | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10… |
+| `anthropics/web-artifacts-builder` | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tai… |
+| `anthropics/webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
+| `anthropics/xlsx` | "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, rea… |
+| `brainstorming` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior.… |
+| `brand-guidelines` | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and… |
+| `canvas-design` | Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to cr… |
+| `claude-api` | - |
+| `codebase-inspection` | "Inspect codebases w/ pygount: LOC, languages, ratios." |
+| `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor … |
+| `discernment-nudge` | > |
+| `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
+| `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, t… |
+| `docx` | "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx… |
+| `dogfood` | "Exploratory QA of web apps: find bugs, evidence, reports." |
+| `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline exe… |
+| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skil… |
+| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
+| `frontend-design` | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direct… |
+| `github` | "GitHub via gh CLI: PRs, issues, reviews, repos, auth." |
+| `graphify` | "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ e… |
+| `hermes-agent-skill-authoring` | "Author in-repo SKILL.md files: frontmatter and structure." |
+| `hermes-self-evolution` | > |
+| `inspecting-hermes-desktop-dom` | "Read the live Hermes desktop DOM/CSS over CDP." |
+| `installing-external-skills` | "Install GitHub repos as Hermes skills." |
+| `internal-comms` | A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude s… |
+| `mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
+| `node-inspect-debugger` | "Debug Node.js via --inspect + Chrome DevTools Protocol CLI." |
+| `pdf` | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, c… |
+| `ponytail` | > |
+| `ponytail-audit` | > |
+| `ponytail-debt` | > |
+| `ponytail-gain` | > |
+| `ponytail-help` | > |
+| `ponytail-review` | > |
+| `pptx` | "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide d… |
+| `python-debugpy` | "Debug Python: pdb REPL + debugpy remote (DAP)." |
+| `qiaomu-goal-meta-skill` | (无描述) |
+| `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically ques… |
+| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
+| `simplify-code` | "Parallel 4-agent cleanup of recent code changes." |
+| `skill-builder` | Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documenta… |
+| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
+| `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a sk… |
+| `slack-gif-creator` | Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation conc… |
+| `spike` | "Throwaway experiments to validate an idea before build." |
+| `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
+| `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| `template` | Replace with description of the skill and when Claude should use it. |
+| `theme-factory` | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10… |
+| `typesafe-ai/skills/typesafe-ai` | > |
+| `typesafe-ai/typesafe-ai` | > |
+| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an i… |
+| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response includ… |
+| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification com… |
+| `web-artifacts-builder` | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tai… |
+| `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
+| `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
+| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
+| `xlsx` | "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, rea… |
+
+---
+
 ## design（113）
 
 | 技能 | 用途 |
@@ -662,6 +1450,113 @@
 
 ---
 
+## marketing（100）
+
+| 技能 | 用途 |
+|------|------|
+| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
+| `ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
+| `ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
+| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
+| `aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
+| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
+| `churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
+| `co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
+| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
+| `community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
+| `competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
+| `competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
+| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
+| `copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
+| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
+| `cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
+| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
+| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
+| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
+| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
+| `image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
+| `influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
+| `launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
+| `marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
+| `marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
+| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
+| `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
+| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
+| `product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
+| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
+| `public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
+| `referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
+| `revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
+| `sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
+| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
+| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
+| `skills/ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
+| `skills/ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
+| `skills/ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `skills/ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
+| `skills/analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
+| `skills/aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
+| `skills/attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
+| `skills/churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
+| `skills/co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
+| `skills/cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
+| `skills/community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
+| `skills/competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
+| `skills/competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
+| `skills/content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
+| `skills/copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
+| `skills/copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
+| `skills/cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
+| `skills/customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
+| `skills/directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
+| `skills/emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `skills/events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
+| `skills/free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
+| `skills/image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
+| `skills/influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
+| `skills/launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `skills/lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
+| `skills/marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
+| `skills/marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `skills/marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
+| `skills/marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
+| `skills/marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `skills/offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
+| `skills/onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `skills/paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `skills/popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `skills/pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
+| `skills/product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
+| `skills/programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `skills/prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
+| `skills/public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
+| `skills/referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
+| `skills/revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
+| `skills/sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
+| `skills/schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
+| `skills/seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `skills/signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `skills/site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
+| `skills/sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
+| `skills/social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
+| `skills/video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
+| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
+| `social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
+| `video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
+
+---
+
 ## openmontage（90）
 
 | 技能 | 用途 |
@@ -759,170 +1654,86 @@
 
 ---
 
-## security（85）
+## mattpocock（76）
 
 | 技能 | 用途 |
 |------|------|
-| `agentic-actions-auditor/skills/agentic-actions-auditor` | "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, O… |
-| `audit-context-building/skills/audit-context-building` | Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsew… |
-| `building-secure-contracts/skills/algorand-vulnerability-scanner` | Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field… |
-| `building-secure-contracts/skills/audit-prep-assistant` | Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increas… |
-| `building-secure-contracts/skills/cairo-vulnerability-scanner` | Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues,… |
-| `building-secure-contracts/skills/code-maturity-assessor` | Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing p… |
-| `building-secure-contracts/skills/cosmos-vulnerability-scanner` | "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state… |
-| `building-secure-contracts/skills/guidelines-advisor` | Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specificati… |
-| `building-secure-contracts/skills/secure-workflow-guide` | Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC … |
-| `building-secure-contracts/skills/solana-vulnerability-scanner` | Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership ch… |
-| `building-secure-contracts/skills/substrate-vulnerability-scanner` | Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and b… |
-| `building-secure-contracts/skills/token-integration-analyzer` | Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations … |
-| `building-secure-contracts/skills/ton-vulnerability-scanner` | Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contr… |
-| `burpsuite-project-parser/skills/burpsuite-project-parser` | Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with r… |
-| `c-review/skills/c-review` | Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vuln… |
-| `claude-in-chrome-troubleshooting/skills/chrome-mcp-troubleshooting` | Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return "Browser… |
-| `code-improver/skills/code-improver` | "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewe… |
-| `code-improver/skills/pr-improver` | "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped m… |
-| `code-improver/skills/skill-improver` | "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round f… |
-| `code-improver/tests/fixtures/pr-review-toolkit/skills/review-pr` | "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test covera… |
-| `code-improver/tests/fixtures/review-panel/skills/panel-review` | "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel … |
-| `constant-time-analysis/skills/constant-time-analysis` | Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering di… |
-| `culture-index/skills/interpreting-culture-index` | Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpret… |
-| `devcontainer-setup/skills/devcontainer-setup` | Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding d… |
-| `differential-review/skills/differential-review` | "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context… |
-| `dimensional-analysis/skills/dimensional-analysis` | "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks … |
-| `dwarf-expert/skills/dwarf-expert` | Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries… |
-| `entry-point-analyzer/skills/entry-point-analyzer` | Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable funct… |
-| `firebase-apk-scanner/skills/firebase-apk-scanner` | Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and e… |
-| `fp-check/skills/fp-check` | "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict… |
-| `gh-cli/skills/gh-cli` | Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub … |
-| `github-triage/skills/github-triage` | "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incremental… |
-| `goal-prompt/skills/goal-prompt` | "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, … |
-| `let-fate-decide/skills/let-fate-decide` | "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually del… |
-| `modern-cpp/skills/modern-cpp` | Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on secu… |
-| `modern-python/skills/modern-python` | Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migratin… |
-| `mutation-testing/skills/mutation-testing` | "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting u… |
-| `open-sourcing/skills/open-sourcing` | This skill should be used when the user asks to "open source this project", "prepare this repository for public release", "make th… |
-| `post-patch-validation/skills/post-patch-validation` | > |
-| `property-based-testing/skills/property-based-testing` | "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Soli… |
-| `review-walkthrough/skills/review-walkthrough` | Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called. |
-| `rust-review/skills/rust-review` | Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, … |
-| `second-opinion/skills/second-opinion` | "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user req… |
-| `semgrep-rule-creator/skills/semgrep-rule-creator` | Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rul… |
-| `semgrep-rule-variant-creator/skills/semgrep-rule-variant-creator` | Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an exist… |
-| `sharp-edges/skills/sharp-edges` | "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API … |
-| `spec-to-code-compliance/skills/spec-to-code-compliance` | Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, an… |
-| `static-analysis/skills/codeql` | >- |
-| `static-analysis/skills/sarif-parsing` | >- |
-| `static-analysis/skills/semgrep` | >- |
-| `supply-chain-risk-auditor/skills/supply-chain-risk-auditor` | "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile t… |
-| `testing-handbook-skills/skills/address-sanitizer` | "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or … |
-| `testing-handbook-skills/skills/aflpp` | "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation… |
-| `testing-handbook-skills/skills/atheris` | "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider… |
-| `testing-handbook-skills/skills/cargo-fuzz` | "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolcha… |
-| `testing-handbook-skills/skills/constant-time-testing` | "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop… |
-| `testing-handbook-skills/skills/coverage-analysis` | "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers… |
-| `testing-handbook-skills/skills/fuzzing-dictionary` | "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers ex… |
-| `testing-handbook-skills/skills/fuzzing-obstacles` | "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based… |
-| `testing-handbook-skills/skills/harness-writing` | "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inpu… |
-| `testing-handbook-skills/skills/libafl` | "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers,… |
-| `testing-handbook-skills/skills/libfuzzer` | "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness st… |
-| `testing-handbook-skills/skills/ossfuzz` | "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.ya… |
-| `testing-handbook-skills/skills/ruzzy` | "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers har… |
-| `testing-handbook-skills/skills/testing-handbook-generator` | "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.… |
-| `testing-handbook-skills/skills/wycheproof` | "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases acro… |
-| `trailmark/skills/audit-augmentation` | > |
-| `trailmark/skills/crypto-protocol-diagram` | "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.… |
-| `trailmark/skills/diagramming-code` | > |
-| `trailmark/skills/genotoxic` | "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived … |
-| `trailmark/skills/graph-evolution` | > |
-| `trailmark/skills/mermaid-to-proverif` | "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use … |
-| `trailmark/skills/slicing-code-context` | "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smal… |
-| `trailmark/skills/trailmark` | "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast rad… |
-| `trailmark/skills/trailmark-finding-triage` | "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report exc… |
-| `trailmark/skills/trailmark-review-gate` | "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new ent… |
-| `trailmark/skills/trailmark-structural` | "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius… |
-| `trailmark/skills/trailmark-summary` | "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use whe… |
-| `trailmark/skills/trailmark-variant-neighborhood` | "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling fun… |
-| `trailmark/skills/vector-forge` | "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to … |
-| `variant-analysis/skills/variant-analysis` | Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a v… |
-| `vulnerability-triage-brocards/skills/vulnerability-triage-brocards` | >- |
-| `writing-lean-proofs/skills/writing-lean-proofs` | "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems i… |
-| `yara-authoring/skills/yara-rule-authoring` | > |
-| `zeroize-audit/skills/zeroize-audit` | "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with a… |
-
----
-
-## software-development（68）
-
-| 技能 | 用途 |
-|------|------|
-| `academy-guide` | > |
-| `addyosmani/api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
-| `addyosmani/browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
-| `addyosmani/ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
-| `addyosmani/code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
-| `addyosmani/code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
-| `addyosmani/constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
-| `addyosmani/context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
-| `addyosmani/debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
-| `addyosmani/deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
-| `addyosmani/documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
-| `addyosmani/doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
-| `addyosmani/frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
-| `addyosmani/git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
-| `addyosmani/idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
-| `addyosmani/incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
-| `addyosmani/interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
-| `addyosmani/observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
-| `addyosmani/performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
-| `addyosmani/planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
-| `addyosmani/security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
-| `addyosmani/shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
-| `addyosmani/source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
-| `addyosmani/spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
-| `addyosmani/test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code |
-| `addyosmani/using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
-| `brainstorming` | "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior.… |
-| `claude-api` | - |
-| `codebase-inspection` | "Inspect codebases w/ pygount: LOC, languages, ratios." |
-| `diagnosing-superpowers` | Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor … |
-| `discernment-nudge` | > |
-| `dispatching-parallel-agents` | Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies |
-| `dogfood` | "Exploratory QA of web apps: find bugs, evidence, reports." |
-| `executing-plans` | Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline exe… |
-| `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skil… |
-| `finishing-a-development-branch` | Use when implementation is complete, all tests pass, and you need to decide how to integrate the work |
-| `github` | "GitHub via gh CLI: PRs, issues, reviews, repos, auth." |
-| `graphify` | "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ e… |
-| `hermes-agent-skill-authoring` | "Author in-repo SKILL.md files: frontmatter and structure." |
-| `hermes-self-evolution` | > |
-| `inspecting-hermes-desktop-dom` | "Read the live Hermes desktop DOM/CSS over CDP." |
-| `installing-external-skills` | "Install GitHub repos as Hermes skills." |
-| `mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
-| `node-inspect-debugger` | "Debug Node.js via --inspect + Chrome DevTools Protocol CLI." |
-| `ponytail` | > |
-| `ponytail-audit` | > |
-| `ponytail-debt` | > |
-| `ponytail-gain` | > |
-| `ponytail-help` | > |
-| `ponytail-review` | > |
-| `python-debugpy` | "Debug Python: pdb REPL + debugpy remote (DAP)." |
-| `qiaomu-goal-meta-skill` | (无描述) |
-| `receiving-code-review` | Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically ques… |
-| `requesting-code-review` | Use when completing tasks, implementing major features, or before merging to verify work meets requirements |
-| `simplify-code` | "Parallel 4-agent cleanup of recent code changes." |
-| `skill-builder` | Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documenta… |
-| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
-| `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a sk… |
-| `spike` | "Throwaway experiments to validate an idea before build." |
-| `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
-| `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
-| `typesafe-ai` | > |
-| `using-git-worktrees` | Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an i… |
-| `using-superpowers` | Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response includ… |
-| `verification-before-completion` | Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification com… |
-| `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
-| `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code |
-| `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment |
+| `engineering/ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
+| `engineering/code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
+| `engineering/codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
+| `engineering/diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
+| `engineering/domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
+| `engineering/grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
+| `engineering/implement` | "Implement a piece of work based on a spec or set of tickets." |
+| `engineering/implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
+| `engineering/improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
+| `engineering/pr` | "Use when writing a PR body." |
+| `engineering/prototype` | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic fe… |
+| `engineering/research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
+| `engineering/retro` | "Conduct a retrospective on a coding session." |
+| `engineering/setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
+| `engineering/tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
+| `engineering/to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
+| `engineering/to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
+| `engineering/triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
+| `engineering/wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
+| `engineering/wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
+| `in-progress/chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
+| `in-progress/claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
+| `in-progress/loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
+| `in-progress/setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
+| `in-progress/writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
+| `in-progress/writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
+| `in-progress/writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
+| `misc/git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
+| `misc/migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
+| `misc/scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
+| `misc/setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
+| `productivity/grill-me` | A relentless interview to sharpen a plan or design. |
+| `productivity/grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
+| `productivity/handoff` | Compact the current conversation into a handoff document for another agent to pick up. |
+| `productivity/teach` | Teach the user a new skill or concept, within this workspace. |
+| `productivity/to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
+| `productivity/wait-what` | "Stop. That last message did not land: re-pitch it." |
+| `productivity/writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
+| `skills/engineering/ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
+| `skills/engineering/code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
+| `skills/engineering/codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
+| `skills/engineering/diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
+| `skills/engineering/domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
+| `skills/engineering/grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
+| `skills/engineering/implement` | "Implement a piece of work based on a spec or set of tickets." |
+| `skills/engineering/implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
+| `skills/engineering/improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
+| `skills/engineering/pr` | "Use when writing a PR body." |
+| `skills/engineering/prototype` | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic fe… |
+| `skills/engineering/research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
+| `skills/engineering/retro` | "Conduct a retrospective on a coding session." |
+| `skills/engineering/setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
+| `skills/engineering/tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
+| `skills/engineering/to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
+| `skills/engineering/to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
+| `skills/engineering/triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
+| `skills/engineering/wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
+| `skills/engineering/wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
+| `skills/in-progress/chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
+| `skills/in-progress/claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
+| `skills/in-progress/loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
+| `skills/in-progress/setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
+| `skills/in-progress/writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
+| `skills/in-progress/writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
+| `skills/in-progress/writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
+| `skills/misc/git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
+| `skills/misc/migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
+| `skills/misc/scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
+| `skills/misc/setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
+| `skills/productivity/grill-me` | A relentless interview to sharpen a plan or design. |
+| `skills/productivity/grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
+| `skills/productivity/handoff` | Compact the current conversation into a handoff document for another agent to pick up. |
+| `skills/productivity/teach` | Teach the user a new skill or concept, within this workspace. |
+| `skills/productivity/to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
+| `skills/productivity/wait-what` | "Stop. That last message did not land: re-pitch it." |
+| `skills/productivity/writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
 
 ---
 
@@ -993,116 +1804,6 @@
 | `test/fixtures/context-bill/tree-a/alpha` | Fixture dispatcher with a mode table and forced-read references. |
 | `test/fixtures/context-bill/tree-a/beta` | Clean fixture tool skill with no forced reads and no mode table. |
 | `unfreeze` | Clear the freeze boundary set by /freeze, allowing edits to all directories again. (gstack) |
-
----
-
-## marketing（58）
-
-| 技能 | 用途 |
-|------|------|
-| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
-| `ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
-| `ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
-| `ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
-| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
-| `aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
-| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
-| `card-twitter` | "Twitter quote or data card designed to pair with a post." |
-| `card-xiaohongshu` | "Xiaohongshu-style knowledge cards, arranged as a swipeable multi-card carousel." |
-| `churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
-| `co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
-| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
-| `community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
-| `competitive-ads-extractor` | (无描述) |
-| `competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
-| `competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
-| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
-| `copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
-| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
-| `cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
-| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
-| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
-| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
-| `events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
-| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
-| `image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
-| `influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
-| `launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
-| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
-| `marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
-| `marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
-| `marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
-| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
-| `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
-| `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
-| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
-| `paywall-upgrade-cro` | (无描述) |
-| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
-| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
-| `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
-| `product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
-| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
-| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
-| `public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
-| `referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
-| `revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
-| `sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
-| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
-| `screenshots-marketing` | (无描述) |
-| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
-| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
-| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
-| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
-| `social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
-| `social-reddit-card` | "Realistic Reddit post card with vote rail and comment count, suited to video overlays or story sharing." |
-| `social-spotify-card` | "Spotify Now Playing-style card with album art, progress bar, and playback controls, suited to video overlays or personal homepage… |
-| `social-x-post-card` | "Realistic X post card with engagement metrics (likes, reposts, views), suited to video overlays or shareable image cards." |
-| `video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
-
----
-
-## mattpocock（38）
-
-| 技能 | 用途 |
-|------|------|
-| `skills/engineering/ask-matt` | Ask which skill or flow fits your situation. A router over the skills in this repo. |
-| `skills/engineering/code-review` | "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this … |
-| `skills/engineering/codebase-design` | Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening op… |
-| `skills/engineering/diagnosing-bugs` | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something bro… |
-| `skills/engineering/domain-modeling` | Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recordi… |
-| `skills/engineering/grill-with-docs` | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go. |
-| `skills/engineering/implement` | "Implement a piece of work based on a spec or set of tickets." |
-| `skills/engineering/implement-spec` | "Implement the result of /to-spec and /to-tickets in code." |
-| `skills/engineering/improve-codebase-architecture` | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick. |
-| `skills/engineering/pr` | "Use when writing a PR body." |
-| `skills/engineering/prototype` | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic fe… |
-| `skills/engineering/research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the us… |
-| `skills/engineering/retro` | "Conduct a retrospective on a coding session." |
-| `skills/engineering/setup-matt-pocock-skills` | "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run onc… |
-| `skills/engineering/tdd` | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants… |
-| `skills/engineering/to-spec` | "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you'v… |
-| `skills/engineering/to-tickets` | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published … |
-| `skills/engineering/triage` | Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready b… |
-| `skills/engineering/wayfinder` | Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and re… |
-| `skills/engineering/wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, … |
-| `skills/in-progress/chief-of-staff` | Pursue a long-running goal in a single session by co-ordinating subagents. |
-| `skills/in-progress/claude-handoff` | Hand the current conversation off to a fresh background agent that picks up the work immediately. |
-| `skills/in-progress/loop-me` | Grill me about specs for the workflows I want to build, within this workspace. |
-| `skills/in-progress/setup-ts-deep-modules` | Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reac… |
-| `skills/in-progress/writing-beats` | Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it. |
-| `skills/in-progress/writing-fragments` | "Writing, explore: mine raw fragments, no structure yet." |
-| `skills/in-progress/writing-shape` | "Writing, exploit: shape raw material into an article, paragraph by paragraph." |
-| `skills/misc/git-guardrails-claude-code` | Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use whe… |
-| `skills/misc/migrate-to-shoehorn` | Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as`… |
-| `skills/misc/scaffold-exercises` | Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to … |
-| `skills/misc/setup-pre-commit` | Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to ad… |
-| `skills/productivity/grill-me` | A relentless interview to sharpen a plan or design. |
-| `skills/productivity/grilling` | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'g… |
-| `skills/productivity/handoff` | Compact the current conversation into a handoff document for another agent to pick up. |
-| `skills/productivity/teach` | Teach the user a new skill or concept, within this workspace. |
-| `skills/productivity/to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else to fill in. |
-| `skills/productivity/wait-what` | "Stop. That last message did not land: re-pitch it." |
-| `skills/productivity/writing-for-agents` | Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md. |
 
 ---
 
@@ -1226,6 +1927,38 @@
 
 ---
 
+## addyosmani（25）
+
+| 技能 | 用途 |
+|------|------|
+| `api-and-interface-design` | Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating RES… |
+| `browser-testing-with-devtools` | Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need … |
+| `ci-cd-and-automation` | Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate qua… |
+| `code-review-and-quality` | Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a h… |
+| `code-simplification` | Simplifies code for clarity. Use when refactoring code for clarity without changing behavior. Use when code works but is harder to… |
+| `constraint-driven-development` | Establishes a project's quality bar as a written contract and stops agents quietly lowering it. Interviews the user on which dimen… |
+| `context-engineering` | Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, … |
+| `debugging-and-error-recovery` | Guides systematic root-cause debugging. Use when tests fail, builds break, something that worked yesterday broke, behavior doesn't… |
+| `deprecation-and-migration` | Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementat… |
+| `documentation-and-adrs` | Records decisions and documentation. Use when you need to document an architecture decision (ADR) or the reasoning behind a design… |
+| `doubt-driven-development` | Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when you want every assumption cro… |
+| `frontend-ui-engineering` | Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating c… |
+| `git-workflow-and-versioning` | Structures git workflow practices. Use when making any code change. Use when committing, branching, resolving conflicts, splitting… |
+| `idea-refine` | Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still … |
+| `incremental-implementation` | Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one … |
+| `interview-me` | Extracts what the user actually wants instead of what they think they should want. Achieves this through one-question-at-a-time in… |
+| `observability-and-instrumentation` | Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use wh… |
+| `performance-optimization` | Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when … |
+| `planning-and-task-breakdown` | Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Us… |
+| `security-and-hardening` | Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentica… |
+| `shipping-and-launch` | Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping… |
+| `source-driven-development` | Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs… |
+| `spec-driven-development` | Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use … |
+| `test-driven-development` | Drives development with tests using the red-green-refactor loop. Use when implementing any logic, fixing any bug, or changing any … |
+| `using-agent-skills` | Discovers and invokes agent skills. Use when starting a session, or when you need to decide which skill or workflow applies to the… |
+
+---
+
 ## claude-mem（22）
 
 | 技能 | 用途 |
@@ -1255,10 +1988,21 @@
 
 ---
 
-## hermes-jev（11）
+## hermes-jev（22）
 
 | 技能 | 用途 |
 |------|------|
+| `jev-browser-use` | Use when driving a web page in a browser — clicking, typing, navigating, logged-in or JS-rendered pages. Jev picks each step from … |
+| `jev-compaction` | Use when a transcript has to be cut to a fixed size and you must choose which turns go. Jev marks each turn keep, summarize or dro… |
+| `jev-computer-use` | Use when driving a desktop GUI through a computer-use driver — windows, menus, native apps, OS dialogs. You build a table of safe … |
+| `jev-frontier-work` | Use when a task is already judged hard — pick which paid frontier seat takes it, then keep Jev watching the delegated run so it in… |
+| `jev-mailbox` | Use on a mailbox export to sort mail into needs reply, updates, promotional, sales and spam — which messages are addressed to the … |
+| `jev-memory` | Use on passages a search just returned (memory, vault, session history, wiki, web) before reading them in. Jev ranks them, drops t… |
+| `jev-model-routing` | Use to pick the cheapest good-enough model or effort for a turn or a delegated task (lanes small to escalate), to decide continue/… |
+| `jev-search` | Use after any web or API search, before opening results or spending another round. Jev picks which results to read, whether the ev… |
+| `jev-setup` | Use when Jev is not working yet, a Jev tool reports no_key or auth_failed, or the person asks to connect or fix Jev. Gets their Ty… |
+| `jev-skill-select` | Use when unsure which of many installed skills applies to a request, if any, or when asked to make skill loading cheaper or more a… |
+| `jev-social-research` | Use when researching social posts, creators, reactions, or trends. Jev ranks discovery cards and decides when opened, source-linke… |
 | `skills/jev-browser-use` | Use when driving a web page in a browser — clicking, typing, navigating, logged-in or JS-rendered pages. Jev picks each step from … |
 | `skills/jev-compaction` | Use when a transcript has to be cut to a fixed size and you must choose which turns go. Jev marks each turn keep, summarize or dro… |
 | `skills/jev-computer-use` | Use when driving a desktop GUI through a computer-use driver — windows, menus, native apps, OS dialogs. You build a table of safe … |
@@ -1270,6 +2014,49 @@
 | `skills/jev-setup` | Use when Jev is not working yet, a Jev tool reports no_key or auth_failed, or the person asks to connect or fix Jev. Gets their Ty… |
 | `skills/jev-skill-select` | Use when unsure which of many installed skills applies to a request, if any, or when asked to make skill loading cheaper or more a… |
 | `skills/jev-social-research` | Use when researching social posts, creators, reactions, or trends. Jev ranks discovery cards and decides when opened, source-linke… |
+
+---
+
+## anthropics（19）
+
+| 技能 | 用途 |
+|------|------|
+| `academy-guide` | > |
+| `algorithmic-art` | Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request cre… |
+| `brand-guidelines` | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and… |
+| `canvas-design` | Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to cr… |
+| `claude-api` | - |
+| `discernment-nudge` | > |
+| `doc-coauthoring` | Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, t… |
+| `docx` | "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx… |
+| `frontend-design` | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direct… |
+| `internal-comms` | A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude s… |
+| `mcp-builder` | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through w… |
+| `pdf` | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, c… |
+| `pptx` | "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide d… |
+| `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from s… |
+| `slack-gif-creator` | Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation conc… |
+| `theme-factory` | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10… |
+| `web-artifacts-builder` | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tai… |
+| `webapp-testing` | Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debug… |
+| `xlsx` | "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, rea… |
+
+---
+
+## autonomous-ai-agents（10）
+
+| 技能 | 用途 |
+|------|------|
+| `claude-code` | "Delegate coding to Claude Code CLI (features, PRs)." |
+| `computer-use` | "Drive the desktop background-first; escalate on signal." |
+| `hermes-agent` | "Use, configure, theme, extend, and orchestrate Hermes Agent." |
+| `librechat` | "本机完整版的 LibreChat（LibreChat-AI，45k★）：增强版 ChatGPT 开源平台，多模型/多 provider、Agents、MCP、Skills、代码执行 workspace、OIDC 部署。Use when the user wa… |
+| `multi-agent-teams` | "Compose Hermes bot groups and multi-agent dev pipelines." |
+| `openbot` | "本机完整版的 OpenBot（CopilotKit，6k★，alpha）：开源 AI 同事平台，每个 agent 有独立浏览器/文件/工具，AG-UI 协议接入任意 agent 框架，Docker Compose 自托管。Use when the user … |
+| `opencode` | "Delegate coding to OpenCode CLI (features, PR review)." |
+| `openhands` | "本机完整版的 OpenHands / Agent Canvas（All-Hands-AI/OpenHands，90k★）：自托管的编码 agent 控制中心，跑 OpenHands/Claude Code/Codex/Gemini 及任何 ACP agent… |
+| `ui-tars` | UI-TARS GUI agent — drive mouse/keyboard on a desktop via a vision LLM (HuggingFace/vLLM endpoint). Use when asked to automate a d… |
+| `workspace-dispatch` | (无描述) |
 
 ---
 
@@ -1287,22 +2074,6 @@
 | `p5js` | "p5.js sketches: gen art, shaders, interactive, 3D." |
 | `popular-web-designs` | 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS. |
 | `songwriting-and-ai-music` | "Songwriting craft and Suno AI music prompts." |
-
----
-
-## autonomous-ai-agents（9）
-
-| 技能 | 用途 |
-|------|------|
-| `claude-code` | "Delegate coding to Claude Code CLI (features, PRs)." |
-| `computer-use` | "Drive the desktop background-first; escalate on signal." |
-| `hermes-agent` | "Use, configure, theme, extend, and orchestrate Hermes Agent." |
-| `librechat` | "本机完整版的 LibreChat（LibreChat-AI，45k★）：增强版 ChatGPT 开源平台，多模型/多 provider、Agents、MCP、Skills、代码执行 workspace、OIDC 部署。Use when the user wa… |
-| `multi-agent-teams` | "Compose Hermes bot groups and multi-agent dev pipelines." |
-| `openbot` | "本机完整版的 OpenBot（CopilotKit，6k★，alpha）：开源 AI 同事平台，每个 agent 有独立浏览器/文件/工具，AG-UI 协议接入任意 agent 框架，Docker Compose 自托管。Use when the user … |
-| `opencode` | "Delegate coding to OpenCode CLI (features, PR review)." |
-| `openhands` | "本机完整版的 OpenHands / Agent Canvas（All-Hands-AI/OpenHands，90k★）：自托管的编码 agent 控制中心，跑 OpenHands/Claude Code/Codex/Gemini 及任何 ACP agent… |
-| `workspace-dispatch` | (无描述) |
 
 ---
 
@@ -1340,6 +2111,15 @@
 
 ---
 
+## social-media（2）
+
+| 技能 | 用途 |
+|------|------|
+| `wxauto` | 微信 3.9.X Windows 桌面自动化 (wxauto 库) — 发/收消息、传文件、会话列表、消息监听。Use when the user wants to automate WeChat Desktop on Windows (send/receiv… |
+| `xurl` | "X/Twitter via xurl CLI: raw post search, posting, DM, media." |
+
+---
+
 ## devops（1）
 
 | 技能 | 用途 |
@@ -1356,11 +2136,11 @@
 
 ---
 
-## social-media（1）
+## typesafe-ai（1）
 
 | 技能 | 用途 |
 |------|------|
-| `xurl` | "X/Twitter via xurl CLI: raw post search, posting, DM, media." |
+| `typesafe-ai` | > |
 
 ---
 
