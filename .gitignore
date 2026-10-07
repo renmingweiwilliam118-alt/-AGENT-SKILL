@@ -19,3 +19,4 @@
 # git 自身
 .git
 .workbuddy/   # 其他 agent 的私有应用数据，严禁入库
+__pycache__/
