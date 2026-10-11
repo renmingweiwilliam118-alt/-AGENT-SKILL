@@ -17,6 +17,8 @@ metadata:
 Use this when the user points at a git repo that is a **skill-library backup** — a tree of
 category directories full of `SKILL.md` trees, often shipping `restore.sh` and/or
 `_api_needs.json` — and asks to install / restore / bulk-add those skills into Hermes.
+It also covers the **reverse direction**: syncing skills added locally back into the backup repo
+so other machines/agents pick them up (the “Reverse Sync” section below).
 Not for a single skill, and not for authoring new skills (that is `skill_manage`).
 
 A skill-library backup repo is a git tree of **category directories**, each holding many
@@ -56,6 +58,22 @@ means **merging** the category trees into `$HERMES_HOME/skills/`.
    until their API keys are set in `~/.hermes/.env`; read the repo's `_api_needs.json` for
    the skill→key map and list which are missing.
 
+## Reverse Sync (local → backup repo)
+
+When the user asks which skills now exist locally but not in the backup, and to push them over:
+
+1. **Diff on `SKILL.md` relative paths.** Compute `skill_md_relpaths(local) - skill_md_relpaths(repo-clone)`
+   (each = `category/.../name/SKILL.md`). Content drift is normal; only “present locally, absent in
+   repo” is syncable. `git pull` the clone first so the diff is against the current remote, not a
+   stale checkout.
+2. **Copy each local-only skill dir into the clone** with its full subtree (`references/`,
+   `scripts/`, `assets/`) — `shutil.copytree` after removing any existing target. Verify valid
+   frontmatter on every one before committing (don’t push a broken skill or an un-materialized
+   symlink-text file left over from the restore step).
+3. **Commit + push.** `git add -A`, commit naming the added skills, `git push`.
+4. **Refresh the repo’s index/README** (total skill count + per-category table) in the same
+   commit — the count goes stale on every add.
+
 ## Pitfalls
 
 - **Git on Windows flattens symlinks into text files.** When a repo dedups skills across
@@ -68,6 +86,10 @@ means **merging** the category trees into `$HERMES_HOME/skills/`.
 - **Verify before declaring success.** A large copy looks done but a batch of symlink-text
   files still counts toward the total. The verify step (frontmatter check) is what catches
   them; trusting the copy count alone is the failure mode.
+- **Push is credential-gated; the commit is safe.** A missing write credential (no stored
+  git-credential helper, no PAT, no `gh` login) means the commit lands locally and waits. Do not
+  fabricate credentials or report the push as done — say the commit exists locally and hand the
+  user the exact push command or a credential method (`gh auth login --web` device code, a PAT).
 - **Don't restate the library's catalog as skill content.** This skill is the restore
   procedure, not the contents of any particular backup.
 
