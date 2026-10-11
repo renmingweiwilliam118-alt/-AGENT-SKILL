@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1955 个技能**，35 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1959 个技能**，36 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -10,11 +10,11 @@
 
 | 类别 | 技能数 | 说明 |
 |------|--------|------|
-| [claude-skills](#claude-skills) | 845 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [claude-skills](#claude-skills) | 847 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
 | [security](#security) | 170 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
 | [software-development](#software-development) | 150 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
 | [design](#design) | 115 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
-| [marketing](#marketing) | 107 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
+| [marketing](#marketing) | 108 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
 | [mattpocock](#mattpocock) | 76 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
@@ -45,10 +45,11 @@
 | [renvox-moss-tts](#renvox-moss-tts) | 1 |  |
 | [typesafe-ai](#typesafe-ai) | 1 |  |
 | [windows-process-inspection](#windows-process-inspection) | 1 |  |
+| [writing](#writing) | 1 | 写作 / 文案 |
 
 ---
 
-## claude-skills（845）
+## claude-skills（847）
 
 | 技能 | 用途 |
 |------|------|
@@ -528,9 +529,11 @@
 | `business-operations/skills/procurement-optimizer` | Use when running an annual SaaS audit, doing category-level spend review, or rationalizing the supplier base — when the user needs… |
 | `business-operations/skills/vendor-management` | Use when reviewing, scoring, or auditing third-party SaaS / vendor relationships — running a vendor scorecard with industry tuning… |
 | `c-level-advisor/arquiteto-de-empresa/skills/arquiteto-de-empresa` | "Company Architect: builds a business from scratch as an OKF (Open Knowledge Format) bundle — a tree of version-controllable .md f… |
+| `c-level-advisor/ceo-advisor/ceo-advisor` | Comprehensive CEO leadership skill providing strategic planning frameworks, financial scenario modeling, board governance guidance… |
 | `c-level-advisor/chief-ai-officer-advisor/skills/chief-ai-officer-advisor` | "Chief AI Officer advisory for startups: model build-vs-buy decisions (API vs fine-tune vs in-house), AI risk classification under… |
 | `c-level-advisor/chief-customer-officer-advisor/skills/chief-customer-officer-advisor` | "Chief Customer Officer advisory for startups: retention decomposition (gross retention vs NRR honesty, churn root-cause taxonomy)… |
 | `c-level-advisor/chief-data-officer-advisor/skills/chief-data-officer-advisor` | "Chief Data Officer advisory for startups: AI training data rights and consent provenance, data product strategy (warehouse vs lak… |
+| `c-level-advisor/cto-advisor/cto-advisor` | Strategic technology leadership skill providing frameworks for architecture decisions, team scaling, technical debt management, te… |
 | `c-level-advisor/executive-mentor/skills/board-prep` | "Board meeting preparation for the adversarial scenario, not the friendly one. Forces numbers-cold mastery, anticipates hard quest… |
 | `c-level-advisor/executive-mentor/skills/challenge` | "Pre-mortem plan analysis. Imagine the plan failed 12 months from now and work backwards to find the weaknesses. Surfaces assumpti… |
 | `c-level-advisor/executive-mentor/skills/executive-mentor` | "Adversarial thinking partner for founders and executives. Stress-tests plans, prepares for brutal board meetings, dissects decisi… |
@@ -1356,7 +1359,7 @@
 
 ---
 
-## marketing（107）
+## marketing（108）
 
 | 技能 | 用途 |
 |------|------|
@@ -1396,6 +1399,7 @@
 | `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
 | `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
 | `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `paywall-upgrade-cro` | (无描述) |
 | `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
 | `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
 | `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
@@ -2188,7 +2192,7 @@
 
 | 技能 | 用途 |
 |------|------|
-| `hermes-skill-library-restore` | "Use when restoring a git skill-library backup into skills/." |
+| `hermes-skill-library-restore` | "Use to restore a git skill-library backup into skills/, or sync the vault↔skills/↔GitHub mirror." |
 
 ---
 
@@ -2245,6 +2249,14 @@
 | 技能 | 用途 |
 |------|------|
 | `windows-process-inspection` | Use when managing Windows processes from git-bash/MSYS. |
+
+---
+
+## writing（1）
+
+| 技能 | 用途 |
+|------|------|
+| `humanizer` | (无描述) |
 
 ---
 

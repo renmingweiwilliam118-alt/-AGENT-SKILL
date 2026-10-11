@@ -1,13 +1,13 @@
 ---
 name: hermes-skill-library-restore
-description: "Use when restoring a git skill-library backup into skills/."
+description: "Use to restore a git skill-library backup into skills/, or sync the vault↔skills/↔GitHub mirror."
 version: 1.0.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [hermes, skills, install, restore, backup, git, symlink]
+    tags: [hermes, skills, install, restore, backup, git, symlink, sync, mirror]
 ---
 
 # Restore a Skill-Library Backup into Hermes's skills/
@@ -17,8 +17,11 @@ metadata:
 Use this when the user points at a git repo that is a **skill-library backup** — a tree of
 category directories full of `SKILL.md` trees, often shipping `restore.sh` and/or
 `_api_needs.json` — and asks to install / restore / bulk-add those skills into Hermes.
-It also covers the **reverse direction**: syncing skills added locally back into the backup repo
-so other machines/agents pick them up (the “Reverse Sync” section below).
+It also covers the **reverse** and **three-way** direction: this user keeps the library
+mirrored across three places — a git `skill-vault/` working copy, the live
+`$HERMES_HOME/skills/` dir, and a GitHub backup remote — and asks to keep them in sync
+("sync my new skills to the GitHub library"). The "Reverse Sync" and "Three-way mirror sync"
+sections below cover both; the one-way restore procedure is unchanged.
 Not for a single skill, and not for authoring new skills (that is `skill_manage`).
 
 A skill-library backup repo is a git tree of **category directories**, each holding many
@@ -63,19 +66,58 @@ means **merging** the category trees into `$HERMES_HOME/skills/`.
 When the user asks which skills now exist locally but not in the backup, and to push them over:
 
 1. **Diff on `SKILL.md` relative paths.** Compute `skill_md_relpaths(local) - skill_md_relpaths(repo-clone)`
-   (each = `category/.../name/SKILL.md`). Content drift is normal; only “present locally, absent in
-   repo” is syncable. `git pull` the clone first so the diff is against the current remote, not a
+   (each = `category/.../name/SKILL.md`). Content drift is normal; only "present locally, absent in
+   repo" is syncable. `git pull` the clone first so the diff is against the current remote, not a
    stale checkout.
 2. **Copy each local-only skill dir into the clone** with its full subtree (`references/`,
    `scripts/`, `assets/`) — `shutil.copytree` after removing any existing target. Verify valid
-   frontmatter on every one before committing (don’t push a broken skill or an un-materialized
+   frontmatter on every one before committing (don't push a broken skill or an un-materialized
    symlink-text file left over from the restore step).
 3. **Commit + push.** `git add -A`, commit naming the added skills, `git push`.
-4. **Refresh the repo’s index/README** (total skill count + per-category table) in the same
+4. **Refresh the repo's index/README** (total skill count + per-category table) in the same
    commit — the count goes stale on every add.
+
+## Three-way mirror sync (vault ↔ skills/ ↔ GitHub)
+
+Run when the user wants new local skills backed up to the git vault + GitHub, or a
+vault pull propagated into the live `skills/` dir. Goal: the three locations agree.
+
+1. **Normalize the git proxy first.** This user's git has a loopback proxy baked into
+   `.git/config` at the **local** scope. `git config --global --unset-all http.proxy`
+   does NOT clear it. Before any fetch/push run:
+   `for s in system global local; do git config --$s --unset-all http.proxy; git config --$s --unset-all https.proxy; done`
+   then confirm `git config --get http.proxy` is empty. Symptom of skipping this: every
+   push fails with `Failed to connect to github.com port 443 via 127.0.0.1` even though
+   `curl` (no proxy) reaches GitHub fine — git is routing through a dead loopback proxy.
+   Only set a proxy inline (`-c http.proxy=...`) if the loopback port is actually up.
+2. **Handle fork, don't force.** If `push` is rejected non-fast-forward, the remote has
+   commits you lack (often another session pushed). `git pull --ff-only origin master`.
+   If that would create a merge (local has commits too), stop and reconcile — never
+   `push --force` over the backup.
+3. **Push with the multi-retry SYNCED loop**, and gate on SHA equality, not exit code:
+   `local=$(git rev-parse HEAD)`; `remote=$(git ls-remote origin master|cut -f1)`;
+   declare SYNCED only when `local == remote`.
+4. **Propagate in both directions by skill NAME, not by path.** Dedup key is the last
+   path segment (the skill folder name). A skill can live under more than one category
+   path in one location; copying by relative path creates duplicates. Copy a local-only
+   skill into the vault only if its NAME is absent from the vault (and vice-versa for
+   vault-only → local). Report the "same name, different path, skipped" set so the user
+   sees you deliberately avoided dupes.
+5. **Refresh the auto-generated index** (this user ships a `gen_readme.py` that rebuilds
+   `README.md` from the tree) before committing, so the committed README matches the
+   new skill count; commit the README with the skill files in one commit.
+6. **Verify both-way zero-diff:** recount skill names in vault vs local; both "vault-only
+   names" and "local-only names" should be empty before declaring synced.
 
 ## Pitfalls
 
+- **A loopback proxy at `local` git scope silently breaks every fetch/push** while the
+  global scope looks clean. Clear all three scopes (`--system --global --local`) and
+  re-check `git config --get http.proxy`; the dead `127.0.0.1` proxy symptom is
+  distinguishable from a real network outage by `curl` succeeding with no proxy.
+- **Dedup by skill NAME (last path segment), not relative path.** The user's "three
+  places consistent" spec is name-consistent, not path-identical; a skill under two
+  category dirs is one skill. Copying by path silently doubles it.
 - **Git on Windows flattens symlinks into text files.** When a repo dedups skills across
   categories with symlinks (`cat/.x/skills/foo/SKILL.md -> ../../../real/foo/SKILL.md`),
   a Windows `git clone` (or copying a Linux-created tree) leaves them as 1-line files whose
