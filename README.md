@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1931 个技能**，25 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1955 个技能**，35 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -10,12 +10,12 @@
 
 | 类别 | 技能数 | 说明 |
 |------|--------|------|
-| [claude-skills](#claude-skills) | 844 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
+| [claude-skills](#claude-skills) | 845 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
 | [security](#security) | 170 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
-| [software-development](#software-development) | 147 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
-| [design](#design) | 113 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
+| [software-development](#software-development) | 150 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
+| [design](#design) | 115 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
+| [marketing](#marketing) | 107 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
-| [marketing](#marketing) | 100 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
 | [mattpocock](#mattpocock) | 76 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [gstack](#gstack) | 63 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
@@ -26,19 +26,29 @@
 | [claude-mem](#claude-mem) | 22 | Claude 跨会话记忆 / 知识图谱 |
 | [hermes-jev](#hermes-jev) | 22 |  |
 | [anthropics](#anthropics) | 19 |  |
-| [autonomous-ai-agents](#autonomous-ai-agents) | 10 | 自主 agent 编排 / 委派 / 多 agent 团队 |
+| [autonomous-ai-agents](#autonomous-ai-agents) | 11 | 自主 agent 编排 / 委派 / 多 agent 团队 |
 | [creative](#creative) | 10 | ASCII 艺术 / 手绘图 / 视觉设计 |
 | [research](#research) | 7 | 学术 / 文献 / 市场数据 / 内容监测 |
 | [apple](#apple) | 4 | Apple 平台 / SwiftUI / HIG |
 | [email](#email) | 2 | IMAP/SMTP 邮件 |
 | [social-media](#social-media) | 2 | 社媒运营 |
+| [automation](#automation) | 1 |  |
+| [cdp-browser-crawler](#cdp-browser-crawler) | 1 |  |
+| [ctypes-win32-windows](#ctypes-win32-windows) | 1 |  |
 | [devops](#devops) | 1 | SDLC / 部署 / CI |
+| [frontend-ui-error-probes](#frontend-ui-error-probes) | 1 |  |
+| [hermes-skill-library-restore](#hermes-skill-library-restore) | 1 |  |
+| [html-js-syntax-gate](#html-js-syntax-gate) | 1 |  |
 | [note-taking](#note-taking) | 1 | Obsidian 笔记 |
+| [python-desktop-app-packaging](#python-desktop-app-packaging) | 1 |  |
+| [pywebview-windows](#pywebview-windows) | 1 |  |
+| [renvox-moss-tts](#renvox-moss-tts) | 1 |  |
 | [typesafe-ai](#typesafe-ai) | 1 |  |
+| [windows-process-inspection](#windows-process-inspection) | 1 |  |
 
 ---
 
-## claude-skills（844）
+## claude-skills（845）
 
 | 技能 | 用途 |
 |------|------|
@@ -605,6 +615,7 @@
 | `engineering-team/a11y-audit/skills/a11y-audit` | "Accessibility audit skill for scanning, fixing, and verifying WCAG 2.2 Level A and AA compliance across React, Next.js, Vue, Angu… |
 | `engineering-team/google-workspace-cli/skills/google-workspace-cli` | "Google Workspace administration via the gws CLI (github.com/googleworkspace/cli). Install, authenticate, and automate Gmail, Driv… |
 | `engineering-team/playwright-pro/skills/browserstack` | >- |
+| `engineering-team/playwright-pro/skills/coverage` | >- |
 | `engineering-team/playwright-pro/skills/fix` | >- |
 | `engineering-team/playwright-pro/skills/generate` | >- |
 | `engineering-team/playwright-pro/skills/migrate` | >- |
@@ -1066,7 +1077,7 @@
 
 ---
 
-## software-development（147）
+## software-development（150）
 
 | 技能 | 用途 |
 |------|------|
@@ -1203,9 +1214,12 @@
 | `skill-inspector` | Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a sk… |
 | `slack-gif-creator` | Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation conc… |
 | `spike` | "Throwaway experiments to validate an idea before build." |
+| `strip-project-authorship` | Use when stripping original author branding from a project. |
 | `subagent-driven-development` | Use when executing implementation plans with independent tasks in the current session |
 | `systematic-debugging` | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes |
+| `tauri-pyinstaller-packaging` | Use for standalone desktop packaging of Python apps. |
 | `template` | Replace with description of the skill and when Claude should use it. |
+| `test-driven-development` | "TDD: enforce RED-GREEN-REFACTOR, tests before code." |
 | `theme-factory` | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10… |
 | `typesafe-ai/skills/typesafe-ai` | > |
 | `typesafe-ai/typesafe-ai` | > |
@@ -1220,7 +1234,7 @@
 
 ---
 
-## design（113）
+## design（115）
 
 | 技能 | 用途 |
 |------|------|
@@ -1307,6 +1321,7 @@
 | `poster-hero` | "Vertical poster or Moments-style share image with strong visual impact." |
 | `pptx-html-fidelity-audit` | Audit a python-pptx export against its source HTML deck, identify layout/content drift (footer overflow, cropped content, missing … |
 | `pr-feedback-quality-gate` | (无描述) |
+| `premium-motion-interactions` | "Use when building premium UI motion interactions." |
 | `prototype` | Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through th… |
 | `react-bits` | 213 个动画 React 组件素材库（DavidHDev/react-bits，MIT+CC，48k star）。文字动画/背景/UI 组件/微交互，每个 4 变体（JS-CSS/JS-TW/TS-CSS/TS-TW）。做 React/Next.js 页面要… |
 | `redesign-skill` | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-en… |
@@ -1333,10 +1348,125 @@
 | `ui-ux-pro-max` | "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing … |
 | `uiverse-galaxy` | 3802 个零依赖 UI 组件素材库（uiverse-io/galaxy，UIVerse，MIT，13k star）。按钮/卡片/加载器/表单/开关等，每个 HTML 文件同时含 CSS 版和 Tailwind 版两段代码，copy-paste 即用。做 UI… |
 | `vfx-text-cursor` | "Cursor light trail, chromatic rays, and directional flares for word-by-word quote reveals in video intros." |
+| `web-audio-player-ui` | "In-page audio player UI: pause, seek, waveform sync." |
 | `weread-year-in-review-video-template` | (无描述) |
 | `wpds` | (无描述) |
 | `write-swift` | How to write modern Swift well — modeling with value types, Swift 6 data-race safety and approachable concurrency (@concurrent, ma… |
 | `writing-guidelines` | (无描述) |
+
+---
+
+## marketing（107）
+
+| 技能 | 用途 |
+|------|------|
+| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
+| `ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
+| `ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
+| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
+| `aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
+| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
+| `card-twitter` | "Twitter quote or data card designed to pair with a post." |
+| `card-xiaohongshu` | "Xiaohongshu-style knowledge cards, arranged as a swipeable multi-card carousel." |
+| `churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
+| `co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
+| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
+| `community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
+| `competitive-ads-extractor` | (无描述) |
+| `competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
+| `competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
+| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
+| `copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
+| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
+| `cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
+| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
+| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
+| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
+| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
+| `image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
+| `influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
+| `launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
+| `marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
+| `marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
+| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
+| `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
+| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
+| `product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
+| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
+| `public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
+| `referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
+| `revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
+| `sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
+| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
+| `screenshots-marketing` | (无描述) |
+| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
+| `skills/ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
+| `skills/ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
+| `skills/ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
+| `skills/ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
+| `skills/analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
+| `skills/aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
+| `skills/attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
+| `skills/churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
+| `skills/co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
+| `skills/cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
+| `skills/community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
+| `skills/competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
+| `skills/competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
+| `skills/content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
+| `skills/copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
+| `skills/copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
+| `skills/cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
+| `skills/customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
+| `skills/directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
+| `skills/emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
+| `skills/events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
+| `skills/free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
+| `skills/image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
+| `skills/influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
+| `skills/launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
+| `skills/lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
+| `skills/marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
+| `skills/marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
+| `skills/marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
+| `skills/marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
+| `skills/marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
+| `skills/offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
+| `skills/onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
+| `skills/paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
+| `skills/popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
+| `skills/pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
+| `skills/product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
+| `skills/programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
+| `skills/prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
+| `skills/public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
+| `skills/referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
+| `skills/revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
+| `skills/sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
+| `skills/schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
+| `skills/seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
+| `skills/signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
+| `skills/site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
+| `skills/sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
+| `skills/social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
+| `skills/video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
+| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
+| `social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
+| `social-reddit-card` | "Realistic Reddit post card with vote rail and comment count, suited to video overlays or story sharing." |
+| `social-spotify-card` | "Spotify Now Playing-style card with album art, progress bar, and playback controls, suited to video overlays or personal homepage… |
+| `social-x-post-card` | "Realistic X post card with engagement metrics (likes, reposts, views), suited to video overlays or shareable image cards." |
+| `video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
 
 ---
 
@@ -1447,113 +1577,6 @@
 | `solutions/video-platforms/youtube-transcript-analysis-api-skill` | "This skill helps users extract YouTube video transcripts and perform deep competitive analysis on the content. Agent should proac… |
 | `solutions/video-platforms/youtube-transcript-extractor-api-skill` | "This skill helps users automatically extract YouTube video transcripts and metadata via the BrowserAct API. The Agent should proa… |
 | `solutions/video-platforms/youtube-video-api-skill` | This skill helps users automatically extract channel-level and video detail data from a specific YouTube channel via BrowserAct AP… |
-
----
-
-## marketing（100）
-
-| 技能 | 用途 |
-|------|------|
-| `ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
-| `ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
-| `ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
-| `ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
-| `analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
-| `aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
-| `attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
-| `churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
-| `co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
-| `cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
-| `community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
-| `competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
-| `competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
-| `content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
-| `copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
-| `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
-| `cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
-| `customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
-| `directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
-| `emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
-| `events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
-| `free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
-| `image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
-| `influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
-| `launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
-| `lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
-| `marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
-| `marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
-| `marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
-| `marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
-| `marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
-| `offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
-| `onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
-| `paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
-| `popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
-| `pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
-| `product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
-| `programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
-| `prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
-| `public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
-| `referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
-| `revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
-| `sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
-| `schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
-| `seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
-| `signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
-| `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
-| `skills/ab-testing` | When the user wants to plan, design, or implement an A/B test or experiment, or build a growth experimentation program. Also use w… |
-| `skills/ad-creative` | "When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — f… |
-| `skills/ads` | "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other … |
-| `skills/ai-seo` | "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use whe… |
-| `skills/analytics` | When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up track… |
-| `skills/aso` | "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app s… |
-| `skills/attribution` | When the user wants to figure out which marketing actually drives conversions and revenue, choose or interpret an attribution mode… |
-| `skills/churn-prevention` | "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retentio… |
-| `skills/co-marketing` | "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the us… |
-| `skills/cold-email` | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting… |
-| `skills/community-marketing` | "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community st… |
-| `skills/competitor-profiling` | "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor pro… |
-| `skills/competitors` | "When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. Also use when the user men… |
-| `skills/content-strategy` | When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when t… |
-| `skills/copy-editing` | "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user ment… |
-| `skills/copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, f… |
-| `skills/cro` | "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pag… |
-| `skills/customer-research` | When the user wants to conduct, analyze, or synthesize customer research. Use when the user mentions "customer research," "ICP res… |
-| `skills/directory-submissions` | When the user wants to submit their product to startup, SaaS, AI, agent, MCP, no-code, or review directories for backlinks, domain… |
-| `skills/emails` | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also… |
-| `skills/events` | "When the user wants to plan, run, sponsor, speak at, or get pipeline from events — webinars, conferences, trade shows, meetups, d… |
-| `skills/free-tools` | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awarenes… |
-| `skills/image` | "When the user wants to create, generate, edit, or optimize images for marketing — blog heroes, social graphics, product mockups, … |
-| `skills/influencer-marketing` | "When the user wants to run influencer, creator, or ambassador partnerships to promote their product — finding and vetting partner… |
-| `skills/launch` | "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,… |
-| `skills/lead-magnets` | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentio… |
-| `skills/marketing-council` | "When the user wants multiple expert perspectives on a marketing question — a simulated board of advisors staffed by legendary mar… |
-| `skills/marketing-ideas` | "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks f… |
-| `skills/marketing-loops` | "When the user wants to set up a recurring, self-running marketing workflow — a repeatable loop an AI agent runs on a cadence (wee… |
-| `skills/marketing-plan` | When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the us… |
-| `skills/marketing-psychology` | "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user … |
-| `skills/offers` | "When the user wants to design, construct, or improve an offer — the thing they actually sell — including value framing, bonus sta… |
-| `skills/onboarding` | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the… |
-| `skills/paywalls` | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the use… |
-| `skills/popups` | When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when t… |
-| `skills/pricing` | "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' … |
-| `skills/product-marketing` | "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product contex… |
-| `skills/programmatic-seo` | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SE… |
-| `skills/prospecting` | When the user wants to find, qualify, and build a list of prospects to reach out to — across B2B SaaS, general B2B, or local small… |
-| `skills/public-relations` | "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull re… |
-| `skills/referrals` | "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use wh… |
-| `skills/revops` | "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use wh… |
-| `skills/sales-enablement` | "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when … |
-| `skills/schema` | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "sch… |
-| `skills/seo-audit` | When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technica… |
-| `skills/signup` | When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions… |
-| `skills/site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. A… |
-| `skills/sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
-| `skills/social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
-| `skills/video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
-| `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, p… |
-| `social` | "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or … |
-| `video` | "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the us… |
 
 ---
 
@@ -2043,11 +2066,12 @@
 
 ---
 
-## autonomous-ai-agents（10）
+## autonomous-ai-agents（11）
 
 | 技能 | 用途 |
 |------|------|
 | `claude-code` | "Delegate coding to Claude Code CLI (features, PRs)." |
+| `codex` | "Delegate coding to OpenAI Codex CLI (features, PRs)." |
 | `computer-use` | "Drive the desktop background-first; escalate on signal." |
 | `hermes-agent` | "Use, configure, theme, extend, and orchestrate Hermes Agent." |
 | `librechat` | "本机完整版的 LibreChat（LibreChat-AI，45k★）：增强版 ChatGPT 开源平台，多模型/多 provider、Agents、MCP、Skills、代码执行 workspace、OIDC 部署。Use when the user wa… |
@@ -2120,11 +2144,59 @@
 
 ---
 
+## automation（1）
+
+| 技能 | 用途 |
+|------|------|
+| `gui-automation-with-cua-driver` | Automate GUI apps via cua-driver. WeChat/Qt control-level. |
+
+---
+
+## cdp-browser-crawler（1）
+
+| 技能 | 用途 |
+|------|------|
+| `cdp-browser-crawler` | Drive CDP crawlers on a system-browser debug port. |
+
+---
+
+## ctypes-win32-windows（1）
+
+| 技能 | 用途 |
+|------|------|
+| `ctypes-win32-windows` | "Use when building native Win32 windows in pure ctypes." |
+
+---
+
 ## devops（1）
 
 | 技能 | 用途 |
 |------|------|
 | `sdlc-review` | Review Kanban handoffs and route verified outcomes. |
+
+---
+
+## frontend-ui-error-probes（1）
+
+| 技能 | 用途 |
+|------|------|
+| `frontend-ui-error-probes` | Probe web UI errors; verify fixes via headless DOM dumps. |
+
+---
+
+## hermes-skill-library-restore（1）
+
+| 技能 | 用途 |
+|------|------|
+| `hermes-skill-library-restore` | "Use when restoring a git skill-library backup into skills/." |
+
+---
+
+## html-js-syntax-gate（1）
+
+| 技能 | 用途 |
+|------|------|
+| `html-js-syntax-gate` | Syntax-gate HTML JS with node --check before delivery. |
 
 ---
 
@@ -2136,11 +2208,43 @@
 
 ---
 
+## python-desktop-app-packaging（1）
+
+| 技能 | 用途 |
+|------|------|
+| `python-desktop-app-packaging` | Package a Python web app as a zero-env desktop app. |
+
+---
+
+## pywebview-windows（1）
+
+| 技能 | 用途 |
+|------|------|
+| `pywebview-windows` | "pywebview Windows desktop apps: dialogs and window control." |
+
+---
+
+## renvox-moss-tts（1）
+
+| 技能 | 用途 |
+|------|------|
+| `renvox-moss-tts` | "RENVOX (G:/MOSS-TTS-Nano): host/UI/audio work and probes." |
+
+---
+
 ## typesafe-ai（1）
 
 | 技能 | 用途 |
 |------|------|
 | `typesafe-ai` | > |
+
+---
+
+## windows-process-inspection（1）
+
+| 技能 | 用途 |
+|------|------|
+| `windows-process-inspection` | Use when managing Windows processes from git-bash/MSYS. |
 
 ---
 
