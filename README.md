@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1960 个技能**，36 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **1961 个技能**，36 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -13,7 +13,7 @@
 | [claude-skills](#claude-skills) | 847 | Claude Code 380+ 技能（30 agents + 70 commands，业务/工程/营销/合规/C-level/科研） |
 | [security](#security) | 170 | Trail of Bits 安全审计（Semgrep / CodeQL / 智能合约 / 供应链 / 差分分析） |
 | [software-development](#software-development) | 150 | 编码方法论 / TDD / 调试 / 测试 / addyosmani 生产级工程技能 |
-| [design](#design) | 116 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
+| [design](#design) | 117 | UI 设计 / 前端 / 组件素材库（react-bits, magic-ui, threeui, shadergradient, uiverse, 21st, taste-skill…） |
 | [marketing](#marketing) | 108 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
@@ -1237,7 +1237,7 @@
 
 ---
 
-## design（116）
+## design（117）
 
 | 技能 | 用途 |
 |------|------|
@@ -1325,6 +1325,7 @@
 | `poster-hero` | "Vertical poster or Moments-style share image with strong visual impact." |
 | `pptx-html-fidelity-audit` | Audit a python-pptx export against its source HTML deck, identify layout/content drift (footer overflow, cropped content, missing … |
 | `pr-feedback-quality-gate` | (无描述) |
+| `premium-design` | "Use when the user asks for premium design with no spec." |
 | `premium-motion-interactions` | "Use when building premium UI motion interactions." |
 | `prototype` | Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through th… |
 | `react-bits` | 213 个动画 React 组件素材库（DavidHDev/react-bits，MIT+CC，48k star）。文字动画/背景/UI 组件/微交互，每个 4 变体（JS-CSS/JS-TW/TS-CSS/TS-TW）。做 React/Next.js 页面要… |
