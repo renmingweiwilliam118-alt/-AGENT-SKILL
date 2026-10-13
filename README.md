@@ -1,7 +1,7 @@
 # Hermes Agent 技能库备份
 
 
-共 **1961 个技能**，36 个类别。每个技能的用途从 SKILL.md 自动提取。
+共 **2039 个技能**，37 个类别。每个技能的用途从 SKILL.md 自动提取。
 
 > 本仓库同时是跨机器/跨智能体备份：`git clone` 后跑 `restore.sh` 即可整库恢复，
 > 或按平台把需要的类别拷进各家的技能目录（文末有分平台说明）。
@@ -17,6 +17,7 @@
 | [marketing](#marketing) | 108 | 营销全链路（广告/SEO/转化/文案/邮件/发布…） |
 | [browser-act](#browser-act) | 103 | 浏览器自动化 / 电商抓取 / 社媒 / 视频平台 |
 | [openmontage](#openmontage) | 90 | 视频 / 3D / 动效生成（HyperFrames, Remotion, GSAP, Three.js, 各模型） |
+| [product-management](#product-management) | 78 |  |
 | [mattpocock](#mattpocock) | 76 | Matt Pocock（277k★）工程/生产力技能（TDD/诊断/设计文档/交接/复盘…），包根含 GLOSSARY/AGENTS 共享层 |
 | [gstack](#gstack) | 63 | gstack 工程工作流（CEO/devex/eng 评审、QA、发布、iOS） |
 | [media](#media) | 36 | 媒体内容（YouTube/GIF/音乐/音频/图像） |
@@ -1680,6 +1681,91 @@
 | `visual-style` | (无描述) |
 | `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "… |
 | `website-to-video` | "Capture a general website/URL and turn it into a HyperFrames video (site tour, showcase, or social clip from the site's own visua… |
+
+---
+
+## product-management（78）
+
+| 技能 | 用途 |
+|------|------|
+| `acquisition-channel-advisor` | Evaluate acquisition channels using unit economics, customer quality, and scalability. Use when deciding whether to scale, test, o… |
+| `agent-orchestration-advisor` | Design multi-agent AI workflows with clear boundaries, handoffs, and monitoring. Use when a complex PM task should run as parallel… |
+| `ai-shaped-readiness-advisor` | Assess whether your product work is AI-first or AI-shaped. Use when evaluating AI maturity and choosing the next team capability t… |
+| `altitude-horizon-framework` | Understand the PM-to-Director transition through altitude and horizon thinking. Use when diagnosing scope, time-horizon, or leader… |
+| `ansoff-matrix` | "Map evidence-backed growth options across the Ansoff Matrix with risk-rated sequencing. Use when the question is where the next t… |
+| `autonomous-investigation` | "The protocol behind every investigation skill. Use when AI research must proceed without you: search-plan gate, Fact/Inference/As… |
+| `battle-card-builder` | "Research and draft a competitive battle card from public evidence — every claim labeled and sourced. Use when a rep needs a field… |
+| `business-health-diagnostic` | Diagnose SaaS business health across growth, retention, efficiency, and capital. Use when preparing a business review or prioritiz… |
+| `company-intel` | Research a company, industry, or competitor set using web search and seven analytical lenses. Use when you need structured intel t… |
+| `company-research` | Create a company research brief with executive quotes, product strategy, and org context. Use when preparing for interviews, compe… |
+| `competitive-analysis-process` | "Orchestrate a complete competitive analysis across six steps, from landscape to strategic direction. Use when you need the full p… |
+| `competitive-intel-watch` | "Scheduled delta monitoring against a prior competitive snapshot. Use when tracking competitors on a cadence: material shifts only… |
+| `competitive-research-snapshot` | "Research a competitive landscape with cited snapshots, a comparison matrix, and so-what implications. Use when a product decision… |
+| `context-engineering-advisor` | Diagnose context stuffing vs. context engineering. Use when an AI workflow feels bloated, brittle, or hard to steer reliably. |
+| `customer-journey-map` | Create a customer journey map across stages, touchpoints, actions, emotions, and metrics. Use when diagnosing a broken experience … |
+| `customer-journey-mapping-workshop` | Run a customer journey mapping workshop with adaptive questions and outputs. Use when you need to map stages, actions, emotions, p… |
+| `derisk-measurement-advisor` | Identify what to measure, test, or track to de-risk a product or AI idea. Use when stress-testing an idea across internal (DUFV) a… |
+| `director-readiness-advisor` | Guide the PM-to-Director transition across preparing, interviewing, landing, and recalibrating. Use when leadership scope is chang… |
+| `discovery-interview-prep` | Plan customer discovery interviews with the right goal, segment, constraints, and method. Use when preparing interviews for proble… |
+| `discovery-process` | Run a full discovery cycle from problem hypothesis to validated solution. Use when a team needs a structured path through framing,… |
+| `eol-checklist` | "Build a phase-gated EOL checklist sized to the sunset, with a named owner on every item. Use when the decision to retire is made … |
+| `eol-internal-enablement` | "Build the support FAQ, sales talking points, and objection handling teams need before an EOL announcement. Use when customer-faci… |
+| `eol-message` | "Write a right-sized EOL announcement — brief notice through full phased comms — with rationale, customer impact, and next steps. … |
+| `eol-process` | "Run a product sunset end to end — decide, align, plan, prepare, announce, close. Use when you need the whole EOL process, not jus… |
+| `eol-readiness-advisor` | "Run a go/no-go assessment for retiring a product or feature, then right-size the effort. Use when someone says \"we should probab… |
+| `eol-stakeholder-sequence` | "Plan who to talk to about a sunset, in what order, and what each conversation must cover. Use when an EOL decision is made and yo… |
+| `epic-breakdown-advisor` | Break down epics into user stories with Humanizing Work split patterns. Use when a backlog item is too large to estimate, sequence… |
+| `epic-hypothesis` | Frame an epic as a testable hypothesis with target user, expected outcome, and validation method. Use when defining a major initia… |
+| `executive-onboarding-playbook` | Plan a VP or CPO 30-60-90 day diagnostic onboarding path. Use when entering a new executive product role and avoiding premature ch… |
+| `feature-investment-advisor` | Evaluate feature investments using revenue impact, cost structure, ROI, and strategy. Use when deciding whether a feature deserves… |
+| `finance-based-pricing-advisor` | Evaluate pricing changes using ARPU, conversion, churn risk, NRR, and payback. Use when deciding whether a pricing move should shi… |
+| `finance-metrics-quickref` | Look up SaaS finance metrics, formulas, and benchmarks fast. Use when you need a quick metric definition, formula, or benchmark du… |
+| `incoming-request-advisor` | "Decode an incoming message into a structured breakdown separating the literal ask from the job-to-be-done. Use when a loaded Slac… |
+| `intel-discipline-advisor` | "Triage a competitive or market question into the right intelligence disciplines, cadence, and executing skill. Use when you know … |
+| `intelligence-collection-disciplines` | "Run competitive research like an intelligence agency: eight collection disciplines (OSINT to MASINT), signal-to-inference chains,… |
+| `jobs-to-be-done` | Uncover customer jobs, pains, and gains in a structured JTBD format. Use when clarifying unmet needs, repositioning a product, or … |
+| `lean-ux-canvas` | Guide teams through Lean UX Canvas v2. Use when framing a business problem, surfacing assumptions, and defining what to learn next… |
+| `lifecycle-play-advisor` | "Diagnose where a product sits in its lifecycle and which play fits — extend, replace, or retire. Use when a product is fading and… |
+| `market-landscape-scan` | "Map a market's segments, players, substitutes, and whitespace with cited evidence. Use when entering or re-evaluating a market be… |
+| `opportunity-solution-tree` | Build an Opportunity Solution Tree from outcomes to opportunities, solutions, and tests. Use when a stakeholder request needs prob… |
+| `organic-growth-advisor` | "Identify which organic growth path to pursue — new segments, geographies, channels, or products. Use when diagnosing where a grow… |
+| `pestel-analysis` | Analyze political, economic, social, technological, environmental, and legal forces. Use when external market shifts could materia… |
+| `pestel-delta-monitor` | "Quarterly re-scan of a prior PESTEL analysis. Use when checking which macro factors moved, which assumptions broke, and what's ne… |
+| `pm-skill-creator` | Design a new PM skill through guided conversation. Use when you have raw content or an idea and want to shape it into a compliant … |
+| `pm-workflows` | Router for 6 PM workflow commands (discover, strategy, plan-roadmap, prioritize, write-prd, leadership-transition). Use when the u… |
+| `pol-probe` | Define a Proof of Life probe to test a risky hypothesis cheaply. Use when you need harsh truth before building real product. |
+| `pol-probe-advisor` | Select the right Proof of Life (PoL) probe based on hypothesis, risk, and resources. Use this to match the validation method to th… |
+| `porters-five-forces` | "Read an industry's structure through Porter's Five Forces with documented signals per rating, ending at the profit pool. Use when… |
+| `positioning-statement` | Create a Geoffrey Moore-style positioning statement. Use when clarifying who you serve, what problem you solve, your category, and… |
+| `positioning-workshop` | Run a positioning workshop that surfaces target customer, unmet need, category, benefits, and differentiation. Use when your produ… |
+| `prd-development` | Build a structured PRD that connects problem, users, solution, and success criteria. Use when turning discovery notes into an engi… |
+| `press-release` | Write an Amazon-style press release that defines customer value before building. Use when aligning stakeholders on a new product, … |
+| `pricing-packaging-tracker` | "Track competitor pricing and packaging as a diffable time series. Use when monitoring tiers, gates, limits, and price moves on a … |
+| `prioritization-advisor` | Choose a prioritization framework based on stage, team context, and stakeholder needs. Use when deciding between RICE, ICE, value/… |
+| `problem-framing-canvas` | Guide teams through MITRE's Problem Framing Canvas. Use when you need a clearer problem statement before jumping to solutions. |
+| `problem-statement` | Write a user-centered problem statement with who is blocked, what they are trying to do, why it matters, and how it feels. Use whe… |
+| `product-lifecycle-plays` | "Map a product's lifecycle stage and choose between extension, replacement, and retirement plays. Use when a product is maturing o… |
+| `product-sense-interview-answer` | Structure a spoken PM product-sense answer with assumptions, segmentation, pain-point prioritization, and MVP tradeoffs. Use when … |
+| `product-strategy-session` | Run an end-to-end product strategy session across positioning, discovery, and roadmap planning. Use when a team needs validated di… |
+| `proto-persona` | Create a proto-persona from current research, market signals, and team knowledge. Use when you need a working customer profile bef… |
+| `recommendation-canvas` | Evaluate an AI product idea across outcomes, hypotheses, risks, and positioning. Use when deciding whether an AI solution deserves… |
+| `roadmap-planning` | Plan a strategic roadmap across prioritization, epic definition, stakeholder alignment, and sequencing. Use when turning strategy … |
+| `saas-economics-efficiency-metrics` | Evaluate SaaS unit economics and capital efficiency. Use when deciding whether the business can scale efficiently or needs correct… |
+| `saas-revenue-growth-metrics` | Calculate SaaS revenue, retention, and growth metrics. Use when diagnosing momentum, churn, expansion, or product-market-fit signa… |
+| `skill-authoring-workflow` | Turn raw PM content into a compliant, publish-ready skill. Use when creating or updating a repo skill without breaking standards. |
+| `stakeholder-engagement-advisor` | Plan engagement for a specific stakeholder. Use when preparing an outreach, navigating resistance, or aligning a critical relation… |
+| `stakeholder-identification` | Map every stakeholder before engaging anyone. Use when launching an initiative, scoping discovery, or building an engagement plan … |
+| `stakeholder-mapping` | Prioritize stakeholders using two complementary grids. Use when setting engagement strategy and surfacing whose voice needs elevat… |
+| `storyboard` | Create a six-frame storyboard that shows a user's journey from problem to solution. Use when you need a fast narrative for alignme… |
+| `swot-analysis` | "Build an evidence-cited SWOT of one company — yours or a competitor's — from public sources, ending with the S-O/W-T crossings. U… |
+| `tam-sam-som-calculator` | Calculate TAM, SAM, and SOM with explicit assumptions, methods, and caveats. Use when sizing a market for a product idea, business… |
+| `user-story` | Create user stories with Mike Cohn format and Gherkin acceptance criteria. Use when turning user needs into development-ready work… |
+| `user-story-mapping` | Create a user story map that lays out activities, steps, tasks, and release slices. Use when planning a workflow, backlog, or MVP … |
+| `user-story-mapping-workshop` | Run a user story mapping workshop with adaptive questions and a structured map output. Use when you need backbone activities, task… |
+| `user-story-splitting` | Break a large story or epic into smaller deliverable stories using proven split patterns. Use when backlog items are too big for e… |
+| `voice-of-customer-miner` | "Mine public reviews, app stores, and forums for unmet needs, competitor weaknesses, and switching triggers — with quoted evidence… |
+| `vp-cpo-readiness-advisor` | Guide the transition to VP or CPO across preparing, interviewing, landing, and recalibrating. Use when executive product scope is … |
+| `workshop-facilitation` | Facilitate workshop sessions in a one-step, multi-turn flow. Use when an interactive skill needs consistent pacing, options, and p… |
 
 ---
 
