@@ -1,0 +1,27 @@
+# Reception gate chain (看→想→做 anti-spam / anti-misread spec)
+
+Consolidated current spec for the guard chain in `agent.py` `_think`/`_act` and the prompt rules in `brain.py`. Thresholds here are calibrated against real incident replays — do not loosen one without re-verifying against a live replay of the incident class it guards.
+
+User's standing rules encoded here: **every question gets answered exactly once**; replies must be fast; a reply must answer the latest actual customer message.
+
+## Gate order (earlier = cheaper; each can veto)
+
+1. **Frame admission (before the model).** A capture frame that is too small (< ~200x120) or near-uniform (variance of a 32x24 gray downsample < ~16 — that is what PrintWindow returns for a minimized window) is NEVER fed to the VLM and never counted as a step: blank frames burn one LLM call each, tiny frames get 400-rejected by the vision endpoint. Throttle the warning (once per minute) or it floods the log.
+2. **heard provenance (prompt rule).** heard must be the verbatim text of the latest LEFT bubble in the RIGHT chat pane. Left-list preview text is NOT a message. History labels ("语音消息") are not evidence for the current frame. A bubble readable as text IS text — classifying one as voice requires the capsule/seconds-icon shape (strict criteria), never "history says they've been sending voice". History anchoring is how text messages got answered with the canned voice-ack repeatedly.
+3. **Self-echo veto.** If heard matches one of the last ~5 assistant replies, it is our own right-side bubble read back — answer it and the loop self-perpetuates (answer → new bubble → read back → answer). Matcher (only for len>=10): substring containment, OR ratio>0.85, OR ratio>0.55 with a >=14-char contiguous common block (the third clause catches OCR/VLM-shortened echoes whose overall ratio drops to ~0.6x while the opening text survives intact). Veto → no reply, no actions, stop.
+4. **Exactly-once ledger.** Same normalized question with a SUCCESSFUL send in the last 30 min → skip. Same question re-seen within 5 min → drop as noise (echo/re-trigger), and do not re-record it. The ledger records successful sends only — recording a failed send re-creates the "marked answered but customer got nothing" bug; failed sends stay on the bounded-retry path. After a restart, rebuild from turns (customer line followed within 2 slots by an assistant line, inside the window). EXEMPT from this gate: while a bounded retry is in flight (`_unanswered_msg` set) or step>1 (mid-reception re-look after opening a conversation) — vetoing there mutes unanswered messages permanently and breaks multi-step flows.
+5. **Same-frame dedup.** "Chat pane unchanged vs post-answer snapshot" strips only send-type actions but passes click/open-conversation actions — sidebar-unread events don't move the chat pane, and the model must still be allowed to open the unread conversation. Same question + within 60 s of the last successful send → skip (re-answer guard).
+6. **Repeat-reply re-think.** Draft duplicating any of the last 4 assistant replies → re-ask once with a nudge naming the new question; still duplicate → don't send (silence beats spam). Exempt while retrying an unanswered message — the same correct answer to the same unanswered question is legitimate.
+7. **Typing guards (act phase).** `bring_to_front` must succeed AND a `foreground_is(hwnd)` re-check must pass immediately before paste (foreground can be lost in the milliseconds after the raise) AND any click point must WindowFromPoint to the target's top-level window. On failure: skip — pasting with the wrong focus types the customer's reply into whatever app the user is working in, and Enter sends it.
+8. **Readback verification.** before/after frames must come from the SAME capture source (PrintWindow of the target). A screen-source `before` + PrintWindow `after` shows a huge diff whenever the target is occluded → false "sent" → the message is locked as answered and the customer gets nothing. If the readback frame stays broken after 3 re-grabs, do NOT retype (the message may have landed — retype = duplicate delivery); leave it to the next DECIDE pass on a stable screen.
+
+## Mode & latency rules
+
+- Background watch (`reception.pin_wechat=false`): the THINK phase never raises the target window (capture is PrintWindow, same source the trigger diffed); only the ACT phase foregrounds, for the 1-2 s of typing. Background-screen freeze alerts need a long threshold (~10 min, re-alert ~10 min) — a quiet covered chat is legitimately static.
+- Assistant history records only replies that were actually SENT. A failed send recorded as a turn makes the retry look like a duplicate and the exactly-once chain mutes the customer forever.
+- Reply latency: the model call dominates (multi-second, server-side); pipeline overhead is tens of ms. Don't swap to a smaller model without benchmarking the live prompt — a dense 8B measured SLOWER than the 30B MoE (3B-active) it was meant to beat. The reliable levers: cap generated output (reasoning <=~40 chars) and trim act-phase sleeps.
+
+## Prompt-side standing rules (brain.py)
+
+- heard only from the right pane's latest left bubble; left-list previews are not messages.
+- Official accounts / news / file-helper / games (article-push style previews) are never clicked even when unread; if the right pane IS an article feed or game page, output reply=null and stop, and wait for a human unread. Clicking one strands the session in a feed where it keeps reading sidebar previews as messages.
